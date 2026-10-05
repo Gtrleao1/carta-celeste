@@ -26,12 +26,24 @@ Next.js (App Router) + TypeScript estrito, Tailwind CSS 4 + shadcn/ui, Supabase 
 - Celular primeiro; contraste AA, navegação por teclado, foco visível.
 - Alias de import `@/*` aponta para a raiz do projeto (sem `src/`).
 
+- Next.js 16: `middleware` virou `proxy.ts`; `searchParams` e `cookies()` são assíncronos. Consulte `node_modules/next/dist/docs/` antes de escrever código de Next.
+- Formulários usam Server Actions + Zod (`lib/auth/schemas.ts`) e devolvem `FormState`. Os campos são **controlados** (`Field` em `components/auth/form-parts.tsx`) porque o React 19 reseta o formulário após a ação e apagaria o que a pessoa digitou.
+- Dois clientes Supabase: `lib/supabase/server.ts` (sessão do usuário, sujeito à RLS) e `lib/supabase/admin.ts` (service role, ignora a RLS; só depois de verificar quem pede).
+- Excluir conta (LGPD): `auth.admin.deleteUser` apaga em cascata perfis, perfis de nascimento e relatórios; `orders.user_id` vira nulo (pedido anonimizado).
+
+## Banco de dados (Supabase)
+
+- Migrações em `supabase/migrations` (nome `AAAAMMDDHHMMSS_descricao.sql`). Nunca editar uma migração já aplicada: crie uma nova.
+- Aplicar: `npx supabase@latest db push` (projeto já ligado com `supabase link`; no PowerShell do Windows use `npx.cmd` se `npx` for bloqueado).
+- `npm run db:seed-cities` carrega as cidades (IBGE + GeoNames); `npm run db:seed-admin` dá o papel de admin ao `ADMIN_EMAIL` (a conta precisa existir).
+- Os testes em `tests/integration` rodam contra o projeto Supabase de `.env.local` e são pulados sem as chaves (como no CI). Eles criam usuários descartáveis e limpam depois.
+
 ## Comandos
 
 - `npm run dev` — servidor de desenvolvimento
 - `npm run lint` — ESLint
 - `npm run format` / `npm run format:check` — Prettier
-- `npm test` — Vitest
+- `npm test` — Vitest (unidade + integração, se houver `.env.local`)
 - `npm run build` — build de produção
 
 Antes de concluir uma etapa: `npm run lint`, `npm run format:check`, `npm test` e `npm run build` precisam passar.

@@ -42,3 +42,6 @@ next-env.d.ts
 
 # permitir o modelo de variáveis
 !.env.example
+
+# CLI do Supabase
+supabase/.temp
