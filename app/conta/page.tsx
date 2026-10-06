@@ -17,7 +17,7 @@ import {
 import { formatDateBR, formatTimeBR } from "@/lib/format";
 import { createClient } from "@/lib/supabase/server";
 
-export const metadata: Metadata = { title: "Minha conta — Carta Celeste" };
+export const metadata: Metadata = { title: "Minha conta" };
 
 export default async function ContaPage() {
   const supabase = await createClient();

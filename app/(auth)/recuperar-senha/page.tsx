@@ -9,7 +9,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-export const metadata: Metadata = { title: "Recuperar senha — Carta Celeste" };
+export const metadata: Metadata = { title: "Recuperar senha" };
 
 export default function RecuperarSenhaPage() {
   return (

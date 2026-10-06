@@ -41,6 +41,17 @@ Next.js (App Router) + TypeScript estrito, Tailwind CSS 4 + shadcn/ui, Supabase 
 - Meta de desempenho (PRD): Lighthouse acima de 90 em desempenho e acessibilidade na home e nas páginas de produto. Medir sempre na versão de produção: `npm run build`, `npm run start` e `npx lighthouse http://localhost:3000/ --chrome-flags="--headless=new"`.
 - Dados institucionais (razão social, CNPJ, e-mail) ficam em `lib/site-config.ts`; nulos, aparecem como "a definir" nas páginas legais, que são texto-base e precisam de revisão jurídica.
 
+## Pagamento (Mercado Pago)
+
+- Fluxo: `/comprar/[slug]` (3 telas) → `POST /api/checkout` (`lib/checkout/create-checkout.ts`) → Mercado Pago → `POST /api/webhooks/mercadopago` → `/pedido/[id]/retorno`.
+- O preço **sempre** vem de `products.price_cents`; o corpo do checkout não tem campo de preço. Nova tentativa de pagamento usa só o `orderId` (pedido `pending` do próprio usuário).
+- Webhook (`lib/payments/`): assinatura `x-signature` (HMAC-SHA256 do manifesto `id:<data.id>;request-id:<x-request-id>;ts:<ts>;`) validada em `signature.ts`, falhando fechado sem segredo. O pagamento é **sempre** consultado na API (`getMpPayment`), o `external_reference` é o id do pedido e o valor pago precisa ser igual a `amount_cents`. Transições são condicionais (`where status = 'pending'`) para valer com avisos simultâneos. `rejected`/`cancelled` mantêm o pedido `pending` e gravam `mp_status` (é o que a página de retorno usa para mostrar "recusado").
+- Regras de negócio do webhook ficam em `notification.ts` (puro, com dependências injetadas); não coloque lógica nova direto na rota.
+- Disparo do relatório: `triggerReportGeneration` (dentro de `after()`) faz `POST /api/jobs/generate-report` com `Authorization: Bearer $JOB_SECRET` e `{ orderId }`. A rota do job é da Etapa 6. **O resumo do mapa enviado à IA não pode conter nome nem e-mail** (compromisso da Política de Privacidade).
+- Limite de requisições: `withinRateLimit` (função `check_rate_limit` no Postgres; vale entre instâncias serverless). Checkout 10/min por usuário; busca de cidades 60/min por IP.
+- Dev local não recebe webhooks (precisam de URL pública https): para testar o ciclo completo, use o site publicado na Vercel. Sem `https`, a preferência sai sem `notification_url` e `auto_return`.
+- Nos testes, o pacote `server-only` aponta para `tests/stubs/server-only.ts` (ver `vitest.config.mts`).
+
 ## Banco de dados (Supabase)
 
 - Migrações em `supabase/migrations` (nome `AAAAMMDDHHMMSS_descricao.sql`). Nunca editar uma migração já aplicada: crie uma nova.

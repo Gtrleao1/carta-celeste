@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/card";
 import { safeNextPath } from "@/lib/auth/redirect";
 
-export const metadata: Metadata = { title: "Entrar — Carta Celeste" };
+export const metadata: Metadata = { title: "Entrar" };
 
 export default async function EntrarPage({
   searchParams,

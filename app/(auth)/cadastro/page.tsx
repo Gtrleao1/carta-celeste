@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/card";
 import { safeNextPath } from "@/lib/auth/redirect";
 
-export const metadata: Metadata = { title: "Criar conta — Carta Celeste" };
+export const metadata: Metadata = { title: "Criar conta" };
 
 export default async function CadastroPage({
   searchParams,

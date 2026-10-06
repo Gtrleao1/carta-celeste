@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/card";
 import { createClient } from "@/lib/supabase/server";
 
-export const metadata: Metadata = { title: "Nova senha — Carta Celeste" };
+export const metadata: Metadata = { title: "Nova senha" };
 
 export default async function RedefinirSenhaPage() {
   // Chegamos aqui pelo link do e-mail, que o /auth/callback já trocou por sessão.
