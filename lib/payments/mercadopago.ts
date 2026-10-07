@@ -32,6 +32,22 @@ export async function getMpPayment(id: string): Promise<MpPayment | null> {
   }
 }
 
+/**
+ * Ids dos pagamentos que o Mercado Pago tem para um pedido (mais recentes
+ * primeiro), buscando pelo `external_reference`. Usado para reconciliar quando
+ * o webhook não chegou.
+ */
+export async function findMpPaymentIds(orderId: string): Promise<string[]> {
+  const res = await new Payment(client()).search({
+    options: {
+      external_reference: orderId,
+      sort: "date_created",
+      criteria: "desc",
+    },
+  });
+  return (res.results ?? []).flatMap((p) => (p.id ? [String(p.id)] : []));
+}
+
 export type PreferenceInput = {
   orderId: string;
   productId: string;

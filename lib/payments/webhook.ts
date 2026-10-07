@@ -4,7 +4,7 @@ import type { NotificationResult } from "./notification";
 import { verifyWebhookSignature } from "./signature";
 
 export type WebhookDeps = {
-  /** Chave secreta do webhook (MERCADOPAGO_WEBHOOK_SECRET). */
+  /** Chave(s) secreta(s) do webhook (MERCADOPAGO_WEBHOOK_SECRET), separadas por vírgula. */
   secret: string | undefined;
   /** Processa um pagamento já identificado. Se lançar erro, o Mercado Pago tenta de novo. */
   process: (paymentId: string) => Promise<NotificationResult>;
@@ -39,13 +39,33 @@ export async function handleMercadoPagoWebhook(
   const url = new URL(request.url);
   const queryDataId = url.searchParams.get("data.id");
 
-  const valid = verifyWebhookSignature({
-    signatureHeader: request.headers.get("x-signature"),
-    requestId: request.headers.get("x-request-id"),
-    dataId: queryDataId,
-    secret: deps.secret,
-  });
-  if (!valid) return json({ error: "invalid_signature" }, 401);
+  // Aceita mais de um segredo, separados por vírgula: o Mercado Pago tem uma
+  // chave para o modo de teste e outra para produção, e contas de teste
+  // podem notificar por qualquer uma delas.
+  const secrets = (deps.secret ?? "")
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean);
+  const signatureHeader = request.headers.get("x-signature");
+  const requestId = request.headers.get("x-request-id");
+
+  const valid = secrets.some((secret) =>
+    verifyWebhookSignature({
+      signatureHeader,
+      requestId,
+      dataId: queryDataId,
+      secret,
+    }),
+  );
+  if (!valid) {
+    // Só metadados (sem segredos nem dados pessoais) para diagnosticar.
+    console.warn(
+      `[webhook mercadopago] assinatura recusada: data.id=${queryDataId ?? "-"} x-signature=${
+        signatureHeader ? "presente" : "ausente"
+      } x-request-id=${requestId ? "presente" : "ausente"} segredos_configurados=${secrets.length}`,
+    );
+    return json({ error: "invalid_signature" }, 401);
+  }
 
   let body: z.infer<typeof bodySchema> = {};
   try {
@@ -70,6 +90,11 @@ export async function handleMercadoPagoWebhook(
 
   try {
     const result = await deps.process(paymentId.data);
+    console.info(
+      `[webhook mercadopago] pagamento ${paymentId.data}: ${result.action}${
+        result.reason ? ` (${result.reason})` : ""
+      }`,
+    );
     return json({ ok: true, action: result.action });
   } catch (e) {
     // Nunca registra dados pessoais: só o tipo do problema e o id do pagamento.

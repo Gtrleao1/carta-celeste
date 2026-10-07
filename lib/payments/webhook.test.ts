@@ -87,6 +87,32 @@ describe("webhook do Mercado Pago", () => {
     expect(process).not.toHaveBeenCalled();
   });
 
+  it("aceita mais de um segredo (teste e produção), separados por vírgula", async () => {
+    const { process: process_, call } = setup();
+    const both = `outro-segredo-de-producao, ${SECRET}`;
+    expect((await call({ secret: both })).status).toBe(200);
+    // Assinado com o segredo "de produção", configurado em segundo lugar.
+    const prod = signWebhook("outro-segredo-de-producao", "987654321", "req-1");
+    expect((await call({ secret: both, signature: prod })).status).toBe(200);
+    expect(process_).toHaveBeenCalledTimes(2);
+    // Segredo que não está na lista continua recusado.
+    const forged = signWebhook("terceiro", "987654321", "req-1");
+    expect((await call({ secret: both, signature: forged })).status).toBe(401);
+  });
+
+  it("ao recusar, registra só metadados no log (nunca o segredo)", async () => {
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    const { call } = setup();
+    await call({ signature: signWebhook("errado", "987654321", "req-1") });
+    const line = warn.mock.calls[0]?.[0] as string;
+    expect(line).toContain("assinatura recusada");
+    expect(line).toContain("data.id=987654321");
+    expect(line).toContain("x-signature=presente");
+    expect(line).not.toContain(SECRET);
+    expect(line).not.toContain("errado");
+    warn.mockRestore();
+  });
+
   it("segredo não configurado: recusa tudo", async () => {
     const { process, call } = setup();
     expect((await call({ secret: undefined })).status).toBe(401);
