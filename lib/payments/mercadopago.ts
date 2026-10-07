@@ -12,6 +12,8 @@ function client() {
   return new MercadoPagoConfig({ accessToken, options: { timeout: 10_000 } });
 }
 
+export const WEBHOOK_PATH = "/api/webhooks/mercadopago";
+
 type MpError = { status?: number; error?: string; message?: string };
 
 /** Consulta o pagamento na API do Mercado Pago. `null` se ele não existir. */
@@ -79,7 +81,10 @@ export async function createMpPreference(input: PreferenceInput) {
       back_urls: { success: returnUrl, pending: returnUrl, failure: returnUrl },
       ...(isPublic && {
         auto_return: "approved",
-        notification_url: `${input.siteUrl}/api/webhooks/mercadopago`,
+        // `source_news=webhooks` faz o Mercado Pago enviar só Webhooks (assinados,
+        // `?type=payment&data.id=…`). Sem ele, manda IPN (`?topic=payment&id=…`),
+        // que não tem assinatura verificável e o nosso webhook recusa.
+        notification_url: `${input.siteUrl}${WEBHOOK_PATH}?source_news=webhooks`,
       }),
       payment_methods: { installments: 12 },
       statement_descriptor: "CARTA CELESTE",
