@@ -77,8 +77,10 @@ export async function signUp(
   // Com confirmação de e-mail ligada, não há sessão até o clique no link.
   if (!data.session) {
     return {
+      // Mesma resposta exista ou não o cadastro (não revela quem é cliente),
+      // mas já orienta quem tem conta: o Supabase não reenvia e-mail nesse caso.
       message:
-        "Quase lá! Enviamos um link de confirmação para o seu e-mail. Abra-o para ativar sua conta.",
+        "Quase lá! Se este e-mail ainda não tiver cadastro, enviamos um link de confirmação para ele (confira também o spam). Se você já tem conta, é só entrar ou recuperar a senha.",
     };
   }
 
