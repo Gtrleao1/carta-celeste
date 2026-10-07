@@ -1,9 +1,13 @@
 "use server";
 
+import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
 import { fieldErrorsFrom, type FormState } from "@/lib/auth/form-state";
 import { safeNextPath } from "@/lib/auth/redirect";
+import { isExistingAccount } from "@/lib/auth/signup-result";
+import { clientIpFromHeaders, withinRateLimit } from "@/lib/rate-limit";
+import { createAdminClient } from "@/lib/supabase/admin";
 import {
   resetRequestSchema,
   signInSchema,
@@ -12,6 +16,17 @@ import {
 } from "@/lib/auth/schemas";
 import { getSiteUrl } from "@/lib/site-url";
 import { createClient } from "@/lib/supabase/server";
+
+/** Limite de tentativas por IP e por tipo de ação (guardado no Postgres). */
+async function underLimit(scope: string, max: number, windowSeconds: number) {
+  const ip = clientIpFromHeaders(await headers());
+  return withinRateLimit(
+    createAdminClient(),
+    `${scope}:${ip}`,
+    max,
+    windowSeconds,
+  );
+}
 
 export async function signIn(
   _prev: FormState,
@@ -52,6 +67,13 @@ export async function signUp(
   });
   if (!parsed.success) return fieldErrorsFrom(parsed.error);
 
+  // Como o cadastro revela se um e-mail já tem conta, limita tentativas por IP.
+  if (!(await underLimit("cadastro", 10, 3600))) {
+    return {
+      error: "Muitas tentativas de cadastro. Aguarde um pouco e tente de novo.",
+    };
+  }
+
   const supabase = await createClient();
   const siteUrl = await getSiteUrl();
   const { data, error } = await supabase.auth.signUp({
@@ -67,20 +89,26 @@ export async function signUp(
     },
   });
 
+  // E-mail que já tem conta: o Supabase não envia nada. Avisamos a pessoa e
+  // oferecemos entrar ou criar uma nova senha.
+  if (isExistingAccount({ data, error })) {
+    return { existingAccountEmail: parsed.data.email };
+  }
+
   if (error) {
     return {
       error:
-        "Não foi possível criar a conta. Se você já tem cadastro, entre ou recupere a senha.",
+        error.code === "over_email_send_rate_limit"
+          ? "Muitos e-mails enviados em pouco tempo. Aguarde alguns minutos e tente de novo."
+          : "Não foi possível criar a conta agora. Tente de novo em instantes.",
     };
   }
 
   // Com confirmação de e-mail ligada, não há sessão até o clique no link.
   if (!data.session) {
     return {
-      // Mesma resposta exista ou não o cadastro (não revela quem é cliente),
-      // mas já orienta quem tem conta: o Supabase não reenvia e-mail nesse caso.
       message:
-        "Quase lá! Se este e-mail ainda não tiver cadastro, enviamos um link de confirmação para ele (confira também o spam). Se você já tem conta, é só entrar ou recuperar a senha.",
+        "Quase lá! Enviamos um link de confirmação para o seu e-mail. Abra-o para ativar sua conta (confira também o spam).",
     };
   }
 
@@ -95,6 +123,12 @@ export async function requestPasswordReset(
     email: formData.get("email"),
   });
   if (!parsed.success) return fieldErrorsFrom(parsed.error);
+
+  if (!(await underLimit("recuperar", 10, 3600))) {
+    return {
+      error: "Muitas tentativas. Aguarde um pouco e tente de novo.",
+    };
+  }
 
   const supabase = await createClient();
   const siteUrl = await getSiteUrl();
@@ -140,7 +174,7 @@ export async function updatePassword(
     };
   }
 
-  redirect("/conta");
+  redirect("/conta?senha=alterada");
 }
 
 export async function signOut() {

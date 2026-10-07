@@ -6,6 +6,7 @@ import { signOut } from "@/app/(auth)/actions";
 import { deleteBirthProfile } from "@/app/conta/actions";
 import { DeleteAccountForm } from "@/components/conta/delete-account-form";
 import { ProfileForm } from "@/components/conta/profile-form";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -19,7 +20,8 @@ import { createClient } from "@/lib/supabase/server";
 
 export const metadata: Metadata = { title: "Minha conta" };
 
-export default async function ContaPage() {
+export default async function ContaPage({ searchParams }: PageProps<"/conta">) {
+  const params = await searchParams;
   const supabase = await createClient();
   const {
     data: { user },
@@ -51,6 +53,15 @@ export default async function ContaPage() {
           </Button>
         </form>
       </header>
+
+      {params.senha === "alterada" && (
+        <Alert>
+          <AlertDescription>
+            Senha alterada com sucesso. Use a nova senha na próxima vez que
+            entrar.
+          </AlertDescription>
+        </Alert>
+      )}
 
       <Card>
         <CardHeader>
@@ -109,6 +120,24 @@ export default async function ContaPage() {
               um pedido.
             </p>
           )}
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-lg">Senha</CardTitle>
+          <CardDescription>
+            Você já está conectado, então não precisa de e-mail para trocar a
+            senha.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Link
+            href="/redefinir-senha"
+            className="text-foreground underline underline-offset-4"
+          >
+            Alterar minha senha
+          </Link>
         </CardContent>
       </Card>
 

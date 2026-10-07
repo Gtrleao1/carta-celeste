@@ -26,15 +26,18 @@ export async function withinRateLimit(
   return data === true;
 }
 
-/** IP do cliente, atrás do proxy da Vercel. */
-export function clientIp(request: Request): string {
-  const forwarded = request.headers.get("x-forwarded-for");
+/** IP do cliente, atrás do proxy da Vercel, a partir dos cabeçalhos da requisição. */
+export function clientIpFromHeaders(headers: Headers): string {
+  const forwarded = headers.get("x-forwarded-for");
   return (
     forwarded?.split(",")[0]?.trim() ||
-    request.headers.get("x-real-ip") ||
+    headers.get("x-real-ip") ||
     "desconhecido"
   );
 }
+
+export const clientIp = (request: Request) =>
+  clientIpFromHeaders(request.headers);
 
 export function tooManyRequests(retryAfterSeconds: number) {
   return Response.json(
