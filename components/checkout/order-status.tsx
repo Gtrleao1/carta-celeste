@@ -5,7 +5,12 @@ import { useEffect, useState } from "react";
 
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button, buttonVariants } from "@/components/ui/button";
-import { isSettled, orderView, type OrderView } from "@/lib/orders/view";
+import {
+  isWaiting,
+  orderView,
+  shouldKeepPolling,
+  type OrderView,
+} from "@/lib/orders/view";
 
 const POLL_MS = 3000;
 const GIVE_UP_MS = 2 * 60 * 1000;
@@ -61,23 +66,22 @@ export function OrderStatus({
   const [retryError, setRetryError] = useState<string | null>(null);
 
   const view = orderView(status, mpStatus);
-  const settled = isSettled(view);
+  const polling = shouldKeepPolling(view);
 
-  // Consulta o banco a cada 3 s, por até 2 minutos, até o estado se definir.
+  // Consulta o banco já ao abrir e depois a cada 3 s, por até 2 minutos. Segue
+  // consultando mesmo mostrando "recusado": o banco pode guardar uma recusa
+  // antiga enquanto uma nova tentativa já foi aprovada no Mercado Pago.
   useEffect(() => {
-    if (settled) return;
+    if (!polling) return;
+    let stopped = false;
     const startedAt = Date.now();
-    const timer = setInterval(async () => {
-      if (Date.now() - startedAt > GIVE_UP_MS) {
-        clearInterval(timer);
-        setGaveUp(true);
-        return;
-      }
+
+    async function tick() {
       try {
         const res = await fetch(`/api/pedidos/${orderId}/status`, {
           cache: "no-store",
         });
-        if (!res.ok) return;
+        if (!res.ok || stopped) return;
         const data = (await res.json()) as {
           status: string;
           mpStatus: string | null;
@@ -87,9 +91,22 @@ export function OrderStatus({
       } catch {
         // sem rede por um instante: tenta de novo na próxima rodada
       }
+    }
+
+    void tick();
+    const timer = setInterval(() => {
+      if (Date.now() - startedAt > GIVE_UP_MS) {
+        clearInterval(timer);
+        setGaveUp(true);
+        return;
+      }
+      void tick();
     }, POLL_MS);
-    return () => clearInterval(timer);
-  }, [orderId, settled]);
+    return () => {
+      stopped = true;
+      clearInterval(timer);
+    };
+  }, [orderId, polling]);
 
   async function retry() {
     setRetrying(true);
@@ -114,7 +131,7 @@ export function OrderStatus({
   }
 
   const copy = COPY[view];
-  const stillWaiting = !settled && gaveUp;
+  const stillWaiting = isWaiting(view) && gaveUp;
 
   return (
     <div className="grid gap-6">
@@ -130,7 +147,7 @@ export function OrderStatus({
         <p className="text-muted-foreground text-sm">{productName}</p>
       </div>
 
-      {!settled && !gaveUp && (
+      {isWaiting(view) && !gaveUp && (
         <p className="text-muted-foreground flex items-center gap-2 text-sm">
           <span
             aria-hidden="true"
@@ -147,7 +164,7 @@ export function OrderStatus({
       )}
 
       <div className="flex flex-wrap gap-3">
-        {view === "declined" && (
+        {(view === "declined" || stillWaiting) && (
           <Button
             type="button"
             size="lg"

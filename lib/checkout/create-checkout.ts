@@ -19,6 +19,12 @@ export type CheckoutParams = {
   input: CheckoutInput;
   siteUrl: string;
   createPreference: typeof createMpPreference;
+  /**
+   * Antes de abrir uma nova tentativa de pagamento, confere no Mercado Pago se
+   * o pedido já tem um pagamento aprovado (e, se tiver, marca como pago). Evita
+   * cobrar duas vezes quem já pagou e ainda não viu a confirmação.
+   */
+  reconcile?: (orderId: string) => Promise<void>;
 };
 
 type ProductRow = {
@@ -60,6 +66,38 @@ export async function createCheckout(
     if (order.status !== "pending") {
       return fail(409, "Este pedido já foi pago ou encerrado.");
     }
+
+    if (p.reconcile) {
+      try {
+        await p.reconcile(order.id);
+      } catch (e) {
+        // Se não deu para confirmar, é mais seguro não abrir outro pagamento.
+        console.error(
+          "[checkout] falha ao conferir o pedido antes de tentar de novo:",
+          e instanceof Error ? e.message : "erro desconhecido",
+        );
+        return fail(502, PAYMENT_ERROR);
+      }
+      const { data: fresh } = await admin
+        .from("orders")
+        .select("status")
+        .eq("id", order.id)
+        .single();
+      if (fresh && fresh.status !== "pending") {
+        return fail(
+          409,
+          "Encontramos um pagamento aprovado para este pedido. Não é preciso pagar de novo.",
+        );
+      }
+    }
+
+    // Nova tentativa: o status da tentativa anterior (ex.: recusada) já não vale.
+    await admin
+      .from("orders")
+      .update({ mp_status: null, mp_status_detail: null })
+      .eq("id", order.id)
+      .eq("status", "pending");
+
     const { data: product } = await admin
       .from("products")
       .select("id, name, active")

@@ -1,6 +1,15 @@
+import { after } from "next/server";
+
+import { triggerReportGeneration } from "@/lib/jobs/trigger";
+import { createNotificationDeps } from "@/lib/payments/deps";
+import {
+  createMpPreference,
+  findMpPaymentIds,
+  getMpPayment,
+} from "@/lib/payments/mercadopago";
+import { reconcileOrder } from "@/lib/payments/reconcile";
 import { createCheckout } from "@/lib/checkout/create-checkout";
 import { checkoutSchema } from "@/lib/checkout/schemas";
-import { createMpPreference } from "@/lib/payments/mercadopago";
 import { tooManyRequests, withinRateLimit } from "@/lib/rate-limit";
 import { getSiteUrl } from "@/lib/site-url";
 import { createAdminClient } from "@/lib/supabase/admin";
@@ -43,6 +52,15 @@ export async function POST(request: Request) {
     input: body.data,
     siteUrl: await getSiteUrl(),
     createPreference: createMpPreference,
+    reconcile: async (orderId) => {
+      const results = await reconcileOrder(orderId, {
+        ...createNotificationDeps(admin, getMpPayment),
+        findPaymentIds: findMpPaymentIds,
+      });
+      if (results.some((r) => r.triggerJob)) {
+        after(() => triggerReportGeneration(orderId));
+      }
+    },
   });
 
   if (!result.ok) return json({ error: result.error }, result.status);

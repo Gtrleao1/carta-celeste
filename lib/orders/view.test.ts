@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { isSettled, orderView } from "./view";
+import { isFinal, isWaiting, orderView, shouldKeepPolling } from "./view";
 
 describe("orderView", () => {
   it("pago, em geração e pronto são 'aprovado'", () => {
@@ -33,17 +33,29 @@ describe("orderView", () => {
     expect(orderView("cancelled", null)).toBe("cancelled");
   });
 
-  it("para de consultar quando o estado não vai mais mudar sozinho", () => {
-    expect(isSettled("confirming")).toBe(false);
-    expect(isSettled("in_review")).toBe(false);
+  it("recusado NÃO é final: continua consultando, pois pode ter havido nova tentativa aprovada", () => {
+    expect(isFinal("declined")).toBe(false);
+    expect(shouldKeepPolling("declined")).toBe(true);
+    expect(shouldKeepPolling("confirming")).toBe(true);
+    expect(shouldKeepPolling("in_review")).toBe(true);
+  });
+
+  it("para de consultar só quando o estado não vai mais mudar sozinho", () => {
     for (const v of [
       "approved",
-      "declined",
+      "preparing_failed",
       "refunded",
       "cancelled",
-      "preparing_failed",
     ] as const) {
-      expect(isSettled(v)).toBe(true);
+      expect(isFinal(v)).toBe(true);
+      expect(shouldKeepPolling(v)).toBe(false);
     }
+  });
+
+  it("o indicador de atualização aparece só enquanto a confirmação está em andamento", () => {
+    expect(isWaiting("confirming")).toBe(true);
+    expect(isWaiting("in_review")).toBe(true);
+    expect(isWaiting("declined")).toBe(false);
+    expect(isWaiting("approved")).toBe(false);
   });
 });

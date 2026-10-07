@@ -27,6 +27,7 @@ describe.skipIf(!hasSupabaseEnv)("checkout: regras contra o banco real", () => {
   const run = (
     user: TestUser,
     input: Parameters<typeof createCheckout>[0]["input"],
+    extra: Partial<Parameters<typeof createCheckout>[0]> = {},
   ) =>
     createCheckout({
       userClient: user.client,
@@ -35,6 +36,7 @@ describe.skipIf(!hasSupabaseEnv)("checkout: regras contra o banco real", () => {
       input,
       siteUrl: "https://loja.test",
       createPreference,
+      ...extra,
     });
 
   async function newProduct(fields: Record<string, unknown>) {
@@ -278,6 +280,85 @@ describe.skipIf(!hasSupabaseEnv)("checkout: regras contra o banco real", () => {
       expect(createPreference).toHaveBeenCalledWith(
         expect.objectContaining({ orderId: first.orderId, amountCents: 1234 }),
       );
+    });
+
+    it("zera o status da tentativa anterior (recusada) ao abrir a nova", async () => {
+      const first = await run(a, {
+        productSlug: product.slug,
+        birthProfileId: bpA,
+      });
+      if (!first.ok) throw new Error("setup");
+      await admin
+        .from("orders")
+        .update({
+          mp_status: "rejected",
+          mp_status_detail: "cc_rejected_other_reason",
+        })
+        .eq("id", first.orderId);
+
+      const retry = await run(a, { orderId: first.orderId });
+      expect(retry.ok).toBe(true);
+      const { data } = await admin
+        .from("orders")
+        .select("status, mp_status, mp_status_detail")
+        .eq("id", first.orderId)
+        .single();
+      expect(data).toEqual({
+        status: "pending",
+        mp_status: null,
+        mp_status_detail: null,
+      });
+    });
+
+    it("se o Mercado Pago já tem um pagamento aprovado, não abre outro: avisa e não cobra de novo", async () => {
+      const first = await run(a, {
+        productSlug: product.slug,
+        birthProfileId: bpA,
+      });
+      if (!first.ok) throw new Error("setup");
+      createPreference.mockClear();
+      // Simula a reconciliação encontrando o pagamento aprovado e marcando como pago.
+      const reconcile = vi.fn(async (orderId: string) => {
+        await admin.from("orders").update({ status: "paid" }).eq("id", orderId);
+      });
+      const retry = await run(a, { orderId: first.orderId }, { reconcile });
+      expect(retry).toMatchObject({ ok: false, status: 409 });
+      expect(reconcile).toHaveBeenCalledWith(first.orderId);
+      expect(createPreference).not.toHaveBeenCalled();
+    });
+
+    it("se a conferência no Mercado Pago falhar, não abre outro pagamento (mais seguro)", async () => {
+      const err = vi.spyOn(console, "error").mockImplementation(() => {});
+      const first = await run(a, {
+        productSlug: product.slug,
+        birthProfileId: bpA,
+      });
+      if (!first.ok) throw new Error("setup");
+      createPreference.mockClear();
+      const retry = await run(
+        a,
+        { orderId: first.orderId },
+        {
+          reconcile: async () => {
+            throw new Error("MP fora do ar");
+          },
+        },
+      );
+      expect(retry).toMatchObject({ ok: false, status: 502 });
+      expect(createPreference).not.toHaveBeenCalled();
+      err.mockRestore();
+    });
+
+    it("sem pagamento aprovado, a conferência deixa a nova tentativa seguir", async () => {
+      const first = await run(a, {
+        productSlug: product.slug,
+        birthProfileId: bpA,
+      });
+      if (!first.ok) throw new Error("setup");
+      const reconcile = vi.fn(async () => {});
+      const retry = await run(a, { orderId: first.orderId }, { reconcile });
+      expect(retry).toMatchObject({ ok: true, orderId: first.orderId });
+      expect(reconcile).toHaveBeenCalledOnce();
     });
 
     it("não refaz pedido já pago nem pedido de outra pessoa", async () => {

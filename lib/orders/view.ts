@@ -32,10 +32,20 @@ export function orderView(status: string, mpStatus: string | null): OrderView {
   }
 }
 
-/** Quando parar de consultar o banco: pago, recusado ou encerrado. */
-export const isSettled = (view: OrderView) =>
+/** Estados em que nada mais vai mudar sozinho: pago, falha na geração, reembolso ou cancelamento. */
+export const isFinal = (view: OrderView) =>
   view === "approved" ||
   view === "preparing_failed" ||
-  view === "declined" ||
   view === "refunded" ||
   view === "cancelled";
+
+/**
+ * Se a página deve continuar consultando. "Recusado" NÃO é final: a pessoa pode
+ * ter feito uma nova tentativa no Mercado Pago (por "Tentar de novo" ou
+ * "Escolher outro meio") que foi aprovada, e o banco ainda guarda a recusa antiga.
+ */
+export const shouldKeepPolling = (view: OrderView) => !isFinal(view);
+
+/** Mostra o indicador "atualizando": só enquanto a confirmação está de fato em andamento. */
+export const isWaiting = (view: OrderView) =>
+  view === "confirming" || view === "in_review";
