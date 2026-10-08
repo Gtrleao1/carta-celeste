@@ -7,9 +7,10 @@ ser resolvido antes de vender de verdade**. Ao concluir um item, apague-o daqui.
 
 - [ ] **Credenciais de produção** da aplicação que vai receber os pagamentos:
       `MERCADOPAGO_ACCESS_TOKEN` (produção) na Vercel, escopo Production.
-- [ ] **Webhook de produção na MESMA aplicação do token.** O token (`APP_USR-<id da
-    aplicação>-…`) e a assinatura secreta do webhook precisam ser da mesma
-      aplicação. No ambiente de teste isso não fechou: as "Credenciais de teste"
+- [ ] **Webhook de produção na MESMA aplicação do token.** O token (o número
+      depois de `APP_USR-` é o id da aplicação) e a assinatura secreta do
+      webhook precisam ser da mesma aplicação. No ambiente de teste isso não
+      fechou: as "Credenciais de teste"
       entregam o token de uma conta vendedora de teste com aplicação própria
       (`1946713615171447`), e os avisos reais são assinados por ela, não pela
       aplicação do painel (`3392623061404159`). Os avisos de teste chegam e são
