@@ -87,6 +87,32 @@ describe.skipIf(!hasSupabaseEnv)(
       expect(order.paid_at).not.toBeNull();
     });
 
+    it("registra quem confirmou o pagamento: webhook ou reconciliação", async () => {
+      const viaWebhook = await newOrder();
+      await processPaymentNotification(
+        "900020",
+        deps({ id: "900020", externalReference: viaWebhook }),
+      );
+      expect((await orderOf(viaWebhook)).paid_via).toBe("webhook");
+
+      const viaReconciliation = await newOrder();
+      await processPaymentNotification(
+        "900021",
+        createNotificationDeps(
+          admin,
+          async (id) => ({
+            id,
+            status: "approved",
+            statusDetail: "accredited",
+            externalReference: viaReconciliation,
+            amountCents: 4900,
+          }),
+          "reconciliacao",
+        ),
+      );
+      expect((await orderOf(viaReconciliation)).paid_via).toBe("reconciliacao");
+    });
+
     it("aviso repetido não duplica nada: sem novo job e sem alterar o pedido", async () => {
       const id = await newOrder();
       const d = deps({ id: "900002", externalReference: id });

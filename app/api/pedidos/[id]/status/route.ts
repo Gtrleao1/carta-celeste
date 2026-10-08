@@ -53,7 +53,7 @@ export async function GET(
     if (await withinRateLimit(admin, `reconciliar:${id}`, 1, 10)) {
       try {
         const results = await reconcileOrder(id, {
-          ...createNotificationDeps(admin, getMpPayment),
+          ...createNotificationDeps(admin, getMpPayment, "reconciliacao"),
           findPaymentIds: findMpPaymentIds,
         });
         if (results.some((r) => r.triggerJob)) {

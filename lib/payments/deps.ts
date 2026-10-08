@@ -13,6 +13,8 @@ import type { NotificationDeps, OrderSnapshot } from "./notification";
 export function createNotificationDeps(
   admin: SupabaseClient,
   getPayment: NotificationDeps["getPayment"] = getMpPayment,
+  /** Quem está confirmando o pagamento; fica gravado em orders.paid_via. */
+  source: "webhook" | "reconciliacao" = "webhook",
 ): NotificationDeps {
   return {
     getPayment,
@@ -46,6 +48,7 @@ export function createNotificationDeps(
         .update({
           status: "paid",
           mp_payment_id: payment.id,
+          paid_via: source,
           mp_status: payment.status,
           mp_status_detail: payment.statusDetail,
           paid_at: new Date().toISOString(),

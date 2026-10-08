@@ -54,7 +54,7 @@ export async function POST(request: Request) {
     createPreference: createMpPreference,
     reconcile: async (orderId) => {
       const results = await reconcileOrder(orderId, {
-        ...createNotificationDeps(admin, getMpPayment),
+        ...createNotificationDeps(admin, getMpPayment, "reconciliacao"),
         findPaymentIds: findMpPaymentIds,
       });
       if (results.some((r) => r.triggerJob)) {
