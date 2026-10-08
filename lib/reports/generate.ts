@@ -105,7 +105,7 @@ export const DEFAULT_OPTIONS: GenerationOptions = {
 };
 
 export type GenerationResult = {
-  state: "ready" | "more" | "locked" | "failed" | "ignored";
+  state: "ready" | "more" | "locked" | "failed" | "ignored" | "paused";
   done: number;
   total: number;
   reason?: string;
@@ -214,6 +214,7 @@ export async function runGeneration(
     const configByKey = new Map(product.sections.map((s) => [s.key, s]));
     const allTitles = report.sections.map((s) => s.title);
     const hardEnd = t0 + opts.hardBudgetMs;
+    let halted = false;
 
     const generateOne = async (state: SectionState) => {
       const config = configByKey.get(state.key);
@@ -262,6 +263,13 @@ export async function runGeneration(
         log(`seção "${state.key}" pronta (${countWords(text)} palavras)`);
       } catch (e) {
         const kind = e instanceof WriteError ? e.kind : "desconhecido";
+        if (kind === "autenticacao") {
+          // Chave recusada: repetir não adianta e não é culpa da seção. Não gasta
+          // tentativa; o passo para e o pedido segue `generating` até a chave ser corrigida.
+          halted = true;
+          log(`seção "${state.key}" não escrita: chave da IA recusada`);
+          return;
+        }
         const attempts = state.attempts + 1;
         await store.applySection(report.id, state.key, {
           status: attempts >= opts.maxAttempts ? "failed" : "pending",
@@ -276,14 +284,14 @@ export async function runGeneration(
 
     // 2) Seções pendentes, em lotes paralelos, enquanto houver tempo.
     let current = report.sections;
-    while (now() - t0 < opts.softBudgetMs) {
+    while (!halted && now() - t0 < opts.softBudgetMs) {
       const queue = current.filter(
         (s) => s.status !== "done" && s.attempts < opts.maxAttempts,
       );
       if (queue.length === 0) break;
 
       const worker = async () => {
-        while (queue.length > 0 && now() - t0 < opts.softBudgetMs) {
+        while (!halted && queue.length > 0 && now() - t0 < opts.softBudgetMs) {
           await generateOne(queue.shift()!);
         }
       };
@@ -299,6 +307,20 @@ export async function runGeneration(
     // 3) Situação final deste passo.
     const fresh = (await store.getReport(report.id)).sections;
     const done = fresh.filter((s) => s.status === "done").length;
+
+    if (halted) {
+      // Não encadeia novo job (seria outra chamada recusada). A página de status
+      // retoma o pedido depois, e a retomada custa uma só chamada falha por vez.
+      console.error(
+        `[relatório] pedido ${orderId} pausado: a chave da IA foi recusada (conferir ANTHROPIC_API_KEY)`,
+      );
+      return {
+        state: "paused",
+        done,
+        total: fresh.length,
+        reason: "autenticacao",
+      };
+    }
     const exhausted = fresh.find(
       (s) => s.status !== "done" && s.attempts >= opts.maxAttempts,
     );

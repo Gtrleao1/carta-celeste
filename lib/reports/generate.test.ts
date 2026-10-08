@@ -337,6 +337,48 @@ describe("runGeneration", () => {
       expect(tries).toBe(3);
     });
 
+    it("chave da IA recusada: para na hora, não gasta tentativas nem falha o pedido", async () => {
+      const clock = { t: 0 };
+      const db = memoryStore({ config: sectionsConfig(10), clock });
+      let calls = 0;
+      const writer: SectionWriter = {
+        write: async () => {
+          calls++;
+          throw new WriteError("autenticacao");
+        },
+      };
+      const { notify, calls: mail } = notifier();
+      const r = await runGeneration(ORDER_ID, {
+        store: db.store,
+        writer,
+        notify,
+        now: () => clock.t,
+        options: { concurrency: 3 },
+      });
+      expect(r).toMatchObject({ state: "paused", reason: "autenticacao" });
+      // Só as chamadas já em andamento (no máximo a concorrência), nunca 10 x 3.
+      expect(calls).toBeLessThanOrEqual(3);
+      expect(db.order.status).toBe("generating");
+      expect(db.report().sections.every((s) => s.attempts === 0)).toBe(true);
+      expect(mail.ready).toBe(0);
+
+      // Chave corrigida: a próxima chamada retoma e conclui.
+      const ok: SectionWriter = {
+        write: async () => ({
+          text: LONG_TEXT,
+          inputTokens: 1,
+          outputTokens: 1,
+        }),
+      };
+      const again = await runGeneration(ORDER_ID, {
+        store: db.store,
+        writer: ok,
+        notify,
+        now: () => clock.t,
+      });
+      expect(again.state).toBe("ready");
+    });
+
     it("falha 3 vezes: seção e pedido ficam 'failed', com categoria de erro (sem texto bruto)", async () => {
       const clock = { t: 0 };
       const db = memoryStore({ config: sectionsConfig(3), clock });
