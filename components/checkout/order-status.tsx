@@ -31,7 +31,7 @@ const COPY: Record<OrderView, { title: string; text: string }> = {
   },
   ready: {
     title: "Seu mapa está pronto!",
-    text: "O relatório foi escrito e já está disponível na sua conta. Também enviamos um e-mail com o link.",
+    text: "O relatório foi escrito e já está disponível em Meus mapas. Você pode ler no celular ou no computador e também salvar em PDF.",
   },
   preparing_failed: {
     title: "Estamos finalizando seu mapa",
@@ -216,6 +216,14 @@ export function OrderStatus({
             {retrying ? "Abrindo o pagamento…" : "Tentar de novo"}
           </Button>
         )}
+        {view === "ready" && (
+          <Link
+            href={`/meus-mapas/${orderId}`}
+            className={buttonVariants({ size: "lg" }) + " h-12 text-base"}
+          >
+            Ler meu mapa
+          </Link>
+        )}
         {(view === "cancelled" || view === "refunded") && (
           <Link
             href={`/mapa/${productSlug}`}
@@ -225,13 +233,13 @@ export function OrderStatus({
           </Link>
         )}
         <Link
-          href="/conta"
+          href={view === "ready" ? "/meus-mapas" : "/conta"}
           className={
             buttonVariants({ size: "lg", variant: "outline" }) +
             " h-12 text-base"
           }
         >
-          Minha conta
+          {view === "ready" ? "Meus mapas" : "Minha conta"}
         </Link>
       </div>
     </div>

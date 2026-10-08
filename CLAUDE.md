@@ -37,7 +37,7 @@ Next.js (App Router) + TypeScript estrito, Tailwind CSS 4 + shadcn/ui, Supabase 
 - A roda do mapa (`components/chart/chart-wheel.tsx`) injeta um SVG gerado como **texto** por `lib/chart-wheel/svg.ts`. Não reescreva como JSX: um SVG com centenas de elementos pesa na hidratação. O conteúdo só pode vir do cálculo e de constantes (nunca de entrada de usuário sem `esc`).
 - Animação da roda: poucos grupos grandes e só fade. Cada elemento animado vira uma camada, e dezenas delas pesam na pintura (medido com Lighthouse). Evite `backdrop-blur` e animações infinitas.
 - Fonte de símbolos: `app/fonts/noto-sans-symbols-astro.woff2` (6 KB, subconjunto do Noto Sans Symbols, SIL OFL). Se usar um glifo novo, regere com `scripts/build-symbols-font.ts`.
-- Páginas públicas (`/`, `/mapa/[slug]`) são estáticas com `revalidate = 300` e leem produtos com o cliente anônimo (`lib/supabase/public.ts`); sem as chaves do Supabase (CI) elas saem vazias em vez de quebrar o build. Nunca selecione `ai_instructions` nem as instruções das seções em páginas públicas.
+- Páginas públicas (`/`, `/mapa/[slug]`) são estáticas com `revalidate = 300` e leem produtos com o cliente anônimo (`lib/supabase/public.ts`); sem as chaves do Supabase (CI) elas saem vazias em vez de quebrar o build. Nunca selecione `ai_instructions` nem as instruções das seções em páginas públicas: desde a migração 8 o banco **recusa** a leitura dessas colunas (`ai_instructions`, `report_sections`) para o navegador, e `select *` em `products` também falha. A vitrine usa `section_titles` (chave e título, mantido por trigger). Coluna nova de `products` que a vitrine precisa ler exige `grant select (coluna)` em migração nova.
 - Meta de desempenho (PRD): Lighthouse acima de 90 em desempenho e acessibilidade na home e nas páginas de produto. Medir sempre na versão de produção: `npm run build`, `npm run start` e `npx lighthouse http://localhost:3000/ --chrome-flags="--headless=new"`.
 - Dados institucionais (razão social, CNPJ, e-mail) ficam em `lib/site-config.ts`; nulos, aparecem como "a definir" nas páginas legais, que são texto-base e precisam de revisão jurídica.
 
@@ -71,6 +71,15 @@ Next.js (App Router) + TypeScript estrito, Tailwind CSS 4 + shadcn/ui, Supabase 
 - Modelo (`claude-sonnet-5-5`): sem `temperature`/`top_p`/prefill; `thinking: {type: "between_tools"}` (`disabled` dá 400); beta `server-side-fallback-2026-07-01` com `fallbacks: "default"`. Medido em 2026-10-08: relatório de 10 seções em ~60 s, ~6.400 palavras, ~US$ 0,20.
 - `npm run try:report -- <orderId> [saida.md]` gera um relatório de verdade num pedido de teste (gasta créditos e **reinicia** o relatório do pedido; não envia e-mails).
 - E-mail: `RESEND_FROM_EMAIL` (domínio verificado). Sem `RESEND_API_KEY` o envio é pulado com aviso, nunca derruba a geração.
+
+## Área do cliente e admin (Etapa 7)
+
+- **Meus mapas:** `/meus-mapas` lista os pedidos (RLS). `/meus-mapas/[id]` (o id é o do **pedido**, o mesmo do e-mail) mostra o relatório só se o pedido está `ready`; senão redireciona para `/pedido/[id]/retorno`, que acompanha o progresso e retoma geração parada. Pedido de outra pessoa dá 404 (RLS). O texto da IA passa por `lib/markdown.ts` (árvore de dados, nunca HTML cru).
+- **Impressão:** classes `no-print`, `print-page-break` e `print-avoid-break` (`app/globals.css`); cabeçalho e rodapé do site são `no-print`.
+- **Admin (`/admin`):** todo layout, página e Server Action chama `requireAdmin()` (`lib/admin/auth.ts`, usa `is_admin()` do banco); sem login vai para /entrar, logado sem papel recebe 404. **O layout não protege Server Actions**: toda ação nova do admin precisa chamar `requireAdmin()` sozinha. Escritas usam o cliente service role (`app/admin/actions.ts`).
+- **Produtos como dados:** o formulário grava `report_sections` (chave, título, instruções, `needs_houses`); validação em `lib/admin/product-schema.ts` (Zod, preço em reais -> centavos no servidor). Salvar chama `revalidatePath` da home e de `/mapa/[slug]`. Produto novo nasce inativo; só dá para apagar produto sem pedidos (FK `restrict`), senão desativa.
+- **Reprocessar:** `report_reprocess(order_id)` (SQL, service role): seções prontas ficam, as demais voltam a pendente com tentativas zeradas, pedido vai direto a `generating` (não repete o e-mail de pagamento) e o job é chamado de novo. Alertas do painel: pedidos `failed` e pagos há mais de 10 min sem ficar prontos (filtro `?status=stuck`).
+- Admin não vê dados de nascimento do cliente (só e-mail do pedido, para suporte).
 
 ## Banco de dados (Supabase)
 

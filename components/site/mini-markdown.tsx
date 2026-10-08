@@ -1,31 +1,68 @@
+import { parseMarkdown, type Inline } from "@/lib/markdown";
+
+function Inlines({ items }: { items: Inline[] }) {
+  return items.map((inline, i) =>
+    inline.type === "strong" ? (
+      <strong key={i}>{inline.text}</strong>
+    ) : inline.type === "em" ? (
+      <em key={i}>{inline.text}</em>
+    ) : (
+      inline.text
+    ),
+  );
+}
+
 /**
- * Renderizador mínimo de Markdown para trechos curtos (`###` títulos,
- * parágrafos e listas com "- "). Gera só elementos de texto do React, nunca
- * HTML cru, então é seguro para conteúdo vindo do banco.
+ * Renderiza o Markdown mínimo de `lib/markdown.ts`. Gera só elementos de texto
+ * do React, nunca HTML cru, então é seguro para conteúdo vindo do banco ou da IA.
  */
 export function MiniMarkdown({ text }: { text: string }) {
-  const blocks = text.trim().split(/\n{2,}/);
   return (
     <div className="grid gap-3">
-      {blocks.map((block, i) => {
-        const lines = block.split("\n");
-        if (lines.every((l) => l.startsWith("- "))) {
-          return (
-            <ul key={i} className="list-disc space-y-1 pl-5">
-              {lines.map((l, j) => (
-                <li key={j}>{l.slice(2)}</li>
-              ))}
-            </ul>
-          );
+      {parseMarkdown(text).map((block, i) => {
+        switch (block.type) {
+          case "ul":
+            return (
+              <ul key={i} className="list-disc space-y-1 pl-5">
+                {block.items.map((item, j) => (
+                  <li key={j}>
+                    <Inlines items={item} />
+                  </li>
+                ))}
+              </ul>
+            );
+          case "ol":
+            return (
+              <ol key={i} className="list-decimal space-y-1 pl-5">
+                {block.items.map((item, j) => (
+                  <li key={j}>
+                    <Inlines items={item} />
+                  </li>
+                ))}
+              </ol>
+            );
+          case "h3":
+            return (
+              <h3
+                key={i}
+                className="font-heading print-avoid-break mt-2 text-xl font-semibold"
+              >
+                <Inlines items={block.inlines} />
+              </h3>
+            );
+          case "h4":
+            return (
+              <h4 key={i} className="print-avoid-break mt-1 font-semibold">
+                <Inlines items={block.inlines} />
+              </h4>
+            );
+          default:
+            return (
+              <p key={i}>
+                <Inlines items={block.inlines} />
+              </p>
+            );
         }
-        if (block.startsWith("### ")) {
-          return (
-            <h3 key={i} className="font-heading text-xl font-semibold">
-              {block.slice(4)}
-            </h3>
-          );
-        }
-        return <p key={i}>{block}</p>;
       })}
     </div>
   );

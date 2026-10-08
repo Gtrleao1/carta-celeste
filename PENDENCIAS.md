@@ -38,10 +38,7 @@ ser resolvido antes de vender de verdade**. Ao concluir um item, apague-o daqui.
 - [ ] **`RESEND_FROM_EMAIL` com domínio verificado** para os e-mails do pedido
       (pagamento confirmado e mapa pronto). Sem isso, o remetente de testes do
       Resend só entrega ao dono da conta.
-- [ ] **Página `/meus-mapas/[id]`** (Etapa 7): o e-mail "mapa pronto" já aponta
-      para ela, e hoje daria 404.
-- [ ] Na Vercel: `ANTHROPIC_API_KEY` (Secret) e `ANTHROPIC_MODEL=claude-sonnet-5-5`,
-      e conferir o limite de uso da conta Anthropic.
+- [ ] Conferir o limite de uso da conta Anthropic antes do lançamento.
 
 ## Jurídico e conteúdo
 
@@ -56,11 +53,6 @@ ser resolvido antes de vender de verdade**. Ao concluir um item, apague-o daqui.
 
 ## Segurança
 
-- [ ] **`ai_instructions` e as instruções das seções ficam legíveis** por quem
-      consultar a API pública com a chave anônima (a tabela `products` tem
-      leitura pública, como o PRD manda). As páginas do site não as exibem, mas os
-      prompts não são segredo. Resolver na Etapa 7 (painel admin), movendo esses
-      campos para uma tabela só do servidor.
 - [ ] Rever limites de requisições (checkout, busca de cidades, cadastro,
       recuperação de senha) com tráfego real.
 
@@ -69,5 +61,14 @@ ser resolvido antes de vender de verdade**. Ao concluir um item, apague-o daqui.
 - [ ] Teste ponta a ponta com Playwright do fluxo de compra (Etapa 8).
 - [ ] Lighthouse acima de 90 em desempenho e acessibilidade (home e páginas de
       produto) refeito no domínio final.
-- [ ] Pedidos `pending` abandonados não expiram sozinhos; o painel admin
-      (Etapa 7) deve filtrá-los, e pode haver um job de limpeza.
+- [ ] Pedidos `pending` abandonados não expiram sozinhos (o filtro do admin
+      já os separa); decidir se haverá um job de limpeza.
+
+## Admin (Etapa 7)
+
+- [ ] **Dar o papel de admin à conta real** em produção: criar a conta no site e
+      rodar `npm run db:seed-admin` com `ADMIN_EMAIL` (a conta precisa existir).
+- [ ] Reembolso hoje é feito no painel do Mercado Pago; o admin só reprocessa
+      relatórios. Decidir se o painel deve disparar reembolsos.
+- [ ] Impressão/PDF do relatório: conferir no celular e no Chrome desktop com um
+      relatório real (CSS de impressão já existe, só foi testado a tela).

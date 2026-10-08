@@ -18,20 +18,22 @@ export type Product = {
   sample_excerpt: string | null;
 };
 
-// Não seleciona `ai_instructions` nem as instruções de cada seção.
+// `ai_instructions` e `report_sections` (com as instruções de cada seção) nem
+// têm permissão de leitura para o navegador (migração 8): a vitrine só usa os
+// títulos, que vêm de `section_titles`.
 const COLUMNS =
-  "id, slug, name, short_description, long_description, price_cents, age_restricted, report_sections, focus_points, sample_excerpt";
+  "id, slug, name, short_description, long_description, price_cents, age_restricted, section_titles, focus_points, sample_excerpt";
 
 type Row = Omit<Product, "sections"> & {
-  report_sections: { key: string; title: string }[] | null;
+  section_titles: { key: string; title: string }[] | null;
 };
 
 function toProduct(row: Row): Product {
-  const { report_sections, ...rest } = row;
+  const { section_titles, ...rest } = row;
   return {
     ...rest,
     focus_points: Array.isArray(rest.focus_points) ? rest.focus_points : [],
-    sections: (report_sections ?? []).map(({ key, title }) => ({ key, title })),
+    sections: (section_titles ?? []).map(({ key, title }) => ({ key, title })),
   };
 }
 

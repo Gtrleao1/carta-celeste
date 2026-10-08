@@ -304,12 +304,39 @@ describe.skipIf(!hasSupabaseEnv)("RLS: isolamento entre usuários", () => {
       expect(data!.every((p) => p.active)).toBe(true);
     });
 
+    it("instruções de IA não são legíveis pela API pública nem por usuário logado", async () => {
+      for (const client of [anonClient(), a.client]) {
+        for (const column of ["ai_instructions", "report_sections"]) {
+          const { data, error } = await client
+            .from("products")
+            .select(column)
+            .limit(1);
+          expect(error, column).not.toBeNull();
+          expect(data).toBeNull();
+        }
+        // `select *` também é recusado: nada vaza por omissão.
+        const all = await client.from("products").select("*").limit(1);
+        expect(all.error).not.toBeNull();
+
+        // O que a vitrine usa continua legível, inclusive os títulos das seções.
+        const ok = await client
+          .from("products")
+          .select("name, price_cents, section_titles")
+          .eq("active", true)
+          .limit(1)
+          .single();
+        expect(ok.error).toBeNull();
+        expect(ok.data!.section_titles.length).toBeGreaterThan(0);
+        expect(JSON.stringify(ok.data)).not.toContain("instructions");
+      }
+    });
+
     it("usuário comum não edita nem cria produtos", async () => {
       const update = await a.client
         .from("products")
         .update({ price_cents: 1 })
         .eq("id", productId)
-        .select();
+        .select("id");
       expect(update.data).toEqual([]);
 
       const insert = await a.client

@@ -12,12 +12,9 @@ import { writeFileSync } from "node:fs";
 import { createClient } from "@supabase/supabase-js";
 
 import { createAnthropicWriter } from "@/lib/ai/anthropic";
+import { estimateCostUsd } from "@/lib/reports/cost";
 import { runGeneration } from "@/lib/reports/generate";
 import { createSupabaseStore } from "@/lib/reports/store";
-
-// Preços aproximados do Sonnet 5.5, em dólares por milhão de tokens.
-const USD_PER_MTOK_IN = 2;
-const USD_PER_MTOK_OUT = 10;
 
 async function main() {
   const [orderId, outFile] = process.argv.slice(2);
@@ -75,9 +72,10 @@ async function main() {
   const words = sections.map(
     (s) => s.content.split(/\s+/).filter(Boolean).length,
   );
-  const cost =
-    ((report?.input_tokens ?? 0) / 1e6) * USD_PER_MTOK_IN +
-    ((report?.output_tokens ?? 0) / 1e6) * USD_PER_MTOK_OUT;
+  const cost = estimateCostUsd(
+    report?.input_tokens ?? 0,
+    report?.output_tokens ?? 0,
+  );
 
   console.log(`\nestado final: ${result.state}`);
   console.log(`tempo total: ${((Date.now() - started) / 1000).toFixed(1)} s`);

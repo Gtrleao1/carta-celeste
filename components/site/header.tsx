@@ -6,7 +6,7 @@ import { SITE } from "@/lib/site-config";
 
 export function SiteHeader() {
   return (
-    <header className="border-border bg-background sticky top-0 z-40 border-b">
+    <header className="no-print border-border bg-background sticky top-0 z-40 border-b">
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-4 px-4">
         <Link
           href="/"
