@@ -8,12 +8,13 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import {
   isWaiting,
   orderView,
+  pollLimitMs,
+  progressPercent,
   shouldKeepPolling,
   type OrderView,
 } from "@/lib/orders/view";
 
 const POLL_MS = 3000;
-const GIVE_UP_MS = 2 * 60 * 1000;
 
 const COPY: Record<OrderView, { title: string; text: string }> = {
   confirming: {
@@ -27,6 +28,10 @@ const COPY: Record<OrderView, { title: string; text: string }> = {
   approved: {
     title: "Pagamento aprovado!",
     text: "Estamos calculando o seu céu e escrevendo o relatório. Leva até 5 minutos, e você recebe um e-mail quando estiver pronto.",
+  },
+  ready: {
+    title: "Seu mapa está pronto!",
+    text: "O relatório foi escrito e já está disponível na sua conta. Também enviamos um e-mail com o link.",
   },
   preparing_failed: {
     title: "Estamos finalizando seu mapa",
@@ -61,16 +66,19 @@ export function OrderStatus({
 }) {
   const [status, setStatus] = useState(initialStatus);
   const [mpStatus, setMpStatus] = useState(initialMpStatus);
+  const [progress, setProgress] = useState<{ done: number; total: number }>();
   const [gaveUp, setGaveUp] = useState(false);
   const [retrying, setRetrying] = useState(false);
   const [retryError, setRetryError] = useState<string | null>(null);
 
   const view = orderView(status, mpStatus);
   const polling = shouldKeepPolling(view);
+  const limitMs = pollLimitMs(view);
 
-  // Consulta o banco já ao abrir e depois a cada 3 s, por até 2 minutos. Segue
-  // consultando mesmo mostrando "recusado": o banco pode guardar uma recusa
-  // antiga enquanto uma nova tentativa já foi aprovada no Mercado Pago.
+  // Consulta o banco já ao abrir e depois a cada 3 s (2 min na confirmação, 10 min
+  // enquanto o relatório é escrito). Segue consultando mesmo mostrando "recusado":
+  // o banco pode guardar uma recusa antiga enquanto uma nova tentativa já foi
+  // aprovada no Mercado Pago.
   useEffect(() => {
     if (!polling) return;
     let stopped = false;
@@ -85,9 +93,17 @@ export function OrderStatus({
         const data = (await res.json()) as {
           status: string;
           mpStatus: string | null;
+          sectionsDone?: number;
+          sectionsTotal?: number;
         };
         setStatus(data.status);
         setMpStatus(data.mpStatus);
+        if (data.sectionsTotal) {
+          setProgress({
+            done: data.sectionsDone ?? 0,
+            total: data.sectionsTotal,
+          });
+        }
       } catch {
         // sem rede por um instante: tenta de novo na próxima rodada
       }
@@ -95,7 +111,7 @@ export function OrderStatus({
 
     void tick();
     const timer = setInterval(() => {
-      if (Date.now() - startedAt > GIVE_UP_MS) {
+      if (Date.now() - startedAt > limitMs) {
         clearInterval(timer);
         setGaveUp(true);
         return;
@@ -106,7 +122,7 @@ export function OrderStatus({
       stopped = true;
       clearInterval(timer);
     };
-  }, [orderId, polling]);
+  }, [orderId, polling, limitMs]);
 
   async function retry() {
     setRetrying(true);
@@ -132,6 +148,10 @@ export function OrderStatus({
 
   const copy = COPY[view];
   const stillWaiting = isWaiting(view) && gaveUp;
+  const percent =
+    view === "approved" && progress
+      ? progressPercent(progress.done, progress.total)
+      : null;
 
   return (
     <div className="grid gap-6">
@@ -155,6 +175,27 @@ export function OrderStatus({
           />
           Atualizando automaticamente…
         </p>
+      )}
+
+      {percent !== null && progress && (
+        <div className="grid gap-2">
+          <div
+            role="progressbar"
+            aria-label="Progresso do relatório"
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-valuenow={percent}
+            className="bg-muted h-2 w-full overflow-hidden rounded-full"
+          >
+            <div
+              className="bg-primary h-full rounded-full transition-[width] duration-500 motion-reduce:transition-none"
+              style={{ width: `${percent}%` }}
+            />
+          </div>
+          <p className="text-muted-foreground text-sm">
+            {progress.done} de {progress.total} partes escritas
+          </p>
+        </div>
       )}
 
       {retryError && (

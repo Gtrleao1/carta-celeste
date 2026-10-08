@@ -1,12 +1,20 @@
 import { describe, expect, it } from "vitest";
 
-import { isFinal, isWaiting, orderView, shouldKeepPolling } from "./view";
+import {
+  isFinal,
+  isWaiting,
+  orderView,
+  pollLimitMs,
+  progressPercent,
+  shouldKeepPolling,
+} from "./view";
 
 describe("orderView", () => {
-  it("pago, em geração e pronto são 'aprovado'", () => {
-    for (const status of ["paid", "generating", "ready"]) {
+  it("pago e em geração são 'aprovado'; pronto é 'ready'", () => {
+    for (const status of ["paid", "generating"]) {
       expect(orderView(status, "approved")).toBe("approved");
     }
+    expect(orderView("ready", "approved")).toBe("ready");
   });
 
   it("pendente sem notícia do Mercado Pago: confirmando", () => {
@@ -42,7 +50,7 @@ describe("orderView", () => {
 
   it("para de consultar só quando o estado não vai mais mudar sozinho", () => {
     for (const v of [
-      "approved",
+      "ready",
       "preparing_failed",
       "refunded",
       "cancelled",
@@ -57,5 +65,16 @@ describe("orderView", () => {
     expect(isWaiting("in_review")).toBe(true);
     expect(isWaiting("declined")).toBe(false);
     expect(isWaiting("approved")).toBe(false);
+  });
+
+  it("enquanto o relatório é escrito, a página continua consultando por mais tempo", () => {
+    expect(shouldKeepPolling("approved")).toBe(true);
+    expect(pollLimitMs("approved")).toBeGreaterThan(pollLimitMs("confirming"));
+  });
+
+  it("progressPercent limita entre 0 e 100 e ignora total zero", () => {
+    expect(progressPercent(0, 0)).toBeNull();
+    expect(progressPercent(3, 10)).toBe(30);
+    expect(progressPercent(12, 10)).toBe(100);
   });
 });

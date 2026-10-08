@@ -35,6 +35,13 @@ ser resolvido antes de vender de verdade**. Ao concluir um item, apague-o daqui.
 - [ ] **Supabase → Authentication → URL Configuration:** Site URL e Redirect URLs
       do domínio final (hoje: `localhost:3000` e `carta-celeste.vercel.app`).
 - [ ] Domínio próprio na Vercel e `NEXT_PUBLIC_SITE_URL` atualizado.
+- [ ] **`RESEND_FROM_EMAIL` com domínio verificado** para os e-mails do pedido
+      (pagamento confirmado e mapa pronto). Sem isso, o remetente de testes do
+      Resend só entrega ao dono da conta.
+- [ ] **Página `/meus-mapas/[id]`** (Etapa 7): o e-mail "mapa pronto" já aponta
+      para ela, e hoje daria 404.
+- [ ] Na Vercel: `ANTHROPIC_API_KEY` (Secret) e `ANTHROPIC_MODEL=claude-sonnet-5-5`,
+      e conferir o limite de uso da conta Anthropic.
 
 ## Jurídico e conteúdo
 

@@ -53,10 +53,23 @@ Next.js (App Router) + TypeScript estrito, Tailwind CSS 4 + shadcn/ui, Supabase 
 - **Ambiente de teste do Mercado Pago:** o token das "Credenciais de teste" é de uma conta vendedora de teste com aplicação própria (id no 2º bloco do token, `APP_USR-<aplicação>-…-<usuário>`), e os avisos reais são assinados pela chave dela, não pela da aplicação do painel. Por isso os avisos de teste chegam e são recusados (401) e a reconciliação confirma os pagamentos; o simulador do painel passa (200). Em produção, token e assinatura secreta têm de ser da mesma aplicação. Pendências em `PENDENCIAS.md`.
 - Regras de negócio do webhook ficam em `notification.ts` (puro, com dependências injetadas); não coloque lógica nova direto na rota.
 - A `notification_url` da preferência termina em `?source_news=webhooks`: sem isso o Mercado Pago manda **IPN** (`?topic=payment&id=…`), que não tem assinatura verificável e o webhook recusa (401). Webhooks assinados chegam como `?type=payment&data.id=…`.
-- Disparo do relatório: `triggerReportGeneration` (dentro de `after()`) faz `POST /api/jobs/generate-report` com `Authorization: Bearer $JOB_SECRET` e `{ orderId }`. A rota do job é da Etapa 6. **O resumo do mapa enviado à IA não pode conter nome nem e-mail** (compromisso da Política de Privacidade).
+- Disparo do relatório: `triggerReportGeneration` (dentro de `after()`) faz `POST /api/jobs/generate-report` com `Authorization: Bearer $JOB_SECRET` e `{ orderId }`. A rota do job é `app/api/jobs/generate-report`. **O resumo do mapa enviado à IA não pode conter nome nem e-mail** (compromisso da Política de Privacidade).
 - Limite de requisições: `withinRateLimit` (função `check_rate_limit` no Postgres; vale entre instâncias serverless). Checkout 10/min por usuário; busca de cidades 60/min por IP.
 - Dev local não recebe webhooks (precisam de URL pública https): para testar o ciclo completo, use o site publicado na Vercel. Sem `https`, a preferência sai sem `notification_url` e `auto_return`.
 - Nos testes, o pacote `server-only` aponta para `tests/stubs/server-only.ts` (ver `vitest.config.mts`).
+
+## Geração do relatório (Etapa 6)
+
+- Orquestração em `lib/reports/generate.ts` (`runGeneration`), **pura, com dependências injetadas** (store, writer, notifier, relógio): testada sem rede em `generate.test.ts`. Implementações reais: `store.ts` (Supabase, service role), `lib/ai/anthropic.ts` (escritor), `notify.ts` (e-mails). Não coloque lógica nova direto na rota.
+- Fluxo: pedido `paid` → `generating` (só então sai o e-mail "pagamento confirmado") → mapa calculado **uma vez** e gravado em `reports.chart_data` → uma chamada à IA por seção (3 em paralelo) → `report_apply_section` (função SQL atômica: seções gravadas ao mesmo tempo não se perdem; soma tokens) → `ready` + e-mail "mapa pronto".
+- **Retomável:** cada seção tem `status`/`attempts`; ao chamar de novo, só as pendentes são escritas. A rota tem `maxDuration = 60`: o job para de pegar seções novas aos 25 s (orçamento brando), encerra aos 55 s e, se sobrou trabalho, **chama a si mesmo** (`after(triggerReportGeneration)`). Trava por `reports.lock_until` (lease de 75 s) impede dois jobs no mesmo pedido.
+- Retentativas: máx. 3 por seção (`MAX_ATTEMPTS`); esgotadas, o pedido vira `failed` e `reports.error` guarda só uma categoria (`secao_<chave>_falhou_<tipo>`). Nenhuma instrução nem erro bruto vai para `sections` (o cliente lê o próprio relatório pela RLS).
+- Rede de segurança: `GET /api/pedidos/[id]/status` chama `needsResume` (`resume.ts`) e, se o pedido pago nunca começou ou parou há mais de 3 min, dispara o job de novo (no máximo 1 vez a cada 30 s por pedido).
+- Sem hora de nascimento: seções com `needs_houses` viram um texto explicativo, sem chamar a IA.
+- Privacidade: `chart-summary.ts` só tem posições calculadas (sem nome, e-mail, data, hora, local ou coordenadas); há teste que garante isso.
+- Modelo (`claude-sonnet-5-5`): sem `temperature`/`top_p`/prefill; `thinking: {type: "between_tools"}` (`disabled` dá 400); beta `server-side-fallback-2026-07-01` com `fallbacks: "default"`. Medido em 2026-10-08: relatório de 10 seções em ~60 s, ~6.400 palavras, ~US$ 0,20.
+- `npm run try:report -- <orderId> [saida.md]` gera um relatório de verdade num pedido de teste (gasta créditos e **reinicia** o relatório do pedido; não envia e-mails).
+- E-mail: `RESEND_FROM_EMAIL` (domínio verificado). Sem `RESEND_API_KEY` o envio é pulado com aviso, nunca derruba a geração.
 
 ## Banco de dados (Supabase)
 

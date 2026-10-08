@@ -6,6 +6,7 @@ import { createNotificationDeps } from "@/lib/payments/deps";
 import { findMpPaymentIds, getMpPayment } from "@/lib/payments/mercadopago";
 import { reconcileOrder } from "@/lib/payments/reconcile";
 import { withinRateLimit } from "@/lib/rate-limit";
+import { needsResume } from "@/lib/reports/resume";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
 
@@ -38,7 +39,7 @@ export async function GET(
 
   const { data: order } = await supabase
     .from("orders")
-    .select("status, mp_status, created_at")
+    .select("status, mp_status, created_at, paid_at")
     .eq("id", id)
     .maybeSingle();
   if (!order)
@@ -75,8 +76,39 @@ export async function GET(
     }
   }
 
+  // Progresso do relatório e retomada automática (pedido pago que não andou).
+  let sectionsDone = 0;
+  let sectionsTotal = 0;
+  if (status === "paid" || status === "generating" || status === "ready") {
+    const admin = createAdminClient();
+    const { data: report } = await admin
+      .from("reports")
+      .select("sections, updated_at, lock_until")
+      .eq("order_id", id)
+      .maybeSingle();
+
+    const sections = (report?.sections ?? []) as { status: string }[];
+    sectionsTotal = sections.length;
+    sectionsDone = sections.filter((s) => s.status === "done").length;
+
+    if (
+      needsResume({
+        orderStatus: status,
+        paidAt: order.paid_at,
+        report: report
+          ? { updated_at: report.updated_at, lock_until: report.lock_until }
+          : null,
+        now: Date.now(),
+      }) &&
+      // No máximo uma tentativa de retomada a cada 30 s por pedido.
+      (await withinRateLimit(admin, `retomar:${id}`, 1, 30))
+    ) {
+      after(() => triggerReportGeneration(id));
+    }
+  }
+
   return Response.json(
-    { status, mpStatus },
+    { status, mpStatus, sectionsDone, sectionsTotal },
     { headers: { "Cache-Control": "no-store" } },
   );
 }
