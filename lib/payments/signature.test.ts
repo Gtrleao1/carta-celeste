@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 
 import {
   buildManifest,
+  describeSignature,
   signWebhook,
   verifyWebhookSignature,
 } from "./signature";
@@ -118,5 +119,28 @@ describe("verifyWebhookSignature", () => {
     expect(
       verifyWebhookSignature({ ...base, secret: "", signatureHeader: valid }),
     ).toBe(false);
+  });
+});
+
+describe("describeSignature", () => {
+  it("expõe ts e só o começo do hash, nunca o hash inteiro nem o segredo", () => {
+    const header = signWebhook(SECRET, "123", "req-1", "1742505638683");
+    const d = describeSignature(header);
+    expect(d.ts).toBe("1742505638683");
+    expect(d.v1Prefix).toHaveLength(12);
+    expect(header).toContain(d.v1Prefix!);
+    expect(header.split("v1=")[1]).not.toBe(d.v1Prefix);
+    expect(d.wellFormed).toBe(true);
+    expect(JSON.stringify(d)).not.toContain(SECRET);
+  });
+
+  it("cabeçalho ausente ou malformado não quebra", () => {
+    expect(describeSignature(null)).toEqual({
+      ts: null,
+      v1Prefix: null,
+      wellFormed: false,
+    });
+    expect(describeSignature("lixo").wellFormed).toBe(false);
+    expect(describeSignature("ts=1,v1=curto").wellFormed).toBe(false);
   });
 });

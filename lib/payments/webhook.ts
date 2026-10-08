@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 import type { NotificationResult } from "./notification";
-import { verifyWebhookSignature } from "./signature";
+import { describeSignature, verifyWebhookSignature } from "./signature";
 
 export type WebhookDeps = {
   /** Chave(s) secreta(s) do webhook (MERCADOPAGO_WEBHOOK_SECRET), separadas por vírgula. */
@@ -58,11 +58,15 @@ export async function handleMercadoPagoWebhook(
     }),
   );
   if (!valid) {
-    // Só metadados (sem segredos nem dados pessoais) para diagnosticar.
+    // Só metadados (sem segredos nem dados pessoais) para diagnosticar. Com
+    // ts, x-request-id e o começo do hash dá para refazer a conta offline.
+    const sig = describeSignature(signatureHeader);
     console.warn(
       `[webhook mercadopago] assinatura recusada: data.id=${queryDataId ?? "-"} x-signature=${
         signatureHeader ? "presente" : "ausente"
-      } x-request-id=${requestId ? "presente" : "ausente"} segredos_configurados=${secrets.length}`,
+      } x-request-id=${requestId ? "presente" : "ausente"} segredos_configurados=${secrets.length} ts=${
+        sig.ts ?? "-"
+      } request_id=${requestId ?? "-"} v1_inicio=${sig.v1Prefix ?? "-"} formato_ok=${sig.wellFormed}`,
     );
     return json({ error: "invalid_signature" }, 401);
   }

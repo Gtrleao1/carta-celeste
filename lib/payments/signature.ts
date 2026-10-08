@@ -31,6 +31,21 @@ function parseSignatureHeader(header: string) {
   return { ts: parts.ts, v1: parts.v1 };
 }
 
+/**
+ * Dados NÃO secretos da assinatura, para diagnosticar recusas no log: o ts, o
+ * começo do hash enviado pelo Mercado Pago (12 de 64 caracteres) e se o
+ * cabeçalho tem o formato esperado. Nunca inclui o segredo.
+ */
+export function describeSignature(header: string | null) {
+  if (!header) return { ts: null, v1Prefix: null, wellFormed: false };
+  const { ts, v1 } = parseSignatureHeader(header);
+  return {
+    ts: ts ?? null,
+    v1Prefix: v1 ? v1.slice(0, 12) : null,
+    wellFormed: Boolean(ts && v1 && /^[0-9a-f]{64}$/i.test(v1)),
+  };
+}
+
 export function buildManifest(
   dataId: string | null,
   requestId: string | null,
