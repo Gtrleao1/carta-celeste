@@ -34,6 +34,81 @@ describe("summarizeChart — Referência 1", () => {
     expect(text).toContain("- Nodo Norte:");
   });
 
+  it("concentrações: cada linha lista exatamente os planetas do signo/casa, sem o Nodo Norte", () => {
+    // Só a seção de concentrações (as cúspides também têm linhas "- Casa N:").
+    const lines = text
+      .slice(text.indexOf("CONCENTRAÇÕES"), text.indexOf("ELEMENTOS"))
+      .split("\n");
+    const planets = sampleChart.planets.filter((p) => p.id !== "north_node");
+    const names = (list: typeof planets) => list.map((p) => p.name).join(", ");
+
+    // Cada signo com 2+ planetas aparece com os nomes certos e a contagem certa.
+    const signs = new Set(planets.map((p) => p.sign));
+    for (const sign of signs) {
+      const inSign = planets.filter((p) => p.sign === sign);
+      const line = lines.find((l) => l.startsWith(`- ${sign}:`));
+      if (inSign.length >= 2) {
+        expect(line).toBe(
+          `- ${sign}: ${names(inSign)} (${inSign.length} planetas)`,
+        );
+      } else {
+        expect(line).toBeUndefined();
+      }
+    }
+    // Idem para as casas.
+    for (let house = 1; house <= 12; house++) {
+      const inHouse = planets.filter((p) => p.house === house);
+      const line = lines.find((l) => l.startsWith(`- Casa ${house}:`));
+      if (inHouse.length >= 2) {
+        expect(line).toBe(
+          `- Casa ${house}: ${names(inHouse)} (${inHouse.length} planetas)`,
+        );
+      } else {
+        expect(line).toBeUndefined();
+      }
+    }
+
+    expect(text).toContain("o Nodo Norte NÃO é planeta");
+    const section = text.slice(
+      text.indexOf("CONCENTRAÇÕES"),
+      text.indexOf("ELEMENTOS"),
+    );
+    expect(section).not.toContain("Nodo Norte (");
+  });
+
+  it("o Nodo Norte nunca entra numa contagem, mesmo no signo de um planeta", () => {
+    // Mapa de 1989: Saturno, Urano e Netuno em Capricórnio e o Nodo Norte em Aquário.
+    const chart = computeChart({
+      birthDate: "1989-03-10",
+      birthTime: "12:00",
+      timezone: "America/Sao_Paulo",
+      latitude: -23.55,
+      longitude: -46.63,
+      houseSystem: "placidus",
+    });
+    const t = summarizeChart(chart);
+    const inCap = chart.planets.filter(
+      (p) => p.sign === "Capricórnio" && p.id !== "north_node",
+    );
+    expect(inCap.map((p) => p.name)).toEqual(["Saturno", "Urano", "Netuno"]);
+    expect(t).toContain("- Capricórnio: Saturno, Urano, Netuno (3 planetas)");
+    expect(t).not.toMatch(/- (Capricórnio|Aquário):.*Nodo/);
+  });
+
+  it("elementos e modalidades trazem a contagem E quem está em cada um, somando 10", () => {
+    const lines = text.split("\n");
+    const total = (l: string) =>
+      [...l.matchAll(/ (\d+) \(/g)].reduce((n, m) => n + Number(m[1]), 0);
+    for (const prefix of ["ELEMENTOS", "MODALIDADES"]) {
+      const line = lines.find((l) => l.startsWith(prefix))!;
+      expect(line).not.toContain("Nodo");
+      expect(total(line)).toBe(10);
+    }
+    expect(lines.find((l) => l.startsWith("ELEMENTOS"))).toContain(
+      "terra 3 (Marte, Urano, Netuno)",
+    );
+  });
+
   it("lista aspectos com orbe, do mais exato ao menos exato", () => {
     const aspects = text
       .split("\n")
@@ -88,6 +163,12 @@ describe("summarizeChart — sem hora de nascimento", () => {
     expect(text).not.toMatch(/casa \d+/i);
   });
 
+  it("as concentrações não citam casas, mas seguem contando por signo", () => {
+    expect(text).toContain("CONCENTRAÇÕES");
+    expect(text).not.toMatch(/- Casa \d+:/);
+    expect(text).toContain("- Câncer: Sol, Mercúrio, Vênus (3 planetas)");
+  });
+
   it("continua trazendo os planetas nos signos", () => {
     expect(text).toMatch(/- Sol: Câncer/);
     expect(text).toMatch(/- Lua: Aquário/);
@@ -109,6 +190,14 @@ describe("prompts", () => {
     expect(s).toMatch(/financeiros, de investimento ou jurídicos/);
     expect(s).toContain("350 e 700 palavras");
     expect(s).toContain("Foque em carreira.");
+  });
+
+  it("o prompt de sistema proíbe a IA de contar por conta própria e de incluir o Nodo Norte", () => {
+    const s = buildSystemPrompt("");
+    expect(s).toContain("NÃO conte nem agrupe por conta própria");
+    expect(s).toContain("CONCENTRAÇÕES");
+    expect(s).toMatch(/Nodo Norte e os ângulos .* não são planetas/);
+    expect(s).toContain("Mantenha cada trecho no tema do seu subtítulo");
   });
 
   it("o prompt da seção lista as outras seções (sem repetir a atual) e o mapa", () => {

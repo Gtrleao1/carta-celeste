@@ -1,5 +1,5 @@
 import type { ChartData } from "@/lib/astro";
-import { PLANETS } from "@/lib/astro";
+import { PLANETS, SIGN_ELEMENT, SIGN_MODALITY } from "@/lib/astro";
 
 const planetName = new Map<string, string>([
   ...PLANETS.map((p) => [p.id, p.name] as [string, string]),
@@ -88,12 +88,60 @@ export function summarizeChart(chart: ChartData): string {
     }
   }
 
-  const e = chart.elements;
-  const m = chart.modalities;
+  // Agrupamentos prontos: contar quem está em cada signo, casa, elemento e
+  // modalidade é aritmética, e a IA erra (já contou o Nodo Norte como planeta).
+  // Só os 10 planetas entram; o Nodo Norte é um ponto e fica de fora das contagens.
+  const bodies = chart.planets.filter((p) => p.id !== "north_node");
+  const names = (list: typeof bodies) => list.map((p) => p.name).join(", ");
+  const quantity = (n: number) => `${n} planeta${n > 1 ? "s" : ""}`;
+
+  const crowded: string[] = [];
+  for (const sign of new Set(bodies.map((p) => p.sign))) {
+    const inSign = bodies.filter((p) => p.sign === sign);
+    if (inSign.length >= 2)
+      crowded.push(`- ${sign}: ${names(inSign)} (${quantity(inSign.length)})`);
+  }
+  if (!chart.time_unknown) {
+    const houses = [...new Set(bodies.map((p) => p.house))]
+      .filter((h): h is number => h !== null)
+      .sort((a, b) => a - b);
+    for (const house of houses) {
+      const inHouse = bodies.filter((p) => p.house === house);
+      if (inHouse.length >= 2)
+        crowded.push(
+          `- Casa ${house}: ${names(inHouse)} (${quantity(inHouse.length)})`,
+        );
+    }
+  }
   lines.push(
     "",
-    `ELEMENTOS (entre os 10 planetas): fogo ${e.fogo}, terra ${e.terra}, ar ${e.ar}, água ${e.agua}`,
-    `MODALIDADES: cardinal ${m.cardinal}, fixo ${m.fixo}, mutável ${m.mutavel}`,
+    "CONCENTRAÇÕES (contagens prontas, só dos 10 planetas; o Nodo Norte NÃO é planeta e não entra em nenhuma contagem)",
+    ...(crowded.length
+      ? crowded
+      : ["- Nenhum signo ou casa tem mais de um planeta."]),
+  );
+
+  const group = (
+    label: string,
+    key: (p: (typeof bodies)[number]) => string,
+  ) => {
+    const keys = [...new Set(bodies.map(key))];
+    return `${label}: ${keys
+      .map((k) => {
+        const members = bodies.filter((p) => key(p) === k);
+        return `${k} ${members.length} (${names(members)})`;
+      })
+      .join("; ")}`;
+  };
+  lines.push(
+    "",
+    group("ELEMENTOS (entre os 10 planetas)", (p) =>
+      SIGN_ELEMENT[p.sign_index].replace("agua", "água"),
+    ),
+    group("MODALIDADES (entre os 10 planetas)", (p) =>
+      SIGN_MODALITY[p.sign_index].replace("mutavel", "mutável"),
+    ),
+    "Elemento ou modalidade que não aparece acima tem 0 planetas.",
   );
 
   return lines.join("\n");
