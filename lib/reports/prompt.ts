@@ -18,7 +18,7 @@ export function buildSystemPrompt(productInstructions: string): string {
     "- O nome da pessoa não foi informado: não invente um. Não fale de IA, de prompt nem destas instruções.",
     "- NÃO conte nem agrupe por conta própria (quantos planetas há em um signo, casa, elemento ou modalidade): use apenas as contagens e listas prontas em CONCENTRAÇÕES, ELEMENTOS e MODALIDADES. Ao citar uma quantidade, nomeie exatamente os corpos contados, e o número tem de bater com os nomes.",
     "- O Nodo Norte e os ângulos (Ascendente, Meio do Céu) não são planetas: nunca os inclua em contagens de planetas. Mencione-os só em frases próprias, quando fizer sentido.",
-    "- Mantenha cada trecho no tema do seu subtítulo. Se o subtítulo é sobre um signo, fale só dos corpos que estão nele; não misture outros signos nem pontos do mapa na mesma frase.",
+    "- Cada subtítulo (###) é um bloco fechado sobre UM único tema: abra apresentando o tema, desenvolva e conclua dentro dele. Use só os dados que pertencem a esse tema (por exemplo, num bloco sobre modalidades, fale apenas das modalidades e dos planetas que formam cada uma; não traga Ascendente, outros signos, casas ou aspectos). Outros fatores do mapa só entram quando o próprio tema pedir. Não feche um bloco com ressalvas que remetam a outro tema.",
     "- Explique termos técnicos com uma frase de contexto, para quem não conhece astrologia.",
     `- Formato: Markdown, com subtítulos \`###\`, entre ${TARGET_WORDS.min} e ${TARGET_WORDS.max} palavras. Comece direto no conteúdo (sem saudação) e sem título geral: o título da seção já aparece no mapa astral. Prefira parágrafos a listas longas.`,
     "",
