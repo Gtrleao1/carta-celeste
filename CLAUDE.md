@@ -75,6 +75,8 @@ Next.js (App Router) + TypeScript estrito, Tailwind CSS 4 + shadcn/ui, Supabase 
 
 ## Copy da landing page
 
+- **Vocabulário:** para o cliente (site, e-mails, termos, prompts da IA) o produto é sempre "mapa astral" ou "Carta Celeste", nunca "relatório". No código, tabelas e logs o termo interno continua `report`/relatório.
+
 - Texto da home em `app/(site)/page.tsx` (copy v2: produto é "seu mapa astral" / "Carta Celeste"). O cartão de cada produto usa `products.tagline` (a pergunta, ex.: "Quem eu sou?"), a descrição curta e os pontos de foco, todos editáveis no admin; o botão é "Quero meu {nome do produto}". "A partir de R$ X" vem do menor preço ativo.
 - **Depoimentos:** a seção só aparece se `TESTIMONIALS` em `lib/site-config.ts` tiver itens. Só depoimentos reais e autorizados (inventar é publicidade enganosa).
 - A IA não é destaque nos títulos, mas a FAQ "Como o mapa é calculado?" diz que o texto é redigido com apoio de IA (coerente com Termos e Política de Privacidade). Não remover sem decisão jurídica.

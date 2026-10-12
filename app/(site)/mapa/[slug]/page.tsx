@@ -72,7 +72,7 @@ export default async function ProductPage({
         {product.sections.length > 0 && (
           <section aria-labelledby="inclui" className="grid gap-4">
             <h2 id="inclui" className="text-3xl font-semibold">
-              O que o relatório inclui
+              O que o mapa astral inclui
             </h2>
             <ol className="grid gap-2 sm:grid-cols-2">
               {product.sections.map((s, i) => (
@@ -116,8 +116,8 @@ export default async function ProductPage({
             <div className="bg-card border-border grid gap-3 rounded-xl border p-6 text-lg leading-relaxed">
               <MiniMarkdown text={product.sample_excerpt} />
               <p className="text-muted-foreground border-border border-t pt-3 text-sm">
-                Trecho de um mapa fictício, só para mostrar o estilo do
-                relatório. O seu será escrito a partir dos seus dados.
+                Trecho de um exemplo fictício, só para mostrar o estilo do
+                texto. O seu será escrito a partir dos seus dados.
               </p>
             </div>
           </section>

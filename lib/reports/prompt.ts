@@ -9,7 +9,7 @@ export const TARGET_WORDS = { min: 350, max: 700 };
  */
 export function buildSystemPrompt(productInstructions: string): string {
   return [
-    'Você é um(a) astrólogo(a) experiente que escreve relatórios de autoconhecimento em português do Brasil, em segunda pessoa ("você"), com tom acolhedor e preciso.',
+    'Você é um(a) astrólogo(a) experiente que escreve mapas astrais de autoconhecimento em português do Brasil, em segunda pessoa ("você"), com tom acolhedor e preciso.',
     "",
     "Regras:",
     "- Use SOMENTE as posições do mapa fornecidas. Nunca invente, recalcule nem corrija posições, graus, casas ou aspectos. Se um dado não foi fornecido, não o mencione.",
@@ -20,7 +20,7 @@ export function buildSystemPrompt(productInstructions: string): string {
     "- O Nodo Norte e os ângulos (Ascendente, Meio do Céu) não são planetas: nunca os inclua em contagens de planetas. Mencione-os só em frases próprias, quando fizer sentido.",
     "- Mantenha cada trecho no tema do seu subtítulo. Se o subtítulo é sobre um signo, fale só dos corpos que estão nele; não misture outros signos nem pontos do mapa na mesma frase.",
     "- Explique termos técnicos com uma frase de contexto, para quem não conhece astrologia.",
-    `- Formato: Markdown, com subtítulos \`###\`, entre ${TARGET_WORDS.min} e ${TARGET_WORDS.max} palavras. Comece direto no conteúdo (sem saudação) e sem título geral: o título da seção já aparece no relatório. Prefira parágrafos a listas longas.`,
+    `- Formato: Markdown, com subtítulos \`###\`, entre ${TARGET_WORDS.min} e ${TARGET_WORDS.max} palavras. Comece direto no conteúdo (sem saudação) e sem título geral: o título da seção já aparece no mapa astral. Prefira parágrafos a listas longas.`,
     "",
     "Instruções deste produto:",
     productInstructions.trim() || "(sem instruções adicionais)",
@@ -35,13 +35,13 @@ export function buildSectionPrompt(args: {
 }): string {
   const others = args.allTitles.filter((t) => t !== args.section.title);
   return [
-    `Escreva a seção "${args.section.title}" do relatório.`,
+    `Escreva a seção "${args.section.title}" do mapa astral.`,
     "",
     "Instruções desta seção:",
     args.section.instructions.trim(),
     "",
     others.length
-      ? `Outras seções do relatório (já tratadas em outro lugar; não repita o conteúdo delas, apenas complemente quando fizer sentido):\n${others.map((t) => `- ${t}`).join("\n")}`
+      ? `Outras seções do mapa astral (já tratadas em outro lugar; não repita o conteúdo delas, apenas complemente quando fizer sentido):\n${others.map((t) => `- ${t}`).join("\n")}`
       : "",
     "",
     "Dados do mapa (únicas posições que você pode usar):",
@@ -58,7 +58,7 @@ export function timeUnknownExplanation(title: string): string {
     "",
     "Esta parte do mapa depende da **hora exata de nascimento**, porque é ela que define o Ascendente, o Meio do Céu e as casas astrológicas. Como a hora não foi informada, não foi possível calcular esses pontos, e preferimos não inventar uma interpretação.",
     "",
-    "O restante do seu relatório usa os planetas nos signos e os aspectos entre eles, que não dependem da hora. Se você descobrir a hora em que nasceu (a certidão de nascimento costuma trazê-la), é possível fazer um novo mapa completo.",
+    "O restante do seu mapa astral usa os planetas nos signos e os aspectos entre eles, que não dependem da hora. Se você descobrir a hora em que nasceu (a certidão de nascimento costuma trazê-la), é possível fazer um novo mapa completo.",
   ].join("\n");
 }
 

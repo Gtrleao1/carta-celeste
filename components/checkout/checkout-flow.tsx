@@ -186,8 +186,8 @@ export function CheckoutFlow({
             <Alert>
               <AlertDescription>
                 Você não informou a hora de nascimento. Por isso o Ascendente, o
-                Meio do Céu e as casas não serão calculados, e o relatório será
-                mais curto.
+                Meio do Céu e as casas não serão calculados, e o mapa astral
+                será mais curto.
               </AlertDescription>
             </Alert>
           )}

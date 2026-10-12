@@ -57,7 +57,7 @@ export default function PrivacidadePage() {
           contrato).
         </li>
         <li>
-          Calcular o seu mapa, gerar o relatório e entregá-lo (execução de
+          Calcular o seu mapa astral, escrever o texto e entregá-lo (execução de
           contrato).
         </li>
         <li>
@@ -89,9 +89,10 @@ export default function PrivacidadePage() {
         </li>
         <li>
           <strong>Anthropic (API de inteligência artificial):</strong> para
-          escrever o texto do relatório, enviamos o resumo do seu mapa, ou seja,
-          as posições astrológicas já calculadas e as instruções do produto.
-          Esse resumo não inclui o seu nome nem o seu e-mail.
+          escrever o texto do seu mapa astral, enviamos o resumo do seu céu de
+          nascimento, ou seja, as posições astrológicas já calculadas e as
+          instruções do produto. Esse resumo não inclui o seu nome nem o seu
+          e-mail.
         </li>
       </ul>
       <p>
@@ -104,7 +105,7 @@ export default function PrivacidadePage() {
       <p>
         Mantemos os dados da sua conta e dos seus mapas enquanto a conta
         existir. Quando você exclui a conta, apagamos o seu perfil, os perfis de
-        nascimento e os relatórios. Os registros dos pedidos (valor, data e
+        nascimento e os mapas astrais. Os registros dos pedidos (valor, data e
         status) ficam guardados sem os seus dados pessoais, pelo prazo exigido
         pela legislação fiscal.
       </p>

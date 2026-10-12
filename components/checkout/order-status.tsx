@@ -27,15 +27,15 @@ const COPY: Record<OrderView, { title: string; text: string }> = {
   },
   approved: {
     title: "Pagamento aprovado!",
-    text: "Estamos calculando o seu céu e escrevendo o relatório. Leva até 5 minutos, e você recebe um e-mail quando estiver pronto.",
+    text: "Estamos calculando o seu céu e escrevendo o seu mapa astral. Leva até 5 minutos, e você recebe um e-mail quando estiver pronto.",
   },
   ready: {
     title: "Seu mapa está pronto!",
-    text: "O relatório foi escrito e já está disponível em Meus mapas. Você pode ler no celular ou no computador e também salvar em PDF.",
+    text: "O seu mapa astral foi escrito e já está disponível em Meus mapas. Você pode ler no celular ou no computador e também salvar em PDF.",
   },
   preparing_failed: {
     title: "Estamos finalizando seu mapa",
-    text: "O seu pagamento foi aprovado e o relatório está em preparo. Se demorar mais do que o esperado, a nossa equipe já foi avisada.",
+    text: "O seu pagamento foi aprovado e o seu mapa astral está em preparo. Se demorar mais do que o esperado, a nossa equipe já foi avisada.",
   },
   declined: {
     title: "Pagamento recusado",
@@ -76,7 +76,7 @@ export function OrderStatus({
   const limitMs = pollLimitMs(view);
 
   // Consulta o banco já ao abrir e depois a cada 3 s (2 min na confirmação, 10 min
-  // enquanto o relatório é escrito). Segue consultando mesmo mostrando "recusado":
+  // enquanto o mapa astral é escrito). Segue consultando mesmo mostrando "recusado":
   // o banco pode guardar uma recusa antiga enquanto uma nova tentativa já foi
   // aprovada no Mercado Pago.
   useEffect(() => {
@@ -181,7 +181,7 @@ export function OrderStatus({
         <div className="grid gap-2">
           <div
             role="progressbar"
-            aria-label="Progresso do relatório"
+            aria-label="Progresso do mapa astral"
             aria-valuemin={0}
             aria-valuemax={100}
             aria-valuenow={percent}

@@ -135,8 +135,8 @@ export default async function AdminOrdersPage({
               )}
               {(stuck.count ?? 0) > 0 && (
                 <li>
-                  {stuck.count} pedido(s) pago(s) há mais de 10 minutos sem
-                  relatório pronto.{" "}
+                  {stuck.count} pedido(s) pago(s) há mais de 10 minutos sem mapa
+                  astral pronto.{" "}
                   <Link
                     href="/admin?status=stuck"
                     className="underline underline-offset-4"
@@ -152,8 +152,8 @@ export default async function AdminOrdersPage({
 
       <p className="text-muted-foreground text-sm">
         {avgCost === null
-          ? "Custo médio de IA por relatório: ainda sem relatórios prontos."
-          : `Custo médio de IA por relatório: ≈ US$ ${avgCost.toFixed(2)} (últimos ${reports.length} prontos, estimativa).`}
+          ? "Custo médio de IA por mapa astral: ainda sem mapas astrais prontos."
+          : `Custo médio de IA por mapa astral: ≈ US$ ${avgCost.toFixed(2)} (últimos ${reports.length} prontos, estimativa).`}
       </p>
 
       <nav aria-label="Filtrar por status" className="flex flex-wrap gap-2">

@@ -69,7 +69,7 @@ const Cell = ({ children }: { children: React.ReactNode }) => (
 );
 
 /**
- * O relatório inteiro: roda, tabelas de posições e o texto por seções. Só
+ * O mapa astral inteiro: roda, tabelas de posições e o texto por seções. Só
  * recebe dados já prontos; nada aqui calcula posições.
  */
 export function ReportView({
@@ -102,8 +102,8 @@ export function ReportView({
       {chart.time_unknown && (
         <p className="border-border rounded-lg border p-4 text-sm">
           Você não informou a hora de nascimento. Por isso o Ascendente, o Meio
-          do Céu e as casas não foram calculados, e o relatório é mais curto. A
-          roda mostra os planetas nos signos, com Áries à esquerda.
+          do Céu e as casas não foram calculados, e o mapa astral é mais curto.
+          A roda mostra os planetas nos signos, com Áries à esquerda.
         </p>
       )}
       {chart.house_fallback_reason && (

@@ -30,7 +30,7 @@ function authorized(request: Request): boolean {
 }
 
 /**
- * Gera o relatório de um pedido pago, por seções. Chamado pelo webhook, pela
+ * Gera o mapa astral de um pedido pago, por seções. Chamado pelo webhook, pela
  * reconciliação, pela retomada automática e por si mesmo (encadeado) enquanto
  * ainda houver seções pendentes. Idempotente e retomável.
  */
@@ -72,6 +72,6 @@ export async function POST(request: Request) {
       `[job] ${orderId.slice(0, 8)} erro:`,
       e instanceof Error ? e.message : "desconhecido",
     );
-    return json({ error: "Falha ao gerar o relatório." }, 500);
+    return json({ error: "Falha ao gerar o mapa astral." }, 500);
   }
 }

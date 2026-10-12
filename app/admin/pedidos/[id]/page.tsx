@@ -98,8 +98,8 @@ export default async function AdminOrderPage({
       {query.reprocessado && (
         <Alert>
           <AlertDescription>
-            Reprocessamento iniciado. Em instantes o relatório continua de onde
-            parou; recarregue esta página para acompanhar.
+            Reprocessamento iniciado. Em instantes o mapa astral continua de
+            onde parou; recarregue esta página para acompanhar.
           </AlertDescription>
         </Alert>
       )}
@@ -142,12 +142,12 @@ export default async function AdminOrderPage({
 
       <Card>
         <CardHeader>
-          <CardTitle className="text-lg">Relatório</CardTitle>
+          <CardTitle className="text-lg">Mapa astral</CardTitle>
         </CardHeader>
         <CardContent className="grid gap-4">
           {!report ? (
             <p className="text-muted-foreground text-sm">
-              Ainda não existe relatório para este pedido.
+              Ainda não existe mapa astral para este pedido.
             </p>
           ) : (
             <>
@@ -170,7 +170,7 @@ export default async function AdminOrderPage({
 
               <div className="overflow-x-auto">
                 <table className="w-full min-w-[22rem] text-left text-sm">
-                  <caption className="sr-only">Seções do relatório</caption>
+                  <caption className="sr-only">Seções do mapa astral</caption>
                   <thead className="text-muted-foreground border-b">
                     <tr>
                       <th scope="col" className="py-2 pr-3 font-medium">
@@ -210,7 +210,7 @@ export default async function AdminOrderPage({
             <form action={reprocessOrder} className="grid gap-2">
               <input type="hidden" name="id" value={order.id} />
               <Button type="submit" size="lg" className="h-11 w-fit">
-                Reprocessar relatório
+                Reprocessar mapa astral
               </Button>
               <p className="text-muted-foreground text-xs">
                 Mantém as seções prontas e refaz só as pendentes ou com falha

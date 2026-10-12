@@ -138,7 +138,7 @@ export function BirthProfileForm({
       {timeUnknown && (
         <p className="border-border bg-muted rounded-lg border p-3 text-sm">
           Sem a hora de nascimento, não calculamos o Ascendente, o Meio do Céu e
-          as casas, e o seu relatório será mais curto.
+          as casas, e o seu mapa astral será mais curto.
         </p>
       )}
 

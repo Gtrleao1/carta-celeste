@@ -90,7 +90,7 @@ export async function saveProduct(
   revalidatePath("/admin/produtos");
   return {
     message:
-      "Produto salvo. Pedidos novos já usam estas seções e instruções; relatórios prontos não mudam.",
+      "Produto salvo. Pedidos novos já usam estas seções e instruções; mapas astrais prontos não mudam.",
   };
 }
 
@@ -185,6 +185,6 @@ export async function saveHouseSystem(
   revalidatePath("/admin/configuracoes");
   return {
     message:
-      "Salvo. Vale para os próximos relatórios; os que já estão prontos não mudam.",
+      "Salvo. Vale para os próximos mapas astrais; os que já estão prontos não mudam.",
   };
 }

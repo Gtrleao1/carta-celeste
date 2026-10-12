@@ -26,7 +26,7 @@ export function slugify(text: string): string {
 }
 
 /**
- * Editor da lista de seções do relatório. O estado vai para o formulário como
+ * Editor da lista de seções do mapa astral. O estado vai para o formulário como
  * JSON em um campo oculto (`sections`); o servidor valida tudo de novo.
  */
 export function SectionsEditor({
@@ -73,7 +73,7 @@ export function SectionsEditor({
 
   return (
     <fieldset className="grid gap-4">
-      <legend className="text-lg font-semibold">Seções do relatório</legend>
+      <legend className="text-lg font-semibold">Seções do mapa astral</legend>
       <p className="text-muted-foreground text-sm">
         Cada seção vira uma chamada à IA, na ordem abaixo. A instrução diz o que
         escrever nela. Marque &quot;Depende da hora&quot; nas seções de casas e

@@ -23,7 +23,7 @@ type Row = {
   product: { name: string } | null;
 };
 
-/** Para onde cada pedido leva: o relatório, se pronto; senão, o acompanhamento. */
+/** Para onde cada pedido leva: o mapa astral, se pronto; senão, o acompanhamento. */
 const hrefFor = (o: Row) =>
   o.status === "ready" ? `/meus-mapas/${o.id}` : `/pedido/${o.id}/retorno`;
 
@@ -53,8 +53,8 @@ export default async function MeusMapasPage() {
       <header className="grid gap-1">
         <h1 className="font-heading text-4xl font-semibold">Meus mapas</h1>
         <p className="text-muted-foreground">
-          Seus pedidos e relatórios. Cada mapa fica guardado aqui para você ler
-          quando quiser.
+          Seus pedidos e mapas astrais. Cada mapa fica guardado aqui para você
+          ler quando quiser.
         </p>
       </header>
 
@@ -62,7 +62,7 @@ export default async function MeusMapasPage() {
         <div className="border-border grid gap-4 rounded-xl border p-6">
           <p className="text-lg">Você ainda não tem mapas.</p>
           <p className="text-muted-foreground">
-            Escolha o mapa que combina com o seu momento. O relatório fica
+            Escolha o mapa que combina com o seu momento. O mapa astral fica
             pronto em poucos minutos depois do pagamento.
           </p>
           <Link

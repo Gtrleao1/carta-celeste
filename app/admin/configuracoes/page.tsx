@@ -28,7 +28,7 @@ export default async function AdminSettingsPage() {
         <CardHeader>
           <CardTitle className="text-lg">Sistema de casas padrão</CardTitle>
           <CardDescription>
-            Usado nos próximos relatórios. Em latitudes extremas (≥ 66°) o
+            Usado nos próximos mapas astrais. Em latitudes extremas (≥ 66°) o
             Placidus não existe e o cálculo usa casas inteiras, com o motivo
             registrado.
           </CardDescription>

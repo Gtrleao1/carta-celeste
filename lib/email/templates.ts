@@ -55,12 +55,12 @@ export function paymentConfirmedEmail(args: {
       "Pagamento confirmado",
       p(esc(hello)) +
         p(
-          `Recebemos o pagamento do <strong>${esc(args.productName)}</strong>. Estamos calculando o seu céu de nascimento e escrevendo o relatório, o que leva até 5 minutos.`,
+          `Recebemos o pagamento do <strong>${esc(args.productName)}</strong>. Estamos calculando o seu céu de nascimento e escrevendo o seu mapa astral, o que leva até 5 minutos.`,
         ) +
         p("Assim que ele estiver pronto, você recebe outro e-mail."),
       { label: "Acompanhar o pedido", url: args.orderUrl },
     ),
-    text: `${hello}\n\nRecebemos o pagamento do ${args.productName}. Estamos calculando o seu céu de nascimento e escrevendo o relatório, o que leva até 5 minutos. Assim que estiver pronto, você recebe outro e-mail.\n\nAcompanhe o pedido: ${args.orderUrl}\n`,
+    text: `${hello}\n\nRecebemos o pagamento do ${args.productName}. Estamos calculando o seu céu de nascimento e escrevendo o seu mapa astral, o que leva até 5 minutos. Assim que estiver pronto, você recebe outro e-mail.\n\nAcompanhe o pedido: ${args.orderUrl}\n`,
   };
 }
 

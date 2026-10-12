@@ -17,8 +17,8 @@ export default async function NewProductPage() {
       <h1 className="text-2xl font-semibold tracking-tight">Novo produto</h1>
       <p className="text-muted-foreground text-sm">
         O produto novo começa inativo: ative quando as seções e o texto
-        estiverem prontos. Ao ativar, ele aparece na vitrine e já gera relatório
-        com as seções abaixo.
+        estiverem prontos. Ao ativar, ele aparece na vitrine e já gera mapa
+        astral com as seções abaixo.
       </p>
       <ProductForm initial={EMPTY_PRODUCT} />
     </>

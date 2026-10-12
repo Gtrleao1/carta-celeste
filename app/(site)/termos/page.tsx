@@ -13,8 +13,8 @@ export default function TermosPage() {
     <LegalPage title="Termos de Uso">
       <p>
         Estes Termos de Uso regulam o uso do site {SITE.name} e a compra dos
-        relatórios astrológicos oferecidos nele. Ao criar uma conta ou fazer um
-        pedido, você declara que leu e concorda com estes termos e com a{" "}
+        mapas astrais oferecidos nele. Ao criar uma conta ou fazer um pedido,
+        você declara que leu e concorda com estes termos e com a{" "}
         <Link href="/privacidade">Política de Privacidade</Link>.
       </p>
 
@@ -26,17 +26,17 @@ export default function TermosPage() {
 
       <h2>2. O que oferecemos</h2>
       <p>
-        Vendemos relatórios astrológicos personalizados. Cada relatório é gerado
-        a partir dos dados de nascimento que você informa (data, hora e cidade):
+        Vendemos mapas astrais personalizados. Cada mapa astral é gerado a
+        partir dos dados de nascimento que você informa (data, hora e cidade):
         as posições dos astros são calculadas por um motor astronômico e o texto
         interpretativo é escrito com o auxílio de inteligência artificial. O
-        relatório fica disponível na sua área do cliente.
+        mapa astral fica disponível na sua área do cliente.
       </p>
 
       <h2>3. Natureza do conteúdo</h2>
       <p>{DISCLAIMER}</p>
       <p>
-        A astrologia não é ciência comprovada e o relatório não faz previsões
+        A astrologia não é ciência comprovada e o mapa astral não faz previsões
         garantidas. Não use o conteúdo como base para decisões médicas,
         psicológicas, financeiras ou jurídicas. Por ser escrito com apoio de
         inteligência artificial, o texto pode conter imprecisões de redação; as
@@ -63,8 +63,8 @@ export default function TermosPage() {
         O resultado depende da exatidão dos dados informados. Confira o resumo
         exibido antes do pagamento: erros de data, hora ou cidade geram um mapa
         diferente do esperado. Se você não informar a hora de nascimento, o
-        Ascendente, o Meio do Céu e as casas não são calculados e o relatório é
-        mais curto.
+        Ascendente, o Meio do Céu e as casas não são calculados e o mapa astral
+        é mais curto.
       </p>
 
       <h2>6. Preços, pagamento e entrega</h2>
@@ -78,7 +78,7 @@ export default function TermosPage() {
           até 12 vezes ou boleto). Não temos acesso aos dados do seu cartão.
         </li>
         <li>
-          O relatório é liberado depois da aprovação do pagamento, em geral em
+          O mapa astral é liberado depois da aprovação do pagamento, em geral em
           até 5 minutos. Boletos podem levar até alguns dias úteis para serem
           compensados.
         </li>
@@ -90,7 +90,7 @@ export default function TermosPage() {
         internet você pode desistir da compra em até 7 dias corridos, contados
         da data do pedido, pedindo o reembolso por{" "}
         {orPending(SITE.contactEmail)}. Se houver problema técnico que impeça a
-        entrega do relatório, também faremos o reembolso.
+        entrega do mapa astral, também faremos o reembolso.
       </p>
 
       <h2>8. Produtos para maiores de 18 anos</h2>
@@ -104,7 +104,7 @@ export default function TermosPage() {
       <h2>9. Propriedade intelectual</h2>
       <p>
         O site, a marca, o design, os textos e o software são do {SITE.name} ou
-        licenciados para ele. O relatório que você compra é para o seu uso
+        licenciados para ele. O mapa astral que você compra é para o seu uso
         pessoal: você pode guardá-lo, imprimi-lo e compartilhá-lo com quem
         quiser, mas não pode revendê-lo nem republicá-lo como se fosse seu
         serviço.
@@ -112,10 +112,10 @@ export default function TermosPage() {
 
       <h2>10. Responsabilidade</h2>
       <p>
-        Fazemos o possível para manter o site disponível e os relatórios
+        Fazemos o possível para manter o site disponível e os mapas astrais
         corretos, mas não garantimos funcionamento ininterrupto. Na extensão
         permitida pela lei, não respondemos por decisões tomadas com base no
-        conteúdo dos relatórios.
+        conteúdo dos mapas astrais.
       </p>
 
       <h2>11. Alterações destes termos</h2>
