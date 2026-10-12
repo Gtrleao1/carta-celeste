@@ -101,7 +101,7 @@ export const DEFAULT_OPTIONS: GenerationOptions = {
   leaseMs: 75_000,
   concurrency: 3,
   maxAttempts: MAX_ATTEMPTS,
-  maxTokens: 2500,
+  maxTokens: 3200,
 };
 
 export type GenerationResult = {
@@ -215,6 +215,7 @@ export async function runGeneration(
     const allTitles = report.sections.map((s) => s.title);
     const hardEnd = t0 + opts.hardBudgetMs;
     let halted = false;
+    let haltReason = "autenticacao" as "autenticacao" | "sem_credito";
 
     const generateOne = async (state: SectionState) => {
       const config = configByKey.get(state.key);
@@ -263,11 +264,13 @@ export async function runGeneration(
         log(`seção "${state.key}" pronta (${countWords(text)} palavras)`);
       } catch (e) {
         const kind = e instanceof WriteError ? e.kind : "desconhecido";
-        if (kind === "autenticacao") {
-          // Chave recusada: repetir não adianta e não é culpa da seção. Não gasta
-          // tentativa; o passo para e o pedido segue `generating` até a chave ser corrigida.
+        if (kind === "autenticacao" || kind === "sem_credito") {
+          // Chave recusada ou saldo esgotado: repetir não adianta e não é culpa da
+          // seção. Não gasta tentativa; o passo para e o pedido segue `generating`
+          // até o problema ser corrigido.
           halted = true;
-          log(`seção "${state.key}" não escrita: chave da IA recusada`);
+          haltReason = kind;
+          log(`seção "${state.key}" não escrita: ${kind}`);
           return;
         }
         const attempts = state.attempts + 1;
@@ -312,13 +315,13 @@ export async function runGeneration(
       // Não encadeia novo job (seria outra chamada recusada). A página de status
       // retoma o pedido depois, e a retomada custa uma só chamada falha por vez.
       console.error(
-        `[relatório] pedido ${orderId} pausado: a chave da IA foi recusada (conferir ANTHROPIC_API_KEY)`,
+        `[relatório] pedido ${orderId} pausado: ${haltReason === "sem_credito" ? "sem saldo na conta da IA (recarregar créditos na Anthropic)" : "a chave da IA foi recusada (conferir ANTHROPIC_API_KEY)"}`,
       );
       return {
         state: "paused",
         done,
         total: fresh.length,
-        reason: "autenticacao",
+        reason: haltReason,
       };
     }
     const exhausted = fresh.find(

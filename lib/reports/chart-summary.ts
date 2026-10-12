@@ -6,6 +6,18 @@ const planetName = new Map<string, string>([
   ["north_node", "Nodo Norte"],
 ]);
 
+/**
+ * Exatidão de um aspecto em palavras. O texto do mapa não cita orbes em graus
+ * (o cliente não precisa do número), então o resumo da IA traz só o rótulo.
+ * A lista continua do aspecto mais exato para o menos exato.
+ */
+export function exactness(orbDegrees: number): string {
+  if (orbDegrees < 1) return "praticamente exato";
+  if (orbDegrees < 3) return "bem próximo do exato";
+  if (orbDegrees < 5) return "próximo do exato";
+  return "menos exato, efeito mais sutil";
+}
+
 /** 23.6333 -> `23°38′` (minutos truncados, como nos mapas de referência). */
 export function formatDegree(degreeInSign: number): string {
   const deg = Math.floor(degreeInSign);
@@ -22,7 +34,7 @@ const SYSTEM_LABEL = {
 
 /**
  * Resumo legível do mapa para a IA: planeta, signo, grau, casa, retrógrado,
- * ângulos, regentes e aspectos com orbes.
+ * ângulos, regentes e aspectos com a exatidão em palavras.
  *
  * PRIVACIDADE: usa só as posições calculadas. Não inclui nome, e-mail, data,
  * hora, cidade, coordenadas nem fuso (a Política de Privacidade promete isso).
@@ -83,7 +95,7 @@ export function summarizeChart(chart: ChartData): string {
     lines.push("", "ASPECTOS (do mais exato para o menos exato)");
     for (const a of chart.aspects) {
       lines.push(
-        `- ${planetName.get(a.planet_a)} ${a.name.toLowerCase()} ${planetName.get(a.planet_b)} (orbe ${formatDegree(a.orb)})`,
+        `- ${planetName.get(a.planet_a)} ${a.name.toLowerCase()} ${planetName.get(a.planet_b)} (${exactness(a.orb)})`,
       );
     }
   }

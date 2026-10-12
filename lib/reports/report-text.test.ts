@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import { computeChart } from "@/lib/astro";
 import { sampleChart } from "@/lib/sample-chart";
 
-import { formatDegree, summarizeChart } from "./chart-summary";
+import { exactness, formatDegree, summarizeChart } from "./chart-summary";
 import {
   buildSectionPrompt,
   buildSystemPrompt,
@@ -109,16 +109,37 @@ describe("summarizeChart — Referência 1", () => {
     );
   });
 
-  it("lista aspectos com orbe, do mais exato ao menos exato", () => {
-    const aspects = text
+  it("lista aspectos do mais exato ao menos exato, com a exatidão em palavras e SEM orbe numérico", () => {
+    const labels = [
+      "praticamente exato",
+      "bem próximo do exato",
+      "próximo do exato",
+      "menos exato, efeito mais sutil",
+    ];
+    const aspectLines = text
       .split("\n")
-      .filter((l) => /\(orbe \d+°\d\d′\)/.test(l));
-    expect(aspects.length).toBeGreaterThan(5);
-    const orbs = aspects.map((l) => {
-      const m = /orbe (\d+)°(\d\d)′/.exec(l)!;
-      return Number(m[1]) * 60 + Number(m[2]);
-    });
-    expect(orbs).toEqual([...orbs].sort((a, b) => a - b));
+      .filter((l) =>
+        /^- .+ (conjunção|sextil|quadratura|trígono|oposição) .+ \(.+\)$/.test(
+          l,
+        ),
+      );
+    expect(aspectLines.length).toBe(sampleChart.aspects.length);
+    expect(aspectLines.length).toBeGreaterThan(5);
+    // Nenhum grau de orbe no texto dos aspectos.
+    for (const l of aspectLines) expect(l).not.toMatch(/\d+°/);
+    // A ordem acompanha a exatidão (rótulos só podem piorar ao longo da lista).
+    const rank = aspectLines.map((l) =>
+      labels.findIndex((label) => l.endsWith(`(${label})`)),
+    );
+    expect(rank.every((r) => r >= 0)).toBe(true);
+    expect(rank).toEqual([...rank].sort((x, y) => x - y));
+  });
+
+  it("exactness: limites dos rótulos", () => {
+    expect(exactness(0.4)).toBe("praticamente exato");
+    expect(exactness(1.5)).toBe("bem próximo do exato");
+    expect(exactness(4.2)).toBe("próximo do exato");
+    expect(exactness(6.7)).toBe("menos exato, efeito mais sutil");
   });
 
   it("não inclui NENHUM dado pessoal: data, hora, local, coordenadas, fuso", () => {
@@ -188,7 +209,7 @@ describe("prompts", () => {
     expect(s).toContain("SOMENTE as posições do mapa fornecidas");
     expect(s).toMatch(/previsões deterministas/);
     expect(s).toMatch(/financeiros, de investimento ou jurídicos/);
-    expect(s).toContain("350 e 700 palavras");
+    expect(s).toContain("350 e 1100 palavras");
     expect(s).toContain("Foque em carreira.");
   });
 
@@ -198,10 +219,24 @@ describe("prompts", () => {
     expect(s).toContain("CONCENTRAÇÕES");
     expect(s).toMatch(/Nodo Norte e os ângulos .* não são planetas/);
     expect(s).toContain("bloco fechado sobre UM único tema");
-    expect(s).toContain("terminar com uma DIREÇÃO");
+    expect(s).toContain("LADO POSITIVO");
+    expect(s).toContain("LADO DIFÍCIL");
+    expect(s).toContain("a que sinais prestar atenção");
+    expect(s).toContain("cite apenas aspectos DESSE planeta");
+    expect(s).toContain("parágrafo final de FECHAMENTO");
+    expect(s).toContain("Seja concreto");
+    expect(s).toContain("nomeie TODOS os corpos contados");
+    expect(s).toContain("NÃO cite orbes nem graus de aspectos");
+    expect(s).toContain("não use a palavra");
+    expect(s).toContain("INFLUÊNCIA POSITIVA");
+    expect(s).toContain("apresente-o por inteiro");
+    expect(s).toContain("nunca de passagem no fim de um parágrafo");
+    expect(s).toContain("termina com ORIENTAÇÃO");
     expect(s).toContain(
-      "habilidades ou atitudes que a pessoa pode desenvolver",
+      "o que a pessoa pode focar para expressar o melhor daquela posição e o que evitar",
     );
+    expect(s).toContain("tome consciência");
+    expect(s).toContain("atitudes ou hábitos");
     expect(s).toContain(
       "abra apresentando o tema, desenvolva e conclua dentro dele",
     );
@@ -219,6 +254,23 @@ describe("prompts", () => {
     expect(p).toContain("- Síntese");
     expect(p.match(/- Mente e comunicação/g)).toBeNull();
     expect(p).toContain("- Sol: Câncer 21°51′, casa 8");
+  });
+
+  it("o prompt da seção informa a próxima seção, ou que é a última", () => {
+    const titles = ["Introdução", "Mente e comunicação", "Síntese"];
+    const meio = buildSectionPrompt({
+      section: { ...section, title: "Mente e comunicação" },
+      allTitles: titles,
+      chartSummary: "PLANETAS",
+    });
+    expect(meio).toContain('Próxima seção do mapa: "Síntese"');
+    const ultima = buildSectionPrompt({
+      section: { ...section, title: "Síntese" },
+      allTitles: titles,
+      chartSummary: "PLANETAS",
+    });
+    expect(ultima).toContain("Esta é a última seção do mapa");
+    expect(ultima).not.toContain("Próxima seção do mapa");
   });
 
   it("nenhum prompt contém dados pessoais quando só o resumo é usado", () => {

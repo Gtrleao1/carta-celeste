@@ -19,6 +19,7 @@ export type WriteErrorKind =
   | "recusa"
   | "texto_cortado"
   | "autenticacao"
+  | "sem_credito"
   | "indisponivel"
   | "desconhecido";
 

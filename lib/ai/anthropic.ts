@@ -29,6 +29,10 @@ export function classifyError(error: unknown): WriteError {
   }
   if (error instanceof Anthropic.APIError) {
     const status = error.status ?? 0;
+    // Saldo da conta esgotado vem como 400; repetir não adianta até recarregar.
+    if (status === 400 && /credit balance/i.test(error.message)) {
+      return new WriteError("sem_credito");
+    }
     // 529 = sobrecarga da API; 5xx = indisponibilidade temporária.
     if (status === 529 || status >= 500) return new WriteError("indisponivel");
     return new WriteError("desconhecido", `HTTP ${status}`);
