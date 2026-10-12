@@ -226,6 +226,18 @@ describe("prompts", () => {
     expect(s).toContain("parágrafo final de FECHAMENTO");
     expect(s).toContain("Seja concreto");
     expect(s).toContain("nomeie TODOS os corpos contados");
+    // Regras do feedback do dono (influência mútua, convivência, vocabulário, síntese).
+    expect(s).toContain("influência nos dois sentidos");
+    expect(s).toContain("desenvolva a convivência dos dois");
+    expect(s).toContain("“sustentar” e “sustentação”");
+    expect(s).toContain("em vez de “cobrar” e “cobrança”");
+    expect(s).toContain("não use “cobrar”");
+    expect(s).toContain("NÃO leva o subtítulo “Fechamento”");
+    expect(s).toContain("CAMINHO concreto em passos");
+    expect(s).toContain("capacidade de se reinventar e de recomeçar");
+    expect(s).toContain("mais forte do que antes");
+    expect(s).toContain("nomes naturais e claros");
+    expect(s).toContain("não repita os mesmos exemplos e conselhos práticos");
     expect(s).toContain("NÃO cite orbes nem graus de aspectos");
     expect(s).toContain("não use a palavra");
     expect(s).toContain("INFLUÊNCIA POSITIVA");
