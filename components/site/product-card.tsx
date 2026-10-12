@@ -9,6 +9,11 @@ export function ProductCard({ product }: { product: Product }) {
   return (
     <Card className="h-full">
       <CardHeader>
+        {product.tagline && (
+          <p className="text-primary text-sm font-medium tracking-wide">
+            {product.tagline}
+          </p>
+        )}
         <CardTitle className="font-heading text-2xl font-semibold">
           {product.name}
         </CardTitle>
@@ -46,9 +51,8 @@ export function ProductCard({ product }: { product: Product }) {
           <Link
             href={`/mapa/${product.slug}`}
             className={buttonVariants({ size: "lg" }) + " h-11 text-base"}
-            aria-label={`Ver detalhes do ${product.name}`}
           >
-            Ver detalhes
+            Quero meu {product.name}
           </Link>
         </div>
       </CardContent>

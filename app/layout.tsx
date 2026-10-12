@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   ),
   title: {
-    default: `${SITE.name} — relatórios astrológicos personalizados`,
+    default: `${SITE.name} — seu mapa astral personalizado`,
     template: `%s — ${SITE.name}`,
   },
   description: SITE.description,

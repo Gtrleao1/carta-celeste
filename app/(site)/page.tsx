@@ -5,66 +5,71 @@ import { ChartWheel } from "@/components/chart/chart-wheel";
 import { DeletedNotice } from "@/components/site/deleted-notice";
 import { ProductCard } from "@/components/site/product-card";
 import { buttonVariants } from "@/components/ui/button";
+import { formatBRL } from "@/lib/format";
 import { getActiveProducts } from "@/lib/products";
 import { sampleChart } from "@/lib/sample-chart";
+import { TESTIMONIALS } from "@/lib/site-config";
 
 // Página estática, regenerada a cada 5 minutos (produtos vêm do banco).
 export const revalidate = 300;
 
+const CTA = "Quero minha Carta Celeste";
+
 const STEPS = [
   {
     title: "Escolha o seu mapa",
-    text: "Cada mapa olha para uma parte da sua vida: a visão geral, a carreira ou o amor.",
+    text: "Visão geral, carreira ou amor. Comece pela pergunta que mais importa para você agora.",
   },
   {
-    title: "Conte quando e onde você nasceu",
-    text: "Data, hora e cidade de nascimento. Se não souber a hora, o mapa também funciona, só que mais curto.",
+    title: "Conte quem você é e quando nasceu",
+    text: "Seu nome, a data, a hora e a cidade de nascimento. A hora é o detalhe que mais personaliza o mapa: é ela que define o seu Ascendente. Confira na sua certidão de nascimento. Se não souber, dá para seguir sem ela, e o mapa sai mais curto.",
   },
   {
-    title: "Receba em poucos minutos",
-    text: "Calculamos o seu céu com precisão astronômica e escrevemos o relatório para você. Ele fica na sua área do cliente, pronto para ler e imprimir.",
+    title: "Receba o seu mapa astral",
+    text: "Calculamos o seu céu com precisão astronômica e, em poucos minutos, sua Carta Celeste fica pronta na sua área do cliente para ler, reler e imprimir.",
   },
 ];
-
-const TESTIMONIALS = [1, 2, 3];
 
 const FAQ = [
   {
     q: "Preciso saber a hora em que nasci?",
-    a: "A hora ajuda muito: sem ela, não dá para calcular o Ascendente, o Meio do Céu e as casas. Se você não souber, ainda assim geramos o mapa com Sol, Lua e planetas nos signos, e o relatório será mais curto. Avisamos isso antes do pagamento.",
+    a: "Sim, ela é muito importante. É a hora que define o seu Ascendente e as casas do mapa, a parte mais pessoal da sua Carta Celeste. Você costuma encontrá-la na certidão de nascimento ou na Declaração de Nascido Vivo. Se não tiver como descobrir, o mapa também é feito, só que mais curto: sem Ascendente, Meio do Céu e casas. Avisamos isso antes do pagamento.",
   },
   {
-    q: "Em quanto tempo recebo o relatório?",
-    a: "Em até 5 minutos depois da aprovação do pagamento. Com Pix, a aprovação é imediata. Você recebe um e-mail avisando e encontra o relatório em “Meus mapas”.",
+    q: "Em quanto tempo recebo o meu mapa?",
+    a: "Em poucos minutos depois da confirmação do pagamento. Você recebe um e-mail avisando, e o mapa fica salvo na sua área do cliente. No boleto, o prazo começa a contar quando o banco confirma o pagamento.",
   },
   {
     q: "Como o mapa é calculado?",
-    a: "Usamos efemérides astronômicas (posições reais dos astros) para a sua data, hora e cidade de nascimento, com zodíaco tropical. Nossos cálculos batem com os de referências do mercado com diferença de no máximo 1 minuto de arco.",
+    a: "Usamos efemérides astronômicas para encontrar a posição exata do Sol, da Lua e dos planetas na data, hora e cidade em que você nasceu, considerando o fuso horário e o horário de verão da época. A partir disso, calculamos Ascendente, casas e aspectos. Os cálculos são feitos por software astronômico; o texto que interpreta essas posições é redigido com apoio de inteligência artificial, sem usar o seu nome.",
   },
   {
-    q: "A inteligência artificial inventa as posições dos planetas?",
-    a: "Não. Todas as posições são calculadas por um motor astronômico. A IA só recebe o resultado pronto e escreve a interpretação em português, em cima desses dados.",
+    q: "O mapa é feito só para mim?",
+    a: "Sim. Sua Carta Celeste leva o seu nome e é calculada a partir do dia, da hora e da cidade exatos do seu nascimento. Por isso ela é diferente de um horóscopo: duas pessoas do mesmo signo recebem mapas diferentes.",
   },
   {
     q: "Quais formas de pagamento vocês aceitam?",
-    a: "Pix, cartão de crédito em até 12 vezes e boleto, pelo Mercado Pago. Nós não guardamos os dados do seu cartão.",
+    a: "Pix, boleto e cartão de crédito em até 12x, pelo Mercado Pago. Nós não guardamos os dados do seu cartão.",
   },
   {
     q: "É uma previsão do futuro?",
-    a: "Não. O mapa é uma ferramenta de autoconhecimento: fala de tendências, qualidades e desafios, sem previsões fechadas. O conteúdo é para autoconhecimento e entretenimento.",
+    a: "Não. O mapa astral é um retrato das tendências, talentos e desafios presentes no seu céu de nascimento. Ele serve para você se conhecer melhor e fazer escolhas com mais consciência. As decisões continuam sendo suas. O conteúdo é para autoconhecimento e entretenimento.",
   },
   {
     q: "Posso guardar ou imprimir o meu mapa?",
-    a: "Sim. O relatório fica na sua conta e você pode imprimir ou salvar em PDF direto pelo navegador, com a roda do mapa em uma página própria.",
+    a: "Sim. Sua Carta Celeste fica salva na sua área do cliente para você reler quando quiser, e pode ser impressa ou salva em PDF direto pelo navegador.",
   },
   {
     q: "O que acontece com os meus dados?",
-    a: "Usamos seus dados só para gerar o relatório e atender o seu pedido. Você pode excluir sua conta e seus dados a qualquer momento, na área “Minha conta”. Leia a Política de Privacidade para os detalhes.",
+    a: "Usamos seu nome e seus dados de nascimento apenas para calcular e montar o seu mapa. Não vendemos seus dados a terceiros. Você pode excluir sua conta e seus dados a qualquer momento, na área “Minha conta”. Os detalhes estão na Política de Privacidade.",
   },
 ];
 
 export default async function Home() {
   const products = await getActiveProducts();
+  const lowestPrice = products.length
+    ? Math.min(...products.map((p) => p.price_cents))
+    : null;
 
   return (
     <>
@@ -79,12 +84,13 @@ export default async function Home() {
             Astrologia com precisão astronômica
           </p>
           <h1 className="text-5xl leading-[1.05] font-semibold text-balance sm:text-6xl">
-            Seu céu de nascimento, escrito para você.
+            Uma Carta Celeste, escrita para você.
           </h1>
           <p className="text-muted-foreground max-w-prose text-lg leading-relaxed">
-            Relatórios astrológicos personalizados, calculados com precisão
-            astronômica e interpretados por inteligência artificial. Entregues
-            na sua área do cliente em poucos minutos.
+            Com o seu nome, a data, a hora e a cidade em que você nasceu,
+            calculamos a posição exata de cada planeta naquele instante e
+            revelamos o seu mapa astral: quem você é, como trabalha e como ama.
+            Pronto em poucos minutos.
           </p>
           <div className="flex flex-wrap gap-3">
             <Link
@@ -93,7 +99,7 @@ export default async function Home() {
                 buttonVariants({ size: "lg" }) + " h-12 px-6 text-base"
               }
             >
-              Escolher meu mapa
+              {CTA}
             </Link>
             <Link
               href="#como-funciona"
@@ -105,6 +111,12 @@ export default async function Home() {
               Como funciona
             </Link>
           </div>
+          {lowestPrice !== null && (
+            <p className="text-muted-foreground text-sm">
+              A partir de {formatBRL(lowestPrice)} · Pix, boleto ou cartão em
+              até 12x
+            </p>
+          )}
         </div>
         <div className="mx-auto w-full max-w-[520px]">
           <ChartWheel
@@ -125,8 +137,8 @@ export default async function Home() {
           Escolha o seu mapa
         </h2>
         <p className="text-muted-foreground mt-2 max-w-prose text-lg">
-          Três leituras, cada uma com um foco. Todas calculadas para a sua data,
-          hora e lugar de nascimento.
+          Cada mapa responde a uma pergunta diferente. Todos são calculados para
+          o dia, a hora e a cidade em que você nasceu.
         </p>
         {products.length > 0 ? (
           <div className="mt-8 grid gap-6 md:grid-cols-3">
@@ -148,7 +160,7 @@ export default async function Home() {
         className="mx-auto w-full max-w-6xl scroll-mt-20 px-4 py-14"
       >
         <h2 id="titulo-como" className="text-4xl font-semibold">
-          Como funciona
+          Sua Carta Celeste em 3 passos
         </h2>
         <ol className="mt-8 grid gap-6 md:grid-cols-3">
           {STEPS.map((step, i) => (
@@ -169,32 +181,40 @@ export default async function Home() {
             </li>
           ))}
         </ol>
-      </section>
-
-      {/* Depoimentos (espaço reservado) */}
-      <section
-        aria-labelledby="titulo-depoimentos"
-        className="mx-auto w-full max-w-6xl px-4 py-14"
-      >
-        <h2 id="titulo-depoimentos" className="text-4xl font-semibold">
-          O que dizem os clientes
-        </h2>
-        <div className="mt-8 grid gap-6 md:grid-cols-3">
-          {TESTIMONIALS.map((n) => (
-            <figure
-              key={n}
-              className="border-border text-muted-foreground grid gap-3 rounded-xl border border-dashed p-6"
-            >
-              <blockquote className="italic">
-                Espaço reservado para um depoimento de cliente.
-              </blockquote>
-              <figcaption className="text-sm">
-                Depoimentos reais serão publicados aqui após o lançamento.
-              </figcaption>
-            </figure>
-          ))}
+        <div className="mt-8">
+          <Link
+            href="#mapas"
+            className={buttonVariants({ size: "lg" }) + " h-12 px-6 text-base"}
+          >
+            {CTA}
+          </Link>
         </div>
       </section>
+
+      {/* Depoimentos: só aparecem quando houver depoimentos reais em lib/site-config.ts */}
+      {TESTIMONIALS.length > 0 && (
+        <section
+          aria-labelledby="titulo-depoimentos"
+          className="mx-auto w-full max-w-6xl px-4 py-14"
+        >
+          <h2 id="titulo-depoimentos" className="text-4xl font-semibold">
+            O que dizem os clientes
+          </h2>
+          <div className="mt-8 grid gap-6 md:grid-cols-3">
+            {TESTIMONIALS.map((t) => (
+              <figure
+                key={t.author}
+                className="bg-card border-border grid gap-3 rounded-xl border p-6"
+              >
+                <blockquote className="leading-relaxed">“{t.quote}”</blockquote>
+                <figcaption className="text-muted-foreground text-sm">
+                  {t.author} · {t.product}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* FAQ */}
       <section
@@ -227,6 +247,27 @@ export default async function Home() {
               </p>
             </details>
           ))}
+        </div>
+      </section>
+
+      {/* Chamada final */}
+      <section
+        aria-labelledby="titulo-final"
+        className="mx-auto w-full max-w-3xl px-4 py-16 text-center"
+      >
+        <h2
+          id="titulo-final"
+          className="text-4xl font-semibold text-balance sm:text-5xl"
+        >
+          O seu céu já está escrito. Falta você ler.
+        </h2>
+        <div className="mt-8">
+          <Link
+            href="#mapas"
+            className={buttonVariants({ size: "lg" }) + " h-12 px-6 text-base"}
+          >
+            {CTA}
+          </Link>
         </div>
       </section>
     </>

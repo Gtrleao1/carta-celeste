@@ -8,6 +8,8 @@ export type Product = {
   id: string;
   slug: string;
   name: string;
+  /** A pergunta que o mapa responde, ex.: "Quem eu sou?". */
+  tagline: string;
   short_description: string;
   long_description: string;
   price_cents: number;
@@ -22,7 +24,7 @@ export type Product = {
 // têm permissão de leitura para o navegador (migração 8): a vitrine só usa os
 // títulos, que vêm de `section_titles`.
 const COLUMNS =
-  "id, slug, name, short_description, long_description, price_cents, age_restricted, section_titles, focus_points, sample_excerpt";
+  "id, slug, name, tagline, short_description, long_description, price_cents, age_restricted, section_titles, focus_points, sample_excerpt";
 
 type Row = Omit<Product, "sections"> & {
   section_titles: { key: string; title: string }[] | null;

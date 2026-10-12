@@ -46,7 +46,8 @@ ser resolvido antes de vender de verdade**. Ao concluir um item, apague-o daqui.
       jurídica e preencher `lib/site-config.ts` (razão social, CNPJ, e-mail).
 - [ ] **Política de reembolso:** o texto atual cita o arrependimento de 7 dias
       do CDC. Confirmar que é a política desejada.
-- [ ] **Depoimentos reais** no lugar dos cartões "espaço reservado" da home.
+- [ ] **Depoimentos reais**: a seção da home está oculta. Para exibir, preencher
+      `TESTIMONIALS` em `lib/site-config.ts` (com autorização de quem deu).
 - [ ] Preços finais e eventual desconto de lançamento; domínio da marca (registro.br
       e INPI); CNPJ para a conta de vendedor e notas fiscais.
 - [ ] Sistema de casas padrão: Placidus (atual) ou casas iguais.

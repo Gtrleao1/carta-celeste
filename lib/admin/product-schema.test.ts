@@ -12,6 +12,7 @@ const baseForm = () => {
   const f = new FormData();
   f.set("slug", "mapa-da-carreira");
   f.set("name", "Mapa da Carreira");
+  f.set("tagline", "O que eu vim fazer?");
   f.set("short_description", "Vocação e trabalho.");
   f.set("long_description", "");
   f.set("price", "59,90");
@@ -74,6 +75,7 @@ describe("parseProductForm", () => {
     expect(r.success).toBe(true);
     if (!r.success) return;
     expect(r.data.price).toBe(5990);
+    expect(r.data.tagline).toBe("O que eu vim fazer?");
     expect(r.data.active).toBe(true);
     expect(r.data.age_restricted).toBe(false);
     expect(r.data.focus_points).toEqual(["Meio do Céu", "Casa 10"]);

@@ -16,6 +16,7 @@ export type ProductFormValues = {
   id?: string;
   slug: string;
   name: string;
+  tagline: string;
   short_description: string;
   long_description: string;
   price: string;
@@ -31,6 +32,7 @@ export type ProductFormValues = {
 export const EMPTY_PRODUCT: ProductFormValues = {
   slug: "",
   name: "",
+  tagline: "",
   short_description: "",
   long_description: "",
   price: "",
@@ -135,6 +137,13 @@ export function ProductForm({ initial }: { initial: ProductFormValues }) {
           defaultValue={initial.slug}
           hint="Aparece na URL: /mapa/seu-endereco. Só letras minúsculas, números e hífens."
           autoCapitalize="none"
+          state={state}
+        />
+        <Field
+          name="tagline"
+          label="Pergunta do mapa"
+          defaultValue={initial.tagline}
+          hint="Aparece em destaque no cartão da vitrine, ex.: Quem eu sou?"
           state={state}
         />
         <Field

@@ -81,6 +81,7 @@ export const productSchema = z.object({
     .trim()
     .min(2, "Informe o nome.")
     .max(80, "No máximo 80 caracteres."),
+  tagline: z.string().trim().max(60, "No máximo 60 caracteres.").default(""),
   short_description: z
     .string()
     .trim()
@@ -149,6 +150,7 @@ export function parseProductForm(formData: FormData) {
   return productSchema.safeParse({
     slug: text("slug"),
     name: text("name"),
+    tagline: text("tagline"),
     short_description: text("short_description"),
     long_description: text("long_description"),
     price: text("price"),

@@ -21,7 +21,7 @@ export default async function EditProductPage({
   const { data: p } = await createAdminClient()
     .from("products")
     .select(
-      "id, slug, name, short_description, long_description, price_cents, active, age_restricted, sort_order, ai_instructions, focus_points, sample_excerpt, report_sections",
+      "id, slug, name, tagline, short_description, long_description, price_cents, active, age_restricted, sort_order, ai_instructions, focus_points, sample_excerpt, report_sections",
     )
     .eq("id", id)
     .maybeSingle();
@@ -67,6 +67,7 @@ export default async function EditProductPage({
           id: p.id,
           slug: p.slug,
           name: p.name,
+          tagline: p.tagline,
           short_description: p.short_description,
           long_description: p.long_description,
           price: centsToPriceInput(p.price_cents),

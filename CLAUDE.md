@@ -66,11 +66,18 @@ Next.js (App Router) + TypeScript estrito, Tailwind CSS 4 + shadcn/ui, Supabase 
 - Retentativas: máx. 3 por seção (`MAX_ATTEMPTS`); esgotadas, o pedido vira `failed` e `reports.error` guarda só uma categoria (`secao_<chave>_falhou_<tipo>`). Nenhuma instrução nem erro bruto vai para `sections` (o cliente lê o próprio relatório pela RLS).
 - Rede de segurança: `GET /api/pedidos/[id]/status` chama `needsResume` (`resume.ts`) e, se o pedido pago nunca começou ou parou há mais de 3 min, dispara o job de novo (no máximo 1 vez a cada 30 s por pedido).
 - Chave da IA recusada (`autenticacao`): o passo **pausa** (`state: "paused"`) sem gastar tentativas, sem encadear novo job e sem falhar o pedido, que fica `generating`; corrigida a chave, a página de status retoma sozinha (uma chamada falha por vez enquanto não for corrigida). Variável nova na Vercel só vale após redeploy.
+- **A IA não conta.** `chart-summary.ts` entrega as contagens prontas (CONCENTRAÇÕES por signo e casa, ELEMENTOS e MODALIDADES, cada uma com os nomes) só dos 10 planetas: o Nodo Norte é ponto, não planeta, e nunca entra em contagem. O prompt de sistema proíbe contar/agrupar por conta própria. Motivo: a IA já escreveu "quatro planetas em Capricórnio" citando três e misturando o Nodo Norte. Teste em `report-text.test.ts`.
 - Sem hora de nascimento: seções com `needs_houses` viram um texto explicativo, sem chamar a IA.
 - Privacidade: `chart-summary.ts` só tem posições calculadas (sem nome, e-mail, data, hora, local ou coordenadas); há teste que garante isso.
 - Modelo (`claude-sonnet-5-5`): sem `temperature`/`top_p`/prefill; `thinking: {type: "between_tools"}` (`disabled` dá 400); beta `server-side-fallback-2026-07-01` com `fallbacks: "default"`. Medido em 2026-10-08: relatório de 10 seções em ~60 s, ~6.400 palavras, ~US$ 0,20.
 - `npm run try:report -- <orderId> [saida.md]` gera um relatório de verdade num pedido de teste (gasta créditos e **reinicia** o relatório do pedido; não envia e-mails).
 - E-mail: `RESEND_FROM_EMAIL` (domínio verificado). Sem `RESEND_API_KEY` o envio é pulado com aviso, nunca derruba a geração.
+
+## Copy da landing page
+
+- Texto da home em `app/(site)/page.tsx` (copy v2: produto é "seu mapa astral" / "Carta Celeste"). O cartão de cada produto usa `products.tagline` (a pergunta, ex.: "Quem eu sou?"), a descrição curta e os pontos de foco, todos editáveis no admin; o botão é "Quero meu {nome do produto}". "A partir de R$ X" vem do menor preço ativo.
+- **Depoimentos:** a seção só aparece se `TESTIMONIALS` em `lib/site-config.ts` tiver itens. Só depoimentos reais e autorizados (inventar é publicidade enganosa).
+- A IA não é destaque nos títulos, mas a FAQ "Como o mapa é calculado?" diz que o texto é redigido com apoio de IA (coerente com Termos e Política de Privacidade). Não remover sem decisão jurídica.
 
 ## Área do cliente e admin (Etapa 7)
 
