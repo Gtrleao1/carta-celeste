@@ -198,6 +198,10 @@ describe("prompts", () => {
     expect(s).toContain("CONCENTRAÇÕES");
     expect(s).toMatch(/Nodo Norte e os ângulos .* não são planetas/);
     expect(s).toContain("bloco fechado sobre UM único tema");
+    expect(s).toContain("terminar com uma DIREÇÃO");
+    expect(s).toContain(
+      "habilidades ou atitudes que a pessoa pode desenvolver",
+    );
     expect(s).toContain(
       "abra apresentando o tema, desenvolva e conclua dentro dele",
     );
