@@ -17,5 +17,9 @@ export default defineConfig({
     environment: "node",
     include: ["**/*.test.{ts,tsx}"],
     exclude: ["node_modules", ".next", "e2e"],
+    // Os testes de integração falam com o Supabase real: com 200-600 ms por
+    // consulta, um teste de 10 seções passa fácil dos 5 s padrão.
+    testTimeout: 30_000,
+    hookTimeout: 60_000,
   },
 });
