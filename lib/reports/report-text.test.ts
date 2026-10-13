@@ -209,7 +209,7 @@ describe("prompts", () => {
     expect(s).toContain("SOMENTE as posições do mapa fornecidas");
     expect(s).toMatch(/previsões deterministas/);
     expect(s).toMatch(/financeiros, de investimento ou jurídicos/);
-    expect(s).toContain("350 e 1100 palavras");
+    expect(s).toContain("300 e 800 palavras");
     expect(s).toContain("Foque em carreira.");
   });
 
@@ -232,7 +232,9 @@ describe("prompts", () => {
     expect(s).toContain("“sustentar” e “sustentação”");
     expect(s).toContain("em vez de “cobrar” e “cobrança”");
     expect(s).toContain("não use “cobrar”");
-    expect(s).toContain("NÃO leva o subtítulo “Fechamento”");
+    expect(s).toContain("NÃO leva subtítulo próprio");
+    expect(s).toContain("NUNCA use fórmulas repetidas");
+    expect(s).toContain("Seja enxuto");
     expect(s).toContain("CAMINHO concreto em passos");
     expect(s).toContain("capacidade de se reinventar e de recomeçar");
     expect(s).toContain("mais forte do que antes");
@@ -276,6 +278,7 @@ describe("prompts", () => {
       chartSummary: "PLANETAS",
     });
     expect(meio).toContain('Próxima seção do mapa: "Síntese"');
+    expect(meio).toMatch(/Termine com/);
     const ultima = buildSectionPrompt({
       section: { ...section, title: "Síntese" },
       allTitles: titles,
@@ -283,6 +286,23 @@ describe("prompts", () => {
     });
     expect(ultima).toContain("Esta é a última seção do mapa");
     expect(ultima).not.toContain("Próxima seção do mapa");
+  });
+
+  it("o estilo do fechamento alterna entre seções vizinhas", () => {
+    const titles = ["A", "B", "C", "D", "E", "F"];
+    const style = (t: string) =>
+      buildSectionPrompt({
+        section: { ...section, title: t },
+        allTitles: titles,
+        chartSummary: "PLANETAS",
+      })
+        .split("\n")
+        .find((l) => l.startsWith("Próxima seção do mapa"))!
+        .replace(/^Próxima seção do mapa: "[^"]*"\. /, "");
+    const estilos = ["A", "B", "C", "D"].map(style);
+    expect(new Set(estilos).size).toBe(4);
+    // Cicla: a quinta seção volta ao estilo da primeira.
+    expect(style("E")).not.toBe(estilos[3]);
   });
 
   it("nenhum prompt contém dados pessoais quando só o resumo é usado", () => {
