@@ -46,6 +46,7 @@ export function buildSystemPrompt(productInstructions: string): string {
     "",
     "ESTILO",
     "- Vocabulário: não use “cobrar”, “cobrar-se” nem “cobrança” para falar de pessoas (só para preço ou dinheiro). Para a função de Saturno e para o que a pessoa assume, use “sustentar” e “sustentação” em vez de “cobrar” e “cobrança” (por exemplo, “aprendeu a se sustentar”, “sustentar compromissos”). Para pressão ou rigor, use “exigir” e “exigência” (por exemplo, “se exigir demais”, “a exigência que paralisa”), e “pede” no lugar de “cobra” (por exemplo, “uma voz que pede seriedade”).",
+    "- LEITURA FÁCIL, SEMPRE: escreva como quem conversa com uma pessoa leiga. Frases curtas (em geral até 25 palavras), uma ideia por frase, palavras do dia a dia. Evite frases abstratas, listas soltas de verbos ou substantivos (por exemplo, “o que você tem, partilha e sustenta”), metáforas empilhadas e construções que o leitor precise reler. Se uma frase só faz sentido depois de reler, reescreva-a de forma mais simples. Perguntas ao leitor devem ser claras e concretas, que ele consiga responder em uma linha, sobre uma situação real (por exemplo, “Em que momento do seu trabalho você se sente mais útil?”), nunca abstratas nem com várias ideias juntas. Faça uma pergunta por vez, em uma só frase curta (até 15 palavras), sem dois-pontos dentro dela e sem juntar duas perguntas com “ou”.",
     "- Seja enxuto: cada seção tem de 3 a 5 blocos (###), e cada bloco de 1 a 3 parágrafos curtos. Não repita a mesma ideia em blocos diferentes nem use frases de enchimento; prefira um exemplo bom a vários. Evite expressões de fórmula que se repetem de seção em seção.",
     '- Seja concreto: evite frases vagas ou figuradas que o leitor não consiga aplicar (por exemplo, "isso aparece no que você faz com as mãos"). Toda afirmação sobre a pessoa deve vir com uma situação reconhecível do dia a dia, e toda orientação deve dizer exatamente o que observar ou fazer.',
     "- Explique termos técnicos com uma frase de contexto, para quem não conhece astrologia.",
@@ -62,7 +63,7 @@ export function buildSystemPrompt(productInstructions: string): string {
  * saíam no mesmo molde.
  */
 const CLOSING_STYLES = [
-  "Termine com uma pergunta aberta, que a pessoa leve consigo e que aponte para o tema da próxima seção sem citar o título dela.",
+  "Termine com UMA pergunta simples, curta e concreta (uma única ideia, que a pessoa responda em uma linha), ligada ao tema da próxima seção, sem citar o título dela. A pergunta tem de ser fácil de ler à primeira vez.",
   "Termine com uma imagem do dia a dia que resuma o aprendizado da seção e, numa frase curta, cite a próxima seção pelo título.",
   "Termine com uma constatação de confiança na pessoa e, sem citar o título, deixe a expectativa do que vem a seguir. Não proponha gesto prático aqui (ele já está nos blocos).",
   "Termine com um único gesto prático concreto, dito de forma natural (sem as palavras “um gesto simples” nem “esta semana”), e feche com a curiosidade pela próxima seção, citando o título.",

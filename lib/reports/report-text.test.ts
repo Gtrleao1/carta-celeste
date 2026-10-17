@@ -235,6 +235,9 @@ describe("prompts", () => {
     expect(s).toContain("NÃO leva subtítulo próprio");
     expect(s).toContain("NUNCA use fórmulas repetidas");
     expect(s).toContain("Seja enxuto");
+    expect(s).toContain("LEITURA FÁCIL, SEMPRE");
+    expect(s).toContain("Perguntas ao leitor devem ser claras e concretas");
+    expect(s).toContain("Faça uma pergunta por vez");
     expect(s).toContain("CAMINHO concreto em passos");
     expect(s).toContain("capacidade de se reinventar e de recomeçar");
     expect(s).toContain("mais forte do que antes");
