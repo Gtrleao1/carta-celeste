@@ -40,6 +40,10 @@ ser resolvido antes de vender de verdade**. Ao concluir um item, apague-o daqui.
       Resend só entrega ao dono da conta.
 - [ ] Conferir o limite de uso da conta Anthropic antes do lançamento.
 
+## Produtos
+
+- [ ] **Reformular e reativar o Mapa Profissional e o Mapa do Amor e Sexo.** Estão inativos desde a migração 24 (o site vende só o Mapa Astral Completo). Há versões revisadas à mão do Profissional como referência; o Amor ainda não foi revisado. Antes de reativar, reescrever as instruções das seções no formato do Completo.
+
 ## Jurídico e conteúdo
 
 - [ ] **Termos de Uso e Política de Privacidade** são texto-base: revisão

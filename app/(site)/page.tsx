@@ -3,6 +3,7 @@ import { Suspense } from "react";
 
 import { ChartWheel } from "@/components/chart/chart-wheel";
 import { DeletedNotice } from "@/components/site/deleted-notice";
+import { FeaturedProduct } from "@/components/site/featured-product";
 import { ProductCard } from "@/components/site/product-card";
 import { buttonVariants } from "@/components/ui/button";
 import { formatBRL } from "@/lib/format";
@@ -15,7 +16,11 @@ export const revalidate = 300;
 
 const CTA = "Quero minha Carta Celeste";
 
-const STEPS = [
+// Seções abaixo da dobra: o navegador só calcula estilo e layout delas quando
+// chegam perto da tela (menos trabalho no carregamento).
+const DEFER = "[content-visibility:auto] [contain-intrinsic-size:auto_900px]";
+
+const STEPS_MANY = [
   {
     title: "Escolha o seu mapa",
     text: "Visão geral, carreira ou amor. Comece pela pergunta que mais importa para você agora.",
@@ -23,6 +28,22 @@ const STEPS = [
   {
     title: "Conte quem você é e quando nasceu",
     text: "Seu nome, a data, a hora e a cidade de nascimento. A hora é o detalhe que mais personaliza o mapa: é ela que define o seu Ascendente. Confira na sua certidão de nascimento. Se não souber, dá para seguir sem ela, e o mapa sai mais curto.",
+  },
+  {
+    title: "Receba o seu mapa astral",
+    text: "Calculamos o seu céu com precisão astronômica e, em poucos minutos, sua Carta Celeste fica pronta na sua área do cliente para ler, reler e imprimir.",
+  },
+];
+
+// Com um único mapa à venda não há o que escolher: o primeiro passo é contar quando nasceu.
+const STEPS_ONE = [
+  {
+    title: "Conte quem você é e quando nasceu",
+    text: "Seu nome, a data, a hora e a cidade de nascimento. A hora é o detalhe que mais personaliza o mapa: é ela que define o seu Ascendente. Confira na sua certidão de nascimento. Se não souber, dá para seguir sem ela, e o mapa sai mais curto.",
+  },
+  {
+    title: "Confira e pague",
+    text: "Você revisa o resumo dos seus dados antes de pagar, para não haver erro. O pagamento é por Pix, boleto ou cartão em até 12x, pelo Mercado Pago.",
   },
   {
     title: "Receba o seu mapa astral",
@@ -70,6 +91,19 @@ export default async function Home() {
   const lowestPrice = products.length
     ? Math.min(...products.map((p) => p.price_cents))
     : null;
+  // Um único mapa à venda: a home vende só ele (vitrine em destaque, passos sem "escolha").
+  const single = products.length === 1 ? products[0] : null;
+  const steps = single ? STEPS_ONE : STEPS_MANY;
+  const faq = single
+    ? [
+        {
+          q: "O que está incluído no meu mapa?",
+          a: `Uma leitura completa em ${single.sections.length} partes: Sol, Lua, Ascendente, planetas, casas e aspectos, com a roda do seu mapa e as tabelas de posições. Tudo fica na sua área do cliente, para ler no celular ou imprimir.`,
+        },
+        ...FAQ,
+      ]
+    : FAQ;
+  const buyHref = single ? `/comprar/${single.slug}` : "#mapas";
 
   return (
     <>
@@ -113,8 +147,8 @@ export default async function Home() {
           </div>
           {lowestPrice !== null && (
             <p className="text-muted-foreground text-sm">
-              A partir de {formatBRL(lowestPrice)} · Pix, boleto ou cartão em
-              até 12x
+              {single ? "" : "A partir de "}
+              {formatBRL(lowestPrice)} · Pix, boleto ou cartão em até 12x
             </p>
           )}
         </div>
@@ -131,16 +165,20 @@ export default async function Home() {
       <section
         id="mapas"
         aria-labelledby="titulo-mapas"
-        className="mx-auto w-full max-w-6xl scroll-mt-20 px-4 py-14"
+        className={`mx-auto w-full max-w-6xl scroll-mt-20 px-4 py-14 ${DEFER}`}
       >
         <h2 id="titulo-mapas" className="text-4xl font-semibold">
-          Escolha o seu mapa
+          {single ? single.name : "Escolha o seu mapa"}
         </h2>
-        <p className="text-muted-foreground mt-2 max-w-prose text-lg">
-          Cada mapa responde a uma pergunta diferente. Todos são calculados para
-          o dia, a hora e a cidade em que você nasceu.
-        </p>
-        {products.length > 0 ? (
+        {!single && (
+          <p className="text-muted-foreground mt-2 max-w-prose text-lg">
+            Cada mapa responde a uma pergunta diferente. Todos são calculados
+            para o dia, a hora e a cidade em que você nasceu.
+          </p>
+        )}
+        {single ? (
+          <FeaturedProduct product={single} />
+        ) : products.length > 0 ? (
           <div className="mt-8 grid gap-6 md:grid-cols-3">
             {products.map((p) => (
               <ProductCard key={p.id} product={p} />
@@ -157,13 +195,13 @@ export default async function Home() {
       <section
         id="como-funciona"
         aria-labelledby="titulo-como"
-        className="mx-auto w-full max-w-6xl scroll-mt-20 px-4 py-14"
+        className={`mx-auto w-full max-w-6xl scroll-mt-20 px-4 py-14 ${DEFER}`}
       >
         <h2 id="titulo-como" className="text-4xl font-semibold">
           Sua Carta Celeste em 3 passos
         </h2>
         <ol className="mt-8 grid gap-6 md:grid-cols-3">
-          {STEPS.map((step, i) => (
+          {steps.map((step, i) => (
             <li
               key={step.title}
               className="bg-card border-border grid gap-3 rounded-xl border p-6"
@@ -183,7 +221,7 @@ export default async function Home() {
         </ol>
         <div className="mt-8">
           <Link
-            href="#mapas"
+            href={buyHref}
             className={buttonVariants({ size: "lg" }) + " h-12 px-6 text-base"}
           >
             {CTA}
@@ -220,13 +258,13 @@ export default async function Home() {
       <section
         id="perguntas"
         aria-labelledby="titulo-faq"
-        className="mx-auto w-full max-w-3xl scroll-mt-20 px-4 py-14"
+        className={`mx-auto w-full max-w-3xl scroll-mt-20 px-4 py-14 ${DEFER}`}
       >
         <h2 id="titulo-faq" className="text-4xl font-semibold">
           Perguntas frequentes
         </h2>
         <div className="mt-8 grid gap-3">
-          {FAQ.map((item) => (
+          {faq.map((item) => (
             <details
               key={item.q}
               className="bg-card border-border group rounded-xl border px-5 py-4 open:pb-5"
@@ -253,7 +291,7 @@ export default async function Home() {
       {/* Chamada final */}
       <section
         aria-labelledby="titulo-final"
-        className="mx-auto w-full max-w-3xl px-4 py-16 text-center"
+        className={`mx-auto w-full max-w-3xl px-4 py-16 text-center ${DEFER}`}
       >
         <h2
           id="titulo-final"
@@ -263,7 +301,7 @@ export default async function Home() {
         </h2>
         <div className="mt-8">
           <Link
-            href="#mapas"
+            href={buyHref}
             className={buttonVariants({ size: "lg" }) + " h-12 px-6 text-base"}
           >
             {CTA}

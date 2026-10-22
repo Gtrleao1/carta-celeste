@@ -12,7 +12,7 @@ export function SiteFooter() {
           </p>
           <nav aria-label="Rodapé" className="flex flex-wrap gap-x-5 gap-y-2">
             <Link href="/#mapas" className="hover:underline">
-              Mapas
+              Seu mapa
             </Link>
             <Link href="/#como-funciona" className="hover:underline">
               Como funciona

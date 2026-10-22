@@ -62,14 +62,14 @@ export default async function MeusMapasPage() {
         <div className="border-border grid gap-4 rounded-xl border p-6">
           <p className="text-lg">Você ainda não tem mapas.</p>
           <p className="text-muted-foreground">
-            Escolha o mapa que combina com o seu momento. O mapa astral fica
+            Quando você pedir o seu mapa astral, ele aparece aqui. Ele fica
             pronto em poucos minutos depois do pagamento.
           </p>
           <Link
             href="/#mapas"
             className={buttonVariants({ size: "lg" }) + " h-12 w-fit text-base"}
           >
-            Ver os mapas
+            Ver o mapa
           </Link>
         </div>
       ) : (

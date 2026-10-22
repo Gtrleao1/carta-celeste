@@ -48,7 +48,7 @@ export default async function ProductPage({
             href="/#mapas"
             className="text-muted-foreground hover:text-foreground w-fit text-sm underline underline-offset-4"
           >
-            ← Todos os mapas
+            ← Voltar ao início
           </Link>
           <h1 className="text-5xl leading-tight font-semibold text-balance">
             {product.name}

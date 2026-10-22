@@ -23,7 +23,7 @@ export function SiteHeader() {
             href="/#mapas"
             className="text-muted-foreground hover:text-foreground hidden rounded-md px-3 py-2 text-sm sm:block"
           >
-            Mapas
+            Seu mapa
           </Link>
           <Link
             href="/#como-funciona"
