@@ -6,6 +6,7 @@ Loja online brasileira de relatórios astrológicos personalizados. A fonte de v
 
 ## Regras inegociáveis
 
+- **Método de cálculo documentado em `docs/metodo-de-calculo-do-mapa-astral.md`** (passo a passo, convenções, validação e limitações). Mantenha-o em dia ao mexer em `lib/astro/`.
 - **A IA nunca calcula posições astrológicas.** Todo cálculo (planetas, ascendente, MC, casas, aspectos, regentes) vive em `lib/astro/` e roda só no servidor. A IA apenas recebe o `chart_data` pronto e escreve o texto.
 - **Não reescrever o núcleo de cálculo** (seção "Motor de cálculo astrológico" do PRD) sem que os testes de referência continuem passando, com tolerância de ±1′ de arco.
 - **Todo texto visível ao usuário em português do Brasil** (interface, e-mails, erros, metadados). Código, nomes de variáveis e commits podem ficar em inglês.
