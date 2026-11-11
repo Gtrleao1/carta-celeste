@@ -34,10 +34,10 @@ ser resolvido antes de vender de verdade**. Ao concluir um item, apague-o daqui.
       recusado (`cc_rejected_*` aparece em português), boleto, Pix (quando ativo)
       e troca de meio com Pix em aberto. O Brick roda em iframe do Mercado Pago e
       não dá para automatizar; testar no navegador.
-- [ ] A migração 25 (`20261111000025_bricks_e_rastreamento.sql`) precisa ser
-      aplicada (`npx.cmd supabase@latest db push --remote --yes`). O projeto
-      estava **pausado** (INACTIVE) em 11/11/2026 e o deploy do Bricks depende
-      dela: sem as colunas novas, `/api/pagamento` falha.
+- [ ] **Supabase no plano gratuito pausa por inatividade** (aconteceu em
+      11/11/2026; reativar leva ~3 min). Em produção, usar o plano Pro. A
+      migração 25 já está aplicada. Atenção: no Supabase CLI novo, `db push`
+      precisa de `--remote` (`npx.cmd supabase@latest db push --remote --yes`).
 
 ## Rastreamento (Meta e Google)
 
