@@ -52,9 +52,20 @@ export const shouldKeepPolling = (view: OrderView) => !isFinal(view);
 export const isWaiting = (view: OrderView) =>
   view === "confirming" || view === "in_review";
 
-/** Por quanto tempo a página consulta: a escrita do relatório leva mais que a confirmação. */
-export const pollLimitMs = (view: OrderView) =>
-  view === "approved" ? 10 * 60 * 1000 : 2 * 60 * 1000;
+/** Pix e boleto: a pessoa paga depois, no app do banco; a confirmação demora mais que a do cartão. */
+export const isOfflinePayment = (paymentType: string | null | undefined) =>
+  paymentType === "bank_transfer" || paymentType === "ticket";
+
+/**
+ * Por quanto tempo a página consulta: a escrita do mapa leva mais que a
+ * confirmação, e Pix/boleto aguardam o pagamento da pessoa.
+ */
+export const pollLimitMs = (view: OrderView, paymentType?: string | null) => {
+  if (view === "approved") return 10 * 60 * 1000;
+  if (view === "in_review" && isOfflinePayment(paymentType))
+    return 30 * 60 * 1000;
+  return 2 * 60 * 1000;
+};
 
 /** Progresso do relatório (0–100) a partir das seções prontas; null se ainda não há total. */
 export function progressPercent(done: number, total: number): number | null {

@@ -2,6 +2,7 @@ import { after } from "next/server";
 import { z } from "zod";
 
 import { triggerReportGeneration } from "@/lib/jobs/trigger";
+import { afterOrderPaid } from "@/lib/orders/on-paid";
 import { createNotificationDeps } from "@/lib/payments/deps";
 import { findMpPaymentIds, getMpPayment } from "@/lib/payments/mercadopago";
 import { reconcileOrder } from "@/lib/payments/reconcile";
@@ -57,9 +58,7 @@ export async function GET(
           ...createNotificationDeps(admin, getMpPayment, "reconciliacao"),
           findPaymentIds: findMpPaymentIds,
         });
-        if (results.some((r) => r.triggerJob)) {
-          after(() => triggerReportGeneration(id));
-        }
+        if (results.some((r) => r.triggerJob)) afterOrderPaid(id);
         const { data: fresh } = await admin
           .from("orders")
           .select("status, mp_status")

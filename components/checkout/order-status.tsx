@@ -1,11 +1,16 @@
 "use client";
 
+import { StatusScreen } from "@mercadopago/sdk-react";
+import { useTheme } from "next-themes";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
+import { useMercadoPago } from "@/components/checkout/use-mercado-pago";
+import { TrackPurchase } from "@/components/tracking/track-view";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
+  isOfflinePayment,
   isWaiting,
   orderView,
   pollLimitMs,
@@ -51,18 +56,58 @@ const COPY: Record<OrderView, { title: string; text: string }> = {
   },
 };
 
+/**
+ * Pix e boleto aguardando pagamento: o próprio Mercado Pago mostra o QR code,
+ * o "copia e cola" ou o link do boleto, sem tirar a pessoa do site.
+ */
+function PendingPayment({
+  paymentId,
+  publicKey,
+}: {
+  paymentId: string;
+  publicKey: string;
+}) {
+  const { resolvedTheme } = useTheme();
+  const ready = useMercadoPago(publicKey);
+  if (!ready) return null;
+  return (
+    <StatusScreen
+      key={resolvedTheme}
+      initialization={{ paymentId }}
+      customization={{
+        visual: {
+          style: { theme: resolvedTheme === "light" ? "default" : "dark" },
+        },
+      }}
+    />
+  );
+}
+
 export function OrderStatus({
   orderId,
   productName,
   productSlug,
   initialStatus,
   initialMpStatus,
+  paymentId = null,
+  paymentType = null,
+  publicKey = null,
+  purchase = null,
 }: {
   orderId: string;
   productName: string;
   productSlug: string;
   initialStatus: string;
   initialMpStatus: string | null;
+  /** Último pagamento criado no site (Payment Brick). */
+  paymentId?: string | null;
+  paymentType?: string | null;
+  publicKey?: string | null;
+  /** Dados da compra para avisar as plataformas quando ela for confirmada. */
+  purchase?: {
+    value: number;
+    item: { item_id: string; item_name: string; price: number };
+  } | null;
 }) {
   const [status, setStatus] = useState(initialStatus);
   const [mpStatus, setMpStatus] = useState(initialMpStatus);
@@ -73,7 +118,7 @@ export function OrderStatus({
 
   const view = orderView(status, mpStatus);
   const polling = shouldKeepPolling(view);
-  const limitMs = pollLimitMs(view);
+  const limitMs = pollLimitMs(view, paymentType);
 
   // Consulta o banco já ao abrir e depois a cada 3 s (2 min na confirmação, 10 min
   // enquanto o mapa astral é escrito). Segue consultando mesmo mostrando "recusado":
@@ -166,6 +211,24 @@ export function OrderStatus({
         </p>
         <p className="text-muted-foreground text-sm">{productName}</p>
       </div>
+
+      {purchase &&
+        (view === "approved" ||
+          view === "ready" ||
+          view === "preparing_failed") && (
+          <TrackPurchase
+            orderId={orderId}
+            value={purchase.value}
+            item={purchase.item}
+          />
+        )}
+
+      {view === "in_review" &&
+        isOfflinePayment(paymentType) &&
+        paymentId &&
+        publicKey && (
+          <PendingPayment paymentId={paymentId} publicKey={publicKey} />
+        )}
 
       {isWaiting(view) && !gaveUp && (
         <p className="text-muted-foreground flex items-center gap-2 text-sm">

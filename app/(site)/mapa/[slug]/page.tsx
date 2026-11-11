@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 
 import { ChartWheel } from "@/components/chart/chart-wheel";
 import { MiniMarkdown } from "@/components/site/mini-markdown";
+import { TrackViewContent } from "@/components/tracking/track-view";
 import { buttonVariants } from "@/components/ui/button";
 import { formatBRL } from "@/lib/format";
 import { getActiveProducts, getProductBySlug } from "@/lib/products";
@@ -42,6 +43,14 @@ export default async function ProductPage({
 
   return (
     <article className="mx-auto grid w-full max-w-6xl gap-10 px-4 py-10 lg:grid-cols-[1fr_380px] lg:gap-14 lg:py-14">
+      <TrackViewContent
+        value={product.price_cents / 100}
+        item={{
+          item_id: product.id,
+          item_name: product.name,
+          price: product.price_cents / 100,
+        }}
+      />
       <div className="grid content-start gap-10">
         <header className="grid gap-4">
           <Link

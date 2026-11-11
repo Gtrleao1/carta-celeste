@@ -27,14 +27,16 @@ export default async function RetornoPage({
   // o status vem sempre do banco. A RLS só deixa ver pedidos do próprio usuário.
   const { data: order } = await supabase
     .from("orders")
-    .select("id, status, mp_status, product_id")
+    .select(
+      "id, status, mp_status, product_id, amount_cents, mp_last_payment_id, payment_method",
+    )
     .eq("id", id)
     .maybeSingle();
   if (!order) notFound();
 
   const { data: product } = await supabase
     .from("products")
-    .select("name, slug")
+    .select("id, name, slug")
     .eq("id", order.product_id)
     .maybeSingle();
 
@@ -46,6 +48,17 @@ export default async function RetornoPage({
         productSlug={product?.slug ?? ""}
         initialStatus={order.status}
         initialMpStatus={order.mp_status}
+        paymentId={order.mp_last_payment_id}
+        paymentType={order.payment_method}
+        publicKey={process.env.NEXT_PUBLIC_MERCADOPAGO_PUBLIC_KEY ?? null}
+        purchase={{
+          value: order.amount_cents / 100,
+          item: {
+            item_id: product?.id ?? order.product_id,
+            item_name: product?.name ?? "Mapa astral",
+            price: order.amount_cents / 100,
+          },
+        }}
       />
     </div>
   );

@@ -20,6 +20,11 @@ export type CheckoutParams = {
   siteUrl: string;
   createPreference: typeof createMpPreference;
   /**
+   * `bricks`: o pagamento é feito dentro do site, em `/pedido/[id]/pagar`.
+   * `pro` (padrão): cria a preferência e leva ao Checkout Pro do Mercado Pago.
+   */
+  mode?: "bricks" | "pro";
+  /**
    * Antes de abrir uma nova tentativa de pagamento, confere no Mercado Pago se
    * o pedido já tem um pagamento aprovado (e, se tiver, marca como pago). Evita
    * cobrar duas vezes quem já pagou e ainda não viu a confirmação.
@@ -186,6 +191,12 @@ async function startPayment(
   p: CheckoutParams,
   o: { orderId: string; productId: string; title: string; amountCents: number },
 ): Promise<CheckoutResult> {
+  // Pagamento dentro do site: nada a criar no Mercado Pago agora; o pagamento
+  // nasce quando a pessoa confirma no Payment Brick (`POST /api/pagamento`).
+  if (p.mode === "bricks") {
+    return { ok: true, url: `/pedido/${o.orderId}/pagar`, orderId: o.orderId };
+  }
+
   try {
     const preference = await p.createPreference({
       orderId: o.orderId,

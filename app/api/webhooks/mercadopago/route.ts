@@ -1,6 +1,4 @@
-import { after } from "next/server";
-
-import { triggerReportGeneration } from "@/lib/jobs/trigger";
+import { afterOrderPaid } from "@/lib/orders/on-paid";
 import { createNotificationDeps } from "@/lib/payments/deps";
 import { processPaymentNotification } from "@/lib/payments/notification";
 import { handleMercadoPagoWebhook } from "@/lib/payments/webhook";
@@ -15,9 +13,8 @@ export async function POST(request: Request) {
         createNotificationDeps(createAdminClient()),
       );
       if (result.triggerJob && result.orderId) {
-        const orderId = result.orderId;
-        // Depois de responder 200: gerar o relatório é trabalho do job.
-        after(() => triggerReportGeneration(orderId));
+        // Depois de responder 200: gerar o mapa e avisar as plataformas.
+        afterOrderPaid(result.orderId);
       }
       return result;
     },

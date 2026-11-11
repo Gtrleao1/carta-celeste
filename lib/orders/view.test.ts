@@ -72,6 +72,14 @@ describe("orderView", () => {
     expect(pollLimitMs("approved")).toBeGreaterThan(pollLimitMs("confirming"));
   });
 
+  it("Pix e boleto esperam o pagamento da pessoa: a página consulta por mais tempo", () => {
+    expect(pollLimitMs("in_review", "bank_transfer")).toBe(30 * 60 * 1000);
+    expect(pollLimitMs("in_review", "ticket")).toBe(30 * 60 * 1000);
+    // Cartão em análise segue o prazo curto.
+    expect(pollLimitMs("in_review", "credit_card")).toBe(2 * 60 * 1000);
+    expect(pollLimitMs("in_review")).toBe(2 * 60 * 1000);
+  });
+
   it("progressPercent limita entre 0 e 100 e ignora total zero", () => {
     expect(progressPercent(0, 0)).toBeNull();
     expect(progressPercent(3, 10)).toBe(30);

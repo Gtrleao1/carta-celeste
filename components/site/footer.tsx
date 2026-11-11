@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { CookiePreferencesButton } from "@/components/tracking/cookie-preferences-button";
 import { DISCLAIMER, SITE } from "@/lib/site-config";
 
 export function SiteFooter() {
@@ -26,6 +27,7 @@ export function SiteFooter() {
             <Link href="/privacidade" className="hover:underline">
               Política de Privacidade
             </Link>
+            <CookiePreferencesButton />
           </nav>
         </div>
         <p className="text-muted-foreground max-w-3xl">{DISCLAIMER}</p>

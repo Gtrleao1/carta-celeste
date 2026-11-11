@@ -240,7 +240,7 @@ export function CheckoutFlow({
               }
               onClick={pay}
             >
-              {paying ? "Abrindo o pagamento…" : "Ir para o pagamento"}
+              {paying ? "Preparando o pagamento…" : "Ir para o pagamento"}
             </Button>
             <Button
               type="button"
@@ -254,8 +254,8 @@ export function CheckoutFlow({
             </Button>
           </div>
           <p className="text-muted-foreground text-xs">
-            Você será levado ao ambiente seguro do Mercado Pago. Não guardamos
-            os dados do seu cartão.
+            O pagamento é processado pelo Mercado Pago. Não guardamos os dados
+            do seu cartão.
           </p>
         </section>
       )}

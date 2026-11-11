@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { reprocessOrder } from "@/app/admin/actions";
+import { reprocessOrder, resendPurchaseEvent } from "@/app/admin/actions";
 import { StatusBadge } from "@/components/admin/status-badge";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
@@ -32,6 +32,17 @@ const SECTION_STATUS: Record<string, string> = {
   failed: "Falhou",
 };
 
+const CONVERSION_RESULT: Record<string, string> = {
+  enviado: "Conversão enviada.",
+  sem_consentimento:
+    "Não enviada: a pessoa não aceitou os cookies de medição e anúncios.",
+  sem_plataforma:
+    "Não enviada: nenhuma plataforma está configurada (veja as variáveis de ambiente).",
+  pedido_nao_pago: "Não enviada: o pedido não está pago.",
+  ja_enviado: "Já tinha sido enviada.",
+  falhou: "O envio falhou. Veja o registro abaixo e o log do servidor.",
+};
+
 const ERRORS: Record<string, string> = {
   reprocessar: "Não foi possível reprocessar. Veja o log do servidor.",
   estado: "Só pedidos pagos, em geração ou com falha podem ser reprocessados.",
@@ -52,24 +63,31 @@ export default async function AdminOrderPage({
   const { data: order } = await admin
     .from("orders")
     .select(
-      "id, status, amount_cents, user_id, created_at, paid_at, updated_at, mp_payment_id, mp_status, paid_via, product:products(name)",
+      "id, status, amount_cents, user_id, created_at, paid_at, updated_at, mp_payment_id, mp_status, paid_via, payment_method, purchase_tracked_at, product:products(name)",
     )
     .eq("id", id)
     .maybeSingle();
   if (!order) notFound();
 
-  const [{ data: report }, userResult] = await Promise.all([
-    admin
-      .from("reports")
-      .select(
-        "sections, error, input_tokens, output_tokens, house_system, lock_until, updated_at",
-      )
-      .eq("order_id", id)
-      .maybeSingle(),
-    order.user_id
-      ? admin.auth.admin.getUserById(order.user_id)
-      : Promise.resolve(null),
-  ]);
+  const [{ data: report }, userResult, { data: trackingEvents }] =
+    await Promise.all([
+      admin
+        .from("reports")
+        .select(
+          "sections, error, input_tokens, output_tokens, house_system, lock_until, updated_at",
+        )
+        .eq("order_id", id)
+        .maybeSingle(),
+      order.user_id
+        ? admin.auth.admin.getUserById(order.user_id)
+        : Promise.resolve(null),
+      admin
+        .from("tracking_events")
+        .select("id, platform, event_name, status, detail, created_at")
+        .eq("order_id", id)
+        .order("id", { ascending: false })
+        .limit(20),
+    ]);
 
   const product = order.product as unknown as { name: string } | null;
   const sections = (report?.sections ?? []) as {
@@ -103,6 +121,14 @@ export default async function AdminOrderPage({
           </AlertDescription>
         </Alert>
       )}
+      {typeof query.conversao === "string" &&
+        CONVERSION_RESULT[query.conversao] && (
+          <Alert>
+            <AlertDescription>
+              {CONVERSION_RESULT[query.conversao]}
+            </AlertDescription>
+          </Alert>
+        )}
       {typeof query.erro === "string" && ERRORS[query.erro] && (
         <Alert variant="destructive">
           <AlertDescription>{ERRORS[query.erro]}</AlertDescription>
@@ -136,7 +162,60 @@ export default async function AdminOrderPage({
               value={order.mp_status ?? "—"}
             />
             <Item label="Confirmado por" value={order.paid_via ?? "—"} />
+            <Item
+              label="Meio de pagamento"
+              value={order.payment_method ?? "—"}
+            />
           </dl>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-lg">Conversão (Meta e Google)</CardTitle>
+          <CardDescription>
+            Envio da compra pelo servidor. Só acontece se a pessoa aceitou os
+            cookies. Não leva nome, nascimento nem o conteúdo do mapa.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="grid gap-4">
+          <p className="text-sm">
+            Enviada em:{" "}
+            <span className="font-medium">
+              {when(order.purchase_tracked_at)}
+            </span>
+          </p>
+          {(trackingEvents ?? []).length > 0 && (
+            <ul className="divide-y text-sm">
+              {(trackingEvents ?? []).map((e) => (
+                <li key={e.id} className="flex flex-wrap gap-x-4 py-2">
+                  <span className="text-muted-foreground">
+                    {when(e.created_at)}
+                  </span>
+                  <span>
+                    {e.platform === "meta" ? "Meta" : "Google Analytics"}
+                  </span>
+                  <span className="font-medium">{e.status}</span>
+                  <span className="text-muted-foreground font-mono text-xs">
+                    {e.detail ?? ""}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          )}
+          {["paid", "generating", "ready", "failed"].includes(order.status) && (
+            <form action={resendPurchaseEvent} className="grid gap-2">
+              <input type="hidden" name="id" value={order.id} />
+              <Button
+                type="submit"
+                size="lg"
+                variant="outline"
+                className="h-11 w-fit"
+              >
+                Reenviar conversão
+              </Button>
+            </form>
+          )}
         </CardContent>
       </Card>
 

@@ -44,9 +44,23 @@ export default function PrivacidadePage() {
         </li>
         <li>
           <strong>Dados técnicos:</strong> informações básicas de acesso
-          necessárias ao funcionamento e à segurança do site. Usamos apenas
-          cookies essenciais (manter você logado e lembrar o tema claro ou
-          escuro). Não usamos cookies de publicidade.
+          necessárias ao funcionamento e à segurança do site. Os cookies
+          essenciais (manter você logado e lembrar o tema claro ou escuro) não
+          dependem de consentimento.
+        </li>
+        <li>
+          <strong>Medição e anúncios (só se você aceitar):</strong> se você
+          aceitar os cookies no aviso do site, usamos o Pixel e a API de
+          Conversões da Meta, o Google Analytics e o Google Ads para saber quais
+          páginas são visitadas e se os nossos anúncios levam a compras. Isso
+          envia a eles as páginas que você visita, o valor e o produto da
+          compra, o número do pedido, identificadores de cookies (como o _fbp, o
+          _fbc, o _ga e o gclid), o endereço IP, o navegador e o seu e-mail em
+          formato criptografado (hash). Nunca enviamos o seu nome, a sua data,
+          hora ou cidade de nascimento, o seu CPF nem o conteúdo do seu mapa
+          astral. Se você recusar, nada disso é carregado nem enviado. Você pode
+          mudar a escolha a qualquer momento em “Preferências de cookies”, no
+          rodapé do site.
         </li>
       </ul>
 
@@ -69,6 +83,10 @@ export default function PrivacidadePage() {
           aviso de que o mapa está pronto.
         </li>
         <li>Proteger o site contra fraudes e abusos (legítimo interesse).</li>
+        <li>
+          Medir visitas e o resultado dos anúncios, somente se você aceitar os
+          cookies (consentimento).
+        </li>
       </ul>
 
       <h2>4. Com quem compartilhamos</h2>
@@ -82,7 +100,15 @@ export default function PrivacidadePage() {
           <strong>Vercel:</strong> hospedagem do site.
         </li>
         <li>
-          <strong>Mercado Pago:</strong> processamento de pagamentos.
+          <strong>Mercado Pago:</strong> processamento de pagamentos. O
+          formulário de pagamento aparece dentro do nosso site, mas é fornecido
+          pelo Mercado Pago, que recebe os dados do cartão, do Pix ou do boleto
+          (incluindo o CPF) diretamente.
+        </li>
+        <li>
+          <strong>Meta (Facebook e Instagram) e Google:</strong> medição de
+          visitas e de resultados de anúncios, apenas se você aceitar os
+          cookies, nos termos descritos em “Dados técnicos”.
         </li>
         <li>
           <strong>Resend:</strong> envio de e-mails do seu pedido.
@@ -98,16 +124,19 @@ export default function PrivacidadePage() {
       <p>
         Alguns desses prestadores operam servidores fora do Brasil. Nesses
         casos, a transferência internacional é feita com as garantias previstas
-        na LGPD. Não vendemos os seus dados e não os usamos para publicidade.
+        na LGPD. Não vendemos os seus dados. Eles só vão à Meta e ao Google para
+        medição de anúncios se você aceitar os cookies.
       </p>
 
       <h2>5. Por quanto tempo guardamos</h2>
       <p>
         Mantemos os dados da sua conta e dos seus mapas enquanto a conta
         existir. Quando você exclui a conta, apagamos o seu perfil, os perfis de
-        nascimento e os mapas astrais. Os registros dos pedidos (valor, data e
-        status) ficam guardados sem os seus dados pessoais, pelo prazo exigido
-        pela legislação fiscal.
+        nascimento e os mapas astrais, além dos identificadores de medição
+        (cookies, IP e navegador) ligados aos seus pedidos. Os registros dos
+        pedidos (valor, data e status) ficam guardados sem os seus dados
+        pessoais, pelo prazo exigido pela legislação fiscal. O que já foi
+        enviado à Meta e ao Google segue as políticas dessas empresas.
       </p>
 
       <h2>6. Seus direitos</h2>

@@ -27,6 +27,33 @@ ser resolvido antes de vender de verdade**. Ao concluir um item, apague-o daqui.
 - [ ] Remover do `MERCADOPAGO_WEBHOOK_SECRET` as chaves de teste que sobrarem
       (aceita várias separadas por vírgula).
 
+- [ ] **Pagamento dentro do site (Bricks): validar de ponta a ponta.** Código e
+      testes de unidade prontos; falta a **chave pública** do Mercado Pago
+      (`NEXT_PUBLIC_MERCADOPAGO_PUBLIC_KEY`, da mesma aplicação do token) na
+      Vercel e no `.env.local`, e compras de teste: cartão aprovado, cartão
+      recusado (`cc_rejected_*` aparece em português), boleto, Pix (quando ativo)
+      e troca de meio com Pix em aberto. O Brick roda em iframe do Mercado Pago e
+      não dá para automatizar; testar no navegador.
+- [ ] A migração 25 (`20261111000025_bricks_e_rastreamento.sql`) precisa ser
+      aplicada (`npx.cmd supabase@latest db push --remote --yes`). O projeto
+      estava **pausado** (INACTIVE) em 11/11/2026 e o deploy do Bricks depende
+      dela: sem as colunas novas, `/api/pagamento` falha.
+
+## Rastreamento (Meta e Google)
+
+- [ ] **Meta:** ID do Pixel, token da API de Conversões, verificação do domínio
+      no Gerenciador de Negócios e prioridade de eventos (Purchase primeiro).
+      Testar em "Testar eventos" com `META_TEST_EVENT_CODE`; conferir que o
+      Purchase do navegador e o do servidor aparecem **deduplicados**. Remover o
+      código de teste em produção.
+- [ ] **Google:** ID de medição do GA4 e segredo da API; ID da conta e rótulo da
+      conversão de compra no Google Ads (ou importar a conversão `purchase` do
+      GA4). Conferir no Tempo real do GA4 e no Tag Assistant.
+- [ ] Texto do banner de cookies e da Política de Privacidade revisados pelo
+      jurídico (descrevem Meta, Google e Mercado Pago).
+- [ ] Decidir se haverá conversão offline do Google Ads por `gclid` (a coluna
+      `order_tracking.gclid` já guarda o valor; falta o envio pela API).
+
 ## E-mail e contas
 
 - [ ] **Resend como SMTP do Supabase** com domínio verificado. O envio padrão do

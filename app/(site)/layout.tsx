@@ -1,5 +1,6 @@
 import { SiteFooter } from "@/components/site/footer";
 import { SiteHeader } from "@/components/site/header";
+import { TrackingRoot } from "@/components/tracking/tracking-root";
 
 export default function SiteLayout({
   children,
@@ -19,6 +20,7 @@ export default function SiteLayout({
         {children}
       </main>
       <SiteFooter />
+      <TrackingRoot />
     </>
   );
 }

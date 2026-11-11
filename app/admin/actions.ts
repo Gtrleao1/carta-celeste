@@ -10,6 +10,7 @@ import { requireAdmin } from "@/lib/admin/auth";
 import { fieldErrorsFrom, type FormState } from "@/lib/auth/form-state";
 import { triggerReportGeneration } from "@/lib/jobs/trigger";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { resendServerPurchase } from "@/lib/tracking/send";
 
 // Toda ação confere o papel de admin por conta própria: o layout do /admin não
 // protege as Server Actions, que são rotas POST chamáveis diretamente.
@@ -154,6 +155,23 @@ export async function reprocessOrder(formData: FormData) {
   after(() => triggerReportGeneration(id.data));
   revalidatePath("/admin");
   redirect(`/admin/pedidos/${id.data}?reprocessado=1`);
+}
+
+/**
+ * Reenvia a conversão de compra à Meta e ao Google (ex.: a plataforma estava
+ * fora do ar). Só vale para pedido pago e com cookies aceitos; a regra está em
+ * `sendPurchase`.
+ */
+export async function resendPurchaseEvent(formData: FormData) {
+  await requireAdmin();
+  const id = uuid.safeParse(formData.get("id"));
+  if (!id.success) redirect("/admin");
+
+  const result = await resendServerPurchase(id.data);
+  let outcome = "falhou";
+  if (result?.action === "skipped") outcome = result.reason;
+  else if (result && result.platforms.length > 0) outcome = "enviado";
+  redirect(`/admin/pedidos/${id.data}?conversao=${outcome}`);
 }
 
 // ---------------------------------------------------------------------------

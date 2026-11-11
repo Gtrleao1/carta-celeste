@@ -14,7 +14,7 @@ export function createNotificationDeps(
   admin: SupabaseClient,
   getPayment: NotificationDeps["getPayment"] = getMpPayment,
   /** Quem está confirmando o pagamento; fica gravado em orders.paid_via. */
-  source: "webhook" | "reconciliacao" = "webhook",
+  source: "webhook" | "reconciliacao" | "checkout" = "webhook",
 ): NotificationDeps {
   return {
     getPayment,
