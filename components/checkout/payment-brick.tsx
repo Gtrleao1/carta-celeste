@@ -3,7 +3,7 @@
 import { Payment } from "@mercadopago/sdk-react";
 import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { useMercadoPago } from "@/components/checkout/use-mercado-pago";
 import { Alert, AlertDescription } from "@/components/ui/alert";
@@ -49,49 +49,84 @@ export function PaymentBrick({
     });
   }, [amountCents, productId, productName]);
 
-  async function onSubmit(param: { formData: unknown }): Promise<void> {
-    setError(null);
-    let res: Response;
-    try {
-      res = await fetch("/api/pagamento", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ orderId, formData: param.formData }),
-      });
-    } catch {
-      setError("Sem conexão com o servidor. Tente de novo.");
-      throw new Error("sem_conexao");
-    }
-
-    const data = (await res.json().catch(() => ({}))) as {
-      status?: string;
-      message?: string;
-      error?: string;
-    };
-
-    // Pedido já pago (ou encerrado): a página de acompanhamento mostra o resultado.
-    if (res.status === 409) {
-      router.push(`/pedido/${orderId}/retorno`);
-      return;
-    }
-    if (!res.ok) {
-      setError(data.error ?? "Não foi possível processar o pagamento.");
-      throw new Error("pagamento_falhou");
-    }
-    if (data.status === "rejected") {
+  // O SDK refaz o formulário (e apaga o que a pessoa digitou) se estas
+  // referências mudarem entre renderizações: por isso ficam memorizadas.
+  const initialization = useMemo(
+    () => ({ amount: amountCents / 100 }),
+    [amountCents],
+  );
+  const theme: "default" | "dark" =
+    resolvedTheme === "light" ? "default" : "dark";
+  const customization = useMemo(
+    () => ({
+      paymentMethods: {
+        creditCard: "all" as const,
+        debitCard: "all" as const,
+        ticket: "all" as const,
+        bankTransfer: "all" as const,
+        maxInstallments: 12,
+      },
+      visual: { style: { theme } },
+    }),
+    [theme],
+  );
+  const handleReady = useCallback(() => setLoaded(true), []);
+  // Erros "não críticos" (campo inválido, por exemplo) o próprio Brick mostra
+  // ao lado do campo; só os críticos impedem o pagamento.
+  const handleError = useCallback((e: { type?: string }) => {
+    if (e?.type === "critical") {
       setError(
-        data.message ??
-          "O pagamento não foi aprovado. Tente outro cartão ou outra forma de pagamento.",
+        "Não foi possível carregar o pagamento. Atualize a página e tente de novo.",
       );
-      throw new Error("recusado");
     }
+  }, []);
 
-    trackEvent("AddPaymentInfo", {
-      value: amountCents / 100,
-      currency: "BRL",
-    });
-    router.push(`/pedido/${orderId}/retorno`);
-  }
+  const onSubmit = useCallback(
+    async (param: { formData: unknown }): Promise<void> => {
+      setError(null);
+      let res: Response;
+      try {
+        res = await fetch("/api/pagamento", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ orderId, formData: param.formData }),
+        });
+      } catch {
+        setError("Sem conexão com o servidor. Tente de novo.");
+        throw new Error("sem_conexao");
+      }
+
+      const data = (await res.json().catch(() => ({}))) as {
+        status?: string;
+        message?: string;
+        error?: string;
+      };
+
+      // Pedido já pago (ou encerrado): a página de acompanhamento mostra o resultado.
+      if (res.status === 409) {
+        router.push(`/pedido/${orderId}/retorno`);
+        return;
+      }
+      if (!res.ok) {
+        setError(data.error ?? "Não foi possível processar o pagamento.");
+        throw new Error("pagamento_falhou");
+      }
+      if (data.status === "rejected") {
+        setError(
+          data.message ??
+            "O pagamento não foi aprovado. Tente outro cartão ou outra forma de pagamento.",
+        );
+        throw new Error("recusado");
+      }
+
+      trackEvent("AddPaymentInfo", {
+        value: amountCents / 100,
+        currency: "BRL",
+      });
+      router.push(`/pedido/${orderId}/retorno`);
+    },
+    [orderId, amountCents, router],
+  );
 
   return (
     <div className="grid gap-4">
@@ -117,26 +152,11 @@ export function PaymentBrick({
       {ready && (
         <Payment
           key={resolvedTheme}
-          initialization={{ amount: amountCents / 100 }}
-          customization={{
-            paymentMethods: {
-              creditCard: "all",
-              debitCard: "all",
-              ticket: "all",
-              bankTransfer: "all",
-              maxInstallments: 12,
-            },
-            visual: {
-              style: { theme: resolvedTheme === "light" ? "default" : "dark" },
-            },
-          }}
+          initialization={initialization}
+          customization={customization}
           onSubmit={onSubmit}
-          onReady={() => setLoaded(true)}
-          onError={() =>
-            setError(
-              "Não foi possível carregar o pagamento. Atualize a página e tente de novo.",
-            )
-          }
+          onReady={handleReady}
+          onError={handleError}
         />
       )}
     </div>
