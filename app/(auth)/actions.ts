@@ -4,7 +4,7 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
 import { fieldErrorsFrom, type FormState } from "@/lib/auth/form-state";
-import { safeNextPath } from "@/lib/auth/redirect";
+import { afterSignInPath, safeNextPath } from "@/lib/auth/redirect";
 import { isExistingAccount } from "@/lib/auth/signup-result";
 import { clientIpFromHeaders, withinRateLimit } from "@/lib/rate-limit";
 import { createAdminClient } from "@/lib/supabase/admin";
@@ -52,7 +52,8 @@ export async function signIn(
     return { error: "E-mail ou senha incorretos." };
   }
 
-  redirect(safeNextPath(formData.get("next")?.toString()));
+  // Quem já tinha conta e veio de "Quero meu mapa" cai em Meus mapas.
+  redirect(afterSignInPath(formData.get("next")?.toString()));
 }
 
 export async function signUp(
@@ -76,6 +77,9 @@ export async function signUp(
 
   const supabase = await createClient();
   const siteUrl = await getSiteUrl();
+  // O link de confirmação leva a pessoa de volta ao que ela queria fazer
+  // (por exemplo, informar os dados de nascimento para o mapa).
+  const next = safeNextPath(formData.get("next")?.toString());
   const { data, error } = await supabase.auth.signUp({
     email: parsed.data.email,
     password: parsed.data.password,
@@ -85,7 +89,7 @@ export async function signUp(
         full_name: parsed.data.full_name,
         accepted_terms_at: new Date().toISOString(),
       },
-      emailRedirectTo: `${siteUrl}/auth/callback?next=/conta`,
+      emailRedirectTo: `${siteUrl}/auth/callback?next=${encodeURIComponent(next)}`,
     },
   });
 
@@ -112,7 +116,7 @@ export async function signUp(
     };
   }
 
-  redirect(safeNextPath(formData.get("next")?.toString()));
+  redirect(next);
 }
 
 export async function requestPasswordReset(

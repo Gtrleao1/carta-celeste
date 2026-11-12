@@ -14,8 +14,12 @@ export const metadata: Metadata = {
 
 export default async function ComprarPage({
   params,
+  searchParams,
 }: PageProps<"/comprar/[slug]">) {
   const { slug } = await params;
+  // `?novo=1` (botão "Adicionar outra pessoa"): já abre o formulário de dados
+  // de nascimento, em vez da lista de perfis salvos.
+  const startCreating = (await searchParams).novo === "1";
 
   const supabase = await createClient();
   const {
@@ -61,6 +65,7 @@ export default async function ComprarPage({
         }}
         profiles={(profiles ?? []) as SavedBirthProfile[]}
         buyerBirthDate={profile?.birth_date_of_buyer ?? null}
+        startCreating={startCreating}
       />
     </div>
   );

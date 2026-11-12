@@ -18,6 +18,8 @@ type Props = {
   };
   profiles: SavedBirthProfile[];
   buyerBirthDate: string | null;
+  /** Abre direto o formulário de uma nova pessoa (botão "Adicionar outra pessoa"). */
+  startCreating?: boolean;
 };
 
 const summaryOf = (p: SavedBirthProfile) =>
@@ -36,12 +38,15 @@ export function CheckoutFlow({
   product,
   profiles: initial,
   buyerBirthDate,
+  startCreating = false,
 }: Props) {
   const [profiles, setProfiles] = useState(initial);
   const [selectedId, setSelectedId] = useState<string | null>(
     initial[0]?.id ?? null,
   );
-  const [creating, setCreating] = useState(initial.length === 0);
+  const [creating, setCreating] = useState(
+    initial.length === 0 || startCreating,
+  );
   const [step, setStep] = useState<"profile" | "confirm">("profile");
 
   const [ageDeclared, setAgeDeclared] = useState(false);

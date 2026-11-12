@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 
 import { StatusBadge } from "@/components/admin/status-badge";
 import { buttonVariants } from "@/components/ui/button";
+import { getActiveProducts } from "@/lib/products";
 import { createClient } from "@/lib/supabase/server";
 
 export const metadata: Metadata = {
@@ -48,14 +49,36 @@ export default async function MeusMapasPage() {
     .order("created_at", { ascending: false });
   const orders = (data ?? []) as unknown as Row[];
 
+  // Com um único mapa à venda, o botão leva direto à compra; com vários, à vitrine.
+  const products = await getActiveProducts();
+  const single = products.length === 1 ? products[0] : null;
+  const buyHref = single ? `/comprar/${single.slug}` : "/#mapas";
+  const addPersonHref = single ? `/comprar/${single.slug}?novo=1` : "/#mapas";
+
   return (
     <div className="mx-auto grid w-full max-w-2xl gap-6 px-4 py-10">
-      <header className="grid gap-1">
-        <h1 className="font-heading text-4xl font-semibold">Meus mapas</h1>
-        <p className="text-muted-foreground">
-          Seus pedidos e mapas astrais. Cada mapa fica guardado aqui para você
-          ler quando quiser.
-        </p>
+      <header className="grid gap-3">
+        <div className="grid gap-1">
+          <h1 className="font-heading text-4xl font-semibold">Meus mapas</h1>
+          <p className="text-muted-foreground">
+            Seus pedidos e mapas astrais. Cada mapa fica guardado aqui para você
+            ler quando quiser.
+          </p>
+        </div>
+        {orders.length > 0 && (
+          <div className="bg-card border-border grid gap-3 rounded-xl border p-4">
+            <p className="text-sm">
+              Quer o mapa de outra pessoa? Informe os dados de nascimento dela e
+              peça um novo mapa. O dela também fica guardado aqui.
+            </p>
+            <Link
+              href={addPersonHref}
+              className={buttonVariants({ size: "lg" }) + " h-11 w-fit"}
+            >
+              Adicionar outra pessoa
+            </Link>
+          </div>
+        )}
       </header>
 
       {orders.length === 0 ? (
@@ -66,10 +89,10 @@ export default async function MeusMapasPage() {
             pronto em poucos minutos depois do pagamento.
           </p>
           <Link
-            href="/#mapas"
+            href={buyHref}
             className={buttonVariants({ size: "lg" }) + " h-12 w-fit text-base"}
           >
-            Ver o mapa
+            Quero meu mapa
           </Link>
         </div>
       ) : (

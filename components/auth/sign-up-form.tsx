@@ -86,7 +86,11 @@ export function SignUpForm({ next }: { next: string }) {
         <p className="text-muted-foreground text-center text-sm">
           Já tem conta?{" "}
           <Link
-            href="/entrar"
+            href={
+              next !== "/conta"
+                ? `/entrar?next=${encodeURIComponent(next)}`
+                : "/entrar"
+            }
             className="text-foreground underline underline-offset-4"
           >
             Entrar

@@ -9,7 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { safeNextPath } from "@/lib/auth/redirect";
+import { isPurchasePath, safeNextPath } from "@/lib/auth/redirect";
 
 export const metadata: Metadata = { title: "Entrar" };
 
@@ -21,11 +21,19 @@ export default async function EntrarPage({
     typeof params.next === "string" ? params.next : null,
   );
 
+  const purchase = isPurchasePath(next);
+
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-xl">Entrar</CardTitle>
-        <CardDescription>Acesse sua conta para ver seus mapas.</CardDescription>
+        <CardTitle className="text-xl">
+          {purchase ? "Entre para pedir o seu mapa" : "Entrar"}
+        </CardTitle>
+        <CardDescription>
+          {purchase
+            ? "Já tem conta? Entre e veja os seus mapas. É a primeira vez? Crie a conta primeiro; depois você informa os dados de nascimento."
+            : "Acesse sua conta para ver seus mapas."}
+        </CardDescription>
       </CardHeader>
       <CardContent className="grid gap-4">
         {params.erro === "link" && (
@@ -36,7 +44,7 @@ export default async function EntrarPage({
             </AlertDescription>
           </Alert>
         )}
-        <SignInForm next={next} />
+        <SignInForm next={next} purchase={purchase} />
       </CardContent>
     </Card>
   );

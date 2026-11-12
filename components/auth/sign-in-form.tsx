@@ -5,10 +5,19 @@ import { useActionState } from "react";
 
 import { signIn } from "@/app/(auth)/actions";
 import { Field, FormMessage, SubmitButton } from "@/components/auth/form-parts";
+import { buttonVariants } from "@/components/ui/button";
 import type { FormState } from "@/lib/auth/form-state";
 
-export function SignInForm({ next }: { next: string }) {
+export function SignInForm({
+  next,
+  purchase = false,
+}: {
+  next: string;
+  /** Veio do botão "Quero meu mapa": destaca a criação de conta. */
+  purchase?: boolean;
+}) {
   const [state, action] = useActionState<FormState, FormData>(signIn, {});
+  const signUpHref = `/cadastro${next !== "/conta" ? `?next=${encodeURIComponent(next)}` : ""}`;
 
   return (
     <form action={action} className="grid gap-4" noValidate>
@@ -36,16 +45,29 @@ export function SignInForm({ next }: { next: string }) {
         <Link href="/recuperar-senha" className="underline underline-offset-4">
           Esqueci minha senha
         </Link>
-        <span>
-          Ainda não tem conta?{" "}
-          <Link
-            href={`/cadastro${next !== "/conta" ? `?next=${encodeURIComponent(next)}` : ""}`}
-            className="text-foreground underline underline-offset-4"
-          >
-            Cadastre-se
-          </Link>
-        </span>
+        {!purchase && (
+          <span>
+            Ainda não tem conta?{" "}
+            <Link
+              href={signUpHref}
+              className="text-foreground underline underline-offset-4"
+            >
+              Cadastre-se
+            </Link>
+          </span>
+        )}
       </div>
+      {purchase && (
+        <div className="border-border grid gap-2 border-t pt-4">
+          <p className="text-center text-sm">É a primeira vez aqui?</p>
+          <Link
+            href={signUpHref}
+            className={buttonVariants({ variant: "outline", size: "lg" })}
+          >
+            Criar minha conta
+          </Link>
+        </div>
+      )}
     </form>
   );
 }

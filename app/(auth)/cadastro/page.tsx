@@ -8,7 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { safeNextPath } from "@/lib/auth/redirect";
+import { isPurchasePath, safeNextPath } from "@/lib/auth/redirect";
 
 export const metadata: Metadata = { title: "Criar conta" };
 
@@ -25,7 +25,9 @@ export default async function CadastroPage({
       <CardHeader>
         <CardTitle className="text-xl">Criar conta</CardTitle>
         <CardDescription>
-          Leva menos de um minuto. Seus mapas ficam guardados na sua conta.
+          {isPurchasePath(next)
+            ? "Leva menos de um minuto. Depois de criar a conta, você informa os dados de nascimento de quem vai receber o mapa."
+            : "Leva menos de um minuto. Seus mapas ficam guardados na sua conta."}
         </CardDescription>
       </CardHeader>
       <CardContent>

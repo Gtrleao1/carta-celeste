@@ -14,3 +14,17 @@ export function safeNextPath(next: string | null | undefined): string {
   }
   return next;
 }
+
+/** O destino é o início da compra de um mapa (`/comprar/<produto>`)? */
+export const isPurchasePath = (path: string) => path.startsWith("/comprar/");
+
+/**
+ * Para onde vai quem acabou de ENTRAR (já tinha conta). Quem veio do botão
+ * "Quero meu mapa" cai em "Meus mapas", onde vê os mapas que já tem e pode
+ * adicionar outra pessoa. Quem acabou de CRIAR a conta segue direto para a
+ * compra (`next`), para informar os dados de nascimento.
+ */
+export function afterSignInPath(next: string | null | undefined): string {
+  const path = safeNextPath(next);
+  return isPurchasePath(path) ? "/meus-mapas" : path;
+}
