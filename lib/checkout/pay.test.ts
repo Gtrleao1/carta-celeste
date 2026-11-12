@@ -64,7 +64,7 @@ describe("payOrder", () => {
         orderId: ORDER_ID,
         amountCents: 4900,
         description: "Mapa Astral",
-        idempotencyKey: `${ORDER_ID}:primeira`,
+        idempotencyKey: `${ORDER_ID}:primeira:visa`,
       }),
     );
   });
@@ -162,7 +162,7 @@ describe("payOrder", () => {
     await payOrder(ORDER_ID, card, deps);
     expect(deps.cancelPayment).toHaveBeenCalledWith("pay-pix");
     expect(deps.createPayment).toHaveBeenCalledWith(
-      expect.objectContaining({ idempotencyKey: `${ORDER_ID}:pay-pix` }),
+      expect.objectContaining({ idempotencyKey: `${ORDER_ID}:pay-pix:visa` }),
     );
   });
 
@@ -198,7 +198,7 @@ describe("payOrder", () => {
     await payOrder(ORDER_ID, card, deps);
     expect(deps.cancelPayment).not.toHaveBeenCalled();
     expect(deps.createPayment).toHaveBeenCalledWith(
-      expect.objectContaining({ idempotencyKey: `${ORDER_ID}:pay-1` }),
+      expect.objectContaining({ idempotencyKey: `${ORDER_ID}:pay-1:visa` }),
     );
   });
 
@@ -224,6 +224,31 @@ describe("payOrder", () => {
       statusDetail: "cc_rejected_other",
       triggerJob: false,
     });
+  });
+
+  it("o meio de pagamento entra na chave de idempotência: Pix que falhou não trava o cartão", async () => {
+    const keys: string[] = [];
+    const deps = makeDeps({
+      createPayment: vi.fn(async (input) => {
+        keys.push(input.idempotencyKey);
+        return payment();
+      }),
+    });
+    await payOrder(ORDER_ID, pix, deps);
+    await payOrder(ORDER_ID, card, deps);
+    expect(new Set(keys).size).toBe(2);
+  });
+
+  it("conta do Mercado Pago sem chave Pix: mensagem clara, sem expor o erro bruto", async () => {
+    const deps = makeDeps({
+      createPayment: vi.fn(async () => {
+        throw new Error("Collector user without key enabled for QR render");
+      }),
+    });
+    const r = await payOrder(ORDER_ID, pix, deps);
+    expect(r).toMatchObject({ ok: false, status: 422 });
+    expect(JSON.stringify(r)).toMatch(/Pix não está disponível/);
+    expect(JSON.stringify(r)).not.toMatch(/Collector/);
   });
 
   it("erro do Mercado Pago ao criar o pagamento vira 502 sem detalhes", async () => {

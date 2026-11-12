@@ -150,7 +150,9 @@ export async function payOrder(
       amountCents: order.amount_cents,
       description: product.name,
       form,
-      idempotencyKey: `${orderId}:${order.mp_last_payment_id ?? "primeira"}`,
+      // Mesmo envio (clique duplo) = mesma chave; outro meio de pagamento ou
+      // outra tentativa depois de uma recusa = chave nova.
+      idempotencyKey: `${orderId}:${order.mp_last_payment_id ?? "primeira"}:${form.payment_method_id}`,
     });
     await deps.saveAttempt(orderId, {
       paymentId: payment.id,
@@ -167,10 +169,15 @@ export async function payOrder(
       reused: false,
     };
   } catch (e) {
-    console.error(
-      "[pagamento] erro ao criar o pagamento:",
-      e instanceof Error ? e.message : "erro desconhecido",
-    );
+    const message = e instanceof Error ? e.message : "erro desconhecido";
+    console.error("[pagamento] erro ao criar o pagamento:", message);
+    // Conta do Mercado Pago sem chave Pix cadastrada: só o Pix fica indisponível.
+    if (/without key enabled for QR/i.test(message)) {
+      return fail(
+        422,
+        "O Pix não está disponível agora. Escolha cartão ou boleto.",
+      );
+    }
     return fail(502, PAYMENT_ERROR);
   }
 }
