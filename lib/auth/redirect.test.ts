@@ -23,6 +23,8 @@ describe("safeNextPath", () => {
 describe("isPurchasePath", () => {
   it("reconhece o início da compra", () => {
     expect(isPurchasePath("/comprar/mapa-astral-completo")).toBe(true);
+    expect(isPurchasePath("/comprar")).toBe(true);
+    expect(isPurchasePath("/comprarx")).toBe(false);
     expect(isPurchasePath("/meus-mapas")).toBe(false);
     expect(isPurchasePath("/pedido/x/pagar")).toBe(false);
   });

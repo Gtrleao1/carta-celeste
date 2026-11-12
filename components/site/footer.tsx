@@ -21,6 +21,9 @@ export function SiteFooter() {
             <Link href="/#perguntas" className="hover:underline">
               Perguntas
             </Link>
+            <Link href="/blog" className="hover:underline">
+              Blog
+            </Link>
             <Link href="/termos" className="hover:underline">
               Termos de Uso
             </Link>

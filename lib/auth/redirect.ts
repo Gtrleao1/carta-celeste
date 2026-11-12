@@ -15,8 +15,9 @@ export function safeNextPath(next: string | null | undefined): string {
   return next;
 }
 
-/** O destino é o início da compra de um mapa (`/comprar/<produto>`)? */
-export const isPurchasePath = (path: string) => path.startsWith("/comprar/");
+/** O destino é o início da compra de um mapa (`/comprar` ou `/comprar/<produto>`)? */
+export const isPurchasePath = (path: string) =>
+  path === "/comprar" || path.startsWith("/comprar/");
 
 /**
  * Para onde vai quem acabou de ENTRAR (já tinha conta). Quem veio do botão

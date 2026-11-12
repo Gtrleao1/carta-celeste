@@ -104,6 +104,22 @@ export default async function Home() {
       ]
     : FAQ;
   const buyHref = single ? `/comprar/${single.slug}` : "#mapas";
+  const about = [
+    {
+      title: "O que é",
+      text: "A Carta Celeste é o seu mapa astral: um retrato do céu no instante em que você nasceu. Calculamos a posição exata do Sol, da Lua e dos planetas e escrevemos a leitura só para você.",
+    },
+    {
+      title: "O que vem nela",
+      text: single
+        ? `Uma leitura completa em ${single.sections.length} partes: Sol, Lua, Ascendente, planetas, casas e aspectos, com a roda do seu mapa e as tabelas de posições.`
+        : "A roda do seu mapa, as posições dos planetas e a leitura de cada parte, em linguagem simples.",
+    },
+    {
+      title: "Como você recebe",
+      text: "Depois do pagamento, o mapa fica pronto em poucos minutos na sua área do cliente. Você lê no celular, imprime ou salva em PDF, e pode voltar a ele quando quiser.",
+    },
+  ];
 
   return (
     <>
@@ -198,9 +214,30 @@ export default async function Home() {
         className={`mx-auto w-full max-w-6xl scroll-mt-20 px-4 py-14 ${DEFER}`}
       >
         <h2 id="titulo-como" className="text-4xl font-semibold">
-          Sua Carta Celeste em 3 passos
+          Como funciona
         </h2>
-        <ol className="mt-8 grid gap-6 md:grid-cols-3">
+        <p className="text-muted-foreground mt-2 max-w-prose text-lg">
+          Em três respostas simples: o que é, o que vem nela e como você recebe.
+        </p>
+
+        <dl className="mt-8 grid gap-6 md:grid-cols-3">
+          {about.map((item) => (
+            <div
+              key={item.title}
+              className="border-primary/40 grid content-start gap-2 border-l-2 pl-5"
+            >
+              <dt className="text-2xl font-semibold">{item.title}</dt>
+              <dd className="text-muted-foreground leading-relaxed">
+                {item.text}
+              </dd>
+            </div>
+          ))}
+        </dl>
+
+        <h3 className="mt-14 text-3xl font-semibold">
+          Sua Carta Celeste em 3 passos
+        </h3>
+        <ol className="mt-6 grid gap-6 md:grid-cols-3">
           {steps.map((step, i) => (
             <li
               key={step.title}

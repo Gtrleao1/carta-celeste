@@ -300,7 +300,9 @@ describe.skipIf(!hasSupabaseEnv)("RLS: isolamento entre usuários", () => {
       const { data } = await anonClient()
         .from("products")
         .select("slug, active");
-      expect(data!.length).toBeGreaterThanOrEqual(3);
+      // Hoje só o Mapa Astral Completo está à venda (migração 24): o que importa
+      // é que apareça ao menos um e que nenhum inativo vaze.
+      expect(data!.length).toBeGreaterThanOrEqual(1);
       expect(data!.every((p) => p.active)).toBe(true);
     });
 

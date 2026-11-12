@@ -54,6 +54,18 @@ ser resolvido antes de vender de verdade**. Ao concluir um item, apague-o daqui.
 - [ ] Decidir se haverá conversão offline do Google Ads por `gclid` (a coluna
       `order_tracking.gclid` já guarda o valor; falta o envio pela API).
 
+## Blog
+
+- [ ] **Testar o painel do blog com a conta admin** (`/admin/blog`): criar um
+      rascunho, enviar capa e uma imagem no texto, ver a Prévia, publicar e
+      conferir em `/blog`. O editor foi testado à parte e as páginas públicas
+      com um post de teste, mas o painel completo (salvar, publicar, enviar
+      imagem) exige login de admin e ainda não foi exercitado de ponta a ponta.
+- [ ] Escrever os primeiros posts (sem post publicado, `/blog` mostra "Os
+      primeiros textos chegam em breve").
+- [ ] Depois do domínio final: conferir `/sitemap.xml` e `/robots.txt` e
+      cadastrar o site no Google Search Console.
+
 ## E-mail e contas
 
 - [ ] **Resend como SMTP do Supabase** com domínio verificado. O envio padrão do
