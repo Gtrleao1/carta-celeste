@@ -12,6 +12,8 @@ import { trackEvent } from "@/lib/tracking/browser";
 type Props = {
   orderId: string;
   publicKey: string;
+  /** E-mail da conta: já vem preenchido (o servidor usa sempre o da conta). */
+  payerEmail: string;
   amountCents: number;
   productId: string;
   productName: string;
@@ -25,6 +27,7 @@ type Props = {
 export function PaymentBrick({
   orderId,
   publicKey,
+  payerEmail,
   amountCents,
   productId,
   productName,
@@ -52,8 +55,8 @@ export function PaymentBrick({
   // O SDK refaz o formulário (e apaga o que a pessoa digitou) se estas
   // referências mudarem entre renderizações: por isso ficam memorizadas.
   const initialization = useMemo(
-    () => ({ amount: amountCents / 100 }),
-    [amountCents],
+    () => ({ amount: amountCents / 100, payer: { email: payerEmail } }),
+    [amountCents, payerEmail],
   );
   const theme: "default" | "dark" =
     resolvedTheme === "light" ? "default" : "dark";

@@ -67,6 +67,7 @@ export default async function PagarPage({
       <PaymentBrick
         orderId={order.id}
         publicKey={publicKey}
+        payerEmail={user.email ?? ""}
         amountCents={order.amount_cents}
         productId={product?.id ?? order.product_id}
         productName={product?.name ?? "Mapa astral"}
