@@ -7,6 +7,19 @@ const NOW = new Date("2026-11-15T17:00:00Z");
 describe("céu em câmera rápida (home)", () => {
   const sky = computeSkyTimelapse(NOW, 31, 2);
 
+  it("por padrão é uma janela de 1 dia: céu de hoje com leve movimento", () => {
+    const day = computeSkyTimelapse(NOW);
+    expect(day.frames).toHaveLength(5);
+    expect(day.stepDays).toBe(0.25);
+    const moon = day.chart.planets.findIndex((p) => p.id === "moon");
+    const sun = day.chart.planets.findIndex((p) => p.id === "sun");
+    const moved = (i: number) => day.frames[4][i] - day.frames[0][i];
+    expect(moved(moon)).toBeGreaterThan(11);
+    expect(moved(moon)).toBeLessThan(16);
+    expect(moved(sun)).toBeGreaterThan(0.9);
+    expect(moved(sun)).toBeLessThan(1.1);
+  });
+
   it("tem um quadro por passo e uma longitude por planeta da roda", () => {
     expect(sky.frames).toHaveLength(31);
     expect(sky.highlights).toHaveLength(31);

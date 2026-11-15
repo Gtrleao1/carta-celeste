@@ -308,7 +308,7 @@ export function renderChartWheelSvg(
 
   // Planetas: marca na posição real, linha-guia e símbolo afastado.
   // No modo céu há um grupo interno (`data-planets`): o externo carrega a
-  // animação de entrada, e o interno recebe o fade do recomeço do filme.
+  // animação de entrada, e o interno agrupa só os planetas que se movem.
   out.push(
     `<g class="wheel-fade" ${delay(4)}>`,
     sky ? `<g data-planets="" aria-hidden="true">` : "",

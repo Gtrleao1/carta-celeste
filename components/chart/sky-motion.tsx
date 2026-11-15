@@ -16,12 +16,11 @@ type Props = {
   ascendant: number | null;
 };
 
-// Dias do céu que passam a cada segundo de tela (a Lua dá uma volta em ~9 s).
-const DAYS_PER_SECOND = 3;
+// Duração de um vai e volta do céu (a janela é de 1 dia): leve, ~0,7°/s na Lua.
+const PERIOD_S = 40;
 // Quadros por segundo: o suficiente para parecer fluido sem pesar na pintura.
 const FRAME_MS = 1000 / 30;
 const CENTER = 300;
-const FADE_S = 0.6;
 
 const norm180 = (a: number) => ((((a + 180) % 360) + 360) % 360) - 180;
 const r2 = (n: number) => Math.round(n * 100) / 100;
@@ -53,8 +52,6 @@ export function SkyMotion({
       root.querySelectorAll<SVGGElement>("[data-planet]"),
     );
     if (groups.length !== frames[0].length) return;
-    const layer = root.querySelector<SVGGElement>("[data-planets]");
-    if (!layer) return;
 
     const base = groups.map((g) => Number(g.dataset.angle));
     const glyphs = groups.map((g) => {
@@ -71,8 +68,8 @@ export function SkyMotion({
     );
 
     const totalDays = (frames.length - 1) * stepDays;
-    layer.style.transition = `opacity ${FADE_S}s ease`;
 
+    let elapsed = 0; // segundos de movimento acumulados
     let days = 0;
     let lastFrame = -1;
     let lastTime = 0;
@@ -112,9 +109,6 @@ export function SkyMotion({
         lastFrame = i;
         light(highlights[i]);
       }
-      // Perto do fim do filme, os planetas somem; ao recomeçar, voltam.
-      layer.style.opacity =
-        days > totalDays - FADE_S * DAYS_PER_SECOND ? "0" : "1";
     };
 
     const tick = (now: number) => {
@@ -123,11 +117,10 @@ export function SkyMotion({
       const dt = Math.min(now - lastTime, 100);
       lastTime = now;
       lastPaint = now;
-      days += (dt / 1000) * DAYS_PER_SECOND;
-      if (days >= totalDays) {
-        days = 0;
-        lastFrame = -1;
-      }
+      elapsed += dt / 1000;
+      // Vai e volta com suavização nas pontas (cosseno): sem recomeço brusco.
+      days =
+        (totalDays * (1 - Math.cos((2 * Math.PI * elapsed) / PERIOD_S))) / 2;
       draw();
     };
 

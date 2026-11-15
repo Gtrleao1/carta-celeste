@@ -3,13 +3,13 @@ import { PLANETS } from "./constants";
 import { eclLon, houseOf, meanNode, norm } from "./core";
 
 /**
- * Céu de hoje em câmera rápida, para a roda animada da home.
+ * Céu de hoje com leve movimento, para a roda animada da home.
  *
  * Todo o cálculo acontece aqui, no servidor: o navegador só interpola entre os
- * quadros e acende o signo e a casa do Sol e da Lua. Nada disto é o mapa de
- * ninguém (não usa dado de cliente): é o céu do instante da geração da página
- * visto de Campinas, com as casas desse instante mantidas fixas durante o
- * filme (só os planetas se movem).
+ * quadros (a janela de 1 dia, ida e volta) e acende o signo e a casa do Sol e
+ * da Lua. Nada disto é o mapa de ninguém (não usa dado de cliente): é o céu do
+ * instante da geração da página visto de Campinas, com as casas desse instante
+ * mantidas fixas (só os planetas se movem).
  */
 
 export type SkyTimelapse = {
@@ -27,8 +27,9 @@ export type SkyTimelapse = {
   highlights: [number, number, number, number][];
 };
 
-const FRAMES = 61;
-const STEP_DAYS = 2;
+// Janela de 1 dia (5 quadros de 6 h): o céu de hoje com leve movimento.
+const FRAMES = 5;
+const STEP_DAYS = 0.25;
 const DAY_MS = 86_400_000;
 
 // Cidade de referência do céu mostrado (Campinas, a mesma do mapa de exemplo).
@@ -58,7 +59,7 @@ function localParts(date: Date) {
   };
 }
 
-const round1 = (n: number) => Math.round(n * 10) / 10;
+const round2 = (n: number) => Math.round(n * 100) / 100;
 
 export function computeSkyTimelapse(
   now: Date = new Date(),
@@ -90,11 +91,11 @@ export function computeSkyTimelapse(
     const lons = chart.planets.map((p) => longitudeAt(p.id, date));
     frames.push(
       lons.map((lon, i) => {
-        if (f === 0) return round1(norm(lon));
+        if (f === 0) return round2(norm(lon));
         const prev = frames[f - 1][i];
         // menor diferença com sinal: preserva a retrogradação, sem salto na volta
         const diff = norm(lon - prev + 180) - 180;
-        return round1(prev + diff);
+        return round2(prev + diff);
       }),
     );
     const sun = lons[sunIndex];

@@ -5,7 +5,7 @@ import { computeSkyTimelapse } from "@/lib/astro";
 const WHEEL_ID = "sky-wheel";
 
 /**
- * Roda da home: o céu de hoje em câmera rápida. O servidor calcula tudo
+ * Roda da home: o céu de hoje com leve movimento. O servidor calcula tudo
  * (`computeSkyTimelapse`) e desenha o SVG como texto, como em qualquer roda do
  * site; o navegador só anima (`SkyMotion`) e, sem JavaScript ou com
  * "reduzir movimento", mostra a roda parada.
@@ -22,7 +22,7 @@ export function SkyWheel() {
           animated
           sky
           idPrefix="sky-wheel"
-          title="O céu de hoje em câmera rápida"
+          title="O céu de hoje"
         />
       </div>
       <SkyMotion
@@ -33,9 +33,9 @@ export function SkyWheel() {
         ascendant={asc}
       />
       <figcaption className="text-muted-foreground text-center text-sm text-balance">
-        O céu de hoje em câmera rápida: acendem o signo e a casa onde estão o
-        Sol e a Lua. O seu mapa usa o céu do dia, da hora e do lugar em que você
-        nasceu.
+        O céu de hoje, em leve movimento: estão acesos o signo e a casa onde
+        estão o Sol e a Lua. O seu mapa usa o céu do dia, da hora e do lugar em
+        que você nasceu.
       </figcaption>
     </figure>
   );
