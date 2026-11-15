@@ -225,6 +225,10 @@ A IA recebe um **resumo em texto** gerado do `chart_data` (`lib/reports/chart-su
 - O resumo **não traz** nome, e-mail, data, hora, cidade, coordenadas nem fuso. Há teste automático que garante isso, em cumprimento à Política de Privacidade.
 - Se a hora é desconhecida, o resumo avisa que ângulos e casas não existem, e a IA é instruída a não citá-los.
 
+### O céu em câmera rápida da home (não é mapa de ninguém)
+
+A roda animada da página inicial (`lib/astro/sky.ts`, `computeSkyTimelapse`) usa o mesmo motor: calcula o mapa do **instante em que a página é gerada**, visto de Campinas, e depois 60 quadros a cada 2 dias com a posição real de cada planeta (`eclLon`, Nodo médio). As casas e o Ascendente do primeiro quadro ficam fixos durante o filme; só os planetas andam, e a retrogradação aparece sozinha. O navegador apenas interpola entre os quadros e acende o signo e a casa do Sol e da Lua, que o servidor já calculou (`houseOf`). Não usa dado de cliente, e nada é calculado no navegador.
+
 ## 15. Validação e testes
 
 Os testes ficam em `lib/astro/chart.test.ts` (Vitest) e **precisam passar a cada mudança** (`npm test`). A tolerância é de **±1′ de arco**.

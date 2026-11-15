@@ -91,6 +91,18 @@ function sectorPath(a0: number, a1: number) {
   ].join(" ");
 }
 
+/** Fatia de anel entre dois raios, de a0 a a1 (anti-horário). */
+function ringPath(rOuter: number, rInner: number, a0: number, a1: number) {
+  const large = (((a1 - a0) % 360) + 360) % 360 > 180 ? 1 : 0;
+  return [
+    `M ${pt(rOuter, a0)}`,
+    `A ${rOuter} ${rOuter} 0 ${large} 0 ${pt(rOuter, a1)}`,
+    `L ${pt(rInner, a1)}`,
+    `A ${rInner} ${rInner} 0 ${large} 1 ${pt(rInner, a0)}`,
+    "Z",
+  ].join(" ");
+}
+
 /** Descrição em texto do mapa, para leitores de tela. */
 export function describeChart(chart: ChartData) {
   const parts: string[] = [];
@@ -113,6 +125,13 @@ export type WheelOptions = {
   title?: string;
   /** Prefixo dos ids de título/descrição; use valores distintos se houver várias rodas na página. */
   idPrefix?: string;
+  /**
+   * Modo "céu em movimento" (home): os planetas ganham marcadores para o
+   * navegador movê-los (`data-planets`, `data-angle`), há camadas de destaque
+   * por signo e por casa (`data-hl-sign`, `data-hl-house`) e não há aspectos nem
+   * graus, que ficariam desatualizados assim que os planetas andassem.
+   */
+  sky?: boolean;
 };
 
 const text = (
@@ -132,6 +151,7 @@ export function renderChartWheelSvg(
     className = "",
     title = "Roda do mapa astral",
     idPrefix = "chart-wheel",
+    sky = false,
   }: WheelOptions = {},
 ): string {
   const asc = chart.ascendant?.longitude ?? null;
@@ -212,6 +232,30 @@ export function renderChartWheelSvg(
     `<g aria-hidden="true"><circle cx="${C}" cy="${C}" r="${R_HOUSE}" fill="none" class="stroke-muted-foreground/50" stroke-width="1"/><circle cx="${C}" cy="${C}" r="${R_ASPECT}" class="fill-card/60 stroke-muted-foreground/40" stroke-width="1"/></g>`,
   );
 
+  // Destaques (modo céu): uma camada apagada por signo e por casa; o navegador
+  // só liga as do Sol e da Lua (atributo `data-on`). Opacidade é a única coisa
+  // que muda, então cada camada custa quase nada.
+  if (sky) {
+    out.push(`<g aria-hidden="true">`);
+    SIGNS.forEach((_, i) => {
+      const a0 = ang(i * 30);
+      out.push(
+        `<path data-hl-sign="${i}" d="${sectorPath(a0, a0 + 30)}" class="wheel-hl fill-primary"/>`,
+      );
+    });
+    if (chart.cusps) {
+      chart.cusps.forEach((cusp, i) => {
+        const next = chart.cusps![(i + 1) % 12].longitude;
+        const span = (((next - cusp.longitude) % 360) + 360) % 360;
+        const a0 = ang(cusp.longitude);
+        out.push(
+          `<path data-hl-house="${cusp.house}" d="${ringPath(R_HOUSE, R_ASPECT, a0, a0 + span)}" class="wheel-hl fill-primary"/>`,
+        );
+      });
+    }
+    out.push(`</g>`);
+  }
+
   // Cúspides e números das casas (só com hora de nascimento).
   if (chart.cusps) {
     const cusps = chart.cusps;
@@ -246,9 +290,10 @@ export function renderChartWheelSvg(
   }
   if (axes.length) out.push(`</g>`);
 
-  // Aspectos: azul para harmônicos, vermelho para tensos.
+  // Aspectos: azul para harmônicos, vermelho para tensos. No modo céu ficam de
+  // fora: com os planetas andando, linhas fixas apontariam para o lugar errado.
   out.push(`<g aria-hidden="true" class="wheel-fade" ${delay(3)}>`);
-  aspects.forEach((asp) => {
+  (sky ? [] : aspects).forEach((asp) => {
     const a = polar(C, C, R_ASPECT, realAngles[planetIndex.get(asp.planet_a)!]);
     const b = polar(C, C, R_ASPECT, realAngles[planetIndex.get(asp.planet_b)!]);
     out.push(
@@ -262,14 +307,21 @@ export function renderChartWheelSvg(
   out.push(`</g>`);
 
   // Planetas: marca na posição real, linha-guia e símbolo afastado.
-  out.push(`<g class="wheel-fade" ${delay(4)}>`);
+  // No modo céu há um grupo interno (`data-planets`): o externo carrega a
+  // animação de entrada, e o interno recebe o fade do recomeço do filme.
+  out.push(
+    `<g class="wheel-fade" ${delay(4)}>`,
+    sky ? `<g data-planets="" aria-hidden="true">` : "",
+  );
   chart.planets.forEach((planet, i) => {
     const real = realAngles[i];
     const shown = shownAngles[i];
     const glyph = polar(C, C, R_GLYPH, shown);
     const deg = polar(C, C, R_DEGREE, shown);
     const retro = polar(C, C, R_GLYPH + 19, shown);
-    const from = polar(C, C, R_SIGN_IN - 1, real);
+    // No modo céu a marca é radial no ângulo exibido: o grupo inteiro gira
+    // rígido em torno do centro, e o símbolo gira de volta para ficar em pé.
+    const from = polar(C, C, R_SIGN_IN - 1, sky ? shown : real);
     const to = polar(C, C, R_GLYPH + 14, shown);
     out.push(
       `<g data-planet="${planet.id}" data-angle="${f(shown)}">`,
@@ -280,22 +332,25 @@ export function renderChartWheelSvg(
         21,
         "fill-foreground font-symbols",
         PLANET_GLYPHS[planet.id] + TEXT,
+        sky ? " data-glyph" : "",
       ),
-      text(
-        deg.x,
-        deg.y,
-        11,
-        "fill-muted-foreground",
-        `${Math.floor(planet.degree)}°`,
-      ),
-      planet.retrograde
+      sky
+        ? ""
+        : text(
+            deg.x,
+            deg.y,
+            11,
+            "fill-muted-foreground",
+            `${Math.floor(planet.degree)}°`,
+          ),
+      !sky && planet.retrograde
         ? text(retro.x, retro.y, 11, "fill-primary", "℞", ' font-weight="700"')
         : "",
       `</g>`,
     );
   });
 
-  out.push(`</g>`);
+  out.push(sky ? `</g></g>` : `</g>`);
 
   // Borda externa
   out.push(

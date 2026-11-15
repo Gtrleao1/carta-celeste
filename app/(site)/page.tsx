@@ -1,14 +1,14 @@
 import Link from "next/link";
 import { Suspense } from "react";
 
-import { ChartWheel } from "@/components/chart/chart-wheel";
+import { SkyWheel } from "@/components/chart/sky-wheel";
 import { DeletedNotice } from "@/components/site/deleted-notice";
 import { FeaturedProduct } from "@/components/site/featured-product";
+import { IntroSplash } from "@/components/site/intro-splash";
 import { ProductCard } from "@/components/site/product-card";
 import { buttonVariants } from "@/components/ui/button";
 import { formatBRL } from "@/lib/format";
 import { getActiveProducts } from "@/lib/products";
-import { sampleChart } from "@/lib/sample-chart";
 import { TESTIMONIALS } from "@/lib/site-config";
 
 // Página estática, regenerada a cada 5 minutos (produtos vêm do banco).
@@ -123,6 +123,7 @@ export default async function Home() {
 
   return (
     <>
+      <IntroSplash />
       <Suspense fallback={null}>
         <DeletedNotice />
       </Suspense>
@@ -169,11 +170,7 @@ export default async function Home() {
           )}
         </div>
         <div className="mx-auto w-full max-w-[520px]">
-          <ChartWheel
-            chart={sampleChart}
-            animated
-            title="Exemplo de roda do mapa astral"
-          />
+          <SkyWheel />
         </div>
       </section>
 

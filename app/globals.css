@@ -145,6 +145,67 @@
   }
 }
 
+/* Roda do céu (home): signo e casa acesos do Sol e da Lua. Só opacidade muda. */
+.wheel-hl {
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+.wheel-hl[data-on] {
+  opacity: 0.32;
+}
+
+/*
+ * Abertura da home: cobre a página por ~1,7 s na primeira visita da sessão.
+ * O conteúdo já está carregado por baixo; a abertura some sozinha (CSS), com
+ * ou sem JavaScript, e pode ser pulada com clique ou Esc. Não aparece com
+ * "reduzir movimento" nem quando a pessoa já a viu nesta sessão
+ * (`html[data-intro="skip"]`, definido antes da pintura por um script curto).
+ */
+.intro {
+  animation: intro-out 0.5s ease 1.2s both;
+}
+.intro-ring {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: intro-draw 1s ease-out 0.1s forwards;
+}
+.intro-ring-2 {
+  animation-delay: 0.35s;
+}
+.intro-fade {
+  opacity: 0;
+  animation: intro-in 0.6s ease-out 0.5s forwards;
+}
+@keyframes intro-out {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+@keyframes intro-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes intro-in {
+  to {
+    opacity: 1;
+  }
+}
+html[data-intro="skip"] .intro {
+  display: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .intro {
+    display: none;
+  }
+}
+@media print {
+  .intro {
+    display: none;
+  }
+}
+
 /* Impressão: fundo claro, roda em página própria e quebras entre seções. */
 @media print {
   :root,

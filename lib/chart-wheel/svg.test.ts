@@ -75,6 +75,51 @@ describe("roda do mapa — caso Referência 1", () => {
   });
 });
 
+describe("roda do mapa — modo céu em movimento", () => {
+  const sky = renderChartWheelSvg(sampleChart, { sky: true, animated: true });
+
+  it("tem destaque para 12 signos e 12 casas, apagados por padrão", () => {
+    expect(sky.match(/data-hl-sign="/g)).toHaveLength(12);
+    expect(sky.match(/data-hl-house="/g)).toHaveLength(12);
+    expect(sky).toContain("wheel-hl");
+  });
+
+  it("marca os planetas para o navegador mover (grupo, ângulo e símbolo)", () => {
+    expect(sky).toContain("data-planets");
+    expect(sky.match(/data-glyph/g)).toHaveLength(11);
+    expect(sky.match(/data-angle="/g)).toHaveLength(11);
+  });
+
+  it("sem aspectos nem graus, que ficariam desatualizados com os planetas andando", () => {
+    expect(sky).not.toContain("stroke-air");
+    expect(sky).not.toContain("stroke-fire");
+    expect(sky).not.toMatch(/>\d+°<\/text>/);
+  });
+
+  it("continua sendo um SVG bem formado", () => {
+    expect(sky.match(/<g[ >]/g)?.length).toBe(sky.match(/<\/g>/g)?.length);
+  });
+
+  it("o modo comum não ganha camadas de destaque", () => {
+    expect(render()).not.toContain("data-hl-sign");
+    expect(render()).not.toContain("data-planets");
+  });
+
+  it("sem hora de nascimento não há destaque de casas", () => {
+    const noTime = computeChart({
+      birthDate: "1995-07-14",
+      birthTime: null,
+      timezone: "America/Sao_Paulo",
+      latitude: -22.91,
+      longitude: -47.06,
+      houseSystem: "placidus",
+    });
+    const html = renderChartWheelSvg(noTime, { sky: true });
+    expect(html.match(/data-hl-sign="/g)).toHaveLength(12);
+    expect(html).not.toContain("data-hl-house");
+  });
+});
+
 describe("roda do mapa — sem hora de nascimento", () => {
   const chart = computeChart({
     birthDate: "1995-07-14",

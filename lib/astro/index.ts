@@ -9,4 +9,6 @@ export type {
   PlanetPosition,
   Position,
 } from "./chart";
+export { computeSkyTimelapse } from "./sky";
+export type { SkyTimelapse } from "./sky";
 export * from "./constants";
