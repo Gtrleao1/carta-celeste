@@ -31,7 +31,7 @@ export default async function EntrarPage({
         </CardTitle>
         <CardDescription>
           {purchase
-            ? "Já tem conta? Entre e veja os seus mapas. É a primeira vez? Crie a conta primeiro; depois você informa os dados de nascimento."
+            ? "Já tem conta? Entre e veja os seus mapas. É a primeira vez? Crie a sua conta e informe os dados de nascimento na mesma tela."
             : "Acesse sua conta para ver seus mapas."}
         </CardDescription>
       </CardHeader>

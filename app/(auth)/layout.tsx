@@ -15,7 +15,8 @@ export default function AuthLayout({
         <Link href="/" className="text-2xl font-semibold tracking-tight">
           Carta Celeste
         </Link>
-        <div className="w-full max-w-sm">{children}</div>
+        {/* Largura que cabe o formulário de cadastro com dados de nascimento. */}
+        <div className="w-full max-w-md">{children}</div>
       </main>
     </>
   );
