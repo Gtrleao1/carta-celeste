@@ -20,6 +20,11 @@ type Props = {
   buyerBirthDate: string | null;
   /** Abre direto o formulário de uma nova pessoa (botão "Adicionar outra pessoa"). */
   startCreating?: boolean;
+  /**
+   * Veio do formulário da home (`?confirmar=1`): os dados já foram salvos, então
+   * abre direto na confirmação, com o perfil mais recente escolhido.
+   */
+  startAtConfirm?: boolean;
 };
 
 const summaryOf = (p: SavedBirthProfile) =>
@@ -39,6 +44,7 @@ export function CheckoutFlow({
   profiles: initial,
   buyerBirthDate,
   startCreating = false,
+  startAtConfirm = false,
 }: Props) {
   const [profiles, setProfiles] = useState(initial);
   const [selectedId, setSelectedId] = useState<string | null>(
@@ -47,7 +53,11 @@ export function CheckoutFlow({
   const [creating, setCreating] = useState(
     initial.length === 0 || startCreating,
   );
-  const [step, setStep] = useState<"profile" | "confirm">("profile");
+  const [step, setStep] = useState<"profile" | "confirm">(
+    startAtConfirm && initial.length > 0 && !startCreating
+      ? "confirm"
+      : "profile",
+  );
 
   const [ageDeclared, setAgeDeclared] = useState(false);
   const [buyerDate, setBuyerDate] = useState(buyerBirthDate ?? "");

@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { buttonVariants } from "@/components/ui/button";
+import { HomeOrderForm } from "@/components/site/home-order-form";
 import { formatBRL } from "@/lib/format";
 import type { Product } from "@/lib/products";
 import { DISCLAIMER } from "@/lib/site-config";
@@ -12,7 +12,7 @@ import { DISCLAIMER } from "@/lib/site-config";
  */
 export function FeaturedProduct({ product }: { product: Product }) {
   return (
-    <div className="mt-8 grid items-start gap-8 lg:grid-cols-[1fr_380px] lg:gap-12">
+    <div className="mt-8 grid items-start gap-8 lg:grid-cols-[1fr_440px] lg:gap-12">
       <div className="grid gap-6">
         {product.tagline && (
           <p className="text-primary text-sm font-medium tracking-wide">
@@ -77,12 +77,7 @@ export function FeaturedProduct({ product }: { product: Product }) {
           <li>Pronto em poucos minutos, na sua área do cliente</li>
           <li>Para ler no celular e imprimir ou salvar em PDF</li>
         </ul>
-        <Link
-          href={`/comprar/${product.slug}`}
-          className={buttonVariants({ size: "lg" }) + " h-12 text-base"}
-        >
-          Quero meu {product.name}
-        </Link>
+        <HomeOrderForm slug={product.slug} name={product.name} />
         <Link
           href={`/mapa/${product.slug}`}
           className="text-muted-foreground hover:text-foreground text-center text-sm underline underline-offset-4"

@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 
 import { fieldErrorsFrom, type FormState } from "@/lib/auth/form-state";
 import { birthProfileFromForm, birthProfileSchema } from "@/lib/birth/schemas";
+import { saveBirthProfile } from "@/lib/birth/save-profile";
 import { withinRateLimit } from "@/lib/rate-limit";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
@@ -52,52 +53,12 @@ export async function createBirthProfile(
     };
   }
 
-  // Cidade da lista: coordenadas e fuso vêm do banco, não do navegador.
-  let cityName: string;
-  let latitude: number;
-  let longitude: number;
-  let timezone: string;
-  if (input.city.mode === "db") {
-    const { data: city } = await supabase
-      .from("cities")
-      .select("name, state_or_country, latitude, longitude, timezone")
-      .eq("id", input.city.city_id)
-      .maybeSingle();
-    if (!city) {
-      return { fieldErrors: { city: ["Escolha a cidade na lista."] } };
-    }
-    cityName = `${city.name}, ${city.state_or_country}`;
-    latitude = city.latitude;
-    longitude = city.longitude;
-    timezone = city.timezone;
-  } else {
-    cityName = input.city.name;
-    latitude = input.city.latitude;
-    longitude = input.city.longitude;
-    timezone = input.city.timezone;
+  const saved = await saveBirthProfile(supabase, user.id, input);
+  if (!saved.ok) {
+    return saved.fieldErrors
+      ? { fieldErrors: saved.fieldErrors }
+      : { error: saved.error };
   }
 
-  const { data, error } = await supabase
-    .from("birth_profiles")
-    .insert({
-      user_id: user.id,
-      name: input.name,
-      birth_date: input.birth_date,
-      birth_time: input.time_unknown ? null : input.birth_time,
-      time_unknown: input.time_unknown,
-      city_name: cityName,
-      latitude,
-      longitude,
-      timezone,
-    })
-    .select(
-      "id, name, birth_date, birth_time, time_unknown, city_name, timezone",
-    )
-    .single();
-
-  if (error || !data) {
-    return { error: "Não foi possível salvar os dados. Tente de novo." };
-  }
-
-  return { message: "Dados salvos.", profile: data as SavedBirthProfile };
+  return { message: "Dados salvos.", profile: saved.profile };
 }

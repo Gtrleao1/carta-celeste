@@ -19,7 +19,10 @@ export default async function ComprarPage({
   const { slug } = await params;
   // `?novo=1` (botão "Adicionar outra pessoa"): já abre o formulário de dados
   // de nascimento, em vez da lista de perfis salvos.
-  const startCreating = (await searchParams).novo === "1";
+  const query = await searchParams;
+  const startCreating = query.novo === "1";
+  // `?confirmar=1` (formulário da home): os dados já estão salvos, vai à confirmação.
+  const startAtConfirm = query.confirmar === "1";
 
   const supabase = await createClient();
   const {
@@ -66,6 +69,7 @@ export default async function ComprarPage({
         profiles={(profiles ?? []) as SavedBirthProfile[]}
         buyerBirthDate={profile?.birth_date_of_buyer ?? null}
         startCreating={startCreating}
+        startAtConfirm={startAtConfirm}
       />
     </div>
   );

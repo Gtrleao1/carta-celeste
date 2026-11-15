@@ -68,6 +68,14 @@ ser resolvido antes de vender de verdade**. Ao concluir um item, apague-o daqui.
 
 ## E-mail e contas
 
+- [ ] **Testar o formulário da home com um e-mail real** (cadastro → e-mail de
+      confirmação → cai em "Confira os dados" → pagamento). Só a lógica foi testada
+      (unidade e tela); criar conta de verdade envia e-mail pelo Supabase.
+- [ ] **Contas criadas pela home e nunca confirmadas** guardam o perfil de
+      nascimento (data, hora e cidade) sem dono ativo. Decidir um prazo (por
+      exemplo, apagar contas não confirmadas após 7 dias) e mencionar na
+      Política de Privacidade.
+
 - [ ] **Resend como SMTP do Supabase** com domínio verificado. O envio padrão do
       Supabase só entrega para endereços da equipe do projeto e tem limite baixo
       por hora; clientes reais não receberiam o e-mail de confirmação.
