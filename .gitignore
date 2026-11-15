@@ -45,3 +45,9 @@ next-env.d.ts
 
 # CLI do Supabase
 supabase/.temp
+
+# Arquivos de credenciais soltos: nunca no repositorio
+Credenciais*
+credenciais*
+*.pem
+*.key
