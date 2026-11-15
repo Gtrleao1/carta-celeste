@@ -125,6 +125,21 @@ ser resolvido antes de vender de verdade**. Ao concluir um item, apague-o daqui.
 - [ ] Rever limites de requisições (checkout, busca de cidades, cadastro,
       recuperação de senha) com tráfego real.
 
+## Operação e escala
+
+- [ ] **Monitor de disponibilidade** apontado para `https://<domínio>/api/saude`
+      (alerta por e-mail/WhatsApp se cair).
+- [ ] **Limpeza de contas não confirmadas:** na Vercel, definir `CRON_SECRET`
+      (valor aleatório longo) e `UNCONFIRMED_ACCOUNT_TTL_DAYS` (sugestão: 14),
+      fazer novo deploy e conferir `[limpeza]` no log do dia seguinte. Incluir o
+      prazo na Política de Privacidade (revisão jurídica).
+- [ ] **Supabase Pro** (backups diários, sem pausa) e **Vercel Pro** (uso
+      comercial) antes de vender de verdade.
+- [ ] **Limites da Anthropic:** conferir o nível da conta para o volume esperado
+      (3 chamadas em paralelo por pedido; o job já refaz falhas de limite).
+- [ ] **Alerta de pedido que falhou** para o e-mail do admin (hoje só aparece no
+      painel).
+
 ## Qualidade
 
 - [ ] Teste ponta a ponta com Playwright do fluxo de compra (Etapa 8).

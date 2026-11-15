@@ -10,6 +10,10 @@
  *   `/api/csp-report`; depois de uma semana sem violações legítimas, passa a
  *   ser imposta (ver `PENDENCIAS.md`).
  *
+ * Sem `Cross-Origin-Opener-Policy` de propósito: com ele o Lighthouse e o
+ * PageSpeed Insights deixam de medir a página (erro NO_NAVSTART, desempenho 0),
+ * e o ganho de segurança para um site sem janelas abertas por script é pequeno.
+ *
  * Sem *nonce* de propósito: nonce obriga renderização dinâmica em todas as
  * páginas, o que desliga o cache estático e pesa no desempenho e no custo. Por
  * isso `script-src` aceita `'unsafe-inline'` (o Next e nossos scripts curtos
@@ -99,8 +103,6 @@ export function securityHeaders(opts: {
     { key: "Permissions-Policy", value: PERMISSIONS_POLICY },
     // Redundante com frame-ancestors, mas cobre navegadores antigos.
     { key: "X-Frame-Options", value: "DENY" },
-    // Mantém janelas abertas por nós (3DS do banco) funcionando.
-    { key: "Cross-Origin-Opener-Policy", value: "same-origin-allow-popups" },
     { key: "Content-Security-Policy", value: ENFORCED_CSP },
     // Em desenvolvimento não há relatório: o HMR e o React usam recursos que o CSP barra.
     ...(opts.isDev

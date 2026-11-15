@@ -24,7 +24,9 @@ describe("cabeçalhos de segurança", () => {
     expect(get("X-Content-Type-Options")).toBe("nosniff");
     expect(get("Referrer-Policy")).toBe("strict-origin-when-cross-origin");
     expect(get("X-Frame-Options")).toBe("DENY");
-    expect(get("Cross-Origin-Opener-Policy")).toBe("same-origin-allow-popups");
+    // Sem COOP de propósito: ele faz o Lighthouse e o PageSpeed Insights falharem
+    // (NO_NAVSTART, desempenho 0) e traz pouco ganho para este site.
+    expect(get("Cross-Origin-Opener-Policy")).toBeUndefined();
     expect(get("Permissions-Policy")).toBe(PERMISSIONS_POLICY);
   });
 

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 
 import { SkyWheel } from "@/components/chart/sky-wheel";
+import { SampleReading } from "@/components/site/sample-reading";
 import { DeletedNotice } from "@/components/site/deleted-notice";
 import { FeaturedProduct } from "@/components/site/featured-product";
 import { IntroSplash } from "@/components/site/intro-splash";
@@ -189,6 +190,11 @@ export default async function Home() {
           <SkyWheel />
         </div>
       </section>
+
+      {/* Folheie: prova do texto antes da compra */}
+      <div className={DEFER}>
+        <SampleReading buyHref="#mapas" parts={single?.sections.length} />
+      </div>
 
       {/* Vitrine */}
       <section
