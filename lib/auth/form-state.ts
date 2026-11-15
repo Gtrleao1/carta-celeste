@@ -9,6 +9,8 @@ export type FormState = {
   fieldErrors?: Record<string, string[]>;
   /** No cadastro: o e-mail informado já tem conta (usado para oferecer nova senha). */
   existingAccountEmail?: string;
+  /** No cadastro: conta criada, falta confirmar o e-mail (permite reenviar ou corrigir). */
+  pendingEmail?: string;
 };
 
 /** Converte os erros do Zod em erros por campo. */

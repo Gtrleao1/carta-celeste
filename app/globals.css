@@ -160,6 +160,14 @@
  * `aria-hidden`, sem clique e fora da impressão. Ficam atrás do conteúdo
  * (`isolate` no contêiner + z-index negativo).
  */
+/* Controles nativos (menus das listas, barras de rolagem) seguem o tema do site. */
+:root {
+  color-scheme: light;
+}
+.dark {
+  color-scheme: dark;
+}
+
 /*
  * Opacidade máxima calculada para o texto sobre o ponto mais claro do fundo
  * continuar com contraste AA (4,5:1): o Lighthouse mede o pior pixel, não a

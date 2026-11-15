@@ -9,12 +9,12 @@ import { ProductCard } from "@/components/site/product-card";
 import { buttonVariants } from "@/components/ui/button";
 import { formatBRL } from "@/lib/format";
 import { getActiveProducts } from "@/lib/products";
-import { TESTIMONIALS } from "@/lib/site-config";
+import { CTA_LABEL, TESTIMONIALS } from "@/lib/site-config";
 
 // Página estática, regenerada a cada 5 minutos (produtos vêm do banco).
 export const revalidate = 300;
 
-const CTA = "Quero minha Carta Celeste";
+const CTA = CTA_LABEL;
 
 // Seções abaixo da dobra: o navegador só calcula estilo e layout delas quando
 // chegam perto da tela (menos trabalho no carregamento).
@@ -75,6 +75,22 @@ const FAQ = [
   {
     q: "É uma previsão do futuro?",
     a: "Não. O mapa astral é um retrato das tendências, talentos e desafios presentes no seu céu de nascimento. Ele serve para você se conhecer melhor e fazer escolhas com mais consciência. As decisões continuam sendo suas. O conteúdo é para autoconhecimento e entretenimento.",
+  },
+  {
+    q: "Posso pedir o mapa de outra pessoa?",
+    a: "Pode. O mapa é calculado com os dados de nascimento que você informar, então serve para você, para um filho, uma amiga ou para dar de presente. Ele fica guardado na sua conta, e você pode imprimir ou salvar em PDF para entregar. Depois de criar a conta, use “Adicionar outra pessoa” em Meus mapas.",
+  },
+  {
+    q: "Só sei a hora aproximada. Posso informar?",
+    a: "Pode, mas com cuidado: uma diferença de poucos minutos costuma mudar pouco, enquanto uma diferença de uma hora ou mais pode mudar o seu Ascendente. Se puder, confira na certidão de nascimento ou na Declaração de Nascido Vivo. Se não for possível, marque “Não sei a hora” e receba o mapa mais curto.",
+  },
+  {
+    q: "Posso desistir da compra?",
+    a: "Sim. Pelo Código de Defesa do Consumidor, você pode desistir em até 7 dias corridos depois do pedido e pedir o reembolso. Os detalhes estão nos Termos de Uso.",
+  },
+  {
+    q: "Posso usar o mapa junto com terapia?",
+    a: "Muita gente usa o mapa como ponto de partida para pensar sobre si mesma, inclusive para conversar com a terapeuta. Mas ele não substitui acompanhamento psicológico, médico ou jurídico: é um conteúdo para autoconhecimento e entretenimento.",
   },
   {
     q: "Posso guardar ou imprimir o meu mapa?",

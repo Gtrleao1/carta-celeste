@@ -7,15 +7,16 @@ import { startPurchase } from "@/app/(site)/actions";
 import { ExistingAccountNotice } from "@/components/auth/existing-account-notice";
 import { Field, FormMessage, SubmitButton } from "@/components/auth/form-parts";
 import { BirthFields } from "@/components/checkout/birth-fields";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { ConfirmEmailNotice } from "@/components/auth/confirm-email-notice";
 import type { FormState } from "@/lib/auth/form-state";
 import { purchasePath } from "@/lib/checkout/purchase-path";
+import { CTA_LABEL } from "@/lib/site-config";
 
 /**
  * O formulário em si (nome, nascimento, e-mail, senha e termos). Carregado sob
  * demanda por `HomeOrderForm`, quando chega perto da tela.
  */
-export function OrderForm({ slug, name }: { slug: string; name: string }) {
+export function OrderForm({ slug }: { slug: string }) {
   const [state, action] = useActionState<FormState, FormData>(
     startPurchase,
     {},
@@ -24,25 +25,33 @@ export function OrderForm({ slug, name }: { slug: string; name: string }) {
   const [accepted, setAccepted] = useState(false);
   const termsError = state.fieldErrors?.accepted_terms;
 
-  // Conta criada: no lugar do formulário, só o próximo passo.
-  if (state.message) {
-    return (
-      <Alert role="status">
-        <AlertTitle className="text-base">Confirme o seu e-mail</AlertTitle>
-        <AlertDescription>{state.message}</AlertDescription>
-      </Alert>
-    );
-  }
+  // Conta criada: o aviso de confirmar o e-mail toma o lugar do formulário (que
+  // continua montado, só escondido, para "Corrigir o e-mail" não perder o que
+  // a pessoa digitou). Uma nova resposta do servidor volta a mostrar o formulário.
+  const [editedFor, setEditedFor] = useState<FormState | null>(null);
+  const showNotice = Boolean(state.pendingEmail) && editedFor !== state;
 
   return (
     <div className="grid gap-4">
-      {state.existingAccountEmail && (
+      {showNotice && state.pendingEmail && (
+        <ConfirmEmailNotice
+          email={state.pendingEmail}
+          next={purchasePath(slug)}
+          message={state.message ?? ""}
+          onEdit={() => setEditedFor(state)}
+        />
+      )}
+      {state.existingAccountEmail && !showNotice && (
         <ExistingAccountNotice
           email={state.existingAccountEmail}
           next={purchasePath(slug)}
         />
       )}
-      <form action={action} className="grid gap-4" noValidate>
+      <form
+        action={action}
+        className={showNotice ? "hidden" : "grid gap-4"}
+        noValidate
+      >
         <input type="hidden" name="product_slug" value={slug} />
 
         <Field
@@ -52,7 +61,7 @@ export function OrderForm({ slug, name }: { slug: string; name: string }) {
           required
           state={state}
         />
-        <BirthFields state={state} />
+        <BirthFields state={state} autofillBirthday />
         <Field
           name="email"
           label="E-mail"
@@ -108,8 +117,12 @@ export function OrderForm({ slug, name }: { slug: string; name: string }) {
         </div>
 
         <FormMessage state={state} />
+        <p className="text-muted-foreground text-xs">
+          Usamos seus dados de nascimento só para calcular o seu mapa. Você pode
+          apagar tudo quando quiser, em Minha conta.
+        </p>
         <SubmitButton pendingText="Criando sua conta…">
-          Quero meu {name}
+          {CTA_LABEL}
         </SubmitButton>
         <p className="text-muted-foreground text-center text-xs">
           Você confere os dados e paga na próxima etapa. Já tem conta?{" "}

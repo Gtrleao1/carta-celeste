@@ -54,26 +54,43 @@ export function Field({
   // Campo controlado: o React 19 reseta formulários com Server Action depois do
   // envio, o que apagaria o que a pessoa digitou quando há erro de validação.
   const [value, setValue] = useState(defaultValue ?? "");
+  // Campos de senha ganham "Mostrar": quem digita no celular erra menos vendo o que escreve.
+  const [revealed, setRevealed] = useState(false);
+  const isPassword = props.type === "password";
   const errors = state.fieldErrors?.[name];
   const errorId = `${name}-error`;
   const hintId = `${name}-hint`;
   return (
     <div className="grid gap-1.5">
       <Label htmlFor={name}>{label}</Label>
-      <Input
-        id={name}
-        name={name}
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        aria-invalid={errors ? true : undefined}
-        aria-describedby={
-          [errors ? errorId : null, hint ? hintId : null]
-            .filter(Boolean)
-            .join(" ") || undefined
-        }
-        className="h-11 text-base"
-        {...props}
-      />
+      <div className="relative">
+        <Input
+          id={name}
+          name={name}
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          aria-invalid={errors ? true : undefined}
+          aria-describedby={
+            [errors ? errorId : null, hint ? hintId : null]
+              .filter(Boolean)
+              .join(" ") || undefined
+          }
+          className={isPassword ? "h-11 pr-24 text-base" : "h-11 text-base"}
+          {...props}
+          type={isPassword && revealed ? "text" : props.type}
+        />
+        {isPassword && (
+          <button
+            type="button"
+            onClick={() => setRevealed((r) => !r)}
+            aria-pressed={revealed}
+            aria-label={revealed ? "Ocultar senha" : "Mostrar senha"}
+            className="text-muted-foreground hover:text-foreground focus-visible:ring-ring/50 absolute inset-y-0 right-0 rounded-r-lg px-3 text-sm underline underline-offset-4 outline-none focus-visible:ring-3"
+          >
+            {revealed ? "Ocultar" : "Mostrar"}
+          </button>
+        )}
+      </div>
       {hint && (
         <p id={hintId} className="text-muted-foreground text-xs">
           {hint}

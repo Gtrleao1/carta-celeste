@@ -44,7 +44,7 @@ export default async function CadastroPage({
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <OrderForm slug={product.slug} name={product.name} />
+          <OrderForm slug={product.slug} />
         </CardContent>
       </Card>
     );

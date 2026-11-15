@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useActionState, useState } from "react";
 
 import { signUp } from "@/app/(auth)/actions";
+import { ConfirmEmailNotice } from "@/components/auth/confirm-email-notice";
 import { ExistingAccountNotice } from "@/components/auth/existing-account-notice";
 import { Field, FormMessage, SubmitButton } from "@/components/auth/form-parts";
 import type { FormState } from "@/lib/auth/form-state";
@@ -13,13 +14,29 @@ export function SignUpForm({ next }: { next: string }) {
   const termsError = state.fieldErrors?.accepted_terms;
   // Controlado: o React 19 reseta o formulário após o envio, o que desmarcaria o aceite.
   const [accepted, setAccepted] = useState(false);
+  // Conta criada: aviso de confirmar o e-mail no lugar do formulário (que fica
+  // montado, escondido, para "Corrigir o e-mail" não perder o que foi digitado).
+  const [editedFor, setEditedFor] = useState<FormState | null>(null);
+  const showNotice = Boolean(state.pendingEmail) && editedFor !== state;
 
   return (
     <div className="grid gap-4">
-      {state.existingAccountEmail && (
+      {showNotice && state.pendingEmail && (
+        <ConfirmEmailNotice
+          email={state.pendingEmail}
+          next={next}
+          message={state.message ?? ""}
+          onEdit={() => setEditedFor(state)}
+        />
+      )}
+      {state.existingAccountEmail && !showNotice && (
         <ExistingAccountNotice email={state.existingAccountEmail} next={next} />
       )}
-      <form action={action} className="grid gap-4" noValidate>
+      <form
+        action={action}
+        className={showNotice ? "hidden" : "grid gap-4"}
+        noValidate
+      >
         <input type="hidden" name="next" value={next} />
         <Field
           name="full_name"

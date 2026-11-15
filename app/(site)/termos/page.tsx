@@ -84,7 +84,7 @@ export default function TermosPage() {
         </li>
       </ul>
 
-      <h2>7. Arrependimento e reembolso</h2>
+      <h2 id="arrependimento">7. Arrependimento e reembolso</h2>
       <p>
         Conforme o Código de Defesa do Consumidor, em compras feitas pela
         internet você pode desistir da compra em até 7 dias corridos, contados

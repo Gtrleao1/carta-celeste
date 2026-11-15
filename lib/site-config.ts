@@ -16,6 +16,12 @@ export const SITE = {
   legalUpdatedAt: "5 de outubro de 2026",
 };
 
+/**
+ * Nome único da ação principal (comprar) em botões do site. O menu usa a versão
+ * curta "Receber minha carta". Mudou o texto? Mude só aqui.
+ */
+export const CTA_LABEL = "Receber minha Carta Celeste";
+
 export const DISCLAIMER =
   "Conteúdo para autoconhecimento e entretenimento. Não substitui orientação médica, psicológica, financeira ou jurídica.";
 

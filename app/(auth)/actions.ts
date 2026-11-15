@@ -1,5 +1,7 @@
 "use server";
 
+import { createHash } from "node:crypto";
+
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
@@ -136,12 +138,62 @@ export async function signUp(
   // Com confirmação de e-mail ligada, não há sessão até o clique no link.
   if (!data.session) {
     return {
-      message:
-        "Quase lá! Enviamos um link de confirmação para o seu e-mail. Abra-o para ativar sua conta (confira também o spam).",
+      message: `Quase lá! Enviamos um link de confirmação para ${parsed.data.email}. Abra-o para ativar sua conta (confira também o spam).`,
+      pendingEmail: parsed.data.email,
     };
   }
 
   redirect(next);
+}
+
+/**
+ * Reenvia o e-mail de confirmação de uma conta recém-criada (e-mail que não
+ * chegou ou foi para o spam). A resposta é a mesma exista ou não a conta, para
+ * não revelar quem é cliente; o limite por IP e e-mail evita uso como "bomba"
+ * de e-mails.
+ */
+export async function resendConfirmation(
+  _prev: FormState,
+  formData: FormData,
+): Promise<FormState> {
+  const parsed = resetRequestSchema.safeParse({
+    email: formData.get("email"),
+  });
+  if (!parsed.success) return fieldErrorsFrom(parsed.error);
+
+  const ip = clientIpFromHeaders(await headers());
+  const admin = createAdminClient();
+  const hash = createHash("sha256")
+    .update(parsed.data.email)
+    .digest("hex")
+    .slice(0, 24);
+  // Poucos reenvios por e-mail (3/h) e por IP (10/h).
+  if (
+    !(await withinRateLimit(admin, `reenvio:${ip}:${hash}`, 3, 3600)) ||
+    !(await withinRateLimit(admin, `reenvio-ip:${ip}`, 10, 3600))
+  ) {
+    return {
+      error:
+        "Você já pediu o reenvio algumas vezes. Aguarde um pouco e confira também o spam.",
+      pendingEmail: parsed.data.email,
+    };
+  }
+
+  const supabase = await createClient();
+  const siteUrl = await getSiteUrl();
+  const next = safeNextPath(formData.get("next")?.toString());
+  await supabase.auth.resend({
+    type: "signup",
+    email: parsed.data.email,
+    options: {
+      emailRedirectTo: `${siteUrl}/auth/callback?next=${encodeURIComponent(next)}`,
+    },
+  });
+
+  return {
+    message: `Se ${parsed.data.email} tem uma conta aguardando confirmação, enviamos o link de novo. Confira também o spam.`,
+    pendingEmail: parsed.data.email,
+  };
 }
 
 export async function requestPasswordReset(

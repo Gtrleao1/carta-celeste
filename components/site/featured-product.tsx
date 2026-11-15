@@ -73,11 +73,36 @@ export function FeaturedProduct({ product }: { product: Product }) {
           </p>
         </div>
         <ul className="text-muted-foreground grid gap-2 text-sm">
-          <li>Calculado para o dia, a hora e a cidade em que você nasceu</li>
-          <li>Pronto em poucos minutos, na sua área do cliente</li>
-          <li>Para ler no celular e imprimir ou salvar em PDF</li>
+          {[
+            "Calculado para o dia, a hora e a cidade em que você nasceu",
+            "Pronto em poucos minutos, na sua área do cliente",
+            "Para ler no celular e imprimir ou salvar em PDF",
+            "Pagamento seguro pelo Mercado Pago; não guardamos o seu cartão",
+          ].map((text) => (
+            <li key={text} className="flex gap-2">
+              <span aria-hidden="true" className="text-primary">
+                ✓
+              </span>
+              {text}
+            </li>
+          ))}
+          <li className="flex gap-2">
+            <span aria-hidden="true" className="text-primary">
+              ✓
+            </span>
+            <span>
+              7 dias para desistir da compra, como garante a lei (
+              <Link
+                href="/termos#arrependimento"
+                className="underline underline-offset-4"
+              >
+                ver Termos
+              </Link>
+              )
+            </span>
+          </li>
         </ul>
-        <HomeOrderForm slug={product.slug} name={product.name} />
+        <HomeOrderForm slug={product.slug} />
         <Link
           href={`/mapa/${product.slug}`}
           className="text-muted-foreground hover:text-foreground text-center text-sm underline underline-offset-4"

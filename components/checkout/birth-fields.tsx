@@ -3,6 +3,10 @@
 import { useState } from "react";
 
 import { Field } from "@/components/auth/form-parts";
+import {
+  BirthDateField,
+  BirthTimeField,
+} from "@/components/checkout/birth-date-time";
 import { CityPicker } from "@/components/checkout/city-picker";
 import type { FormState } from "@/lib/auth/form-state";
 
@@ -23,29 +27,22 @@ function timeZoneOptions(): string[] {
  * formulário da home. Os nomes dos campos são os que `birthProfileFromForm`
  * lê; o nome de quem nasceu fica por conta do formulário que usa este bloco.
  */
-export function BirthFields({ state }: { state: FormState }) {
+export function BirthFields({
+  state,
+  autofillBirthday = false,
+}: {
+  state: FormState;
+  /** A data é a da própria pessoa que preenche (formulário da home e cadastro). */
+  autofillBirthday?: boolean;
+}) {
   const [timeUnknown, setTimeUnknown] = useState(false);
   const [manual, setManual] = useState(false);
   const cityError = state.fieldErrors?.city?.join(" ");
 
   return (
     <>
-      <div className="grid gap-5 sm:grid-cols-2">
-        <Field
-          name="birth_date"
-          label="Data de nascimento"
-          type="date"
-          required
-          state={state}
-        />
-        <Field
-          name="birth_time"
-          label="Hora de nascimento"
-          type="time"
-          disabled={timeUnknown}
-          state={state}
-        />
-      </div>
+      <BirthDateField state={state} autofillBirthday={autofillBirthday} />
+      <BirthTimeField state={state} disabled={timeUnknown} />
 
       <label className="flex items-center gap-3 text-base">
         <input

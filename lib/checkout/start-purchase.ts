@@ -139,6 +139,7 @@ export async function runStartPurchase(
   return {
     state: {
       message: `Quase lá! Enviamos um link de confirmação para ${account.data.email}. Abra-o para ativar sua conta e seguir para o pagamento, com os seus dados já preenchidos (confira também o spam).`,
+      pendingEmail: account.data.email,
     },
   };
 }

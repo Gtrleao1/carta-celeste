@@ -6,8 +6,9 @@ import { useEffect, useRef, useState } from "react";
 
 import { useLoggedIn } from "@/components/site/use-logged-in";
 import { buttonVariants } from "@/components/ui/button";
+import { CTA_LABEL } from "@/lib/site-config";
 
-type Props = { slug: string; name: string };
+type Props = { slug: string };
 
 // O formulário é pesado (campos, busca de cidade) e fica abaixo da dobra: o
 // código só é baixado e montado quando ele chega perto da tela (ou quando a
@@ -41,7 +42,7 @@ function useNearScreen<T extends Element>() {
  * a etapa seguinte (`/comprar/<produto>?confirmar=1`). Quem já está logado vê só
  * o botão, que leva direto à compra com os perfis já salvos.
  */
-export function HomeOrderForm({ slug, name }: Props) {
+export function HomeOrderForm({ slug }: Props) {
   const logged = useLoggedIn();
   const [ref, near] = useNearScreen<HTMLDivElement>();
 
@@ -51,7 +52,7 @@ export function HomeOrderForm({ slug, name }: Props) {
         href={`/comprar/${slug}`}
         className={buttonVariants({ size: "lg" }) + " h-12 text-base"}
       >
-        Quero meu {name}
+        {CTA_LABEL}
       </Link>
     );
   }
@@ -60,7 +61,7 @@ export function HomeOrderForm({ slug, name }: Props) {
     // A altura reservada evita que o que vem depois "pule" quando o formulário aparece.
     <div ref={ref} className="min-h-[720px] sm:min-h-[760px]">
       {near ? (
-        <OrderForm slug={slug} name={name} />
+        <OrderForm slug={slug} />
       ) : (
         <p role="status" className="text-muted-foreground text-sm">
           Carregando o formulário…

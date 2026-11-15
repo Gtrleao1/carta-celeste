@@ -9,7 +9,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { formatBRL } from "@/lib/format";
 import { getActiveProducts, getProductBySlug } from "@/lib/products";
 import { sampleChart } from "@/lib/sample-chart";
-import { DISCLAIMER } from "@/lib/site-config";
+import { CTA_LABEL, DISCLAIMER } from "@/lib/site-config";
 
 // Página estática, regenerada a cada 5 minutos; produtos novos entram sem deploy.
 export const revalidate = 300;
@@ -152,7 +152,7 @@ export default async function ProductPage({
             href={`/comprar/${product.slug}`}
             className={buttonVariants({ size: "lg" }) + " h-12 text-base"}
           >
-            Quero meu mapa
+            {CTA_LABEL}
           </Link>
           <p className="text-muted-foreground text-xs">{DISCLAIMER}</p>
         </div>

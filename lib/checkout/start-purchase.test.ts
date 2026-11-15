@@ -41,6 +41,8 @@ describe("compra pela home", () => {
     const r = await runStartPurchase(deps, form());
     expect(r).toHaveProperty("state.message");
     expect("state" in r && r.state.message).toContain("maria@exemplo.com.br");
+    // permite reenviar o e-mail ou corrigir o endereço
+    expect("state" in r && r.state.pendingEmail).toBe("maria@exemplo.com.br");
     expect(deps.signUp).toHaveBeenCalledWith({
       email: "maria@exemplo.com.br",
       password: "senha-forte-123",
