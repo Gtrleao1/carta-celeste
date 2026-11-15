@@ -1,10 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import {
-  purchasePath,
-  runStartPurchase,
-  type StartPurchaseDeps,
-} from "./start-purchase";
+import { purchasePath } from "./purchase-path";
+import { runStartPurchase, type StartPurchaseDeps } from "./start-purchase";
 
 const BASE: Record<string, string> = {
   product_slug: "mapa-astral-completo",

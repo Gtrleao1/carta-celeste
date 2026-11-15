@@ -4,6 +4,8 @@ import { isExistingAccount } from "@/lib/auth/signup-result";
 import { birthProfileFromForm, birthProfileSchema } from "@/lib/birth/schemas";
 import type { BirthProfileInput } from "@/lib/birth/schemas";
 
+import { purchasePath } from "./purchase-path";
+
 /**
  * Compra começada pela home: um formulário só cria a conta e guarda os dados de
  * nascimento. Lógica pura, com as dependências injetadas (como `payOrder`), para
@@ -38,8 +40,6 @@ export type StartPurchaseOutcome =
   { state: FormState } | { redirectTo: string };
 
 const SLUG = /^[a-z0-9][a-z0-9-]{0,60}$/;
-
-export const purchasePath = (slug: string) => `/comprar/${slug}?confirmar=1`;
 
 export async function runStartPurchase(
   deps: StartPurchaseDeps,
