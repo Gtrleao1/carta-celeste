@@ -33,6 +33,17 @@ export function SiteFooter() {
             <CookiePreferencesButton />
           </nav>
         </div>
+        {SITE.contactEmail && (
+          <p>
+            Dúvidas, suporte ou pedidos sobre seus dados:{" "}
+            <a
+              href={`mailto:${SITE.contactEmail}`}
+              className="text-primary underline underline-offset-4"
+            >
+              {SITE.contactEmail}
+            </a>
+          </p>
+        )}
         <p className="text-muted-foreground max-w-3xl">{DISCLAIMER}</p>
         <p className="text-muted-foreground">
           © {new Date().getFullYear()} {SITE.name}. Todos os direitos

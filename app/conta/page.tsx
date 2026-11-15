@@ -143,6 +143,23 @@ export default async function ContaPage({ searchParams }: PageProps<"/conta">) {
 
       <Card>
         <CardHeader>
+          <CardTitle className="text-lg">Verificação em dois passos</CardTitle>
+          <CardDescription>
+            Proteja a sua conta com um código do celular, além da senha.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Link
+            href="/conta/seguranca"
+            className="text-foreground underline underline-offset-4"
+          >
+            Configurar verificação em dois passos
+          </Link>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
           <CardTitle className="text-lg">Meus mapas</CardTitle>
         </CardHeader>
         <CardContent>

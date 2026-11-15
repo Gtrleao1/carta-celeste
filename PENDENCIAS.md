@@ -105,6 +105,23 @@ ser resolvido antes de vender de verdade**. Ao concluir um item, apague-o daqui.
 
 ## Segurança
 
+- [ ] **Ativar o 2FA do admin:** entre como admin, abra `/conta/seguranca`,
+      cadastre o aplicativo autenticador e confirme o código. Só depois defina
+      `ADMIN_REQUIRE_MFA=true` na Vercel e faça novo deploy. Guarde um jeito de
+      recuperar o acesso (ex.: segundo aparelho com o mesmo QR Code).
+- [ ] **Impor o CSP completo:** depois do deploy, olhe o log da Vercel por uma
+      semana procurando `[csp]`. Sem violações legítimas (Mercado Pago, Meta,
+      Google), mova `reportOnlyCsp` para o cabeçalho imposto em
+      `lib/security/headers.ts`. Teste a tela de pagamento antes (cartão, Pix,
+      boleto), porque o Payment Brick carrega recursos de vários domínios.
+- [ ] **E-mail de contato** (`SITE.contactEmail` em `lib/site-config.ts`): aparece
+      no rodapé, nas páginas legais e em `/.well-known/security.txt`. É também o
+      canal que a LGPD pede para o titular dos dados.
+- [ ] **Supabase → Authentication:** conferir que MFA (TOTP) está habilitado e,
+      no plano Pro, ligar a proteção contra senhas vazadas.
+- [ ] Se o arquivo `Credenciais.txt` já foi enviado a alguém (e-mail, chat,
+      nuvem), trocar as credenciais que estavam nele.
+
 - [ ] Rever limites de requisições (checkout, busca de cidades, cadastro,
       recuperação de senha) com tráfego real.
 

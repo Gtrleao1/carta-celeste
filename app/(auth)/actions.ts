@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 
 import { fieldErrorsFrom, type FormState } from "@/lib/auth/form-state";
 import { afterSignInPath, safeNextPath } from "@/lib/auth/redirect";
+import { loginRateKeys } from "@/lib/auth/login-limit";
 import { isExistingAccount } from "@/lib/auth/signup-result";
 import { clientIpFromHeaders, withinRateLimit } from "@/lib/rate-limit";
 import { createAdminClient } from "@/lib/supabase/admin";
@@ -37,6 +38,30 @@ export async function signIn(
     password: formData.get("password"),
   });
   if (!parsed.success) return fieldErrorsFrom(parsed.error);
+
+  // Contra tentativa de adivinhar senhas: limite por IP+conta e por IP.
+  const ip = clientIpFromHeaders(await headers());
+  const limits = loginRateKeys(ip, parsed.data.email);
+  const admin = createAdminClient();
+  const allowed =
+    (await withinRateLimit(
+      admin,
+      limits.account.key,
+      limits.account.max,
+      limits.account.windowSeconds,
+    )) &&
+    (await withinRateLimit(
+      admin,
+      limits.ip.key,
+      limits.ip.max,
+      limits.ip.windowSeconds,
+    ));
+  if (!allowed) {
+    return {
+      error:
+        "Muitas tentativas de entrada. Aguarde alguns minutos e tente de novo, ou use “Esqueci minha senha”.",
+    };
+  }
 
   const supabase = await createClient();
   const { error } = await supabase.auth.signInWithPassword(parsed.data);

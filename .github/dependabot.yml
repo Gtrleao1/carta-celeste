@@ -1,0 +1,27 @@
+# Atualizações automáticas de dependências (abre PRs; o CI roda os testes).
+# Avisos de segurança do GitHub geram PRs à parte, a qualquer momento.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      timezone: America/Sao_Paulo
+    open-pull-requests-limit: 5
+    groups:
+      # Patches e minors juntos: menos PRs, e o CI garante que nada quebrou.
+      minor-and-patch:
+        update-types: [minor, patch]
+    ignore:
+      # O Next e o React são atualizados com cuidado, à mão (ver CLAUDE.md).
+      - dependency-name: next
+        update-types: [version-update:semver-major]
+      - dependency-name: react
+        update-types: [version-update:semver-major]
+      - dependency-name: react-dom
+        update-types: [version-update:semver-major]
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
