@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<circle cx="50" cy="50" r="47" fill="none" stroke="#fff" stroke-linecap="round" stroke-width=".25" stroke-opacity=".45"/>
+<circle cx="50" cy="50" r="33" fill="none" stroke="#fff" stroke-linecap="round" stroke-width=".2" stroke-opacity=".3" stroke-dasharray=".6 1.8"/>
+<path d="M 97 50 L 94.5 50 M 96.29 58.16 L 95.1 57.95 M 94.17 66.07 L 93.04 65.66 M 90.7 73.5 L 88.54 72.25 M 86 80.21 L 85.08 79.44 M 80.21 86 L 79.44 85.08 M 73.5 90.7 L 72.25 88.54 M 66.07 94.17 L 65.66 93.04 M 58.16 96.29 L 57.95 95.1 M 50 97 L 50 94.5 M 41.84 96.29 L 42.05 95.1 M 33.93 94.17 L 34.34 93.04 M 26.5 90.7 L 27.75 88.54 M 19.79 86 L 20.56 85.08 M 14 80.21 L 14.92 79.44 M 9.3 73.5 L 11.46 72.25 M 5.83 66.07 L 6.96 65.66 M 3.71 58.16 L 4.9 57.95 M 3 50 L 5.5 50 M 3.71 41.84 L 4.9 42.05 M 5.83 33.93 L 6.96 34.34 M 9.3 26.5 L 11.46 27.75 M 14 19.79 L 14.92 20.56 M 19.79 14 L 20.56 14.92 M 26.5 9.3 L 27.75 11.46 M 33.93 5.83 L 34.34 6.96 M 41.84 3.71 L 42.05 4.9 M 50 3 L 50 5.5 M 58.16 3.71 L 57.95 4.9 M 66.07 5.83 L 65.66 6.96 M 73.5 9.3 L 72.25 11.46 M 80.21 14 L 79.44 14.92 M 86 19.79 L 85.08 20.56 M 90.7 26.5 L 88.54 27.75 M 94.17 33.93 L 93.04 34.34 M 96.29 41.84 L 95.1 42.05" fill="none" stroke="#fff" stroke-linecap="round" stroke-width=".3" stroke-opacity=".5"/>
+<path d="M 14 54 C 17 55 27.67 62.33 32 60 C 36.33 57.67 36 44 40 40 C 44 36 51.67 36 56 36 C 60.33 36 62.33 37 66 40 C 69.67 43 78.67 48 78 54 C 77.33 60 69.33 71.67 62 76 C 54.67 80.33 38.67 79.33 34 80" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="10" stroke-opacity=".05" stroke-linejoin="round"/>
+<path d="M 14 54 C 17 55 27.67 62.33 32 60 C 36.33 57.67 36 44 40 40 C 44 36 51.67 36 56 36 C 60.33 36 62.33 37 66 40 C 69.67 43 78.67 48 78 54 C 77.33 60 69.33 71.67 62 76 C 54.67 80.33 38.67 79.33 34 80" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="5" stroke-opacity=".1" stroke-linejoin="round"/>
+<path d="M 14 54 C 17 55 27.67 62.33 32 60 C 36.33 57.67 36 44 40 40 C 44 36 51.67 36 56 36 C 60.33 36 62.33 37 66 40 C 69.67 43 78.67 48 78 54 C 77.33 60 69.33 71.67 62 76 C 54.67 80.33 38.67 79.33 34 80" fill="none" stroke="#fff" stroke-linecap="round" stroke-width=".45" stroke-opacity=".7" stroke-linejoin="round"/>
+<circle cx="18.53" cy="32.45" r="0.32" fill-opacity="0.43" fill="#fff"/>
+<circle cx="65.28" cy="29.81" r="0.48" fill-opacity="0.35" fill="#fff"/>
+<circle cx="31.19" cy="24.92" r="0.49" fill-opacity="0.57" fill="#fff"/>
+<circle cx="31.89" cy="45.16" r="0.25" fill-opacity="0.38" fill="#fff"/>
+<circle cx="11.78" cy="55.11" r="0.51" fill-opacity="0.33" fill="#fff"/>
+<circle cx="78.33" cy="69.05" r="0.46" fill-opacity="0.48" fill="#fff"/>
+<circle cx="9.67" cy="12.81" r="0.32" fill-opacity="0.45" fill="#fff"/>
+<circle cx="76.74" cy="45.79" r="0.43" fill-opacity="0.37" fill="#fff"/>
+<circle cx="77.09" cy="68.59" r="0.48" fill-opacity="0.38" fill="#fff"/>
+<circle cx="63.23" cy="47.22" r="0.35" fill-opacity="0.39" fill="#fff"/>
+<circle cx="67.69" cy="69.5" r="0.55" fill-opacity="0.31" fill="#fff"/>
+<circle cx="11.13" cy="71.68" r="0.42" fill-opacity="0.37" fill="#fff"/>
+<circle cx="73.62" cy="6.69" r="0.27" fill-opacity="0.34" fill="#fff"/>
+<circle cx="61.72" cy="64.36" r="0.28" fill-opacity="0.33" fill="#fff"/>
+<path d="M 14 54 L 32 60 M 32 60 L 40 40 M 40 40 L 56 36 M 56 36 L 66 40 M 66 40 L 78 54 M 78 54 L 62 76 M 62 76 L 34 80 M 34 80 L 32 60 M 56 36 L 78 54" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="0.25" stroke-opacity="0.4"/>
+<circle cx="14" cy="54" r="8" fill-opacity="0.07" fill="#fff"/>
+<circle cx="14" cy="54" r="3.52" fill-opacity=".16" fill="#fff"/>
+<circle cx="14" cy="54" r="1.6" fill-opacity=".95" fill="#fff"/>
+<circle cx="34" cy="80" r="10.5" fill-opacity="0.07" fill="#fff"/>
+<circle cx="34" cy="80" r="4.62" fill-opacity=".16" fill="#fff"/>
+<circle cx="34" cy="80" r="2.1" fill-opacity=".95" fill="#fff"/>
+<path d="M 26.86 80 L 41.14 80 M 34 72.86 L 34 87.14" fill="none" stroke="#fff" stroke-linecap="round" stroke-width=".3" stroke-opacity=".8"/>
+<circle cx="32" cy="60" r="8" fill-opacity="0.07" fill="#fff"/>
+<circle cx="32" cy="60" r="3.52" fill-opacity=".16" fill="#fff"/>
+<circle cx="32" cy="60" r="1.6" fill-opacity=".95" fill="#fff"/>
+<circle cx="40" cy="40" r="8" fill-opacity="0.07" fill="#fff"/>
+<circle cx="40" cy="40" r="3.52" fill-opacity=".16" fill="#fff"/>
+<circle cx="40" cy="40" r="1.6" fill-opacity=".95" fill="#fff"/>
+<circle cx="56" cy="36" r="8" fill-opacity="0.07" fill="#fff"/>
+<circle cx="56" cy="36" r="3.52" fill-opacity=".16" fill="#fff"/>
+<circle cx="56" cy="36" r="1.6" fill-opacity=".95" fill="#fff"/>
+<circle cx="66" cy="40" r="10.5" fill-opacity="0.07" fill="#fff"/>
+<circle cx="66" cy="40" r="4.62" fill-opacity=".16" fill="#fff"/>
+<circle cx="66" cy="40" r="2.1" fill-opacity=".95" fill="#fff"/>
+<path d="M 58.86 40 L 73.14 40 M 66 32.86 L 66 47.14" fill="none" stroke="#fff" stroke-linecap="round" stroke-width=".3" stroke-opacity=".8"/>
+<circle cx="78" cy="54" r="8" fill-opacity="0.07" fill="#fff"/>
+<circle cx="78" cy="54" r="3.52" fill-opacity=".16" fill="#fff"/>
+<circle cx="78" cy="54" r="1.6" fill-opacity=".95" fill="#fff"/>
+<circle cx="62" cy="76" r="8" fill-opacity="0.07" fill="#fff"/>
+<circle cx="62" cy="76" r="3.52" fill-opacity=".16" fill="#fff"/>
+<circle cx="62" cy="76" r="1.6" fill-opacity=".95" fill="#fff"/>
+</svg>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<circle cx="83.45" cy="76.84" r="0.37" fill-opacity="0.31" fill="#fff"/>
+<circle cx="27.86" cy="41.96" r="0.42" fill-opacity="0.46" fill="#fff"/>
+<circle cx="89.05" cy="57.36" r="0.33" fill-opacity="0.41" fill="#fff"/>
+<circle cx="10.17" cy="32.5" r="0.27" fill-opacity="0.42" fill="#fff"/>
+<circle cx="65.13" cy="55.71" r="0.36" fill-opacity="0.42" fill="#fff"/>
+<circle cx="51.16" cy="46.31" r="0.5" fill-opacity="0.53" fill="#fff"/>
+<circle cx="86.05" cy="49.52" r="0.4" fill-opacity="0.53" fill="#fff"/>
+<circle cx="19.59" cy="66.58" r="0.3" fill-opacity="0.33" fill="#fff"/>
+<circle cx="56.59" cy="69.16" r="0.54" fill-opacity="0.33" fill="#fff"/>
+<circle cx="44.29" cy="92.98" r="0.38" fill-opacity="0.4" fill="#fff"/>
+<path d="M 24 32 L 50 24 M 50 24 L 54 44 M 54 44 L 66 52 M 66 52 L 70 38 M 70 38 L 54 44 M 54 44 L 56 62 M 56 62 L 44 70 M 44 70 L 34 80 M 34 80 L 28 92" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="0.5" stroke-opacity="0.6"/>
+<circle cx="24" cy="32" r="6.72" fill-opacity="0.1" fill="#fff"/>
+<circle cx="24" cy="32" r="4.62" fill-opacity=".16" fill="#fff"/>
+<circle cx="24" cy="32" r="2.1" fill-opacity=".95" fill="#fff"/>
+<path d="M 16.86 32 L 31.14 32 M 24 24.86 L 24 39.14" fill="none" stroke="#fff" stroke-linecap="round" stroke-width=".3" stroke-opacity=".8"/>
+<circle cx="50" cy="24" r="6.72" fill-opacity="0.1" fill="#fff"/>
+<circle cx="50" cy="24" r="4.62" fill-opacity=".16" fill="#fff"/>
+<circle cx="50" cy="24" r="2.1" fill-opacity=".95" fill="#fff"/>
+<path d="M 42.86 24 L 57.14 24 M 50 16.86 L 50 31.14" fill="none" stroke="#fff" stroke-linecap="round" stroke-width=".3" stroke-opacity=".8"/>
+<circle cx="54" cy="44" r="1.6" fill-opacity=".95" fill="#fff"/>
+<circle cx="66" cy="52" r="1.6" fill-opacity=".95" fill="#fff"/>
+<circle cx="70" cy="38" r="1.6" fill-opacity=".95" fill="#fff"/>
+<circle cx="56" cy="62" r="1.1" fill-opacity=".95" fill="#fff"/>
+<circle cx="44" cy="70" r="1.1" fill-opacity=".95" fill="#fff"/>
+<circle cx="34" cy="80" r="1.1" fill-opacity=".95" fill="#fff"/>
+<circle cx="28" cy="92" r="1.6" fill-opacity=".95" fill="#fff"/>
+</svg>

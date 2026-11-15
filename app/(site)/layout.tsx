@@ -1,5 +1,6 @@
 import { SiteFooter } from "@/components/site/footer";
 import { SiteHeader } from "@/components/site/header";
+import { SkyBackdrop, SkyStars } from "@/components/site/sky-backdrop";
 import { TrackingRoot } from "@/components/tracking/tracking-root";
 
 export default function SiteLayout({
@@ -15,8 +16,10 @@ export default function SiteLayout({
       >
         Pular para o conteúdo
       </a>
+      <SkyStars />
       <SiteHeader />
-      <main id="conteudo" className="flex-1">
+      <main id="conteudo" className="relative isolate flex-1 overflow-x-clip">
+        <SkyBackdrop />
         {children}
       </main>
       <SiteFooter />

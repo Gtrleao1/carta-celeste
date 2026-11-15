@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<circle cx="7.47" cy="10.88" r="0.28" fill-opacity="0.42" fill="#fff"/>
+<circle cx="13.08" cy="54.7" r="0.36" fill-opacity="0.54" fill="#fff"/>
+<circle cx="53.57" cy="45.9" r="0.5" fill-opacity="0.46" fill="#fff"/>
+<circle cx="92.92" cy="72.6" r="0.38" fill-opacity="0.41" fill="#fff"/>
+<circle cx="39.36" cy="68.05" r="0.26" fill-opacity="0.35" fill="#fff"/>
+<circle cx="46.33" cy="85.29" r="0.54" fill-opacity="0.35" fill="#fff"/>
+<circle cx="94.7" cy="75.37" r="0.27" fill-opacity="0.48" fill="#fff"/>
+<circle cx="73.77" cy="82.85" r="0.45" fill-opacity="0.36" fill="#fff"/>
+<circle cx="9.03" cy="95.55" r="0.5" fill-opacity="0.54" fill="#fff"/>
+<circle cx="52.57" cy="34.9" r="0.48" fill-opacity="0.4" fill="#fff"/>
+<path d="M 38 50 L 48 44 M 48 44 L 62 36 M 62 36 L 78 22" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="0.5" stroke-opacity="0.6"/>
+<circle cx="62" cy="36" r="8.32" fill-opacity="0.1" fill="#fff"/>
+<circle cx="62" cy="36" r="5.72" fill-opacity=".16" fill="#fff"/>
+<circle cx="62" cy="36" r="2.6" fill-opacity=".95" fill="#fff"/>
+<path d="M 49 36 L 75 36 M 62 23 L 62 49" fill="none" stroke="#fff" stroke-linecap="round" stroke-width=".3" stroke-opacity=".8"/>
+<circle cx="48" cy="44" r="6.72" fill-opacity="0.1" fill="#fff"/>
+<circle cx="48" cy="44" r="4.62" fill-opacity=".16" fill="#fff"/>
+<circle cx="48" cy="44" r="2.1" fill-opacity=".95" fill="#fff"/>
+<path d="M 40.86 44 L 55.14 44 M 48 36.86 L 48 51.14" fill="none" stroke="#fff" stroke-linecap="round" stroke-width=".3" stroke-opacity=".8"/>
+<circle cx="38" cy="50" r="1.6" fill-opacity=".95" fill="#fff"/>
+<circle cx="78" cy="22" r="1.6" fill-opacity=".95" fill="#fff"/>
+</svg>

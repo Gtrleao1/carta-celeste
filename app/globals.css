@@ -155,6 +155,50 @@
 }
 
 /*
+ * Constelações de fundo (site e mapa). Os SVGs de `public/constellations/` são
+ * só transparência: viram máscara e a cor vem do tema (latão). Decorativas:
+ * `aria-hidden`, sem clique e fora da impressão. Ficam atrás do conteúdo
+ * (`isolate` no contêiner + z-index negativo).
+ */
+/*
+ * Opacidade máxima calculada para o texto sobre o ponto mais claro do fundo
+ * continuar com contraste AA (4,5:1): o Lighthouse mede o pior pixel, não a
+ * média. Se subir estes valores, refaça a medição de acessibilidade.
+ */
+:root {
+  --sky-art-opacity: 0.12;
+  --sky-stars-opacity: 0.12;
+}
+.dark {
+  --sky-art-opacity: 0.18;
+  --sky-stars-opacity: 0.18;
+}
+.sky-art {
+  pointer-events: none;
+  background-color: var(--primary);
+  opacity: var(--sky-art-opacity);
+  -webkit-mask: var(--art) center / contain no-repeat;
+  mask: var(--art) center / contain no-repeat;
+}
+/* Campo de estrelas fixo: só a janela é pintada, não a página inteira. */
+.sky-stars {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  background-color: var(--primary);
+  opacity: var(--sky-stars-opacity);
+  -webkit-mask: url("/constellations/estrelas.svg") 0 0 / 720px 720px repeat;
+  mask: url("/constellations/estrelas.svg") 0 0 / 720px 720px repeat;
+}
+@media print {
+  .sky-art,
+  .sky-stars {
+    display: none !important;
+  }
+}
+
+/*
  * Abertura da home: cobre a página por ~1,7 s na primeira visita da sessão.
  * O conteúdo já está carregado por baixo; a abertura some sozinha (CSS), com
  * ou sem JavaScript, e pode ser pulada com clique ou Esc. Não aparece com

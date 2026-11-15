@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<circle cx="85.15" cy="54.85" r="0.31" fill-opacity="0.58" fill="#fff"/>
+<circle cx="62.67" cy="78.06" r="0.48" fill-opacity="0.35" fill="#fff"/>
+<circle cx="79.7" cy="55.35" r="0.52" fill-opacity="0.59" fill="#fff"/>
+<circle cx="50.17" cy="68.65" r="0.42" fill-opacity="0.31" fill="#fff"/>
+<circle cx="12.58" cy="49.81" r="0.5" fill-opacity="0.58" fill="#fff"/>
+<circle cx="75.21" cy="91.56" r="0.3" fill-opacity="0.48" fill="#fff"/>
+<circle cx="56.08" cy="24.23" r="0.32" fill-opacity="0.36" fill="#fff"/>
+<circle cx="94.81" cy="82.6" r="0.46" fill-opacity="0.34" fill="#fff"/>
+<circle cx="15.57" cy="34.88" r="0.26" fill-opacity="0.54" fill="#fff"/>
+<circle cx="70.21" cy="42.18" r="0.5" fill-opacity="0.31" fill="#fff"/>
+<path d="M 30 16 L 50 4 M 50 4 L 70 14 M 30 16 L 40 52 M 70 14 L 60 48 M 40 52 L 50 50 M 50 50 L 60 48 M 40 52 L 32 92 M 60 48 L 74 88 M 12 34 L 8 52 M 8 52 L 12 70" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="0.5" stroke-opacity="0.6"/>
+<circle cx="30" cy="16" r="8.32" fill-opacity="0.1" fill="#fff"/>
+<circle cx="30" cy="16" r="5.72" fill-opacity=".16" fill="#fff"/>
+<circle cx="30" cy="16" r="2.6" fill-opacity=".95" fill="#fff"/>
+<path d="M 17 16 L 43 16 M 30 3 L 30 29" fill="none" stroke="#fff" stroke-linecap="round" stroke-width=".3" stroke-opacity=".8"/>
+<circle cx="70" cy="14" r="6.72" fill-opacity="0.1" fill="#fff"/>
+<circle cx="70" cy="14" r="4.62" fill-opacity=".16" fill="#fff"/>
+<circle cx="70" cy="14" r="2.1" fill-opacity=".95" fill="#fff"/>
+<path d="M 62.86 14 L 77.14 14 M 70 6.86 L 70 21.14" fill="none" stroke="#fff" stroke-linecap="round" stroke-width=".3" stroke-opacity=".8"/>
+<circle cx="50" cy="4" r="1.6" fill-opacity=".95" fill="#fff"/>
+<circle cx="60" cy="48" r="6.72" fill-opacity="0.1" fill="#fff"/>
+<circle cx="60" cy="48" r="4.62" fill-opacity=".16" fill="#fff"/>
+<circle cx="60" cy="48" r="2.1" fill-opacity=".95" fill="#fff"/>
+<path d="M 52.86 48 L 67.14 48 M 60 40.86 L 60 55.14" fill="none" stroke="#fff" stroke-linecap="round" stroke-width=".3" stroke-opacity=".8"/>
+<circle cx="50" cy="50" r="6.72" fill-opacity="0.1" fill="#fff"/>
+<circle cx="50" cy="50" r="4.62" fill-opacity=".16" fill="#fff"/>
+<circle cx="50" cy="50" r="2.1" fill-opacity=".95" fill="#fff"/>
+<path d="M 42.86 50 L 57.14 50 M 50 42.86 L 50 57.14" fill="none" stroke="#fff" stroke-linecap="round" stroke-width=".3" stroke-opacity=".8"/>
+<circle cx="40" cy="52" r="6.72" fill-opacity="0.1" fill="#fff"/>
+<circle cx="40" cy="52" r="4.62" fill-opacity=".16" fill="#fff"/>
+<circle cx="40" cy="52" r="2.1" fill-opacity=".95" fill="#fff"/>
+<path d="M 32.86 52 L 47.14 52 M 40 44.86 L 40 59.14" fill="none" stroke="#fff" stroke-linecap="round" stroke-width=".3" stroke-opacity=".8"/>
+<circle cx="32" cy="92" r="6.72" fill-opacity="0.1" fill="#fff"/>
+<circle cx="32" cy="92" r="4.62" fill-opacity=".16" fill="#fff"/>
+<circle cx="32" cy="92" r="2.1" fill-opacity=".95" fill="#fff"/>
+<path d="M 24.86 92 L 39.14 92 M 32 84.86 L 32 99.14" fill="none" stroke="#fff" stroke-linecap="round" stroke-width=".3" stroke-opacity=".8"/>
+<circle cx="74" cy="88" r="8.32" fill-opacity="0.1" fill="#fff"/>
+<circle cx="74" cy="88" r="5.72" fill-opacity=".16" fill="#fff"/>
+<circle cx="74" cy="88" r="2.6" fill-opacity=".95" fill="#fff"/>
+<path d="M 61 88 L 87 88 M 74 75 L 74 101" fill="none" stroke="#fff" stroke-linecap="round" stroke-width=".3" stroke-opacity=".8"/>
+<circle cx="12" cy="34" r="1.1" fill-opacity=".95" fill="#fff"/>
+<circle cx="8" cy="52" r="1.1" fill-opacity=".95" fill="#fff"/>
+<circle cx="12" cy="70" r="1.1" fill-opacity=".95" fill="#fff"/>
+</svg>

@@ -1,5 +1,7 @@
 import { ChartWheel } from "@/components/chart/chart-wheel";
 import { MiniMarkdown } from "@/components/site/mini-markdown";
+import { SkyArt } from "@/components/site/sky-art";
+import { reportArt } from "@/lib/constellations/pick";
 import type { ChartData } from "@/lib/astro";
 import { ELEMENTS, MODALITIES } from "@/lib/astro";
 import { formatDegree } from "@/lib/reports/chart-summary";
@@ -221,8 +223,13 @@ export function ReportView({
           <section
             key={s.key}
             aria-labelledby={`sec-${s.key}`}
-            className={`grid gap-4 leading-relaxed ${i === 0 ? "print-page-break" : ""}`}
+            className={`relative isolate grid gap-4 leading-relaxed ${i === 0 ? "print-page-break" : ""}`}
           >
+            {/* Uma constelação por parte, alternando linhas e ilustração abstrata. */}
+            <SkyArt
+              {...reportArt(i)}
+              className={`absolute -top-10 size-44 sm:size-64 ${i % 2 === 0 ? "-right-6 sm:-right-20" : "-left-6 sm:-left-20"}`}
+            />
             <h2
               id={`sec-${s.key}`}
               className="font-heading print-avoid-break text-3xl font-semibold"
