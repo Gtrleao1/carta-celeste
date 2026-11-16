@@ -14,12 +14,10 @@ updates:
       minor-and-patch:
         update-types: [minor, patch]
     ignore:
-      # O Next e o React são atualizados com cuidado, à mão (ver CLAUDE.md).
-      - dependency-name: next
-        update-types: [version-update:semver-major]
-      - dependency-name: react
-        update-types: [version-update:semver-major]
-      - dependency-name: react-dom
+      # Saltos de versão MAIOR (ex.: TypeScript 5 -> 7, ESLint 9 -> 10, SDK da
+      # Anthropic 0.x -> 1.x) mudam comportamento e são feitos à mão, um por vez,
+      # com testes e conferência (ver CLAUDE.md). O Dependabot cuida de minor e patch.
+      - dependency-name: "*"
         update-types: [version-update:semver-major]
   - package-ecosystem: github-actions
     directory: /

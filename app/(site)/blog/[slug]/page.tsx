@@ -8,6 +8,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { excerptFromDoc, readingMinutes } from "@/lib/blog/content";
 import { getPublishedPostBySlug, getPublishedPosts } from "@/lib/blog/queries";
 import { DISCLAIMER, SITE } from "@/lib/site-config";
+import { SITE_URL } from "@/lib/site-origin";
 
 // Estático, regenerado a cada 5 minutos. Posts novos abrem na primeira visita.
 export const revalidate = 300;
@@ -50,7 +51,7 @@ export default async function PostPage({ params }: PageProps<"/blog/[slug]">) {
   if (!post) notFound();
 
   const minutes = readingMinutes(post.content);
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "";
+  const siteUrl = SITE_URL;
 
   // Dados estruturados para o Google (artigo).
   const jsonLd = {

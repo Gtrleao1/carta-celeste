@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 
 import { ThemeProvider } from "@/components/theme-provider";
 import { SITE } from "@/lib/site-config";
+import { SITE_URL } from "@/lib/site-origin";
 
 import "./globals.css";
 
@@ -31,9 +32,7 @@ const symbols = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
-  ),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: `${SITE.name} — seu mapa astral personalizado`,
     template: `%s — ${SITE.name}`,

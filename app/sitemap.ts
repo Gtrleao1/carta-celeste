@@ -2,15 +2,12 @@ import type { MetadataRoute } from "next";
 
 import { getPublishedPosts } from "@/lib/blog/queries";
 import { getActiveProducts } from "@/lib/products";
+import { SITE_URL } from "@/lib/site-origin";
 
 // Atualizado a cada hora (posts e produtos novos entram sem deploy).
 export const revalidate = 3600;
 
-const base = () =>
-  (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(
-    /\/$/,
-    "",
-  );
+const base = () => SITE_URL;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [products, posts] = await Promise.all([
