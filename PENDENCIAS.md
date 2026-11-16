@@ -79,20 +79,17 @@ ser resolvido antes de vender de verdade**. Ao concluir um item, apague-o daqui.
 - [ ] **Resend como SMTP do Supabase** com domínio verificado. O envio padrão do
       Supabase só entrega para endereços da equipe do projeto e tem limite baixo
       por hora; clientes reais não receberiam o e-mail de confirmação.
-- [ ] **Trocar para o domínio final `minhacartaceleste.com.br`** (já está no ar na
-      Vercel, DNS ok; o endereço **canônico é `https://www.minhacartaceleste.com.br`**,
-      porque o sem `www` redireciona para ele). Hoje `NEXT_PUBLIC_SITE_URL` ainda
-      aponta para `carta-celeste.vercel.app` (o sitemap publicado mostra isso). **Siga
-      esta ordem** para não quebrar o cadastro nem o pagamento: 1. **Supabase → Authentication → URL Configuration:** em _Redirect URLs_,
-      **acrescente** `https://www.minhacartaceleste.com.br/**` (mantenha os
-      antigos por enquanto) e só depois troque o _Site URL_ para
-      `https://www.minhacartaceleste.com.br`. 2. **Vercel → Settings → Environment Variables:** `NEXT_PUBLIC_SITE_URL` =
-      `https://www.minhacartaceleste.com.br` (escopo Production) e novo deploy
-      (variável `NEXT_PUBLIC_*` só vale depois do deploy). 3. **Mercado Pago → Webhooks (modo produção):** URL
-      `https://www.minhacartaceleste.com.br/api/webhooks/mercadopago`, evento
-      Pagamentos; confira que a assinatura secreta continua a mesma. 4. Conferir: `/sitemap.xml` com o domínio novo, `/api/saude` com 200, um
-      cadastro de teste (o link do e-mail abre no domínio novo) e a compra de
-      teste de valor baixo (pedido `paid` com `paid_via = 'webhook'`). 5. Depois de tudo funcionando, remover os endereços antigos das _Redirect
+- [x] **Domínio final `minhacartaceleste.com.br` no ar** (endereço canônico
+      `https://www.minhacartaceleste.com.br`; o sem `www` redireciona): DNS e HTTPS
+      na Vercel, _Redirect URLs_ e _Site URL_ no Supabase e `NEXT_PUBLIC_SITE_URL` na
+      Vercel, com sitemap, `robots` e `/api/saude` conferidos no ar.
+- [ ] **Mercado Pago → Webhooks (modo produção):** trocar a URL para
+      `https://www.minhacartaceleste.com.br/api/webhooks/mercadopago` (evento
+      Pagamentos); a assinatura secreta continua a mesma.
+- [ ] **Cadastro de teste** com e-mail real (o link deve abrir no domínio novo) e
+      **compra de teste de valor baixo** (pedido `paid` com
+      `paid_via = 'webhook'`).
+- [ ] Depois de tudo funcionando: remover `carta-celeste.vercel.app` das _Redirect
       URLs_ do Supabase e cadastrar o site no Google Search Console, no Meta
       (verificação do domínio) e no GA4.
 - [ ] **`RESEND_FROM_EMAIL` com domínio verificado** para os e-mails do pedido
@@ -118,10 +115,6 @@ ser resolvido antes de vender de verdade**. Ao concluir um item, apague-o daqui.
 
 ## Segurança
 
-- [ ] **Ativar o 2FA do admin:** entre como admin, abra `/conta/seguranca`,
-      cadastre o aplicativo autenticador e confirme o código. Só depois defina
-      `ADMIN_REQUIRE_MFA=true` na Vercel e faça novo deploy. Guarde um jeito de
-      recuperar o acesso (ex.: segundo aparelho com o mesmo QR Code).
 - [ ] **Impor o CSP completo:** depois do deploy, olhe o log da Vercel por uma
       semana procurando `[csp]`. Sem violações legítimas (Mercado Pago, Meta,
       Google), mova `reportOnlyCsp` para o cabeçalho imposto em
@@ -159,15 +152,11 @@ ser resolvido antes de vender de verdade**. Ao concluir um item, apague-o daqui.
 ## Qualidade
 
 - [ ] Teste ponta a ponta com Playwright do fluxo de compra (Etapa 8).
-- [ ] Lighthouse acima de 90 em desempenho e acessibilidade (home e páginas de
-      produto) refeito no domínio final.
 - [ ] Pedidos `pending` abandonados não expiram sozinhos (o filtro do admin
       já os separa); decidir se haverá um job de limpeza.
 
 ## Admin (Etapa 7)
 
-- [ ] **Dar o papel de admin à conta real** em produção: criar a conta no site e
-      rodar `npm run db:seed-admin` com `ADMIN_EMAIL` (a conta precisa existir).
 - [ ] Reembolso hoje é feito no painel do Mercado Pago; o admin só reprocessa
       relatórios. Decidir se o painel deve disparar reembolsos.
 - [ ] Impressão/PDF do relatório: conferir no celular e no Chrome desktop com um
