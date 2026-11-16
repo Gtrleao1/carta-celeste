@@ -79,9 +79,22 @@ ser resolvido antes de vender de verdade**. Ao concluir um item, apague-o daqui.
 - [ ] **Resend como SMTP do Supabase** com domínio verificado. O envio padrão do
       Supabase só entrega para endereços da equipe do projeto e tem limite baixo
       por hora; clientes reais não receberiam o e-mail de confirmação.
-- [ ] **Supabase → Authentication → URL Configuration:** Site URL e Redirect URLs
-      do domínio final (hoje: `localhost:3000` e `carta-celeste.vercel.app`).
-- [ ] Domínio próprio na Vercel e `NEXT_PUBLIC_SITE_URL` atualizado.
+- [ ] **Trocar para o domínio final `minhacartaceleste.com.br`** (já está no ar na
+      Vercel, DNS ok; o endereço **canônico é `https://www.minhacartaceleste.com.br`**,
+      porque o sem `www` redireciona para ele). Hoje `NEXT_PUBLIC_SITE_URL` ainda
+      aponta para `carta-celeste.vercel.app` (o sitemap publicado mostra isso). **Siga
+      esta ordem** para não quebrar o cadastro nem o pagamento: 1. **Supabase → Authentication → URL Configuration:** em _Redirect URLs_,
+      **acrescente** `https://www.minhacartaceleste.com.br/**` (mantenha os
+      antigos por enquanto) e só depois troque o _Site URL_ para
+      `https://www.minhacartaceleste.com.br`. 2. **Vercel → Settings → Environment Variables:** `NEXT_PUBLIC_SITE_URL` =
+      `https://www.minhacartaceleste.com.br` (escopo Production) e novo deploy
+      (variável `NEXT_PUBLIC_*` só vale depois do deploy). 3. **Mercado Pago → Webhooks (modo produção):** URL
+      `https://www.minhacartaceleste.com.br/api/webhooks/mercadopago`, evento
+      Pagamentos; confira que a assinatura secreta continua a mesma. 4. Conferir: `/sitemap.xml` com o domínio novo, `/api/saude` com 200, um
+      cadastro de teste (o link do e-mail abre no domínio novo) e a compra de
+      teste de valor baixo (pedido `paid` com `paid_via = 'webhook'`). 5. Depois de tudo funcionando, remover os endereços antigos das _Redirect
+      URLs_ do Supabase e cadastrar o site no Google Search Console, no Meta
+      (verificação do domínio) e no GA4.
 - [ ] **`RESEND_FROM_EMAIL` com domínio verificado** para os e-mails do pedido
       (pagamento confirmado e mapa pronto). Sem isso, o remetente de testes do
       Resend só entrega ao dono da conta.
