@@ -138,6 +138,11 @@ export default function PrivacidadePage() {
         pessoais, pelo prazo exigido pela legislação fiscal. O que já foi
         enviado à Meta e ao Google segue as políticas dessas empresas.
       </p>
+      <p>
+        Se você criar uma conta e não confirmar o seu e-mail, nem entrar nela,
+        nem fizer um pedido, apagamos essa conta e os dados de nascimento
+        informados no cadastro depois de 14 dias.
+      </p>
 
       <h2>6. Seus direitos</h2>
       <p>Você pode, a qualquer momento:</p>

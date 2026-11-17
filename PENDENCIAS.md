@@ -83,9 +83,6 @@ ser resolvido antes de vender de verdade**. Ao concluir um item, apague-o daqui.
       `https://www.minhacartaceleste.com.br`; o sem `www` redireciona): DNS e HTTPS
       na Vercel, _Redirect URLs_ e _Site URL_ no Supabase e `NEXT_PUBLIC_SITE_URL` na
       Vercel, com sitemap, `robots` e `/api/saude` conferidos no ar.
-- [ ] **Mercado Pago → Webhooks (modo produção):** trocar a URL para
-      `https://www.minhacartaceleste.com.br/api/webhooks/mercadopago` (evento
-      Pagamentos); a assinatura secreta continua a mesma.
 - [ ] **Cadastro de teste** com e-mail real (o link deve abrir no domínio novo) e
       **compra de teste de valor baixo** (pedido `paid` com
       `paid_via = 'webhook'`).
@@ -138,10 +135,10 @@ ser resolvido antes de vender de verdade**. Ao concluir um item, apague-o daqui.
 
 - [ ] **Monitor de disponibilidade** apontado para `https://<domínio>/api/saude`
       (alerta por e-mail/WhatsApp se cair).
-- [ ] **Limpeza de contas não confirmadas:** na Vercel, definir `CRON_SECRET`
-      (valor aleatório longo) e `UNCONFIRMED_ACCOUNT_TTL_DAYS` (sugestão: 14),
-      fazer novo deploy e conferir `[limpeza]` no log do dia seguinte. Incluir o
-      prazo na Política de Privacidade (revisão jurídica).
+- [ ] **Limpeza de contas não confirmadas:** `CRON_SECRET` e
+      `UNCONFIRMED_ACCOUNT_TTL_DAYS=14` já estão na Vercel e o prazo está na Política
+      de Privacidade (seção 5; falta a revisão jurídica). Depois do deploy, conferir
+      `[limpeza]` no log do dia seguinte (06:00 UTC).
 - [ ] **Supabase Pro** (backups diários, sem pausa) e **Vercel Pro** (uso
       comercial) antes de vender de verdade.
 - [ ] **Limites da Anthropic:** conferir o nível da conta para o volume esperado
