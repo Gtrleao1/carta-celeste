@@ -139,6 +139,11 @@ export default function PrivacidadePage() {
         enviado à Meta e ao Google segue as políticas dessas empresas.
       </p>
       <p>
+        A nossa equipe de suporte pode abrir o texto do seu mapa astral para
+        corrigir erros e reenviá-lo a você. Ela não vê os seus dados de
+        nascimento, e cada correção fica registrada.
+      </p>
+      <p>
         Se você criar uma conta e não confirmar o seu e-mail, nem entrar nela,
         nem fizer um pedido, apagamos essa conta e os dados de nascimento
         informados no cadastro depois de 14 dias.

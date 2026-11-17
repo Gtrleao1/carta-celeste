@@ -2,6 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { reprocessOrder, resendPurchaseEvent } from "@/app/admin/actions";
+import { OrderActions } from "@/components/admin/order-actions";
+import { ACTION_LABEL } from "@/lib/admin/audit-labels";
 import { StatusBadge } from "@/components/admin/status-badge";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
@@ -69,25 +71,35 @@ export default async function AdminOrderPage({
     .maybeSingle();
   if (!order) notFound();
 
-  const [{ data: report }, userResult, { data: trackingEvents }] =
-    await Promise.all([
-      admin
-        .from("reports")
-        .select(
-          "sections, error, input_tokens, output_tokens, house_system, lock_until, updated_at",
-        )
-        .eq("order_id", id)
-        .maybeSingle(),
-      order.user_id
-        ? admin.auth.admin.getUserById(order.user_id)
-        : Promise.resolve(null),
-      admin
-        .from("tracking_events")
-        .select("id, platform, event_name, status, detail, created_at")
-        .eq("order_id", id)
-        .order("id", { ascending: false })
-        .limit(20),
-    ]);
+  const [
+    { data: report },
+    userResult,
+    { data: trackingEvents },
+    { data: history },
+  ] = await Promise.all([
+    admin
+      .from("reports")
+      .select(
+        "sections, error, input_tokens, output_tokens, house_system, lock_until, updated_at",
+      )
+      .eq("order_id", id)
+      .maybeSingle(),
+    order.user_id
+      ? admin.auth.admin.getUserById(order.user_id)
+      : Promise.resolve(null),
+    admin
+      .from("tracking_events")
+      .select("id, platform, event_name, status, detail, created_at")
+      .eq("order_id", id)
+      .order("id", { ascending: false })
+      .limit(20),
+    admin
+      .from("admin_audit_log")
+      .select("id, created_at, action, detail")
+      .eq("order_id", id)
+      .order("id", { ascending: false })
+      .limit(20),
+  ]);
 
   const product = order.product as unknown as { name: string } | null;
   const sections = (report?.sections ?? []) as {
@@ -96,8 +108,10 @@ export default async function AdminOrderPage({
     status: string;
     attempts: number;
     error?: string;
+    edited_at?: string;
   }[];
   const canReprocess = ["paid", "generating", "failed"].includes(order.status);
+  const isReady = order.status === "ready";
   const lockActive =
     report?.lock_until && Date.parse(report.lock_until) > nowMs();
 
@@ -167,6 +181,24 @@ export default async function AdminOrderPage({
               value={order.payment_method ?? "—"}
             />
           </dl>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-lg">Ações</CardTitle>
+          <CardDescription>
+            Reenviar o aviso ao comprador, editar o texto, reprocessar ou
+            excluir. Cada ação fica no histórico.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <OrderActions
+            orderId={order.id}
+            canResend={isReady}
+            canEdit={isReady && Boolean(report)}
+            canReprocess={canReprocess}
+          />
         </CardContent>
       </Card>
 
@@ -269,7 +301,15 @@ export default async function AdminOrderPage({
                   <tbody className="divide-y">
                     {sections.map((s) => (
                       <tr key={s.key}>
-                        <td className="py-2 pr-3">{s.title}</td>
+                        <td className="py-2 pr-3">
+                          {s.title}
+                          {s.edited_at && (
+                            <span className="text-muted-foreground">
+                              {" "}
+                              (editada à mão)
+                            </span>
+                          )}
+                        </td>
                         <td className="py-2 pr-3">
                           {SECTION_STATUS[s.status] ?? s.status}
                         </td>
@@ -297,6 +337,35 @@ export default async function AdminOrderPage({
                 confirmado.
               </p>
             </form>
+          )}
+        </CardContent>
+      </Card>
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-lg">Histórico deste pedido</CardTitle>
+          <CardDescription>
+            Ações do admin sobre este pedido (sem dados pessoais).
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          {(history ?? []).length === 0 ? (
+            <p className="text-muted-foreground text-sm">Nenhuma ação ainda.</p>
+          ) : (
+            <ul className="divide-y text-sm">
+              {(history ?? []).map((h) => (
+                <li key={h.id} className="flex flex-wrap gap-x-4 py-2">
+                  <span className="text-muted-foreground">
+                    {when(h.created_at)}
+                  </span>
+                  <span className="font-medium">
+                    {ACTION_LABEL[h.action] ?? h.action}
+                  </span>
+                  <span className="text-muted-foreground">
+                    {h.detail ?? ""}
+                  </span>
+                </li>
+              ))}
+            </ul>
           )}
         </CardContent>
       </Card>

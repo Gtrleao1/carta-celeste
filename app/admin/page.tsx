@@ -1,11 +1,10 @@
 import Link from "next/link";
 
-import { StatusBadge } from "@/components/admin/status-badge";
+import { OrdersTable } from "@/components/admin/orders-table";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { buttonVariants } from "@/components/ui/button";
 import { requireAdmin } from "@/lib/admin/auth";
 import { nowMs } from "@/lib/admin/time";
-import { formatBRL } from "@/lib/format";
 import {
   ADMIN_STATUS_LABEL,
   ORDER_STATUSES,
@@ -15,13 +14,7 @@ import {
 import { estimateCostUsd } from "@/lib/reports/cost";
 import { createAdminClient } from "@/lib/supabase/admin";
 
-const PAGE_SIZE = 25;
-
-const dateTime = new Intl.DateTimeFormat("pt-BR", {
-  dateStyle: "short",
-  timeStyle: "short",
-  timeZone: "America/Sao_Paulo",
-});
+const PAGE_SIZES = [25, 50, 100] as const;
 
 export default async function AdminOrdersPage({
   searchParams,
@@ -34,6 +27,9 @@ export default async function AdminOrdersPage({
     1,
     Number.parseInt(String(params.page ?? "1"), 10) || 1,
   );
+  // Pedidos por página (`?por=`): 25, 50 ou 100, que é também o teto de um lote.
+  const requested = Number.parseInt(String(params.por ?? ""), 10);
+  const PAGE_SIZE = PAGE_SIZES.find((n) => n === requested) ?? PAGE_SIZES[0];
 
   const admin = createAdminClient();
   const stuckBefore = new Date(nowMs() - STUCK_AFTER_MS).toISOString();
@@ -99,7 +95,11 @@ export default async function AdminOrdersPage({
       ) / reports.length
     : null;
 
-  const href = (next: { status?: string | null; page?: number }) => {
+  const href = (next: {
+    status?: string | null;
+    page?: number;
+    por?: number;
+  }) => {
     const q = new URLSearchParams();
     const s =
       next.status === undefined
@@ -109,6 +109,8 @@ export default async function AdminOrdersPage({
         : next.status;
     if (s) q.set("status", s);
     if (next.page && next.page > 1) q.set("page", String(next.page));
+    const size = next.por ?? PAGE_SIZE;
+    if (size !== PAGE_SIZES[0]) q.set("por", String(size));
     const qs = q.toString();
     return qs ? `/admin?${qs}` : "/admin";
   };
@@ -185,54 +187,37 @@ export default async function AdminOrdersPage({
       {orders.length === 0 ? (
         <p className="text-muted-foreground">Nenhum pedido neste filtro.</p>
       ) : (
-        <div className="overflow-x-auto">
-          <table className="w-full min-w-[34rem] text-left text-sm">
-            <caption className="sr-only">Lista de pedidos</caption>
-            <thead className="text-muted-foreground border-b">
-              <tr>
-                <th scope="col" className="py-2 pr-3 font-medium">
-                  Pedido
-                </th>
-                <th scope="col" className="py-2 pr-3 font-medium">
-                  Produto
-                </th>
-                <th scope="col" className="py-2 pr-3 font-medium">
-                  Status
-                </th>
-                <th scope="col" className="py-2 pr-3 font-medium">
-                  Valor
-                </th>
-                <th scope="col" className="py-2 font-medium">
-                  Criado em
-                </th>
-              </tr>
-            </thead>
-            <tbody className="divide-y">
-              {orders.map((o) => (
-                <tr key={o.id}>
-                  <td className="py-3 pr-3">
-                    <Link
-                      href={`/admin/pedidos/${o.id}`}
-                      className="font-mono underline underline-offset-4"
-                    >
-                      {o.id.slice(0, 8)}
-                    </Link>
-                  </td>
-                  <td className="py-3 pr-3">{o.product?.name ?? "—"}</td>
-                  <td className="py-3 pr-3">
-                    <StatusBadge status={o.status} />
-                  </td>
-                  <td className="py-3 pr-3">{formatBRL(o.amount_cents)}</td>
-                  <td className="py-3">
-                    {dateTime.format(new Date(o.created_at))}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <OrdersTable
+          orders={orders.map((o) => ({
+            id: o.id,
+            status: o.status,
+            amount_cents: o.amount_cents,
+            created_at: o.created_at,
+            product_name: o.product?.name ?? null,
+          }))}
+        />
       )}
 
+      <nav
+        aria-label="Pedidos por página"
+        className="text-muted-foreground flex flex-wrap items-center gap-2 text-sm"
+      >
+        <span>Por página:</span>
+        {PAGE_SIZES.map((n) => (
+          <Link
+            key={n}
+            href={href({ por: n, page: 1 })}
+            aria-current={n === PAGE_SIZE ? "page" : undefined}
+            className={
+              n === PAGE_SIZE
+                ? "text-foreground font-semibold underline underline-offset-4"
+                : "hover:text-foreground underline underline-offset-4"
+            }
+          >
+            {n}
+          </Link>
+        ))}
+      </nav>
       {lastPage > 1 && (
         <nav aria-label="Páginas" className="flex items-center gap-3">
           {page > 1 && (

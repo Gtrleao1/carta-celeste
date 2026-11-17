@@ -23,6 +23,8 @@ export type SectionState = {
   attempts: number;
   /** Categoria curta do último erro (ex.: "limite_de_uso"); nunca o texto bruto. */
   error?: string;
+  /** Quando o admin editou o texto à mão (ISO). Reprocessar não sobrescreve. */
+  edited_at?: string;
 };
 
 export const MAX_ATTEMPTS = 3;

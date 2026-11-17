@@ -7,6 +7,9 @@ import { adminMfaRequired } from "@/lib/auth/mfa";
 import { SITE } from "@/lib/site-config";
 import { createClient } from "@/lib/supabase/server";
 
+// Ações em lote (reenviar e-mails, excluir) podem levar mais que o padrão.
+export const maxDuration = 60;
+
 export const metadata: Metadata = {
   title: "Painel admin",
   robots: { index: false, follow: false },
@@ -16,6 +19,7 @@ const LINKS = [
   { href: "/admin", label: "Pedidos" },
   { href: "/admin/produtos", label: "Produtos" },
   { href: "/admin/blog", label: "Blog" },
+  { href: "/admin/historico", label: "Histórico" },
   { href: "/admin/configuracoes", label: "Configurações" },
 ];
 
