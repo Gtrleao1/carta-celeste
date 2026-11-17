@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { signOut } from "@/app/(auth)/actions";
 import { requireAdmin } from "@/lib/admin/auth";
 import { adminMfaRequired } from "@/lib/auth/mfa";
 import { SITE } from "@/lib/site-config";
@@ -59,6 +60,20 @@ export default async function AdminLayout({
             >
               Ver o site
             </Link>
+            <Link
+              href="/conta"
+              className="text-muted-foreground hover:text-foreground rounded-md px-3 py-2 text-sm"
+            >
+              Minha conta
+            </Link>
+            <form action={signOut}>
+              <button
+                type="submit"
+                className="text-destructive hover:bg-muted cursor-pointer rounded-md px-3 py-2 text-sm"
+              >
+                Sair
+              </button>
+            </form>
           </nav>
         </div>
       </header>

@@ -98,7 +98,7 @@ export function MainNav() {
           >
             Blog
           </Link>
-          <AuthLink className="h-12 text-base" onNavigate={close} />
+          <AuthLink className="h-12 text-base" onNavigate={close} stacked />
         </div>
       )}
     </nav>
