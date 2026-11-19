@@ -19,6 +19,7 @@ export default function robots(): MetadataRoute.Robots {
         "/entrar",
         "/cadastro",
         "/auth/",
+        "/prototipo-leitor",
       ],
     },
     sitemap: `${url}/sitemap.xml`,

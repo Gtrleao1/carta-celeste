@@ -132,6 +132,13 @@ export type WheelOptions = {
    * graus, que ficariam desatualizados assim que os planetas andassem.
    */
   sky?: boolean;
+  /**
+   * Roda do leitor: acrescenta as camadas de destaque de signos e casas
+   * (`data-hl-sign`, `data-hl-house`), como no modo céu, mas mantém aspectos,
+   * graus e posições. Os elementos têm `data-planet`, `data-aspect`, `data-axis`
+   * para o leitor acender (`data-on`) sem mover nada.
+   */
+  interactive?: boolean;
 };
 
 const text = (
@@ -152,6 +159,7 @@ export function renderChartWheelSvg(
     title = "Roda do mapa astral",
     idPrefix = "chart-wheel",
     sky = false,
+    interactive = false,
   }: WheelOptions = {},
 ): string {
   const asc = chart.ascendant?.longitude ?? null;
@@ -235,7 +243,7 @@ export function renderChartWheelSvg(
   // Destaques (modo céu): uma camada apagada por signo e por casa; o navegador
   // só liga as do Sol e da Lua (atributo `data-on`). Opacidade é a única coisa
   // que muda, então cada camada custa quase nada.
-  if (sky) {
+  if (sky || interactive) {
     out.push(`<g aria-hidden="true">`);
     SIGNS.forEach((_, i) => {
       const a0 = ang(i * 30);
@@ -284,7 +292,7 @@ export function renderChartWheelSvg(
     const to = polar(C, C, R_OUT + 8, a);
     const lab = polar(C, C, R_OUT + 24, a);
     out.push(
-      `<line x1="${f(from.x)}" y1="${f(from.y)}" x2="${f(to.x)}" y2="${f(to.y)}" class="stroke-primary" stroke-width="2" stroke-linecap="round"/>`,
+      `<line data-axis="${label}" x1="${f(from.x)}" y1="${f(from.y)}" x2="${f(to.x)}" y2="${f(to.y)}" class="wheel-item stroke-primary" stroke-width="2" stroke-linecap="round"/>`,
       text(lab.x, lab.y, 14, "fill-primary", label, ' font-weight="700"'),
     );
   }
@@ -297,7 +305,7 @@ export function renderChartWheelSvg(
     const a = polar(C, C, R_ASPECT, realAngles[planetIndex.get(asp.planet_a)!]);
     const b = polar(C, C, R_ASPECT, realAngles[planetIndex.get(asp.planet_b)!]);
     out.push(
-      `<line x1="${f(a.x)}" y1="${f(a.y)}" x2="${f(b.x)}" y2="${f(b.y)}" class="${
+      `<line data-aspect="${asp.planet_a}~${asp.planet_b}" x1="${f(a.x)}" y1="${f(a.y)}" x2="${f(b.x)}" y2="${f(b.y)}" class="wheel-item ${
         asp.tone === "harmonic" ? "stroke-air" : "stroke-fire"
       }" stroke-width="${asp.orb < 2 ? 1.8 : 1.1}" stroke-opacity="${
         asp.orb < 4 ? 0.9 : 0.6
@@ -324,7 +332,7 @@ export function renderChartWheelSvg(
     const from = polar(C, C, R_SIGN_IN - 1, sky ? shown : real);
     const to = polar(C, C, R_GLYPH + 14, shown);
     out.push(
-      `<g data-planet="${planet.id}" data-angle="${f(shown)}">`,
+      `<g class="wheel-item" data-planet="${planet.id}" data-angle="${f(shown)}">`,
       `<line x1="${f(from.x)}" y1="${f(from.y)}" x2="${f(to.x)}" y2="${f(to.y)}" class="stroke-primary/60" stroke-width="0.8"/>`,
       text(
         glyph.x,

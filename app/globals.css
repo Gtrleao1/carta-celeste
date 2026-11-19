@@ -145,6 +145,30 @@
   }
 }
 
+/*
+ * Roda do leitor: com uma parte do mapa em foco, o que não faz parte dela
+ * escurece e o que faz acende. Só opacidade e espessura de linha mudam; nenhuma
+ * posição se mexe (o mapa natal é imutável).
+ */
+.wheel-focus .wheel-item {
+  opacity: 0.22;
+  transition: opacity 0.35s ease;
+}
+.wheel-focus .wheel-item[data-on] {
+  opacity: 1;
+}
+.wheel-focus .wheel-item[data-on="rel"] {
+  opacity: 0.65;
+}
+.wheel-focus [data-aspect][data-on] {
+  stroke-width: 2.6;
+}
+@media (prefers-reduced-motion: reduce) {
+  .wheel-focus .wheel-item {
+    transition: none;
+  }
+}
+
 /* Roda do céu (home): signo e casa acesos do Sol e da Lua. Só opacidade muda. */
 .wheel-hl {
   opacity: 0;
