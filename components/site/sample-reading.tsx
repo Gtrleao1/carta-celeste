@@ -29,14 +29,14 @@ export function SampleReading({
         {/* Apresentação e compra */}
         <div className="border-border grid content-start gap-4 border-b p-6 lg:border-r lg:border-b-0 lg:p-8">
           <p className="text-primary text-sm font-medium tracking-widest uppercase">
-            Veja como é por dentro
+            Conheça sua Carta Celeste por dentro
           </p>
           <h2 id="titulo-folheie" className="text-4xl font-semibold">
-            Folheie um trecho antes de pedir
+            Veja como seu mapa é escrito
           </h2>
           <p className="text-muted-foreground text-lg">
-            É assim que o seu mapa é escrito: em linguagem simples, com exemplos
-            do dia a dia.
+            Um trecho de um mapa de exemplo. O seu mapa terá a mesma
+            profundidade, mas escrito exclusivamente para você!
           </p>
           <p className="text-muted-foreground text-sm">
             <span className="text-foreground font-medium">
@@ -47,8 +47,8 @@ export function SampleReading({
           </p>
           <p className="text-muted-foreground text-sm">
             {parts
-              ? `O seu mapa tem ${parts} partes como esta, escritas para os seus dados.`
-              : "O seu mapa é escrito a partir dos seus dados, parte por parte."}
+              ? `O seu mapa tem ${parts} seções como esta, escritas para os seus dados.`
+              : "O seu mapa é escrito a partir dos seus dados, seção por seção."}
           </p>
           <Link
             href={buyHref}

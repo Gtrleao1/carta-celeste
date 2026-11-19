@@ -1,11 +1,15 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
+import Link from "next/link";
+
 import { ChartWheel } from "@/components/chart/chart-wheel";
 import { MiniMarkdown } from "@/components/site/mini-markdown";
 import { ReaderPreview } from "@/components/site/reader-preview";
+import { buttonVariants } from "@/components/ui/button";
 import { exampleChart } from "@/lib/example-chart";
 import { focusBySection } from "@/lib/reader/focus";
+import { CTA_LABEL } from "@/lib/site-config";
 
 const STEPS = [
   { key: "sol", title: "O seu Sol" },
@@ -61,7 +65,7 @@ const TITLES: Record<string, string> = {
  * "A sua mandala acompanha a leitura": prévia do leitor (capítulos, mandala e
  * texto), com o mapa de exemplo fictício. Tudo é preparado no servidor, no build.
  */
-export function ReaderPreviewSection() {
+export function ReaderPreviewSection({ buyHref }: { buyHref: string }) {
   const texts = exampleTexts();
   const focus = focusBySection(
     STEPS.map((s) => s.key),
@@ -77,12 +81,15 @@ export function ReaderPreviewSection() {
         Dentro do seu mapa
       </p>
       <h2 id="titulo-mandala" className="mt-2 text-4xl font-semibold">
-        A sua mandala acompanha a leitura
+        Sua leitura acompanha o seu céu
       </h2>
-      <p className="text-muted-foreground mt-2 mb-8 max-w-prose text-lg">
-        Ao ler cada parte, a mandala do seu mapa destaca os planetas, signos e
-        casas de que o texto fala. Assim você vê onde está cada coisa, sem
-        precisar entender de astrologia. Exemplo com um mapa fictício:
+      <p className="text-muted-foreground mt-2 max-w-prose text-lg">
+        Enquanto lê, a mandala do seu mapa destaca os planetas, os signos e as
+        casas de que o texto está falando. Você vê onde está cada coisa, sem
+        decorar nada. É a mesma tela que você usa depois de comprar.
+      </p>
+      <p className="text-muted-foreground mt-1 mb-8 text-sm">
+        Exemplo com um mapa fictício. Clique nos capítulos para explorar.
       </p>
       <ReaderPreview
         steps={STEPS.map((s) => ({
@@ -100,6 +107,14 @@ export function ReaderPreviewSection() {
           />
         }
       />
+      <div className="mt-8">
+        <Link
+          href={buyHref}
+          className={buttonVariants({ size: "lg" }) + " h-12 px-6 text-base"}
+        >
+          {CTA_LABEL}
+        </Link>
+      </div>
     </section>
   );
 }

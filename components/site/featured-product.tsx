@@ -69,12 +69,13 @@ export function FeaturedProduct({ product }: { product: Product }) {
             {formatBRL(product.price_cents)}
           </p>
           <p className="text-muted-foreground mt-1 text-sm">
-            Pix, boleto ou cartão em até 12x
+            Pagamento único · Pix, boleto ou cartão em até 12x
           </p>
         </div>
         <ul className="text-muted-foreground grid gap-2 text-sm">
           {[
             "Calculado para o dia, a hora e a cidade em que você nasceu",
+            "Com a mandala interativa do seu mapa",
             "Pronto em poucos minutos, na sua área do cliente",
             "Para ler no celular e imprimir ou salvar em PDF",
             "Pagamento seguro pelo Mercado Pago; não guardamos o seu cartão",
@@ -86,21 +87,6 @@ export function FeaturedProduct({ product }: { product: Product }) {
               {text}
             </li>
           ))}
-          <li className="flex gap-2">
-            <span aria-hidden="true" className="text-primary">
-              ✓
-            </span>
-            <span>
-              7 dias para desistir da compra, como garante a lei (
-              <Link
-                href="/termos#arrependimento"
-                className="underline underline-offset-4"
-              >
-                ver Termos
-              </Link>
-              )
-            </span>
-          </li>
         </ul>
         <HomeOrderForm slug={product.slug} />
         <Link
