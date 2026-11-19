@@ -60,7 +60,7 @@ export default async function Home() {
         },
         {
           title: "Calculamos o seu céu",
-          text: "As posições vêm de cálculo astronômico, com precisão de arco em minutos. Depois o texto é escrito com apoio de inteligência artificial, a partir desses dados já prontos.",
+          text: "As posições vêm de cálculo astronômico, com precisão de arco em minutos. Depois o seu mapa é escrito a partir desses dados.",
         },
         {
           title: "Leia e guarde",
@@ -77,7 +77,7 @@ export default async function Home() {
     },
     {
       q: "Como o mapa é calculado?",
-      a: "Com cálculo astronômico a partir da sua data, hora e cidade. O texto que interpreta essas posições é redigido com apoio de inteligência artificial, sem usar o seu nome.",
+      a: "Com cálculo astronômico a partir da sua data, hora e cidade.",
     },
     {
       q: "Quanto tempo leva?",
