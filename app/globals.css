@@ -145,6 +145,16 @@
   }
 }
 
+/* Prévia da home: o texto do capítulo novo aparece com um fade curto. */
+.preview-fade {
+  animation: wheel-fade 0.5s ease-out both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .preview-fade {
+    animation: none;
+  }
+}
+
 /*
  * Roda do leitor: com uma parte do mapa em foco, o que não faz parte dela
  * escurece e o que faz acende. Só opacidade e espessura de linha mudam; nenhuma

@@ -192,14 +192,14 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Prévia da mandala que acompanha a leitura */}
-      <div className={DEFER}>
-        <ReaderPreviewSection />
-      </div>
-
-      {/* Folheie: prova do texto antes da compra */}
+      {/* Folheie: primeiro a qualidade do texto... */}
       <div className={DEFER}>
         <SampleReading buyHref="#mapas" parts={single?.sections.length} />
+      </div>
+
+      {/* ...depois a interatividade: a mandala que acompanha a leitura */}
+      <div className={DEFER}>
+        <ReaderPreviewSection />
       </div>
 
       {/* Vitrine */}
