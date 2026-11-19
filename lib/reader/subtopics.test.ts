@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+﻿import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
 import { describe, expect, it } from "vitest";
@@ -25,7 +25,7 @@ const PARTS = [
 ] as const;
 
 const raw = readFileSync(
-  join(process.cwd(), "docs", "referencia", "mapa-astral-completo-v3.md"),
+  join(process.cwd(), "docs", "referencia", "exemplo-ficticio.md"),
   "utf8",
 );
 const texts = new Map(

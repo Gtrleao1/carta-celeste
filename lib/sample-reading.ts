@@ -1,25 +1,24 @@
 /**
  * Trecho de exemplo para o "Folheie um trecho antes de pedir" da home.
  *
- * É o começo da "Introdução ao seu mapa" do mapa de referência aprovado
- * (`docs/referencia/mapa-astral-completo-v3.md`), gerado para um mapa de TESTE
- * (não é o caso de 14/07/1995 do PRD). Os dados de nascimento desse mapa NÃO
- * são exibidos nem guardados aqui: o texto não traz nome nem data. Se o padrão
- * do produto mudar, atualize este trecho junto com a referência.
+ * É o começo da "Introdução ao seu mapa" do mapa de exemplo FICTÍCIO
+ * (08/12/2020, 18h30, Campinas; `docs/referencia/exemplo-ficticio.md`, gerado
+ * por `npm run build:example-report`). O texto não traz nome nem data. Se o
+ * padrão do produto mudar, regere o exemplo e atualize este trecho.
  */
 export const SAMPLE_READING = {
   section: "Introdução ao seu mapa",
-  markdown: `Um mapa astral é uma fotografia do céu no instante do seu nascimento, vista do lugar onde você nasceu. Ele não decide o seu destino: funciona como um retrato de tendências, talentos e tensões que você pode reconhecer e trabalhar ao longo da vida. Alguns traços do seu mapa se destacam logo de início e dão o tom do que vem a seguir.
+  markdown: `Um mapa astral é uma fotografia do céu no momento do seu nascimento, vista do lugar onde você nasceu. Ele não decide o seu destino. Funciona mais como um retrato de tendências: o que vem fácil, o que exige esforço e onde você pode crescer. Vale como convite ao autoconhecimento, e quatro traços do seu mapa chamam atenção logo de cara.
 
-### Água e terra: sentir fundo e construir com os pés no chão
+### A terra como chão do seu mapa
 
-Os elementos descrevem o "material" de que a sua energia é feita. No seu mapa, dois dividem a cena em partes iguais: a água, com quatro planetas (Sol, Lua, Júpiter e Plutão), e a terra, também com quatro (Marte, Saturno, Urano e Netuno).
+O elemento terra é o mais forte no seu mapa: Lua, Júpiter, Saturno, Urano e Plutão estão em signos de terra, cinco dos dez planetas. A terra fala do que é concreto, útil e testado na prática. Você tende a confiar mais no que consegue ver funcionando do que em promessas ou ideias soltas.
 
-A água traz sensibilidade, memória emocional e uma percepção rápida do clima entre as pessoas: você costuma notar que algo mudou no ambiente antes de alguém dizer uma palavra. A terra traz praticidade, paciência e a necessidade de ver resultado concreto, de transformar o que sente em algo que dá para tocar, como uma rotina, um projeto ou um espaço seu. Juntos, esses elementos sugerem uma pessoa que sente muito e, ao mesmo tempo, quer construir algo estável com esse sentimento.
+No dia a dia, isso aparece como paciência para construir, olho para o que dá certo e desconforto com o que é vago. O risco é a rigidez: resistir a mudanças só porque o caminho conhecido parece mais seguro. Antes de recusar uma novidade, vale perguntar se você a descartou por bons motivos ou só por hábito.
 
-### Modalidade cardinal: a capacidade de recomeçar
+### Capacidade de recomeçar: a força da modalidade cardinal
 
-As modalidades mostram o seu jeito de lidar com mudança e movimento. A cardinal é a energia de iniciar, e cinco planetas estão nela: Sol, Júpiter, Saturno, Urano e Netuno. É a modalidade dominante do seu mapa.
+As modalidades dizem como a energia dos planetas se movimenta. No seu mapa há empate entre a mutável, com quatro planetas (Sol, Lua, Mercúrio e Netuno), e a cardinal, com quatro (Marte, Júpiter, Saturno e Plutão). A fixa tem dois (Vênus e Urano).
 
-Isso indica uma capacidade real de se reinventar e de recomeçar o que for preciso: mudar de área, reorganizar a rotina, reabrir um projeto parado ou refazer um plano que não funcionou. Quando uma fase se encerra, você tende a encontrar força para dar o primeiro passo da próxima.`,
+A cardinal é a modalidade de quem inicia. Com ela forte, você tem capacidade de se reinventar e de recomeçar o que for preciso, quantas vezes a vida pedir. Pense em quem muda de área, reorganiza a rotina ou refaz um plano sem se paralisar.`,
 };

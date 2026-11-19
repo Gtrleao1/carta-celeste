@@ -14,6 +14,7 @@
     "build:constellations": "tsx scripts/build-constellations.ts",
     "db:seed-cities": "tsx --env-file=.env.local scripts/seed-cities.ts",
     "db:seed-admin": "tsx --env-file=.env.local scripts/seed-admin.ts",
+    "build:example-report": "tsx --conditions react-server --env-file=.env.local scripts/build-example-report.ts",
     "try:report": "tsx --conditions react-server --env-file=.env.local scripts/try-report.ts"
   },
   "dependencies": {

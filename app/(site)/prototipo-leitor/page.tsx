@@ -11,7 +11,7 @@ import {
 import { MiniMarkdown } from "@/components/site/mini-markdown";
 import { focusBySection } from "@/lib/reader/focus";
 import { subtopicsOf } from "@/lib/reader/subtopics";
-import { sampleChart } from "@/lib/sample-chart";
+import { exampleChart } from "@/lib/example-chart";
 
 export const metadata: Metadata = {
   title: "Protótipo do leitor",
@@ -35,10 +35,10 @@ const PARTS: { key: string; title: string }[] = [
   { key: "sintese", title: "Síntese" },
 ];
 
-/** Texto do mapa de referência aprovado (mapa de teste), lido no build. */
+/** Texto do mapa de referência aprovado (fictício, do mesmo mapa da roda), lido no build. */
 function referenceTexts(): Map<string, string> {
   const raw = readFileSync(
-    join(process.cwd(), "docs", "referencia", "mapa-astral-completo-v3.md"),
+    join(process.cwd(), "docs", "referencia", "exemplo-ficticio.md"),
     "utf8",
   );
   const texts = new Map<string, string>();
@@ -58,7 +58,7 @@ export default function PrototypePage() {
   const texts = referenceTexts();
   const focusByKey = focusBySection(
     PARTS.map((p) => p.key),
-    sampleChart,
+    exampleChart,
   );
   const parts: ReaderPart[] = PARTS.map((p) => {
     const text = texts.get(p.title) ?? "Texto não encontrado.";
@@ -66,7 +66,7 @@ export default function PrototypePage() {
       key: p.key,
       title: p.title,
       body: <MiniMarkdown text={text} headingIdPrefix={p.key} />,
-      subs: subtopicsOf(text, p.key, sampleChart, focusByKey[p.key]).map(
+      subs: subtopicsOf(text, p.key, exampleChart, focusByKey[p.key]).map(
         ({ id, label, focus }) => ({ id, label, focus }),
       ),
     };
@@ -86,9 +86,7 @@ export default function PrototypePage() {
           trata. As posições nunca mudam: só o destaque.
         </p>
         <p className="text-muted-foreground text-sm">
-          Nota do protótipo: a roda é de um mapa de exemplo e o texto vem de
-          outro mapa de teste, então alguns destaques podem não casar com o que
-          o texto diz. No mapa real, roda e texto são da mesma pessoa.
+          Mapa de exemplo fictício: 08/12/2020, 18h30, Campinas.
         </p>
       </header>
 
@@ -97,7 +95,7 @@ export default function PrototypePage() {
         focusByKey={focusByKey}
         wheel={
           <ChartWheel
-            chart={sampleChart}
+            chart={exampleChart}
             interactive
             idPrefix="leitor"
             title="Roda do mapa astral de exemplo"

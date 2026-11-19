@@ -8,7 +8,7 @@ import { TrackViewContent } from "@/components/tracking/track-view";
 import { buttonVariants } from "@/components/ui/button";
 import { formatBRL } from "@/lib/format";
 import { getActiveProducts, getProductBySlug } from "@/lib/products";
-import { sampleChart } from "@/lib/sample-chart";
+import { exampleChart } from "@/lib/example-chart";
 import { CTA_LABEL, DISCLAIMER } from "@/lib/site-config";
 
 // Página estática, regenerada a cada 5 minutos; produtos novos entram sem deploy.
@@ -159,7 +159,7 @@ export default async function ProductPage({
 
         <figure className="grid gap-2">
           <ChartWheel
-            chart={sampleChart}
+            chart={exampleChart}
             title="Exemplo de roda do mapa astral"
           />
           <figcaption className="text-muted-foreground text-center text-sm">

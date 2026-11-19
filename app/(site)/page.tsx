@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 
 import { SkyWheel } from "@/components/chart/sky-wheel";
+import { ReaderPreviewSection } from "@/components/site/reader-preview-section";
 import { SampleReading } from "@/components/site/sample-reading";
 import { DeletedNotice } from "@/components/site/deleted-notice";
 import { FeaturedProduct } from "@/components/site/featured-product";
@@ -190,6 +191,11 @@ export default async function Home() {
           <SkyWheel />
         </div>
       </section>
+
+      {/* Prévia da mandala que acompanha a leitura */}
+      <div className={DEFER}>
+        <ReaderPreviewSection />
+      </div>
 
       {/* Folheie: prova do texto antes da compra */}
       <div className={DEFER}>

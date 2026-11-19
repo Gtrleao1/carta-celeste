@@ -1,8 +1,8 @@
 import { computeChart, type ChartData } from "@/lib/astro";
 
 /**
- * Mapa de exemplo (Referência 1 do PRD: 14/07/1995, 15h30, Campinas) usado
- * na roda animada da home e nas páginas de produto. Não é dado de cliente.
+ * Mapa de referência do PRD (14/07/1995, 15h30, Campinas), usado só nos
+ * testes. O que o público vê é `exampleChart` (fictício, `lib/example-chart.ts`).
  */
 export const sampleChart: ChartData = computeChart({
   birthDate: "1995-07-14",
