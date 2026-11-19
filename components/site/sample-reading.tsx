@@ -41,7 +41,7 @@ export function SampleReading({
           <span className="text-foreground font-medium">
             {SAMPLE_READING.section}
           </span>
-          <span>Exemplo com dados fictícios: {SAMPLE_READING.birth}</span>
+          <span>Trecho de um mapa de exemplo (dados fictícios)</span>
         </div>
         <div className="max-h-[34rem] overflow-hidden px-6 pt-6 pb-2 text-lg leading-relaxed">
           <MiniMarkdown text={SAMPLE_READING.markdown} />

@@ -21,9 +21,11 @@ describe("trecho de exemplo da home (Folheie)", () => {
   });
 
   it("é de um caso fictício e não traz dado pessoal", () => {
-    const all = `${SAMPLE_READING.birth} ${SAMPLE_READING.markdown}`;
+    const all = SAMPLE_READING.markdown;
     expect(all).not.toMatch(/@|https?:\/\/|\d{3}\.\d{3}\.\d{3}/);
-    expect(SAMPLE_READING.birth).toContain("1995");
+    // nenhuma data de nascimento (nem ano) no texto público
+    expect(all).not.toMatch(/\b(19|20)\d{2}\b|\d{1,2}\/\d{1,2}\/\d{2,4}/);
+    expect(SAMPLE_READING).not.toHaveProperty("birth");
   });
 
   it("usa o vocabulário do cliente (mapa astral), nunca 'relatório'", () => {

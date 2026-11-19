@@ -70,7 +70,7 @@ function forPlanets(chart: ChartData, ids: string[]): Focus {
   };
 }
 
-function summarize(
+export function summarize(
   names: string[],
   signs: number[],
   houses: number[],

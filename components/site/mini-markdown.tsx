@@ -16,7 +16,19 @@ function Inlines({ items }: { items: Inline[] }) {
  * Renderiza o Markdown mínimo de `lib/markdown.ts`. Gera só elementos de texto
  * do React, nunca HTML cru, então é seguro para conteúdo vindo do banco ou da IA.
  */
-export function MiniMarkdown({ text }: { text: string }) {
+export function MiniMarkdown({
+  text,
+  headingIdPrefix,
+}: {
+  text: string;
+  /**
+   * Quando informado, cada subtítulo (`###`) ganha o `id` `<prefixo>-sub-<n>`
+   * (n = ordem do subtítulo, a partir de 0), o endereço que o leitor usa para
+   * levar a pessoa até ele (`subtopicsOf` gera os mesmos ids).
+   */
+  headingIdPrefix?: string;
+}) {
+  let h3Count = 0;
   return (
     <div className="grid gap-3">
       {parseMarkdown(text).map((block, i) => {
@@ -45,7 +57,12 @@ export function MiniMarkdown({ text }: { text: string }) {
             return (
               <h3
                 key={i}
-                className="font-heading print-avoid-break mt-2 text-xl font-semibold"
+                id={
+                  headingIdPrefix
+                    ? `${headingIdPrefix}-sub-${h3Count++}`
+                    : undefined
+                }
+                className="font-heading print-avoid-break mt-2 scroll-mt-40 text-xl font-semibold"
               >
                 <Inlines items={block.inlines} />
               </h3>

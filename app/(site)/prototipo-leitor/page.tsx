@@ -10,6 +10,7 @@ import {
 } from "@/components/report/report-reader";
 import { MiniMarkdown } from "@/components/site/mini-markdown";
 import { focusBySection } from "@/lib/reader/focus";
+import { subtopicsOf } from "@/lib/reader/subtopics";
 import { sampleChart } from "@/lib/sample-chart";
 
 export const metadata: Metadata = {
@@ -34,7 +35,7 @@ const PARTS: { key: string; title: string }[] = [
   { key: "sintese", title: "Síntese" },
 ];
 
-/** Texto do mapa de referência aprovado (caso fictício do PRD), lido no build. */
+/** Texto do mapa de referência aprovado (mapa de teste), lido no build. */
 function referenceTexts(): Map<string, string> {
   const raw = readFileSync(
     join(process.cwd(), "docs", "referencia", "mapa-astral-completo-v3.md"),
@@ -55,11 +56,21 @@ function referenceTexts(): Map<string, string> {
  */
 export default function PrototypePage() {
   const texts = referenceTexts();
-  const parts: ReaderPart[] = PARTS.map((p) => ({
-    key: p.key,
-    title: p.title,
-    body: <MiniMarkdown text={texts.get(p.title) ?? "Texto não encontrado."} />,
-  }));
+  const focusByKey = focusBySection(
+    PARTS.map((p) => p.key),
+    sampleChart,
+  );
+  const parts: ReaderPart[] = PARTS.map((p) => {
+    const text = texts.get(p.title) ?? "Texto não encontrado.";
+    return {
+      key: p.key,
+      title: p.title,
+      body: <MiniMarkdown text={text} headingIdPrefix={p.key} />,
+      subs: subtopicsOf(text, p.key, sampleChart, focusByKey[p.key]).map(
+        ({ id, label, focus }) => ({ id, label, focus }),
+      ),
+    };
+  });
 
   return (
     <div className="mx-auto grid w-full max-w-7xl gap-6 px-4 py-10">
@@ -71,17 +82,19 @@ export default function PrototypePage() {
           Mapa Astral Completo
         </h1>
         <p className="text-muted-foreground">
-          Exemplo com dados fictícios: 14 de julho de 1995, 15h30, Campinas.
-          Escolha um capítulo e veja a roda destacar o que ele trata.
+          Escolha um capítulo ou um subtópico e veja a roda destacar o que ele
+          trata. As posições nunca mudam: só o destaque.
+        </p>
+        <p className="text-muted-foreground text-sm">
+          Nota do protótipo: a roda é de um mapa de exemplo e o texto vem de
+          outro mapa de teste, então alguns destaques podem não casar com o que
+          o texto diz. No mapa real, roda e texto são da mesma pessoa.
         </p>
       </header>
 
       <ReportReader
         parts={parts}
-        focusByKey={focusBySection(
-          PARTS.map((p) => p.key),
-          sampleChart,
-        )}
+        focusByKey={focusByKey}
         wheel={
           <ChartWheel
             chart={sampleChart}

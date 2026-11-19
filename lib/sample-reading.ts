@@ -2,14 +2,12 @@
  * Trecho de exemplo para o "Folheie um trecho antes de pedir" da home.
  *
  * É o começo da "Introdução ao seu mapa" do mapa de referência aprovado
- * (`docs/referencia/mapa-astral-completo-v3.md`), escrito para o caso fictício
- * do PRD (Referência 1: 14/07/1995, 15h30, Campinas). Não é dado de cliente e
- * não traz nome de ninguém. Se o padrão do produto mudar, atualize este trecho
- * junto com a referência.
+ * (`docs/referencia/mapa-astral-completo-v3.md`), gerado para um mapa de TESTE
+ * (não é o caso de 14/07/1995 do PRD). Os dados de nascimento desse mapa NÃO
+ * são exibidos nem guardados aqui: o texto não traz nome nem data. Se o padrão
+ * do produto mudar, atualize este trecho junto com a referência.
  */
 export const SAMPLE_READING = {
-  /** Dados do caso fictício, mostrados junto do trecho. */
-  birth: "14 de julho de 1995, 15h30, Campinas (SP)",
   section: "Introdução ao seu mapa",
   markdown: `Um mapa astral é uma fotografia do céu no instante do seu nascimento, vista do lugar onde você nasceu. Ele não decide o seu destino: funciona como um retrato de tendências, talentos e tensões que você pode reconhecer e trabalhar ao longo da vida. Alguns traços do seu mapa se destacam logo de início e dão o tom do que vem a seguir.
 
