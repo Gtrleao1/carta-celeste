@@ -203,6 +203,22 @@
 }
 
 /*
+ * Lista aberta dos campos de seleção (dia, mês, hora...): fundo azul do site e
+ * texto em latão, como nos textos da home. Sem isto o menu nativo abre branco e
+ * as opções herdam a cor apagada do campo ainda sem escolha (difícil de ler).
+ */
+select option,
+select optgroup {
+  background-color: var(--card);
+  color: var(--primary);
+}
+select option:checked,
+select option:hover {
+  background-color: var(--secondary);
+  color: var(--foreground);
+}
+
+/*
  * Opacidade máxima calculada para o texto sobre o ponto mais claro do fundo
  * continuar com contraste AA (4,5:1): o Lighthouse mede o pior pixel, não a
  * média. Se subir estes valores, refaça a medição de acessibilidade.
