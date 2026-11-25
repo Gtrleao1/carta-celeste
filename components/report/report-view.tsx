@@ -110,31 +110,32 @@ export function ReportView({
   }));
 
   return (
-    <article className="grid gap-10">
-      <header className="mx-auto grid w-full max-w-3xl gap-2">
-        <p className="text-muted-foreground text-sm tracking-wide uppercase">
+    <article className="grid grid-cols-[minmax(0,1fr)] gap-5">
+      {/* Cabeçalho enxuto, para o menu e o texto começarem já na primeira tela. */}
+      <header className="grid gap-1">
+        <p className="text-primary text-xs font-medium tracking-widest uppercase">
           Carta Celeste
         </p>
-        <h1 className="font-heading text-4xl font-semibold">{productName}</h1>
+        <h1 className="font-heading text-3xl font-semibold">{productName}</h1>
         {birthSummary && (
-          <p className="text-muted-foreground">{birthSummary}</p>
+          <p className="text-muted-foreground text-sm">{birthSummary}</p>
         )}
       </header>
 
       {chart.time_unknown && (
-        <p className="border-border mx-auto w-full max-w-3xl rounded-lg border p-4 text-sm">
+        <p className="border-border w-full max-w-3xl rounded-lg border p-4 text-sm">
           Você não informou a hora de nascimento. Por isso o Ascendente, o Meio
           do Céu e as casas não foram calculados, e o mapa astral é mais curto.
           A roda mostra os planetas nos signos, com Áries à esquerda.
         </p>
       )}
       {chart.house_fallback_reason && (
-        <p className="border-border mx-auto w-full max-w-3xl rounded-lg border p-4 text-sm">
+        <p className="border-border w-full max-w-3xl rounded-lg border p-4 text-sm">
           {chart.house_fallback_reason}
         </p>
       )}
 
-      {/* Leitor: capítulos à esquerda, a mandala interativa e o texto ao lado. */}
+      {/* Leitor: menu das partes, texto e a mandala interativa (celular: texto corrido). */}
       {parts.length > 0 && (
         <ReportReader
           parts={parts}
