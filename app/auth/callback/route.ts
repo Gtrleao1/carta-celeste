@@ -10,10 +10,17 @@ import { createClient } from "@/lib/supabase/server";
  */
 export async function GET(request: NextRequest) {
   const { searchParams, origin } = request.nextUrl;
-  const next = safeNextPath(searchParams.get("next"));
+  // Sem destino no link (por exemplo, se o Supabase descartar o parâmetro), quem
+  // acabou de confirmar o e-mail segue para a compra, nunca para a área da conta:
+  // não pode haver quebra no meio do fluxo de pagamento.
   const code = searchParams.get("code");
   const tokenHash = searchParams.get("token_hash");
   const type = searchParams.get("type") as EmailOtpType | null;
+  const next = searchParams.has("next")
+    ? safeNextPath(searchParams.get("next"))
+    : type === "recovery"
+      ? "/redefinir-senha"
+      : "/comprar?confirmar=1";
 
   const supabase = await createClient();
 

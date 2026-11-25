@@ -13,8 +13,17 @@ export const metadata: Metadata = {
  * pessoa para entrar ou criar a conta (e a trouxe de volta aqui). Com um único
  * mapa à venda, vai direto para a compra dele; com vários, para a vitrine.
  */
-export default async function ComprarIndexPage() {
+export default async function ComprarIndexPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ confirmar?: string }>;
+}) {
+  const { confirmar } = await searchParams;
   const products = await getActiveProducts();
-  if (products.length === 1) redirect(`/comprar/${products[0].slug}`);
+  if (products.length === 1) {
+    // Vindo do link do e-mail de confirmação, abre direto na conferência dos dados.
+    const suffix = confirmar === "1" ? "?confirmar=1" : "";
+    redirect(`/comprar/${products[0].slug}${suffix}`);
+  }
   redirect("/#mapas");
 }

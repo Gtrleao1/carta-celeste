@@ -1,9 +1,13 @@
 import { ChartWheel } from "@/components/chart/chart-wheel";
+import {
+  ReportReader,
+  type ReaderPart,
+} from "@/components/report/report-reader";
 import { MiniMarkdown } from "@/components/site/mini-markdown";
-import { SkyArt } from "@/components/site/sky-art";
-import { reportArt } from "@/lib/constellations/pick";
 import type { ChartData } from "@/lib/astro";
 import { ELEMENTS, MODALITIES } from "@/lib/astro";
+import { focusBySection } from "@/lib/reader/focus";
+import { subtopicsOf } from "@/lib/reader/subtopics";
 import { formatDegree } from "@/lib/reports/chart-summary";
 
 const ELEMENT_LABEL = {
@@ -89,9 +93,25 @@ export function ReportView({
   const planetName = new Map(chart.planets.map((p) => [p.id, p.name]));
   const system = chart.input.house_system;
 
+  // Partes prontas, na ordem do produto. O destaque de cada parte e de cada
+  // subtópico sai de regras fixas sobre o mapa já calculado (sem IA).
+  const done = sections.filter((s) => s.status === "done" && s.content);
+  const focusByKey = focusBySection(
+    done.map((s) => s.key),
+    chart,
+  );
+  const parts: ReaderPart[] = done.map((s) => ({
+    key: s.key,
+    title: s.title,
+    body: <MiniMarkdown text={s.content} headingIdPrefix={s.key} />,
+    subs: subtopicsOf(s.content, s.key, chart, focusByKey[s.key]).map(
+      ({ id, label, focus }) => ({ id, label, focus }),
+    ),
+  }));
+
   return (
     <article className="grid gap-10">
-      <header className="grid gap-2">
+      <header className="mx-auto grid w-full max-w-3xl gap-2">
         <p className="text-muted-foreground text-sm tracking-wide uppercase">
           Carta Celeste
         </p>
@@ -102,33 +122,37 @@ export function ReportView({
       </header>
 
       {chart.time_unknown && (
-        <p className="border-border rounded-lg border p-4 text-sm">
+        <p className="border-border mx-auto w-full max-w-3xl rounded-lg border p-4 text-sm">
           Você não informou a hora de nascimento. Por isso o Ascendente, o Meio
           do Céu e as casas não foram calculados, e o mapa astral é mais curto.
           A roda mostra os planetas nos signos, com Áries à esquerda.
         </p>
       )}
       {chart.house_fallback_reason && (
-        <p className="border-border rounded-lg border p-4 text-sm">
+        <p className="border-border mx-auto w-full max-w-3xl rounded-lg border p-4 text-sm">
           {chart.house_fallback_reason}
         </p>
       )}
 
-      <section aria-labelledby="roda" className="print-avoid-break grid gap-4">
-        <h2 id="roda" className="font-heading text-2xl font-semibold">
-          O seu céu de nascimento
-        </h2>
-        <ChartWheel
-          chart={chart}
-          idPrefix="relatorio"
-          className="mx-auto w-full max-w-lg"
-          title={`Roda do mapa astral de ${productName}`}
+      {/* Leitor: capítulos à esquerda, a mandala interativa e o texto ao lado. */}
+      {parts.length > 0 && (
+        <ReportReader
+          parts={parts}
+          focusByKey={focusByKey}
+          wheel={
+            <ChartWheel
+              chart={chart}
+              interactive
+              idPrefix="relatorio"
+              title={`Roda do mapa astral de ${productName}`}
+            />
+          }
         />
-      </section>
+      )}
 
       <section
         aria-labelledby="posicoes"
-        className="print-page-break grid gap-8"
+        className="print-page-break mx-auto grid w-full max-w-3xl gap-8"
       >
         <h2 id="posicoes" className="font-heading text-2xl font-semibold">
           Posições
@@ -217,30 +241,7 @@ export function ReportView({
         </div>
       </section>
 
-      {sections
-        .filter((s) => s.status === "done" && s.content)
-        .map((s, i) => (
-          <section
-            key={s.key}
-            aria-labelledby={`sec-${s.key}`}
-            className={`relative isolate grid gap-4 leading-relaxed ${i === 0 ? "print-page-break" : ""}`}
-          >
-            {/* Uma constelação por parte, alternando linhas e ilustração abstrata. */}
-            <SkyArt
-              {...reportArt(i)}
-              className={`absolute -top-10 size-44 sm:size-64 ${i % 2 === 0 ? "-right-6 sm:-right-20" : "-left-6 sm:-left-20"}`}
-            />
-            <h2
-              id={`sec-${s.key}`}
-              className="font-heading print-avoid-break text-3xl font-semibold"
-            >
-              {s.title}
-            </h2>
-            <MiniMarkdown text={s.content} />
-          </section>
-        ))}
-
-      <p className="text-muted-foreground border-t pt-6 text-sm">
+      <p className="text-muted-foreground mx-auto w-full max-w-3xl border-t pt-6 text-sm">
         Conteúdo para autoconhecimento e entretenimento. Não substitui
         orientação médica, psicológica, financeira ou jurídica, e não faz
         previsões deterministas.
