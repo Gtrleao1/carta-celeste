@@ -1,443 +1,438 @@
 ## Introdução ao seu mapa
 
-Um mapa astral é uma fotografia do céu no momento do seu nascimento, vista do lugar onde você nasceu. Ele não decide o seu destino. Funciona mais como um retrato de tendências: o que vem fácil, o que exige esforço e onde você pode crescer. Vale como convite ao autoconhecimento, e quatro traços do seu mapa chamam atenção logo de cara.
+### O que é o seu mapa astral
 
-### A terra como chão do seu mapa
+O mapa astral é uma fotografia do céu no momento em que você nasceu, vista do lugar do seu nascimento. Cada planeta, signo e casa mostra uma função da sua vida: como você pensa, sente, ama, age e cresce. Não é um destino escrito. É um retrato de tendências, que você pode conhecer e usar a seu favor. A seguir, os traços que mais se destacam no seu.
 
-O elemento terra é o mais forte no seu mapa: Lua, Júpiter, Saturno, Urano e Plutão estão em signos de terra, cinco dos dez planetas. A terra fala do que é concreto, útil e testado na prática. Você tende a confiar mais no que consegue ver funcionando do que em promessas ou ideias soltas.
+### Terra: o elemento que mais pesa no seu mapa
 
-No dia a dia, isso aparece como paciência para construir, olho para o que dá certo e desconforto com o que é vago. O risco é a rigidez: resistir a mudanças só porque o caminho conhecido parece mais seguro. Antes de recusar uma novidade, vale perguntar se você a descartou por bons motivos ou só por hábito.
+O elemento terra reúne cinco dos seus planetas: Lua, Júpiter, Saturno, Urano e Plutão. É o elemento predominante. Terra fala de concretude, paciência e necessidade de ver resultado. Você tende a confiar mais no que pode tocar, testar e construir do que em promessas.
 
-### Capacidade de recomeçar: a força da modalidade cardinal
+No dia a dia, isso aparece quando você precisa de um plano claro antes de embarcar em algo, ou quando se sente mais calmo(a) ao organizar a rotina e resolver pendências. O lado difícil é a teimosia prática: demorar a mudar de rota só porque "sempre foi assim". Observe quando a cautela vira trava e pergunte-se se o risco é real ou só desconforto com o novo.
 
-As modalidades dizem como a energia dos planetas se movimenta. No seu mapa há empate entre a mutável, com quatro planetas (Sol, Lua, Mercúrio e Netuno), e a cardinal, com quatro (Marte, Júpiter, Saturno e Plutão). A fixa tem dois (Vênus e Urano).
+### Capricórnio: três planetas no mesmo signo
 
-A cardinal é a modalidade de quem inicia. Com ela forte, você tem capacidade de se reinventar e de recomeçar o que for preciso, quantas vezes a vida pedir. Pense em quem muda de área, reorganiza a rotina ou refaz um plano sem se paralisar.
+Capricórnio concentra três dos seus planetas: Júpiter, Saturno e Plutão. É o signo da disciplina, da ambição de longo prazo e da responsabilidade. Aqui ele colore funções muito diferentes.
 
-A mutável soma a isso adaptação e flexibilidade. Juntas, as duas dão a você jeito para começar e também para ajustar a rota pelo caminho. A fixa, menos presente, sugere que a persistência longa pode pedir mais atenção: terminar o que começou é um exercício consciente.
+Júpiter representa confiança, crescimento e senso de oportunidade. Em Capricórnio, ele cresce devagar e com método: você acredita mais no que foi conquistado degrau por degrau. Por exemplo, prefere investir anos em uma formação sólida a apostar em atalhos.
 
-### Capricórnio: três planetas em um mesmo signo
+Saturno representa limites, estrutura e o que você assume como compromisso. Em Capricórnio, ele fica em casa: você leva a sério prazos, promessas e deveres, e tende a ser a pessoa confiável do grupo. É o tipo de pessoa que termina o que prometeu, mesmo quando ninguém está olhando.
 
-Júpiter, Saturno e Plutão estão em Capricórnio, o signo da responsabilidade, da disciplina e da ambição de longo prazo. Três planetas juntos dão a ele um peso especial na sua história.
+Plutão representa transformação profunda, poder pessoal e a capacidade de recomeçar das cinzas. Em Capricórnio, essa força vai para a construção: você se reinventa por meio de metas, trabalho e reestruturação do que não funciona mais. Uma crise de carreira, por exemplo, pode virar a virada que redefine o seu rumo.
 
-**Júpiter** representa crescimento, confiança e senso de oportunidade. Em Capricórnio, ele cresce devagar e com método. Você prefere uma conquista sólida a uma sorte rápida, como quem investe tempo numa formação antes de colher os frutos.
+Em resumo, Capricórnio dá ao seu mapa um alicerce de seriedade, resistência e visão de futuro. A atenção fica por conta de não se exigir demais nem transformar vida em tarefa.
 
-**Saturno** representa limites, estrutura e compromisso. Em Capricórnio, ele está em casa: você leva a sério o que assume e aprende cedo a se sustentar sozinho. Isso pode aparecer como a pessoa a quem todos recorrem quando é preciso organizar algo.
+### Modalidades: cardinal e mutável em equilíbrio
 
-**Plutão** representa transformação profunda e poder pessoal. Em Capricórnio, essa força vai para a construção de algo duradouro. Você é capaz de reconstruir sua vida do zero, com foco e discrição, e sem alarde.
+As modalidades mostram o jeito de agir de cada planeta. No seu mapa, duas dividem a liderança, com quatro planetas cada.
 
-Em resumo, Capricórnio dá ao seu mapa um alicerce de seriedade, resistência e visão de futuro. O cuidado é não deixar a exigência virar dureza consigo mesmo: conquistas pedem também pausa e reconhecimento.
+A cardinal reúne Marte, Júpiter, Saturno e Plutão. Ela indica iniciativa e a capacidade de se reinventar e de recomeçar o que for preciso. Se um projeto, uma fase ou uma rotina deixa de servir, você tem força para virar a página e começar de novo, muitas vezes saindo mais forte de crises.
 
-### Sol e Netuno: clareza e névoa se encontrando
+A mutável reúne Sol, Lua, Mercúrio e Netuno. Ela traz adaptação e flexibilidade: você ajusta o plano conforme a situação muda e aprende rápido com o que acontece.
 
-O aspecto mais exato do seu mapa entre os que envolvem o Sol é a quadratura entre Sol e Netuno, muito precisa. Uma quadratura é um ângulo de tensão: dois planetas puxam em direções diferentes e pedem ajuste.
+Juntas, as duas formam uma dupla útil: uma começa, a outra adapta. O cuidado é não espalhar energia em muitos recomeços sem sustentar nenhum. Escolha uma coisa por vez e leve-a até certo ponto antes de mudar.
 
-O Sol representa sua identidade, sua vontade e o que você quer afirmar no mundo. Netuno representa imaginação, sensibilidade, ideais e também a névoa da dúvida. Netuno suaviza o Sol: pode deixar seus contornos menos nítidos, com momentos de incerteza sobre quem você é ou o que quer. O Sol, por sua vez, pede que Netuno se concretize: seus sonhos querem virar ação, e isso pode gerar a sensação de nunca estar à altura deles.
+### Sol em tensão com Netuno: o aspecto mais exato
 
-No dia a dia, você pode ser muito inspirado e criativo, mas se perder em idealizações. Por exemplo, começar um projeto com entusiasmo e se frustrar quando a realidade não fica tão bela quanto a imagem na cabeça.
+O aspecto mais marcante do seu mapa é a quadratura entre Sol e Netuno, muito precisa. O Sol representa sua identidade, vitalidade e vontade. Netuno representa imaginação, sensibilidade e idealização. A quadratura é um ângulo de atrito: as duas forças puxam em direções diferentes e pedem ajuste.
 
-O lado bom é uma imaginação rica e uma sensibilidade que enxerga além do óbvio. O lado difícil são as dúvidas, a dispersão e a tendência a se enganar sobre o que é possível. Para harmonizar as duas forças, você pode:
+O Sol dá a Netuno um desejo de forma e de afirmação: você quer transformar sonhos em algo que tenha seu nome. Netuno, por sua vez, dissolve os contornos do Sol: às vezes você duvida de quem é, se adapta demais ao que os outros esperam ou se perde em ideais difíceis de alcançar. No dia a dia, pode ser a sensação de começar um projeto com muita inspiração e, de repente, não saber se ele é mesmo o que você quer.
 
-- escrever um passo concreto para cada ideia que o empolga;
-- conversar com alguém de confiança antes de decidir quando estiver em dúvida;
-- reservar um tempo regular para o silêncio ou a criatividade, dando a Netuno um espaço próprio.
+O lado bom é uma imaginação rica, empatia e sensibilidade artística ou espiritual, que dão profundidade ao que você faz. O lado difícil aparece como indecisão, cansaço sem motivo claro ou dificuldade de dizer "não". Fique atento(a) a esses sinais.
 
-Esses traços formam o pano de fundo do que vem a seguir. Em que situação você sente que está sendo realmente você mesmo?
+Para harmonizar as duas forças, você pode: escrever em uma frase o que realmente quer antes de decidir; transformar uma ideia em um passo pequeno e concreto, como marcar uma conversa ou esboçar um plano; e reservar momentos de silêncio, música ou criação para a sua sensibilidade respirar sem tomar conta das decisões.
+
+Seu mapa combina base firme, capacidade de recomeçar e uma sensibilidade que pede cuidado. Quando você alia a prática da terra à imaginação, as ideias ganham chão. Para começar a se conhecer por dentro, uma pergunta: em que situações você sente que está sendo você mesmo(a) de verdade?
 
 ## O seu Sol
 
 ### Sol em Sagitário: a busca por sentido
 
-O Sol mostra quem você é no centro e o que dá sentido à sua vida. O seu está em Sagitário, signo de fogo que busca horizontes: viajar, estudar, ampliar a visão de mundo. Você tende a se sentir vivo quando acredita em algo maior do que a rotina.
+O Sol é o centro do mapa: mostra quem você é quando está inteiro e o que dá sentido à sua vida. O seu está em Sagitário, signo de fogo mutável, ligado à busca de horizontes, à fé e ao desejo de entender o porquê das coisas. Você tende a se sentir vivo quando está aprendendo, explorando e acreditando em algo maior do que a rotina.
 
-No dia a dia, isso aparece como curiosidade e vontade de entender o porquê das coisas. Você pode se animar com um curso novo, com uma conversa franca ou com uma ideia que abra caminho. O desafio é a pressa: prometer mais do que dá conta ou perder o interesse quando a novidade passa. Foque em escolher poucos propósitos e acompanhá-los até o fim. Evite se dispersar em muitos começos.
+Na prática, isso aparece quando uma viagem, um curso ou uma conversa franca sobre o rumo da vida mexe com você mais do que qualquer tarefa repetitiva. Para dar o melhor, mantenha sempre uma meta que o inspire. Evite prometer mais do que consegue cumprir só pelo entusiasmo do momento.
 
-### Sol na casa 7: você se descobre no encontro com o outro
+### Sol na casa 7: você se descobre no encontro
 
-A casa 7 é a área das parcerias, da convivência de perto. Com o Sol aí, sua identidade se esclarece no espelho dos vínculos: é conversando, trocando e dividindo projetos que você sente quem é. Isso pode aparecer em sociedades de trabalho, amizades próximas e relações de longo prazo.
+A casa 7 fala das parcerias próximas: relações a dois, sociedades, amizades de confiança. Com o Sol aí, sua identidade se afirma e se revela no contato com o outro. É no espelho dessas relações que você percebe o que quer e quem é.
 
-O lado difícil é se definir demais pelo olhar alheio, ou esperar que o outro traga o sentido que só você pode dar. Observe se suas escolhas partem do que você quer ou do que agrada. Escolha parceiros que também tenham projetos próprios e evite se apagar para manter a harmonia.
+Pode ser que você se sinta mais claro depois de conversar com alguém de confiança, ou que escolha pessoas que o desafiem a crescer. O ponto de atenção é deixar a opinião do outro decidir por você. Foque em parcerias em que os dois tenham espaço para brilhar, e evite se moldar para agradar.
 
-### Os aspectos do Sol
+### Sol e Mercúrio: pensar e ser quase a mesma coisa
 
-**Sol conjunção Mercúrio.** O Sol é sua identidade; Mercúrio, sua forma de pensar e falar. Juntos, mas de modo mais sutil, eles fazem você pensar e falar do que sente ser. As ideias carregam sua marca pessoal, e você se expressa com convicção. Em contrapartida, Mercúrio dá voz ao Sol: você precisa explicar-se para se compreender. O lado difícil é confundir opinião com identidade e se ofender quando discordam. Foque em ouvir antes de responder, e evite tratar cada debate como ataque a quem você é.
+Na conjunção, dois planetas ficam lado a lado e se misturam. O Sol é a sua identidade; Mercúrio, a mente e a fala. Aqui o Sol dá propósito ao jeito de pensar, e Mercúrio dá voz ao que você é. Por isso o que você diz costuma soar como convicção, e suas ideias carregam muito de você. A conexão é mais sutil, mas presente.
 
-**Sol trígono Marte.** O Sol é o propósito; Marte, a energia de agir. Esse aspecto, muito próximo do exato, é fluido: o que você quer ser ganha disposição e coragem para sair do papel. Marte, por sua vez, é guiado pelo Sol e luta por algo que tem a ver com você. Use isso para começar projetos e defender suas ideias. A armadilha é a acomodação, confiar na facilidade e não treinar a perseverança. Estabeleça metas com prazo e evite esperar o ânimo perfeito.
+O lado bom é a clareza e o entusiasmo ao comunicar. O lado difícil é tomar a própria opinião como verdade absoluta e se ofender quando discordam. Pratique ouvir até o fim antes de responder e separe "minha ideia" de "quem eu sou".
 
-**Sol quadratura Netuno.** Aqui o Sol encontra Netuno, planeta da imaginação, da sensibilidade e da dúvida. A quadratura, muito precisa, é um atrito. No dia a dia, você pode sentir que sua identidade é nebulosa, oscilar entre ideais elevados e incerteza, ou se desiludir com pessoas e planos. Netuno suaviza o Sol: dá empatia, intuição e senso artístico ou espiritual. O Sol, por sua vez, pede que Netuno ganhe forma concreta. O lado difícil é fugir da realidade ou idealizar demais. Fique atento quando adiar decisões ou se perceber em fantasias que não viram ação. Algumas atitudes ajudam: escrever o que você de fato quer, checar fatos antes de se encantar e transformar a intuição em um projeto pequeno, como um desenho, um diário ou um voluntariado.
+### Sol trígono Marte: energia que flui
 
-### O que o mapa fala sobre sua força
+O trígono é um aspecto de facilidade, e este é muito preciso. Marte é a ação e a coragem. O Sol dá direção à energia de Marte: você age a serviço de algo em que acredita. Marte, por sua vez, dá ao Sol fôlego para sair do plano e fazer. Resultado: iniciativa natural e disposição para defender o que importa.
 
-Seu fogo (Sol, Mercúrio e Marte) dá entusiasmo, e a terra (Lua, Júpiter, Saturno, Urano e Plutão) dá chão para realizar. Entre as modalidades, a mutável (Sol, Lua, Mercúrio e Netuno) traz flexibilidade, e a cardinal (Marte, Júpiter, Saturno e Plutão) mostra capacidade de recomeçar o que for preciso. Seu caminho pode ser sentir o que importa, testar na prática e então assumir compromisso.
+A armadilha é a acomodação: confiar tanto na facilidade que deixa de treinar disciplina. Use essa força para começar o que adia, como um projeto pessoal ou uma atividade física, e se comprometa com prazos pequenos.
 
-Imagine uma bússola num mapa de papel: ela aponta o norte, mas é você quem escolhe a trilha e dá cada passo. Seu Sol funciona assim, e a próxima seção, "A sua Lua", mostra o que acontece quando você para para sentir.
+### Sol quadratura Netuno: ideais grandes, contornos difusos
+
+A quadratura é um atrito que pede ajuste, e esta é praticamente exata. Netuno é a imaginação, a sensibilidade e o sonho. Ele suaviza os contornos do Sol, e por isso você pode ter dúvidas sobre quem é ou se perder em idealizações. O Sol, por sua vez, pede que Netuno se concretize: seus sonhos querem forma.
+
+No dia a dia, isso pode aparecer como idealizar pessoas ou projetos e se decepcionar depois, ou como sentir-se sem rumo em certas fases. O lado positivo é uma intuição e uma compaixão fora do comum, além de criatividade. Fique atento a sinais de fuga, como adiar decisões ou se perder em fantasias. Ajuda escrever o que você quer em frases concretas, conferir fatos antes de se encantar e reservar um tempo de silêncio ou arte para alimentar essa sensibilidade.
+
+### Fechamento
+
+Pense num barco com vela grande e leme na mão: o vento do Sagitário o impulsiona, as parcerias mostram o caminho, e a clareza vem de marcar o rumo no mapa antes de zarpar. Se você já se sentiu mais firme depois de nomear o que queria, esse é o seu jeito de navegar. Agora, para entender o que acontece quando o mar fica agitado e o coração pede abrigo, vamos a "A sua Lua".
 
 ## A sua Lua
 
-### Lua em Virgem: o que traz segurança
+### Lua em Virgem: cuidar para se sentir seguro(a)
 
-A Lua é o seu mundo emocional: aquilo de que você precisa para se sentir em paz e a forma como cuida e deixa que cuidem de você. A sua está em Virgem, signo de terra que mostra afeto pelo que é útil e bem-feito.
+A Lua mostra o que você precisa para se sentir em paz por dentro: seu mundo emocional, o que acalma e a forma como você cuida e gosta de ser cuidado(a). A sua está em Virgem, um signo de terra ligado ao detalhe, à utilidade e à rotina.
 
-Você se acalma quando a vida está em ordem: a casa arrumada, a agenda clara, o problema resolvido. Cuidar, para você, é fazer algo concreto, como preparar uma comida, resolver uma pendência ou perguntar "o que posso ajudar?". Também gosta que cuidem de você de modo prático, e não só com palavras bonitas.
+Isso indica que você se sente seguro(a) quando as coisas têm ordem e quando pode ser útil. Arrumar a casa, organizar a semana, resolver uma pendência ou preparar uma refeição para alguém costuma acalmar mais do que uma longa conversa. Seu jeito de cuidar é prático: você percebe o que falta e resolve, mais do que declara o afeto em palavras.
 
-O lado difícil é a autocrítica. Quando se sente inseguro(a), você pode procurar o que está errado em si ou nos outros. Foque em pequenas rotinas que acalmam, como um passeio ou um horário de descanso, e evite transformar toda emoção em um problema a corrigir.
+O lado difícil é a tendência a se analisar demais e a se exigir perfeição também no emocional. Em dias tensos, você pode ficar procurando o que fez de errado em vez de acolher o que sente. Foque em separar uma pequena rotina que te nutre, como uma caminhada ou um chá sem tarefa junto. Evite medir seu valor pelo quanto você produziu no dia.
 
-### Lua na casa 4: o lar como base
+### Lua na casa 4: a base está no lar e na história de família
 
-A casa 4 representa o lar, a família e as raízes. Com a Lua aí, seu bem-estar emocional passa muito pelo espaço onde você vive e pelas pessoas de quem se sente próximo(a). Um canto seu, organizado e acolhedor, funciona como recarga.
+A casa 4 é a casa do lar, da família e das raízes. A Lua está aqui, em um lugar que combina com ela, e isso reforça a ideia de que o seu porto seguro é o ambiente onde você vive e as pessoas que o compõem.
 
-Isso pede atenção: se o ambiente está bagunçado ou tenso, seu humor sente logo. Cuide do seu refúgio com carinho, mas evite carregar sozinho(a) as preocupações da família. Dividir tarefas e conversar com franqueza costuma aliviar mais do que tentar resolver tudo.
+Na prática, um espaço desorganizado ou um clima de briga em casa mexe muito com o seu humor. Por outro lado, um canto só seu, limpo e aconchegante, devolve o equilíbrio rápido. As memórias de infância e os costumes da família também pesam no que você entende por cuidado. Vale observar quais desses hábitos você quer manter e quais prefere deixar de lado. Evite carregar sozinho(a) o papel de resolver tudo na casa.
 
-### Lua e Saturno, Lua e Júpiter: emoções que se sustentam
+### Lua trígono Saturno: estabilidade emocional
 
-A Lua forma um trígono (aspecto harmônico, de fluidez) com Saturno, muito preciso. Saturno representa responsabilidade e estrutura. Ele dá à Lua estabilidade: você tende a manter a calma e a atravessar fases difíceis sem desmoronar. A Lua, em troca, dá a Saturno um lado humano, e o seu senso de dever vem com sensibilidade. A armadilha é se acostumar a "aguentar firme" e esconder o que sente. Permita-se pedir colo mesmo quando parece forte.
+O trígono é um aspecto de fluidez, em que dois planetas colaboram sem esforço. A Lua é a sua necessidade de acolhimento. Saturno é a estrutura, a responsabilidade e a paciência. Esse trígono é muito preciso, então a ajuda entre eles é bem presente.
 
-O trígono com Júpiter, também muito preciso, une a Lua ao otimismo e à confiança. Júpiter amplia a Lua: você costuma recuperar a esperança e a generosidade depois de um dia ruim. A Lua, por sua vez, alimenta Júpiter: quando você está emocionalmente bem, as oportunidades aparecem e você as aproveita; quando está abatido(a), enxerga menos possibilidades. Cuide do seu estado emocional como quem cuida de uma porta aberta para a sorte, sem se acomodar esperando que tudo se resolva sozinho.
+Saturno dá firmeza à Lua: você tende a manter a calma em situações difíceis e a sustentar compromissos mesmo quando o humor oscila. A Lua, por sua vez, dá calor a Saturno: seu senso de dever vem acompanhado de sensibilidade, e não só de frieza. O risco é a contenção demais, guardar o que sente para não incomodar. Escolha uma pessoa de confiança para dividir, de vez em quando, o que você normalmente resolve sozinho(a).
 
-### Lua e Plutão: intensidade que transforma
+### Lua trígono Júpiter: otimismo que acolhe
 
-O trígono entre a Lua e Plutão é mais sutil, mas deixa marca. Plutão representa profundidade e transformação. Ele dá às suas emoções um fundo de força: você sente com intensidade e tende a se renovar depois de crises, saindo mais forte do que entrou. A Lua, por sua vez, suaviza Plutão, tornando a sua intensidade mais acolhedora do que controladora.
+Júpiter representa a confiança, a generosidade e a sensação de que a vida pode dar certo. Em trígono com a Lua, de forma também muito precisa, ele traz um fundo de esperança ao seu emocional. Mesmo depois de uma fase ruim, você tende a recuperar a fé e a se reerguer.
 
-O lado difícil é guardar mágoas em silêncio. Quando algo o(a) toca fundo, converse antes que vire um peso. Use essa força para encerrar ciclos que já não servem, sem se prender ao que passou.
+No outro sentido, o seu estado emocional abre ou fecha as oportunidades de Júpiter. Quando você está bem acolhido(a), enxerga convites e chances com facilidade. Quando está tenso(a), pode deixá-los passar. A armadilha é se acomodar na sorte e não agir. Quando algo bom aparecer, responda rápido, antes que a análise de Virgem encontre dez defeitos.
 
-### Lua e Vênus: quando necessidade e desejo não coincidem
+### Lua trígono Plutão: força para se transformar
 
-Entre os dados do seu mapa não há aspecto formal entre a Lua e Vênus, e por isso não vou tratar essa relação como uma tensão do seu mapa. Vale apenas observar, de modo geral, que a Lua (segurança) e Vênus (o que você deseja nos vínculos) são pedidos diferentes, e nem sempre pedem a mesma coisa ao mesmo tempo. Um bom hábito é nomear o que sente e pedir com clareza o que precisa, como "hoje preciso de um tempo em casa, mas adoro a ideia de sairmos amanhã".
+Plutão é o planeta das transformações profundas, da intensidade e das viradas de página. Esse trígono é mais sutil, mas deixa uma marca: você tem capacidade de atravessar perdas e mudanças e sair mais forte.
 
-Você sabe se cuidar e cuidar de quem ama com jeito prático e firme. Confie nessa base, porque ela é mais sólida do que parece. E o modo como você se apresenta ao mundo, a primeira impressão que causa, merece um olhar à parte, e é para lá que seguimos.
+Plutão aprofunda a Lua, dando às suas emoções uma intensidade que nem sempre aparece por fora. A Lua, por sua vez, suaviza Plutão, porque o seu cuidado com os outros torna as mudanças mais humanas e menos duras. O ponto de atenção é guardar mágoas em silêncio. Quando algo te marcar, tente nomear isso logo, em vez de deixar crescer por dentro.
+
+### Em conjunto: uma base firme
+
+Os três trígonos mostram que o seu emocional tem bons apoios: a estrutura de Saturno, a confiança de Júpiter e a força de Plutão. Quando você usa esses recursos, a segurança passa a vir de dentro.
+
+Você já carrega, dentro de si, boa parte do que precisa para se acolher, e é por isso que pode olhar com mais curiosidade para a maneira como se apresenta ao mundo e para a primeira impressão que causa nas pessoas.
 
 ## O seu Ascendente
 
-### Gêmeos no Ascendente: a curiosidade como porta de entrada
+### Gêmeos no Ascendente: chegar ao mundo com curiosidade
 
-O Ascendente é o signo que estava nascendo no horizonte na hora do seu nascimento. Ele descreve o seu jeito de chegar: a primeira atitude diante de pessoas e situações novas. No seu caso, é Gêmeos, signo de ar, mutável, ligado à troca de ideias, à conversa e à curiosidade.
+O Ascendente é o signo que subia no horizonte quando você nasceu. Ele descreve o seu jeito de chegar às situações novas e a primeira impressão que você causa. No seu caso, é Gêmeos, signo ligado a conversa, curiosidade e movimento. Você tende a entrar nos ambientes perguntando, comentando, puxando assunto e querendo entender como as coisas funcionam.
 
-No dia a dia, isso aparece como uma necessidade de se mover entre assuntos e de perguntar. Você puxa conversa na fila, pesquisa três coisas ao mesmo tempo e se anima quando aprende algo novo. Em um grupo, costuma ser quem faz a ponte entre pessoas e ideias. Seu Nodo Norte, um ponto que indica um caminho de crescimento (não é um planeta), também está em Gêmeos, na casa 1. Isso sugere que aprender a se apresentar com leveza, ouvindo e trocando, é um exercício que a vida tende a lhe oferecer.
+No dia a dia, isso aparece quando você aprende conversando. Ao conhecer alguém, talvez faça muitas perguntas. Num lugar novo, é provável que observe tudo antes de se fixar em uma coisa. Você pode ter vários interesses abertos ao mesmo tempo, e variar de assunto, de rota ou de companhia costuma te dar energia.
 
-### Mercúrio em Sagitário, na casa 6: o regente que busca sentido no trabalho
+O Nodo Norte também está em Gêmeos, na casa 1. Ele indica um caminho de crescimento: com o tempo, a vida tende a te convidar a se apresentar com mais naturalidade, a perguntar, a trocar ideias e a se mostrar sem esperar o momento perfeito.
 
-O regente do Ascendente, ou seja, o planeta que guia esse jeito de chegar, é Mercúrio, planeta do pensamento e da fala. Ele está em Sagitário, na casa 6, a casa da rotina, do trabalho e dos hábitos. Não há planetas na casa 1.
+O regente do seu Ascendente é Mercúrio, planeta da mente e da fala. Ele está em Sagitário, na casa 6, a casa da rotina e do trabalho do dia a dia. Por isso a sua curiosidade ganha amplitude e sede de sentido: você não quer só saber, quer entender o porquê das coisas. Na prática, tende a falar com entusiasmo e franqueza, e a gostar de aprender enquanto faz. Muita coisa que você pensa e diz nasce da vida prática, do que você organiza, resolve e aprimora na rotina.
 
-Isso mostra que sua curiosidade não é só de superfície: ela quer sentido e visão ampla. Na rotina, você tende a falar com franqueza e a se interessar por aprender, ensinar e explicar. O lado difícil é a pressa: abrir muitas frentes, prometer mais do que cabe na agenda ou soltar uma opinião antes de checar os detalhes. Para expressar o melhor dessa posição, escolha um tema por vez e conclua antes de partir para o próximo. Evite responder no impulso: uma pausa de um minuto antes de opinar já refina o que você diz.
+### Como os outros tendem a te perceber
 
-### Como os outros tendem a ver você
+Nos primeiros contatos, muita gente pode te ver como alguém comunicativo, ágil e bem-humorado. Você passa a impressão de leveza, de quem está aberto a conversar sobre qualquer assunto e vai se enturmando sem esforço. Também pode parecer mais despreocupado do que realmente está.
 
-Nos primeiros contatos, as pessoas costumam perceber alguém comunicativo, ágil, simpático e de boa conversa. Podem achar que você está sempre à vontade e que transita bem por qualquer assunto.
+A diferença pode aparecer por dentro. Atrás dessa fala solta, pode haver uma mente muito ocupada, que analisa, compara e quer acertar. Quem te vê sorrindo e conversando pode não imaginar o quanto você pensa antes ou depois de uma situação. Também pode confundir a sua variedade de interesses com falta de compromisso, quando na verdade você só precisa de estímulo para se manter engajado.
 
-Essa imagem pode diferir do que você sente por dentro. Quem vê sua leveza talvez não imagine o quanto você pensa antes de falar ou o quanto certos temas lhe importam. Às vezes você pode ser lido como disperso, quando na verdade está atento a vários pontos ao mesmo tempo. Por isso, vale deixar claro, de vez em quando, o que é sério para você.
+### Como usar esse Ascendente a seu favor
 
-### Como usar essa dinâmica a seu favor
+**Na relação consigo mesmo:** a sua mente fala o tempo todo, e escrever ajuda a organizar o que ela diz. Anotar três pensamentos do dia, num caderno ou no celular, mostra o que realmente importa entre tantas ideias.
 
-Você pode transformar a curiosidade em aliada nas três frentes:
+**Na relação com os outros:** a sua facilidade de papo abre portas, mas você pode ir além da conversa leve. Quando alguém contar algo importante, tente fazer uma pergunta a mais, em vez de passar logo para outro assunto. Isso transforma simpatia em vínculo.
 
-- **Com você mesmo:** escreva em um caderno, em poucas linhas por dia, o que ficou na cabeça. Pôr os pensamentos no papel acalma a mente que não para.
-- **Com os outros:** além de perguntar, aproveite para contar algo seu. Em uma conversa nova, troque uma pergunta por uma pequena história pessoal, e o vínculo ganha profundidade.
-- **Com seus projetos:** anote ideias numa lista, escolha uma só para o mês e defina o primeiro passo concreto. Assim o interesse vira resultado.
+**Nos seus projetos de vida:** como a curiosidade te leva para muitos lados, vale escolher um tema e dar a ele um prazo curto. Por exemplo, decidir que vai estudar um assunto durante quatro semanas antes de abrir outro. Assim você aproveita a variedade sem deixar as ideias pela metade.
 
-Ao reconhecer que a sua leveza é a porta de entrada, e não o retrato completo, você passa a escolher quando mostrar mais. Antes de uma conversa importante, anote duas frases sobre o que realmente quer comunicar e leve-as com você. E, para entender como esse jeito de chegar conversa com o seu Sol e a sua Lua, siga para a próxima seção: "Como o trio conversa".
+Para começar, escolha uma conversa que você costuma deixar superficial e faça nela uma pergunta mais profunda do que o normal. Veja como a pessoa responde e o que muda entre vocês. Depois disso, vale conhecer a próxima seção, "Como o trio conversa", que mostra como o seu jeito de chegar ao mundo se encontra com o que você sente e com o que você é por dentro.
 
 ## Como o trio conversa
 
 ### A dinâmica do trio
 
-Seu Sol em Sagitário (fogo), sua Lua em Virgem (terra) e seu Ascendente em Gêmeos (ar) formam um trio de signos mutáveis, os que se adaptam e se ajustam com facilidade. Isso dá flexibilidade: você muda de rota sem drama. O estranhamento aparece porque cada um busca algo diferente. Sagitário quer ver longe e acreditar em um sentido maior. Virgem quer checar o detalhe e só relaxar quando as coisas estão em ordem. Gêmeos quer conversar, testar ideias e circular. Os três se encontram na curiosidade e no gosto de aprender. Mas há um ponto sensível: Sol e Ascendente são signos opostos, então a sua vontade de ir fundo em uma visão pode brigar com o impulso de ficar na superfície, variando de assunto. A Lua, mais cuidadosa, pode ficar no meio, ora freando o entusiasmo com dúvidas, ora se esgotando para acompanhar o ritmo.
+Seu Sol em Sagitário (fogo), sua Lua em Virgem (terra) e seu Ascendente em Gêmeos (ar) formam um trio de signos mutáveis, todos flexíveis e curiosos. Isso facilita se adaptar, aprender e mudar de rota sem drama. O trio se complementa assim: o Ascendente em Gêmeos puxa conversa e faz perguntas, o Sol em Sagitário dá o entusiasmo e o sentido maior, e a Lua em Virgem organiza e confere os detalhes por dentro. Eles se estranham no ritmo e na profundidade. Sagitário quer ir longe e rápido, Virgem quer revisar antes de dar o passo, e Gêmeos quer experimentar de tudo um pouco. Por isso você pode se ver dizendo "sim" com empolgação e, horas depois, sentindo a Lua pedir pausa e conferência. Sol e Ascendente são signos opostos no zodíaco: um busca a visão ampla, o outro, a variedade do dia a dia. Os dois falam bem, mas nem sempre sobre o que você sente de fato.
 
 ### Sinais de desalinhamento
 
-Você pode perceber o desencontro quando começa muitas coisas e não termina nenhuma, ou quando promete mais do que consegue entregar e depois se culpa. Outro sinal é a cabeça em modo "aba aberta": mil pensamentos, pouca decisão. Em situações repetidas, você diz sim por empolgação e, dias depois, sente a pressão de dar conta. No corpo, isso costuma aparecer como inquietação, cansaço mental, sono leve ou um desconforto no estômago e na barriga, comum quando a Lua em Virgem se sobrecarrega de preocupação. Também vale notar quando você fala bem, mas sente que ninguém entendeu o que realmente importa para você, ou quando se critica por não estar "no ritmo" que imagina ser o ideal.
+Quando o trio desafina, você tende a se dispersar: começa muitas coisas, responde a todas as mensagens e termina o dia sem sentir que fez o que importava. A Lua em Virgem pode reagir com autocrítica, repassando mentalmente cada frase dita ou cada tarefa que ficou pendente. No corpo, isso costuma aparecer como mente acelerada, sono leve, tensão no estômago ou cansaço de quem "falou demais". Uma situação que pode se repetir é prometer mais do que cabe na agenda por entusiasmo e depois se cobrar em silêncio. Outra é falar de forma leve e bem-humorada justamente quando algo incomodou, deixando o incômodo sem nome.
 
 ### Como reequilibrar
 
-Algumas práticas simples podem ajudar. Primeira: antes de aceitar um convite ou projeto, espere uma noite e pergunte a si mesmo se a ideia ainda empolga no dia seguinte e se cabe na sua agenda. Segunda: escreva em um caderno três prioridades do dia, em vez de uma lista enorme; isso acalma a Lua e dá foco ao Ascendente. Terceira: reserve um momento por semana para ler, estudar ou conversar sobre algo que amplie seu horizonte, para alimentar o Sol sem dispersar a energia. Quarta: faça uma pausa curta de rotina cuidadosa, como organizar uma gaveta, caminhar ou preparar uma refeição com calma, para o corpo sentir que há ordem e descanso. Em todas, a ideia é convidar, não se obrigar.
+Algumas práticas simples combinam com esse trio:
+
+- **Duas frases antes de responder:** diante de um convite, escreva uma frase sobre o que você quer e outra sobre o que você sente. Só então diga sim ou não. Isso põe a Lua na conversa antes de Sagitário prometer.
+- **Lista curta de três itens:** ao começar o dia, anote só três prioridades. Isso dá à Lua em Virgem a ordem de que ela gosta e protege Gêmeos da dispersão.
+- **Caminhada sem fone:** dez minutos ao ar livre, sem conteúdo para consumir, deixam o Sol respirar e a mente baixar o volume.
+- **Diário de uma linha à noite:** registre uma emoção do dia, sem explicar nem consertar. Nomear o que sentiu aproxima o Ascendente falante da Lua mais reservada.
 
 ### Sinais de alinhamento
 
-Quando o trio conversa bem, você sente leveza e clareza ao mesmo tempo. Fala o que pensa de modo simples, tem energia para executar e se sente em paz com o que escolheu. As ideias surgem, mas viram passos concretos. Nesses momentos, aproveite para tomar decisões que pedem visão e prática juntas, como mudar de projeto, estudar algo novo ou propor uma conversa importante. Nas relações, vale falar com franqueza e escutar com atenção, porque você estará disponível para os dois. Em projetos, é uma boa hora de começar algo que combine aprendizado, comunicação e rotina organizada. Registre o que estava fazendo antes desse estado, para reconhecê-lo e repeti-lo.
+Quando o trio conversa bem, você fala com clareza sobre o que sente e ainda se mantém leve. As ideias de Gêmeos ganham direção pela fé de Sagitário, e a Lua em Virgem dá o cuidado para que algo saia do papel. Você percebe isso quando dorme melhor, termina o que começou e se sente curioso sem se sentir disperso. Aproveite esse momento para decisões que pedem visão e prática ao mesmo tempo: propor um projeto, iniciar um estudo, ter uma conversa franca com alguém importante. Nas relações, é a hora de explicar o que precisa em palavras simples, porque agora o que você diz e o que você sente estão no mesmo lugar.
 
-Qual foi a última conversa que realmente mudou o seu jeito de pensar?
+Quando esse trio se entende, o resto do mapa ganha voz, e a forma como você pensa e se comunica merece atenção própria. Em que situação do dia a dia você sente que fala bem o que pensa?
 
 ## Mente e comunicação
 
-### Mercúrio em Sagitário: pensar grande, falar com franqueza
+### Mercúrio em Sagitário: uma mente que pensa em panorama
 
-Mercúrio é o planeta do pensamento, do aprendizado e da fala. No seu mapa ele está em Sagitário, signo que gosta de ideias amplas, de sentido e de verdade. Você tende a pensar em panorama: prefere entender o porquê das coisas a decorar detalhes soltos. Fala com entusiasmo e franqueza, e as pessoas costumam perceber o que você realmente pensa.
+Mercúrio é o planeta que mostra como você pensa, aprende e se expressa. O seu está em Sagitário, signo que gosta de visão ampla, de sentido e de ir além do óbvio. Você tende a captar a ideia central rápido e a se interessar por perguntas grandes: para onde isso leva? O que isso significa? Costuma falar com franqueza e entusiasmo, e as conversas ficam melhores quando têm propósito.
 
-Esse mesmo Mercúrio fica muito próximo do Sol. Na prática, sua identidade e sua mente andam juntas, e você pensa a partir de quem é. Opinião para você não é detalhe, é parte de você. O desafio é que a franqueza pode soar dura, e a pressa em chegar à conclusão pode pular informações importantes.
+O lado difícil é a pressa pelo quadro geral, que pode atropelar detalhes. Às vezes a franqueza sai mais dura do que você pretendia. Para expressar o melhor dessa posição, vale conferir um dado concreto antes de afirmar algo com convicção, por exemplo ler o contrato inteiro em vez de só o resumo. Vale também fazer uma pausa curta antes de dar uma opinião sincera. Evite prometer ou concluir antes de ter os fatos.
 
-**Orientação:** foque em estudar assuntos que ampliem seu olhar, como viagens, cursos, filosofia ou outras culturas. Antes de dar uma opinião firme, confira um dado a mais. Evite responder no impulso, como soltar "isso não funciona" sem ouvir a explicação até o fim.
+Mercúrio está muito perto do Sol, na mesma região do céu (uma conjunção, mais sutil). O Sol é o seu centro de identidade, e Mercúrio é a sua voz. Por isso, o que você pensa e o que você é caminham juntos: suas ideias refletem seus valores, e falar com clareza fortalece sua autoconfiança. O risco é confundir "o que eu penso" com "quem eu sou" e se defender demais quando alguém discorda. Ao ouvir uma crítica à sua ideia, lembre-se de que ela não é uma crítica a você.
 
-### Mercúrio na casa 6: a mente a serviço do dia a dia
+### Mercúrio na casa 6: a mente a serviço da rotina
 
-A casa 6 trata de rotina, trabalho cotidiano e aprimoramento. Com Mercúrio aí, você aprende fazendo e pensa melhor quando tem tarefas concretas. Organizar listas, ajustar processos e resolver problemas práticos tendem a ser seus pontos fortes. Vênus também está nessa casa, o que sugere que você prefere conversas e ambientes de trabalho agradáveis e cuidadosos.
+A casa 6 fala de trabalho cotidiano, hábitos e cuidado com o dia a dia. Com Mercúrio aí, você pensa melhor quando tem uma rotina para organizar, um problema prático para resolver ou algo para aperfeiçoar. Aprende fazendo: listas, processos, ajustes.
 
-Nas trocas de conhecimento, observe os sinais. Uma troca flui quando você sai dela com algo aplicável e se sente à vontade para perguntar. Está travada quando a conversa vira só crítica, repetição ou cobrança de detalhes sem avanço. Nesse caso, peça um exemplo prático ou combine o próximo passo.
+Mercúrio também rege a casa 1, que fala de como você se apresenta ao mundo, e a casa 4, que fala de lar e raízes. Como ele está na casa 6, a forma como você se mostra e o clima de casa passam pela organização do cotidiano. Quando a rotina flui, você se sente claro e leve. Quando ela vira bagunça, suas ideias também embaralham.
 
-**Orientação:** foque em aprender com quem faz bem o que você quer fazer e em reservar um tempo fixo de estudo na semana. Evite se perder em minúcias ou na autocrítica ("não sei o bastante") que adia o começo.
+Para reconhecer uma troca que flui, observe se a conversa termina com algo mais claro do que começou, se você sai com um próximo passo e com energia. Uma troca travada deixa você repetindo os mesmos pontos, com a sensação de não ter sido ouvido ou de ter falado demais. Nesse caso, prefira perguntas diretas ("o que você precisa de mim nisso?") e combinados por escrito. Evite se afogar em detalhes ou transformar toda conversa em avaliação do que está errado. Vênus também está nessa casa, e isso favorece conversas gentis e colaborativas: use esse tom para pedir ajuda sem dramatizar.
 
-### Mercúrio como regente das casas 1 e 4
+### Mercúrio e Marte: coragem de falar, pensamento que esquenta
 
-Mercúrio rege o seu Ascendente em Gêmeos (casa 1) e a casa 4, em Virgem. Isso o torna um planeta de peso no seu mapa: ele comanda a forma como você se apresenta e o clima de casa e família. Como está na casa 6, sua mente aparece no modo como você se organiza no dia a dia. Falar e escrever com clareza é parte de como você se mostra ao mundo.
+Mercúrio, em Sagitário, está em sextil com nenhum planeta dos seus dados, mas o Sol, que fica colado nele, forma um trígono com Marte, o planeta da ação. Esse trígono é muito preciso e harmoniza a energia do Sol com a de Marte. Como Mercúrio acompanha o Sol de perto, essa fluidez chega à sua fala: as ideias saem com agilidade e você tem coragem de dizer o que pensa e de começar algo novo sem esperar o momento perfeito.
 
-Na casa 1, a troca com os outros flui quando você pergunta, conta e reage com curiosidade. Trava quando você fala demais de si ou se cala por receio de errar. Na casa 4, a troca flui quando conversas de família são simples e honestas. Trava quando assuntos importantes ficam sem dizer, só nas entrelinhas.
+O lado difícil aparece quando a velocidade passa do ponto. Pensamento rápido e fala direta podem soar impacientes, e você pode responder antes de ouvir a pergunta inteira. Para coordenar isso, tente terminar de escutar antes de rebater, escrever uma mensagem importante e relê-la antes de enviar, e reservar os debates acalorados para quando você estiver descansado. Os conflitos e as explosões têm lugar próprio na seção "Ação e desejo".
 
-**Orientação:** foque em dizer o que pensa de forma direta e leve, em casa e fora dela. Evite resolver tudo "na cabeça" sozinho(a) e deixar o outro adivinhar.
+### Sua forma de aprender e conversar no dia a dia
 
-### Mercúrio com a Lua: sentir e dizer
+Entre os seus planetas, a modalidade mutável aparece em quatro: Sol, Lua, Mercúrio e Netuno. Isso dá flexibilidade mental: você se adapta a novas informações, muda de abordagem com facilidade e aprende bem com variedade. O ponto de atenção é dispersar. Escolha um assunto por vez e dê a ele um prazo, como terminar um curso antes de começar outro. Evite acumular abas abertas, na tela e na cabeça.
 
-Mercúrio, planeta da mente, e a Lua, planeta das emoções, não formam um aspecto entre si no seu mapa. Por isso, seu jeito de comunicar não nasce de uma fusão automática entre razão e sentimento. Isso pode ser cultivado.
-
-**Orientação:** foque em nomear o que sente antes de debater ideias, com frases como "estou ansioso(a) com isso". Evite explicar só pela lógica quando a conversa pede acolhimento.
-
-### Mercúrio e Marte: coragem de falar
-
-O mapa não traz uma quadratura exata entre Mercúrio e Marte. O que existe é uma tensão entre Marte e Plutão, tratada na seção de Ação e desejo. Do ponto de vista da mente, vale lembrar que Marte em Áries empresta coragem e rapidez à fala quando você decide se posicionar. A agilidade é positiva. O cuidado é não deixar o pensamento "esquentar" e transformar uma ideia em ataque.
-
-**Orientação:** foque em respirar antes de responder em discussões e em escrever o que pensa antes de falar. Evite mandar mensagens no calor do momento. Os conflitos em si ficam para a seção Ação e desejo.
-
-Quando Mercúrio, sozinho no seu destaque, mostra o caminho, ele fala de curiosidade com direção. Sua mente funciona como uma mesa de trabalho arrumada: cada ideia ampla precisa de uma tarefa concreta ao lado. Ao testar o que imagina, você transforma opinião em conhecimento, e isso vale mais do que ter razão. O que você valoriza e como ama aparece em "Amor e valores".
+Para fechar: a sua mente funciona como uma boa cozinha de casa, em que a vista é ampla pela janela, mas o fogo só rende quando os ingredientes estão separados e à mão. Visão grande e rotina organizada se completam. A seguir, "Amor e valores" mostra o que você busca quando o assunto é afeto.
 
 ## Amor e valores
 
 ### Vênus em Escorpião: amar com profundidade
 
-Vênus mostra o que você valoriza e como cria vínculos. Em Escorpião, signo de água ligado à intensidade e à entrega, você tende a amar de forma verdadeira, sem meio-termo. Superficialidade cansa. Você prefere poucas relações, mas com confiança, lealdade e conversas que vão fundo.
+Vênus mostra o que você valoriza, como ama e o que busca nos vínculos. Em Escorpião, o signo da intensidade e da entrega total, você tende a amar de forma profunda e seletiva. Superficialidade cansa você. Um papo leve ajuda a começar, mas o vínculo só ganha valor quando há confiança e verdade.
 
-No dia a dia, isso aparece quando você se afasta de um papo só de aparência e se aproxima de quem se mostra por inteiro. O lado positivo é a fidelidade e a coragem de se aprofundar. O lado difícil é o ciúme, o controle ou o silêncio guardado quando algo machuca. Foque em dizer o que sente cedo, em palavras simples, como "isso me incomodou". Evite testar o outro em vez de perguntar direto.
+Na prática, você pode demorar a abrir o coração, porque observa muito antes de se entregar. Quando se entrega, é por inteiro. O lado bom é a lealdade e a capacidade de criar laços duradouros. O lado difícil é o ciúme ou o hábito de testar o outro em silêncio. Vale dizer com clareza o que sente e o que precisa, em vez de esperar que a pessoa adivinhe. Evite medir o amor pela intensidade do drama: uma relação segura também pode ser profunda.
 
-### Vênus na casa 6: o amor no cotidiano
+### Vênus na casa 6: o amor que aparece na rotina
 
-A casa 6 fala da rotina, do trabalho e do cuidado diário. Com Vênus aí, você demonstra carinho em gestos práticos: lembrar de um detalhe, ajudar numa tarefa, preparar algo para alguém. Também tende a criar vínculos no ambiente de trabalho ou em atividades repetidas, como um grupo de estudo ou de treino.
+A casa 6 fala de rotina, trabalho e cuidado no dia a dia. Com Vênus aí, você demonstra afeto por gestos concretos: preparar algo, ajudar numa tarefa, lembrar do que a pessoa precisa. Também tende a criar vínculos no ambiente de trabalho ou em atividades que divide com os outros.
 
-Mercúrio, que representa a mente e a fala, está na mesma casa. Os dois convivem bem: você conquista conversando e trocando ideias no dia a dia, e isso dá leveza às relações. O ponto de atenção é transformar o amor em tarefa, ficando só no "fazer" e esquecendo o prazer de estar junto. Reserve momentos sem utilidade nenhuma, como um passeio ou um jantar demorado. E evite medir o afeto pelo quanto cada um ajuda.
+Mercúrio, planeta da comunicação e do raciocínio, também está nessa casa. Os dois convivem como uma dupla: Mercúrio dá palavras e ideias, Vênus dá afeto e gosto pelo que é bem-feito. Juntos, ajudam você a conversar com carinho e a resolver problemas com delicadeza. O risco é transformar o cuidado em crítica ou em excesso de ajuda, tentando "consertar" o outro. Foque em oferecer apoio quando for pedido e evite apontar falhas como forma de demonstrar atenção. Um "posso ajudar?" costuma valer mais que uma correção.
 
-### Vênus e a Lua: o que você deseja e o que você precisa
+### Vênus e Plutão: a força de transformar vínculos
 
-Vênus está em quadratura com a Lua? Esse aspecto não está entre os dados do seu mapa, então não vou interpretá-lo. Seguimos com os aspectos que Vênus de fato forma.
+O sextil (aspecto de apoio, que oferece oportunidades quando você as usa) entre Vênus e Plutão é bem próximo do exato. Plutão é o planeta da profundidade, da regeneração e do poder pessoal. Ele aprofunda Vênus: seus afetos ganham intensidade, magnetismo e coragem de olhar para o que está escondido numa relação. Vênus, por sua vez, suaviza Plutão: leva charme e sensibilidade ao que poderia ser pesado ou controlador.
 
-### Vênus sextil Plutão: intensidade que transforma
+O lado positivo é a capacidade de renovar vínculos e de atravessar crises a dois saindo mais forte. O risco é acomodar-se e deixar essa força sem uso, ou guardar mágoas por muito tempo. Experimente conversar sobre incômodos pequenos antes que se acumulem, e use essa intensidade para construir, não para disputar quem está certo.
 
-Um sextil é um aspecto de apoio, que facilita a troca entre dois planetas. Aqui ele é bem próximo do exato. Vênus é o que você deseja e valoriza; Plutão é a força que aprofunda e transforma. Plutão dá a Vênus coragem para ir fundo, e Vênus suaviza Plutão, tornando a intensidade mais afetuosa e menos dura.
+### Vênus e Netuno: o amor sonhado
 
-Na prática, você tem facilidade para atravessar crises a dois e sair com um vínculo mais forte. A armadilha é deixar esse talento sem uso, evitando conversas difíceis por conforto. Quando algo pesar, proponha o diálogo em vez de esperar o assunto explodir. E evite se prender a mágoas antigas.
+O trígono (aspecto de fluidez e facilidade) entre Vênus e Netuno é próximo do exato. Netuno representa a imaginação, a compaixão e o idealismo. Ele dá a Vênus um toque romântico, artístico e generoso. Vênus dá a Netuno forma e afeto: transforma o sonho em carinho concreto.
 
-### Vênus trígono Netuno: o belo e o prazeroso
+Isso favorece empatia, sensibilidade e a capacidade de perceber o que o outro sente sem que ele diga. A armadilha é idealizar pessoas e só depois enxergar que a realidade é diferente. Antes de se decepcionar, observe como alguém age ao longo do tempo, não só o que promete ou o que você imagina. Combinar o encanto com conversas objetivas protege seu coração.
 
-Um trígono é um aspecto de fluidez, e este é próximo do exato. Netuno representa a imaginação, a sensibilidade e o ideal. Ele amplia o olhar de Vênus: você encontra beleza na música, no cinema, na água, nos momentos de silêncio e em gestos delicados. Vênus, por sua vez, dá forma concreta a Netuno, e sua sensibilidade vira afeto e criatividade reais.
+### O que você considera belo e prazeroso
 
-Somado ao elemento água de Escorpião, seu prazer é sensorial e emocional: uma boa trilha sonora, um ambiente acolhedor, uma conversa que emociona. O lado difícil é idealizar quem você ama e se decepcionar quando a pessoa real aparece. Observe as atitudes, não só o potencial, e alimente esse dom com arte e contato com a natureza.
+Escorpião, signo de água, liga o prazer à emoção. Você tende a achar belo o que tem profundidade, mistério e verdade: uma música que mexe com você, um filme intenso, um olhar sincero. O prazer vem da sensação de conexão, não do que é apenas vistoso.
 
-Seu jeito de amar é fundo, atento e fiel. Você sabe se entregar sem perder a sensibilidade para o belo, e isso é uma força sua. Confie nela: o que você deseja tende a ganhar movimento a seguir.
+O sextil com Plutão reforça o gosto por experiências que transformam e marcam. O trígono com Netuno acrescenta sensibilidade para arte, música, cinema, água e tudo o que inspira e acalma a alma. Por isso, vale reservar tempo para o que alimenta a imaginação, como um passeio perto da água ou uma noite de música. Só tome cuidado para que a busca por emoção forte não vire hábito de só se sentir vivo no extremo. Pequenos prazeres calmos também contam.
+
+Você valoriza lealdade, verdade e cuidado concreto, e tem os recursos para viver vínculos profundos sem perder o chão. Confie na sua sensibilidade: ela já sabe reconhecer o que é genuíno. A seguir, vamos olhar para o que move você quando o desejo vira ação.
 
 ## Ação e desejo
 
-### Marte em Áries: a energia que começa sozinha
+### Marte em Áries na casa 10: agir a partir do que você quer
 
-Marte é o planeta da ação, da iniciativa e do desejo. O seu está em Áries, o signo que ele mesmo rege, e isso lhe dá uma energia direta, rápida e corajosa. Você tende a sentir um impulso físico de começar, de ir na frente, de não esperar permissão. Na prática: diante de uma ideia boa, você já quer testar, não passar semanas planejando.
+Marte é o planeta da energia, da iniciativa e do desejo. No seu mapa, ele está em Áries, o signo que ele mesmo rege, e na casa 10, a casa da carreira e da imagem pública. Isso sugere uma pessoa que rende mais quando age por vontade própria: começa rápido, gosta de abrir caminho e se anima ao assumir a frente de algo.
 
-Esse Marte forma um trígono com o seu Sol, praticamente colado ao exato. Trígono é um aspecto de fluidez: dois planetas que cooperam sem esforço. O Sol é o seu centro, quem você é e quer ser. Marte é a energia que põe isso em movimento. O Sol dá direção a Marte, e a sua força não se dispersa em qualquer coisa. Marte dá corpo ao Sol, e suas convicções viram atitude. O ponto positivo é agir de acordo com o que você acredita, com naturalidade. A armadilha é se acomodar nessa facilidade e deixar de usar a energia que tem. Foque em projetos que expressem seus valores e evite gastar impulso em disputas que não dizem nada sobre você.
+Por isso, vale saber distinguir os projetos que combinam com você dos que não combinam. Sinais de alinhamento: a energia sobe, você começa sem precisar ser empurrado(a), o tempo passa sem peso e você persiste mesmo diante de obstáculos. Sinais de desalinhamento: adiar sempre, sentir cansaço antes mesmo de começar, fazer só por obrigação ou para agradar alguém.
 
-### Marte na casa 10: rendimento máximo quando o desejo é seu
+Um exercício simples: liste seus projetos atuais e responda, para cada um, "eu escolheria isso de novo?", "o que sinto ao começar?" e "o que me faria continuar?". O que evitar: assumir compromissos por culpa ou por impulso. Um "sim" dado no calor do momento costuma virar peso semanas depois.
 
-Marte está na casa 10, a área da carreira, da vida pública e das metas de longo prazo. Você rende mais quando age a partir do que realmente quer, e não do que esperam de você. Para perceber isso, observe alguns sinais.
+### Do silêncio à explosão: seu jeito de lidar com conflitos
 
-Um projeto está alinhado ao seu desejo quando a energia sobe, você começa sem precisar ser empurrado, o tempo passa sem peso e você persiste mesmo diante de obstáculos. Ele não está alinhado quando você adia sempre, sente cansaço antes de começar ou faz só por obrigação ou para agradar.
+Marte em Áries reage rápido, mas seu mapa mostra outro lado: Marte forma quadratura (um aspecto de atrito, em ângulo de 90°) com Plutão, o planeta da intensidade e do que fica guardado. O padrão possível é segurar, acumular e só reagir quando a paciência se esgota, e aí a reação sai maior do que a situação pede.
 
-Um exercício útil: liste seus projetos atuais e responda, para cada um, três perguntas. "Eu escolheria isso de novo?" "O que sinto ao começar?" "O que me faria continuar?" As respostas mostram onde há desejo e onde há só hábito. Evite assumir compromissos por culpa ou por impulso: o primeiro cansa, o segundo se desfaz na primeira dificuldade.
+O lado positivo dessa quadratura é a força: você tem energia profunda para enfrentar o que for preciso e não desiste fácil. O lado difícil é a explosão tardia, que pode surpreender até você.
 
-### Do silêncio à explosão: seus conflitos
+Aprenda a ler os sinais antes do estouro. No corpo: mandíbula travada, ombros tensos, respiração curta. No tom: respostas mais secas e ironia. Nos pensamentos: a mesma queixa voltando várias vezes. Quando isso aparecer, pergunte-se: "é algo pequeno, em que posso flexibilizar, ou é um limite que precisa de conversa?" Se for limite, fale cedo, em uma frase simples: "Isso me incomoda, e preciso que a gente ajuste."
 
-Seu Marte é de Áries, mas há um traço curioso: a vida mostra que você aguenta muito antes de reagir. O padrão comum é engolir incômodos, acumular e só reagir quando a paciência se esgota. Aí a reação vem maior do que a situação pede.
+### Quando a ação atropela a palavra
 
-Marte forma uma quadratura com Plutão, próxima do exato. Quadratura é um aspecto de tensão, que pede ajuste. Plutão é o planeta da intensidade, do controle e das transformações profundas. Do lado de Marte, a ação ganha uma carga forte: quando você age, age com tudo, e a raiva pode vir com poder de sobra. Do lado de Plutão, o desejo de transformar vira urgência e, às vezes, vontade de vencer a qualquer custo. O lado bom é uma força de vontade enorme, capaz de atravessar crises e recomeçar. O lado difícil são as brigas de tudo ou nada.
+Pelo lado de Marte, sua energia de ação também influencia Mercúrio, o planeta da comunicação, mas aqui o seu mapa não traz uma quadratura entre os dois. O que ele oferece é o trígono entre Sol e Marte, que dá fluidez: seu jeito de ser e sua vontade caminham na mesma direção. Isso favorece falar com firmeza e naturalidade quando você está alinhado(a) ao que sente. Use essa fluidez: quando o assunto importa, diga cedo e com clareza. Evite confiar demais nela e agir antes de ouvir o outro lado.
 
-Para sinalizar a si mesmo que é hora de falar, observe os avisos antes do estouro: mandíbula travada, tom de voz mais seco, o mesmo pensamento voltando várias vezes. Quando surgirem, pergunte-se: "isso é detalhe que posso flexibilizar ou é um limite que precisa de conversa?" Se for limite, diga cedo e com calma, por exemplo: "Isso me incomoda, podemos ajustar?" Falar no começo custa pouco. Falar depois do acúmulo custa relações.
+### Ambição e persistência: quanto você sustenta o que começa
 
-### Quando a raiva vira palavra: Marte e a comunicação
+Marte está na casa 10 e reina sobre a casa 11 (projetos e grupos), onde ele mesmo está. A ambição aparece ligada a reconhecimento e a causas coletivas. Sua persistência tem reforço: Marte, Júpiter, Saturno e Plutão são os quatro planetas em signos cardinais, os de iniciar e recomeçar. Isso mostra capacidade de se reinventar e de se reerguer de crises mais forte do que antes.
 
-Aqui vale olhar por outro ângulo. Seu Mercúrio, o planeta da fala e do pensamento, está em Sagitário, na casa 6. Marte, em Áries, é mais veloz e impulsivo. A energia de Marte empurra a sua comunicação: quando está irritado, as palavras saem antes do filtro, diretas, às vezes duras demais. É a tendência de machucar os outros e a si mesmo com uma fala destrutiva, da qual você se arrepende depois.
+Como perceber quando persistir. Vale continuar se o objetivo ainda faz sentido, se há progresso mesmo que lento e se o obstáculo é de método, não de propósito. Quando mudar a rota? Se a razão original deixou de existir, se o custo supera o ganho há muito tempo ou se você só continua por orgulho ou hábito. Marque uma data, por exemplo daqui a três meses, para rever o plano e pergunte: "se eu estivesse começando hoje, escolheria isso?"
 
-A consciência coordena isso. Faça uma pausa antes de responder: respire e conte até dez, ou peça "preciso de cinco minutos para pensar". Nomeie o limite cedo, antes de a irritação crescer. Escolha o momento: conversas difíceis rendem mais quando você não está cansado nem com fome. E evite mandar mensagens no calor da raiva.
-
-### Ambição e persistência: seguir ou mudar de rota
-
-Sua ambição tem base sólida. Marte, Júpiter, Saturno e Plutão são os quatro planetas em signos cardinais, os que iniciam e se reinventam: Marte em Áries, Júpiter, Saturno e Plutão em Capricórnio. Isso indica capacidade de recomeçar quantas vezes for preciso e de se reerguer de crises mais forte do que antes. Com Marte na casa 10, o desejo de construir algo reconhecido é real.
-
-Persistir é virtude, mas nem sempre é a melhor escolha. Vale persistir quando o objetivo ainda faz sentido, há progresso mesmo que lento e o obstáculo é de método, não de propósito. É hora de mudar quando a razão original deixou de existir, o custo supera o ganho há muito tempo ou você só continua por orgulho ou hábito.
-
-Marque uma data, daqui a três meses, para rever cada plano grande. Nesse dia, pergunte: se eu estivesse começando hoje, escolheria isso?
-
-Seu Marte pede coragem para agir e honestidade para saber o que realmente quer. Antes de dormir, anote hoje um projeto que você começaria de novo sem hesitar e um que só mantém por obrigação. Essa lista é o primeiro mapa do seu desejo. E se Marte mostra como você avança, a próxima seção, "Crescimento e desafios", mostra o que a vida costuma lhe ensinar pelo caminho.
+Sua energia rende mais quando nasce de um desejo real e encontra espaço para ser dita antes de acumular. Anote hoje, em uma frase, um limite que você vem engolindo e escolha quando falar sobre ele. E, se quiser entender o que seu mapa pede de amadurecimento, a próxima seção, "Crescimento e desafios", fala exatamente disso.
 
 ## Crescimento e desafios
 
-### Júpiter em Capricórnio na casa 8: crescer pelo que se constrói e se transforma
+### Júpiter em Capricórnio na casa 8: crescer com estrutura e profundidade
 
-Júpiter é o planeta da confiança e das oportunidades. Em Capricórnio, ele cresce de forma lenta e firme, com disciplina e objetivos claros. Na casa 8, a casa das crises, dos recursos compartilhados e das transformações profundas, as oportunidades tendem a chegar por parcerias, por mudanças intensas e por reconstruções. Você pode amadurecer e prosperar justamente depois de períodos difíceis.
+Júpiter é o planeta da confiança e das oportunidades. Em Capricórnio, ele cresce devagar, com método e paciência. Você tende a confiar mais no que foi construído tijolo por tijolo do que em promessas fáceis. Na casa 8, a área das transformações, dos recursos compartilhados e das crises que mudam a gente, suas maiores oportunidades costumam surgir depois de passar por mudanças profundas, parcerias de confiança e momentos em que você precisou recomeçar.
 
-Júpiter está na mesma casa e no mesmo signo que Saturno e Plutão, formando três planetas juntos em Capricórnio e na casa 8: Júpiter, Saturno e Plutão. Saturno traz limites e sustentação, e Plutão traz intensidade e renovação. Juntos, dão peso e profundidade à sua busca por crescer. O lado bom é a capacidade de construir algo duradouro e de se reerguer mais forte. O lado difícil é a tendência a levar tudo a sério demais e a duvidar de que merece prosperar. Foque em metas realistas, com pequenas conquistas visíveis, como guardar um valor combinado todo mês. Evite se exigir resultados enormes de uma vez.
+O lado bom é a capacidade de se reerguer mais forte. O lado difícil é a tendência a só se permitir crescer quando tudo parece "garantido", deixando passar chances que pediriam um pouco de risco. Foque em dar passos pequenos e consistentes, como topar uma parceria ou um curso novo sem esperar certeza total. Evite adiar o que deseja só porque ainda não está perfeito.
 
-### Júpiter e a Lua: o emocional como porta para as oportunidades
+### Júpiter e a Lua: quando o emocional abre portas
 
-No trígono entre Júpiter e a Lua, muito preciso, os dois planetas se apoiam. A Lua representa suas emoções e seu senso de segurança. Júpiter representa confiança e expansão. A Lua, em Virgem, dá a Júpiter sensibilidade e cuidado com os detalhes: você percebe o que realmente nutre e o que só cansa, e escolhe oportunidades com mais critério. Júpiter, por sua vez, dá à Lua otimismo e generosidade. Mesmo em dias difíceis, costuma haver uma sensação de que as coisas se ajeitam.
+A Lua representa suas emoções e sua sensação de segurança. No trígono entre Júpiter e Lua, muito preciso, os dois planetas se apoiam com fluidez. Júpiter amplia a Lua: dá otimismo, generosidade e a sensação de que, no fundo, as coisas se ajeitam. A Lua, por sua vez, dá a Júpiter um "termômetro" interno: você sente quando uma oportunidade é boa para você.
 
-Quando você está emocionalmente em paz, enxerga oportunidades com clareza e aceita convites, propostas e ajuda. Quando está ansiosa ou ansioso, pode se fechar, corrigir tudo em excesso e deixar boas chances passarem. Os sinais são preocupação com minúcias e vontade de adiar decisões. Nessas horas, respire, anote o que você sente e dê um passo pequeno. Evite esperar estar "perfeitamente pronto" para começar.
+Na prática, quando você está emocionalmente em paz, enxerga caminhos, aceita convites e confia nas pessoas. Quando está cansado ou ansioso, tende a ver só obstáculos e a recusar chances que seriam boas. Sinais de que o emocional está ampliando: sono tranquilo, vontade de conversar, curiosidade. Sinais de que está reduzindo: irritação com pequenos imprevistos e vontade de se isolar. Cuide da rotina emocional, com descanso e momentos de pausa, antes de tomar decisões grandes. O risco aqui é se acomodar na sensação de que "vai dar certo" sem agir.
 
-### Júpiter e Saturno: a confiança que aprende a ter estrutura
+### Júpiter e Saturno: expansão com sustentação
 
-A conjunção entre Júpiter e Saturno, bem próxima do exata, junta os dois planetas no mesmo ponto do céu. Júpiter amplia e anima; Saturno limita e organiza. Saturno dá a Júpiter forma e realismo: seus sonhos ganham prazo, método e chance de se concretizar. Júpiter dá a Saturno fé e abertura: as responsabilidades deixam de ser só peso e passam a ter sentido.
+Júpiter e Saturno estão juntos em Capricórnio, na casa 8, numa conjunção muito próxima do exato. Júpiter quer crescer; Saturno quer limites e solidez. Aqui, Júpiter ganha de Saturno realismo: seus sonhos tendem a vir com plano. E Saturno ganha de Júpiter um pouco de fé: seus limites deixam de ser só freio e viram degraus.
 
-O lado positivo é a ambição madura, que constrói passo a passo. O lado difícil é oscilar entre o "vai dar tudo certo" e o "não vou conseguir". Ao notar essa oscilação, combine ousadia e planejamento: escolha um projeto, defina etapas e comemore cada uma. Evite abandonar uma ideia na primeira dúvida.
+O lado positivo é a maturidade para construir algo duradouro. O lado difícil é oscilar entre o "posso tudo" e o "não vai dar". Ajuda definir uma meta com prazos curtos, como juntar uma quantia pequena por mês para um projeto, e comemorar cada etapa. Evite se exigir demais a ponto de nunca começar.
 
-### Saturno em Capricórnio na casa 8: sustentar o que é seu e o que é compartilhado
+Plutão também está nessa casa e nesse signo, formando conjunção com Júpiter e com Saturno. Plutão é o planeta da transformação profunda. Com Júpiter, ele dá intensidade às ambições: você não quer só crescer, quer mudar de nível. Com Saturno, pesa a sensação de responsabilidade e o desejo de controle. A casa 8 junta os três em temas de recursos compartilhados, confiança e renascimento. O lado bom é uma força de superação rara. O lado difícil é a rigidez e o "tudo ou nada". Foque em dividir responsabilidades e pedir ajuda; evite carregar sozinho o que poderia ser compartilhado.
 
-Saturno é o planeta da sustentação, dos limites e do amadurecimento. Em Capricórnio, ele está em casa e reforça responsabilidade, constância e senso de dever. Na casa 8, isso se volta para recursos divididos, vínculos de confiança e momentos de transformação. Você aprende a sustentar compromissos íntimos e financeiros com seriedade, e a atravessar perdas e mudanças com firmeza.
+### Saturno em Capricórnio na casa 8: sustentar o que importa
 
-Saturno forma trígono com a Lua, muito preciso. A Lua dá a Saturno acolhimento: a responsabilidade não precisa ser fria. Saturno dá à Lua estabilidade: suas emoções ganham chão e você tende a se acalmar com rotina e coerência. O risco é se acomodar e dizer "eu me viro sozinho". Peça ajuda e deixe pessoas de confiança se aproximarem. Evite carregar tudo em silêncio.
+Saturno está em casa em Capricórnio: aqui ele sustenta compromissos com seriedade e disciplina. Na casa 8, isso aparece na forma como você lida com confiança, intimidade e recursos divididos com outras pessoas. Você tende a levar a sério acordos e a querer clareza sobre o que é de cada um.
 
-Saturno também se une a Plutão em Capricórnio, de modo mais sutil. Plutão traz intensidade e vontade de transformar; Saturno dá estrutura a essa força. Juntos, ajudam você a reconstruir o que desabou, com paciência. O lado difícil é a rigidez diante de mudanças. Foque em mudar uma coisa por vez e evite se prender ao controle.
+Com o trígono entre Lua e Saturno, muito preciso, suas emoções e sua estrutura se apoiam: você aprendeu a se acalmar criando rotinas e a se sustentar nos momentos difíceis. A Lua suaviza Saturno com acolhimento; Saturno dá à Lua firmeza para não se perder no humor do dia. A armadilha é se fechar emocionalmente por achar que precisa dar conta de tudo. Experimente dizer em voz alta o que sente, mesmo quando parece "pouco importante". Evite transformar disciplina em distância.
 
-### Fechamento
-
-Seu crescimento tem cara de obra bem-feita: devagar, funda e feita para durar. Pergunte a si mesmo, quando bater o medo, qual é o menor passo possível agora, e dê esse passo com carinho por quem você é. Há ainda um olhar maior, sobre o que une a sua geração. Em que ano você nasceu?
+Se amadurecer é o convite, ele chega de forma gentil: cada limite que você aprende a respeitar vira terreno firme para voar mais longe. Que lembrança de um momento em que você se reergueu mais forte vem à sua mente agora?
 
 ## Gerações
 
-### Urano em Touro na casa 11: o novo que chega pelos amigos
+### Urano em Touro: mudar o que parece firme
 
-Urano, Netuno e Plutão são planetas lentos. Cada um passa anos num mesmo signo, por isso as pessoas da sua geração compartilham o signo deles. O que torna esses planetas pessoais é a casa onde caem e os aspectos que formam com planetas pessoais, que são os que movem o seu dia a dia.
+Urano, Netuno e Plutão são planetas lentos. Levam anos em cada signo e, por isso, marcam toda uma geração. O que torna a influência pessoal é a casa onde cada um cai no seu mapa e os aspectos que formam com planetas mais próximos de você.
 
-Urano representa a vontade de mudar, de se libertar do que ficou velho e de fazer diferente. Em Touro, essa mudança vem aos poucos e pede resultado concreto. Na casa 11, a das amizades, dos grupos e dos projetos coletivos, isso aparece como um jeito próprio de pertencer. Você tende a escolher amigos fora do padrão e a gostar de comunidades que testam ideias novas na prática. Por estar retrógrado, o impulso de inovar costuma nascer de dentro, e só depois ganha forma no convívio.
+Urano é o planeta da ruptura, da originalidade e da necessidade de liberdade. Você o tem em Touro, signo que valoriza estabilidade, conforto e segurança, na casa 11, a das amizades, dos grupos e dos projetos coletivos. Isso pode aparecer como um jeito próprio de lidar com pessoas: você pode se aproximar de grupos que fogem do convencional, mas querer vínculos que durem. Também sugere uma renovação lenta, que muda as coisas aos poucos, sem estardalhaço.
 
-O lado bom é ser a pessoa que traz o olhar diferente a um grupo, sem perder o senso de realidade. O lado difícil é a teimosia: Touro resiste a mudar, Urano exige mudança, e você pode oscilar entre se prender a um círculo que já não serve e romper de repente. Observe se você está ficando num grupo só por hábito. Vale conversar sobre o que mudou antes de sair batendo a porta.
+O lado bom é a capacidade de inovar com os pés no chão, trazendo ideias novas que funcionam na prática. O lado difícil é a teimosia que alterna com impulsos de ruptura: você pode se agarrar a uma rotina até não suportar mais e então mudar tudo de uma vez. Um sinal de atenção é a sensação de estar "preso" em um grupo ou hábito. Em vez de esperar o limite, experimente fazer pequenas mudanças planejadas, como testar um novo grupo ou projeto sem abandonar o que já funciona. Evite romper por impulso quando o incômodo for passageiro.
 
-### Netuno em Peixes na casa 9: a fé que pede um chão
+### Netuno em Peixes: sensibilidade e ideais
 
-Netuno é o planeta da imaginação, da intuição e do sonho. Em Peixes, seu próprio território, ele fica ainda mais sensível. A casa 9 trata de viagens, estudos, crenças e da busca por sentido. Aqui, a imaginação vira uma fome de enxergar algo maior, seja pela espiritualidade, pela arte ou por culturas distantes.
+Netuno é o planeta da imaginação, da espiritualidade e também da confusão. Em Peixes, seu próprio signo, ele atua com muita força, na casa 9, a da busca de sentido, dos estudos e das viagens. Você tende a procurar significado maior para a vida, e a fé, a arte ou a filosofia podem lhe dar sentido e inspiração.
 
-Netuno forma uma quadratura com o seu Sol, muito precisa. Quadratura é um aspecto de atrito. O Sol é o seu centro, o que você quer ser, e Netuno dissolve contornos. Então o Sol pede clareza e Netuno responde com névoa, ideais e dúvidas. Ao mesmo tempo, o Sol dá a Netuno um rosto e uma direção: seus sonhos pedem para virar escolhas.
+Há um aspecto importante: o Sol em quadratura com Netuno, muito preciso. A quadratura é um ângulo de atrito, que gera tensão e movimento. O Sol representa sua identidade e vontade; Netuno, sonhos e ilusões. Netuno dissolve a firmeza do Sol: pode deixar você em dúvida sobre quem é ou o que quer, ou idealizando pessoas e planos. Por sua vez, o Sol pede a Netuno forma e direção: seus sonhos precisam de um rumo concreto para não se perderem.
 
-No dia a dia, isso pode ser ficar entusiasmado com uma ideia ou um curso e, semanas depois, não saber mais por que começou. O lado positivo é a inspiração rara, a empatia e a capacidade de ver possibilidades que os outros não veem. O lado difícil é se iludir, adiar decisões ou se perder em fantasias. Sinais de alerta: sentir-se confuso demais, evitar conversas objetivas ou mudar de rumo sem saber o motivo.
+No dia a dia, isso aparece quando você se entusiasma com uma ideia e depois sente que ela escorre, ou quando admira alguém e só mais tarde vê a pessoa como ela é. O lado positivo é uma inspiração rara, empatia e criatividade. O lado difícil é a névoa: decidir sem clareza e se decepcionar. Como direção, vale escrever o que deseja em poucas frases, conferir fatos antes de se comprometer e conversar com alguém de confiança sobre planos grandes. Evite decisões importantes quando estiver muito emocionado.
 
-Como direção: escreva o que você quer da sua fé ou dos seus estudos em uma frase concreta. Peça a opinião de alguém de confiança antes de grandes decisões. E reserve um horário fixo para meditar, caminhar ou desenhar, dando um canal saudável a Netuno.
+Netuno também forma um trígono com Vênus, muito próximo do exato. O trígono é um ângulo de fluidez. Vênus é seu jeito de amar e de valorizar; Netuno a envolve de ternura e idealismo, o que pode trazer carinho, sensibilidade artística e gosto por afetos profundos. Vênus, por sua vez, dá a Netuno um canal concreto: seus ideais podem virar gestos de cuidado e beleza. O risco é se acomodar no sonho ou idealizar demais quem você ama. Cultive o talento criativo, como música, desenho ou escrita, e confira se o que vê no outro corresponde ao que ele mostra.
 
-Netuno também forma um trígono com Vênus, muito próximo do exato. Trígono é um aspecto de fluidez. Vênus, que fala dos afetos e do que você valoriza, ganha sensibilidade e romantismo. Netuno, por sua vez, ganha um jeito concreto de se expressar: o carinho, a beleza e a gentileza. Isso torna você uma pessoa delicada nos vínculos e atenta ao que não é dito. A armadilha é idealizar quem você ama. Cultive esse dom, mas confira se a pessoa real corresponde à imagem que você criou.
+### Plutão em Capricórnio: transformação profunda
 
-### Plutão em Capricórnio na casa 8: a força de se reconstruir
+Plutão é o planeta da transformação, do poder e das renovações radicais. Você o tem em Capricórnio, signo de responsabilidade e estrutura, na casa 8, a das crises, dos recursos compartilhados e das mudanças profundas. Essa casa também abriga Júpiter e Saturno. Júpiter amplia, Saturno sustenta e Plutão aprofunda: juntos, sugerem um jeito de enfrentar crises com seriedade, tenacidade e vontade de se reerguer mais forte do que antes. O lado difícil é a rigidez e o controle: você pode levar a vida pesada demais, guardar tudo para si ou resistir a pedir ajuda.
 
-Plutão fala de transformação profunda: o que precisa morrer para algo mais forte nascer. Em Capricórnio, essa transformação passa por estruturas, responsabilidades e autoridade. Na casa 8, que cuida de crises, intimidade, recursos compartilhados e renascimentos, a vida pede que você enfrente as questões mais densas e saia mais forte delas.
+Plutão forma uma quadratura com Marte, próxima do exato. Marte é sua energia de ação e iniciativa; Plutão traz intensidade e poder. Plutão pode tornar a ação de Marte obsessiva ou muito intensa, com tendência a disputas de força. Marte, por sua vez, dá a Plutão um canal de ação, para que a transformação saia do campo interno e vire movimento. O lado bom é uma garra enorme para perseguir objetivos. O lado difícil são os impulsos de raiva ou teimosia, como brigar até vencer algo que não vale a pena. Quando perceber o corpo tenso e a vontade de "ganhar a todo custo", respire e pergunte a si mesmo o que realmente está em jogo. Dirija essa força para esporte, trabalho ou metas claras.
 
-Plutão forma uma quadratura com Marte, próxima do exato. Marte é a sua ação e a sua coragem, e Plutão é intensidade e poder. Plutão dá a Marte uma força de bastidor, quase obstinada. Marte, por sua vez, faz Plutão agir e confrontar. No dia a dia, isso pode ser uma raiva que acumula e explode, ou uma disputa de poder no trabalho. O lado bom é uma determinação enorme para superar obstáculos. O lado difícil é a rigidez e o desejo de controlar. Quando sentir o corpo tenso, respire e espere antes de responder. Atividade física regular ajuda a descarregar. E, diante de um conflito, pergunte-se o que você realmente quer resolver.
-
-Plutão forma um sextil com Vênus, bem próximo do exato. Sextil é um aspecto de oportunidade, que funciona quando você o usa. Aqui, Plutão aprofunda os afetos de Vênus e pede vínculos verdadeiros, sem superficialidade. Vênus suaviza Plutão e ajuda a transformar com carinho, não com pressão. Use isso para conversas sinceras sobre o que importa. A armadilha é deixar a oportunidade passar por receio de se expor.
-
-Plutão está na mesma casa e no mesmo signo que Júpiter e Saturno. Júpiter traz otimismo e confiança, Saturno traz limite e persistência, e Plutão dá a eles uma intensidade transformadora. Juntos, formam uma base de enorme resistência para lidar com perdas e recomeços. O difícil é carregar peso demais sozinho. Aceite ajuda e divida tarefas.
+Vênus forma um sextil com Plutão, muito próximo do exato. O sextil é um ângulo de oportunidade, que pede iniciativa. Plutão aprofunda o afeto de Vênus, tornando seus vínculos intensos e leais. Vênus suaviza Plutão, mostrando que transformar pode ser também cuidar. Aproveite escolhendo relações com verdade e profundidade, mas evite o ciúme ou a necessidade de controlar.
 
 ### Os três juntos: do sonho ao concreto
 
-O seu mapa tem muita terra (cinco planetas: Lua, Júpiter, Saturno, Urano e Plutão) e pouca água (dois: Vênus e Netuno). Entre as modalidades, predominam a mutável e a cardinal (quatro cada). Isso indica sensibilidade para captar ideias, adaptabilidade e capacidade de recomeçar. A terra pede que o novo se prove na prática. Um caminho em três passos pode ajudar.
+Seu mapa tem muita terra, com cinco planetas, e as modalidades cardinal e mutável são fortes, com quatro cada. Terra dá senso prático e persistência. O mutável traz flexibilidade e muitas ideias. O cardinal dá iniciativa para começar. A água, com dois planetas, traz sensibilidade e intuição. Isso pede unir sensibilidade e concretude. Urano, Netuno e Plutão trazem o novo, o sonho e a transformação. O caminho é torná-los reais em três passos.
 
-**1. Preste atenção à intuição.** Netuno fala baixo. Reconheça-o quando uma ideia volta várias vezes, quando traz calma e entusiasmo ao mesmo tempo, ou quando um assunto o atrai sem explicação. Registre tudo num caderno ou nas notas do celular, com data. Uma vez por semana, releia e veja o que se repete.
+**1. Prestar atenção à intuição.** Sua intuição costuma vir como uma sensação corporal de leveza ou aperto, ou como uma ideia que volta várias vezes. Registre isso: mantenha um caderno ou um áudio no celular e anote ideias, sonhos e sensações logo que surgirem. Releia depois de alguns dias para ver o que se repete.
 
-**2. Valide com a realidade.** Aqui entra a sua terra. Teste a ideia em pequena escala: converse com alguém que já faz aquilo, faça uma aula experimental, calcule tempo e custo. Se a ideia sobreviver ao teste, ótimo. Se não, ajuste, sem frustração.
+**2. Validar com a realidade.** Com a terra forte, você se dá bem testando. Escolha uma ideia e faça um teste pequeno e barato: converse com alguém que já fez algo parecido, pesquise custos, experimente por uma semana. Se funcionar, siga. Se não, ajuste sem culpa.
 
-**3. Materialize com compromisso.** Escolha um primeiro passo pequeno, como se inscrever, marcar uma reunião ou montar um rascunho. Defina um prazo, por exemplo trinta dias, e uma rotina fixa, como duas horas por semana. Como seu mapa tem força cardinal, você sabe começar. A tarefa é manter o ritmo até o resultado aparecer.
+**3. Materializar com compromisso.** Com a energia cardinal, você sabe começar, e a terra ajuda a sustentar. Defina um primeiro passo concreto, um prazo (por exemplo, trinta dias) e uma rotina curta, como vinte minutos, três vezes por semana. Marque no calendário e avalie ao fim do prazo.
 
-Imagine uma semente guardada numa gaveta: só vira planta quando alguém a enterra na terra, rega e espera. As suas ideias pedem o mesmo cuidado. Na próxima seção, "As 12 casas", você vai ver em quais áreas da vida cada uma dessas forças vai florescer.
+Pense numa semente: você a escolhe com atenção, testa o solo e depois rega todo dia, sem pressa e sem desistir. É assim que o novo cresce em você. A próxima seção, "As 12 casas", mostra em que áreas da vida tudo isso acontece.
 
 ## As 12 casas
 
-### Casas 1 a 3: quem você é, o que você tem e como você se comunica
+### Casas 1 a 3: como você se apresenta, o que você sustenta e como você se comunica
 
-Sua **casa 1**, a do jeito de chegar ao mundo, começa em Gêmeos e é regida por Mercúrio, que está em Sagitário na casa 6. Aqui também está o Nodo Norte, um ponto que indica direção de crescimento (não é planeta). Sua curiosidade se conecta ao trabalho cotidiano. A **casa 2**, dos recursos e do que você valoriza, começa em Câncer, regida pela Lua em Virgem na casa 4. Segurança material e vida doméstica caminham juntas para você. A **casa 3**, dos estudos, irmãos e conversas do dia a dia, começa em Leão e é regida pelo Sol em Sagitário na casa 7. Você tende a se expressar com calor e entusiasmo, e as trocas com outras pessoas ajudam a dar forma às suas ideias.
+A casa 1 começa em Gêmeos, signo curioso e conversador, e o regente dela, Mercúrio, está na casa 6, a do trabalho e da rotina. Por isso, sua primeira impressão é leve e interessada, e você se mostra de verdade quando está ocupado com algo útil. O Nodo Norte, ponto que indica uma direção de crescimento, também está na casa 1, e sugere que você ganha ao se colocar à frente e dizer quem é.
 
-### Casas 4 a 6: raízes, criação e rotina
+A casa 2, dos recursos e do que dá segurança, começa em Câncer. Sua regente, a Lua, está em Virgem na casa 4, o que liga seu senso de estabilidade ao lar, à rotina organizada e ao cuidado com o ambiente. Não há planetas nessa casa.
 
-A **casa 4**, do lar e das origens, começa em Virgem e abriga a Lua. Seu regente, Mercúrio, está na casa 6. Em casa, você se sente bem quando há ordem, cuidado e um jeito prático de acolher. A **casa 5**, do prazer, da criatividade e do romance, começa em Libra e é regida por Vênus em Escorpião na casa 6. Você tende a buscar beleza e parceria, mas com intensidade e profundidade, e a criatividade passa pelo trabalho e pelos hábitos. A **casa 6**, da rotina, do trabalho e da saúde, começa em Escorpião e reúne Mercúrio e Vênus. Os dois convivem bem: a mente (Mercúrio) e o afeto (Vênus) se misturam no dia a dia, e você tende a trabalhar com palavras agradáveis e vínculos que importam. O regente, Plutão, está na casa 8, o que liga sua rotina a transformações profundas.
+A casa 3, da fala, dos estudos e do convívio próximo, começa em Leão. O Sol, regente dela, está na casa 7, a das parcerias, e isso indica que você pensa e se expressa melhor com alguém ao lado, trocando ideias. Também não há planetas aqui.
 
-### Casas 7 a 9: parcerias, transformação e horizontes
+### Casas 4 a 6: raízes, prazer e rotina
 
-A **casa 7**, das parcerias, começa em Sagitário e abriga o Sol. As relações são um espelho central de quem você é, e você tende a valorizar parceiros que ampliem seu mundo. Seu regente, Júpiter, está na casa 8. A **casa 8**, das crises, dos recursos compartilhados e das mudanças profundas, começa em Capricórnio e reúne três planetas: Júpiter, Saturno e Plutão. Eles convivem como um trio de peso, em que Júpiter dá fé e abertura, Saturno dá estrutura e Plutão dá força de reconstrução. Juntos, indicam capacidade de atravessar perdas e se reerguer mais forte do que antes. A **casa 9**, de viagens, estudos e sentido de vida, começa em Aquário e abriga Netuno. Seu regente, Urano, está na casa 11. Você busca um sentido amplo, com um toque de inspiração e originalidade.
+A casa 4, do lar e da família, começa em Virgem e abriga a Lua. Seu mundo emocional pede ordem, gestos práticos de cuidado e um espaço onde você se sinta em casa. Mercúrio, regente da casa, está na casa 6, então conversar e resolver pendências ajuda você a se acalmar.
 
-### Casas 10 a 12: vocação, amigos e o que fica nos bastidores
+A casa 5, do prazer, da criatividade e do romance, começa em Libra, signo que busca harmonia e beleza. Vênus, a regente, está na casa 6, e por isso você tende a se divertir e a criar dentro do que faz no dia a dia, e não só nas folgas. Não há planetas na casa 5.
 
-A **casa 10**, da vida pública e da carreira, começa em Peixes e abriga Marte. O regente, Netuno, está na casa 9. Você tende a agir com iniciativa na vida profissional, guiado por ideais e sensibilidade. A **casa 11**, de amigos, grupos e projetos de futuro, começa em Áries e é regida por Marte, que está na própria casa 10. Seus círculos sociais e sua carreira se misturam: amizades podem abrir portas. A **casa 12**, do que é recolhido e inconsciente, começa em Touro e é regida por Vênus em Escorpião na casa 6. Seu descanso e sua vida interior ligam-se à rotina: cuidar do dia a dia também é cuidar da alma. Urano, na casa 11, atua como um toque de inovação nas amizades.
+A casa 6, do trabalho cotidiano e dos hábitos, começa em Escorpião e reúne Mercúrio e Vênus. Os dois convivem bem: Mercúrio dá a mente atenta e Vênus traz gosto e cuidado, e juntos ajudam você a tornar a rotina agradável e bem pensada. O regente, Plutão, está na casa 8 e dá intensidade e profundidade ao jeito como você trabalha.
 
-Você tem um mapa com muita sustentação, de quem sabe reconstruir, aprender e agir quando importa. A confiança em si mesmo(a) pode crescer a cada vez que se lembra disso. Agora que as áreas da vida estão desenhadas, vale olhar com atenção as conversas mais marcantes entre os planetas, onde estão os maiores talentos e os maiores nós.
+### Casas 7 a 9: parcerias, transformação e horizonte
+
+A casa 7, das parcerias, começa em Sagitário e abriga o Sol. Os vínculos próximos ocupam o centro da sua identidade, e você busca em quem está ao seu lado liberdade, franqueza e visão ampla. Júpiter, regente da casa, está na casa 8.
+
+A casa 8, dos recursos compartilhados, das crises e das mudanças profundas, começa em Capricórnio e reúne Júpiter, Saturno e Plutão. Esses três convivem como um grupo sério: Júpiter amplia, Saturno dá estrutura e Plutão aprofunda, o que forma uma grande capacidade de se reerguer das crises mais forte do que antes. Saturno, regente da casa, está ali mesmo, reforçando esse peso e essa firmeza.
+
+A casa 9, dos estudos, das viagens e do sentido da vida, começa em Aquário. Seu regente, Urano, está na casa 11, e liga sua busca de sentido a ideias originais e a grupos de afinidade. Netuno mora na casa 9, e traz imaginação, fé e uma sensibilidade que se abre ao que é maior do que você.
+
+### Casas 10 a 12: vocação, comunidade e mundo interior
+
+A casa 10, da vida pública e da vocação, começa em Peixes, o mesmo signo do Meio do Céu, e abriga Marte. Isso mistura sensibilidade com iniciativa: você tende a construir sua trajetória com ação direta, guiada por intuição. Netuno, o regente, está na casa 9, e ajuda a unir carreira e propósito.
+
+A casa 11, das amizades e dos projetos coletivos, começa em Áries e tem Urano. Você se dá bem em grupos que valorizam o novo e a independência. Marte, regente da casa, está na casa 10, e liga seus amigos e seus projetos à sua imagem pública.
+
+A casa 12, do mundo interior e do que fica nos bastidores, começa em Touro. Vênus, a regente, está na casa 6, o que indica que o descanso, a calma e a ordem das pequenas tarefas ajudam você a se recompor. Não há planetas aqui.
+
+Olhando as doze casas juntas, você se mostra como alguém que sabe se cuidar, se reerguer e se unir a quem importa, e merece confiar no que construiu. O que vem a seguir mostra como as forças desse mapa se encontram e se movem entre si.
 
 ## Aspectos marcantes
 
-### Sol e Netuno: a tensão entre ser claro e sonhar alto
+### Lua e Saturno: o apoio emocional que se constrói com o tempo
 
-Este é um aspecto de tensão (quadratura), muito preciso. O Sol é o seu centro, a vontade de ser alguém definido. Netuno é a imaginação, a sensibilidade e o que não tem contorno. Netuno suaviza e nubla o Sol: às vezes você não sabe bem o que quer, ou se molda ao que os outros esperam. O Sol, por sua vez, pede de Netuno um rosto concreto: seus ideais precisam virar escolhas.
+Este é um trígono, um aspecto de fluidez, e é muito preciso. A Lua (como você sente e se acalma) conversa com Saturno (estrutura, limites, constância). Saturno dá à Lua um chão: suas emoções tendem a amadurecer cedo e a pedir rotina, o que lhe dá calma em momentos de pressão. A Lua, por sua vez, suaviza Saturno e traz calor ao que seria só dever, de modo que sua seriedade vem com cuidado. O risco é a acomodação: manter a rotina só porque ela é segura. Observe o que você sente ao fim de cada fase e atualize a estrutura quando ela já não nutrir você.
 
-O lado bom é uma imaginação generosa e uma intuição que capta o que não foi dito. O lado difícil aparece como dispersão, idealização de pessoas e projetos, ou dificuldade de dizer não. Quando perceber que está se perdendo em expectativas alheias, vale escrever, em uma frase, o que você quer de fato, antes de responder a um convite ou pedido. Evite decidir só no embalo do entusiasmo: durma uma noite antes de dizer sim.
+### Lua e Júpiter: a generosidade que alimenta a confiança
 
-### Lua, Saturno e Júpiter: um chão firme para as emoções
+Outro trígono muito preciso, de fluidez. Júpiter (expansão, otimismo, senso de sentido) dá à Lua uma base de fé: depois de um tropeço, você tende a se recompor e a acreditar que as coisas se ajeitam. A Lua dá a Júpiter um tom afetivo, e sua generosidade nasce do sentir, não da obrigação. O lado difícil é o exagero: prometer demais, acolher a todos e esquecer de si. Antes de dizer sim a um pedido, pergunte-se se há energia real para isso. Vale cultivar a confiança sem deixar que ela dispense o planejamento.
 
-Aqui há dois trígonos, aspectos de fluidez, ambos muito precisos. Seu lado emocional (a Lua) conversa com facilidade com Saturno, que representa disciplina e limites, e com Júpiter, que representa confiança e expansão. Saturno dá à Lua estrutura: você sabe atravessar fases difíceis sem desabar. A Lua dá a Saturno calor: seus compromissos ganham humanidade. Júpiter alarga a Lua com otimismo, e a Lua dá a Júpiter sensibilidade para ajudar de verdade.
+### Sol e Netuno: o brilho que se confunde com o ideal
 
-Como padrão de vida, isso aparece como uma segurança interna que as pessoas sentem em você. A armadilha é a acomodação: confiar tanto no próprio equilíbrio que você deixa de pedir ajuda ou de arriscar. Cultive essa base fazendo algo novo e um pouco desconfortável de vez em quando, sabendo que você tem onde se apoiar.
+Este é um aspecto de tensão, uma quadratura muito precisa. O Sol (identidade, vontade de ser você) encontra Netuno (imaginação, sensibilidade, ideal). Netuno dissolve os contornos do Sol: você pode sentir que não sabe bem quem é, ou assumir o papel que o outro espera. O Sol, por sua vez, pede a Netuno que se concretize, que sonhos virem escolhas. O lado bom é uma imaginação fértil e uma sensibilidade que percebe o que os outros não dizem. O difícil é a névoa: decisões adiadas, idealização de pessoas e projetos. Sinais de atenção são a dúvida constante e o desencanto depois de entusiasmos. Algumas atitudes ajudam: escrever em uma frase o que você quer antes de decidir, conferir fatos antes de se encantar e dar forma aos sonhos por meio de arte ou escrita.
 
-### Júpiter e Saturno: crescer e sustentar ao mesmo tempo
+### Júpiter e Saturno: o crescimento que pede estrutura
 
-Esta é uma fusão (conjunção), bem próxima do exata, em Capricórnio, na casa 8, a casa das transformações, das crises e do que se divide com os outros. Júpiter expande; Saturno delimita. Juntos, ensinam que crescer exige paciência e estrutura. Júpiter anima a ambição de Saturno, e Saturno dá a Júpiter os pés no chão para que as promessas se cumpram.
+É uma conjunção, uma fusão, bem próxima do exato. Júpiter (expansão) e Saturno (limite) atuam juntos, no mesmo signo e na mesma casa. Saturno dá a Júpiter o freio que transforma entusiasmo em obra, e Júpiter dá a Saturno a esperança que evita que o rigor vire pessimismo. O padrão, na vida inteira, é o de quem cresce com disciplina e só confia no que testou. O lado difícil é oscilar entre ousadia e medo de errar. Defina metas em etapas pequenas e comemore cada uma. Evite adiar o que quer por exigir garantias demais.
 
-O lado bom é uma ambição realista, que constrói devagar e dura. O lado difícil é alternar entre euforia e desânimo, ou duvidar do próprio otimismo. Observe quando um plano grande começa a pesar: divida-o em etapas pequenas e comemore cada uma. Evite abandonar o sonho ao primeiro obstáculo.
+### Sol e Marte: a vontade que encontra ação
 
-### Júpiter, Saturno e Plutão: o poder de se reconstruir
+Este é um trígono, de fluidez, bem próximo do exato. O Sol (quem você é) e Marte (impulso, iniciativa) se apoiam: o que você quer tende a virar movimento sem muito atrito. Marte dá corpo ao Sol, e você costuma agir de acordo com o que valoriza. O Sol dá direção a Marte, evitando que a energia se dissipe. O padrão aparece em fases em que você se mexe com naturalidade, até demais. O risco é contar com a facilidade e deixar talentos sem treino. Escolha uma habilidade e pratique em horários fixos, mesmo sem vontade.
 
-Plutão, também em Capricórnio e na casa 8, se junta aos dois: Júpiter conjunção Plutão (próxima do exata) e Saturno conjunção Plutão (mais sutil). Plutão é o planeta da transformação profunda, de morrer para uma fase e renascer. Ele intensifica a ambição de Júpiter e a seriedade de Saturno. Em troca, os dois dão a Plutão direção: as mudanças deixam de ser caos e viram reconstrução.
+### Vênus e Plutão: a intensidade nos vínculos
 
-O padrão é o de alguém que se reergue de crises mais forte do que antes. O lado difícil é o controle excessivo ou o tudo ou nada. Quando uma fase acabar, em vez de resistir, pergunte-se o que ela deixou de ensinamento e escolha um único próximo passo. Evite se fechar sozinho na dificuldade.
+Este é um sextil, de fluidez, bem próximo do exato. Vênus (afeto, prazer, o que você valoriza) recebe de Plutão (profundidade, transformação) o gosto pela verdade nas relações: você tende a querer laços que importem, não superficiais. Vênus suaviza Plutão e torna a intensidade mais sedutora do que pesada. A oportunidade é viver vínculos que transformam. A armadilha é o controle ou o ciúme quando a entrega parece incerta. Diga com clareza o que sente, em vez de testar o outro, e use a intensidade em projetos que lhe deem prazer.
 
-### Sol e Marte: vontade e ação no mesmo rumo
+### Marte e Plutão: a força que pede direção
 
-Trígono, de fluidez, bem próximo do exato. O Sol é a identidade; Marte é a energia de agir. O Sol dá propósito a Marte, e Marte dá ao Sol coragem para sair da intenção e fazer. Você tende a agir de acordo com o que é, sem tanta divisão interna.
+Este é um aspecto de tensão, uma quadratura próxima do exato. Marte (ação, coragem) e Plutão (poder, transformação) se pressionam: você tem uma força persistente, que pode soar dura ou competitiva. Plutão intensifica Marte e dá fôlego para recomeçar; Marte pressiona Plutão a agir em vez de remoer. No dia a dia, isso aparece em discussões que escalam ou em metas perseguidas com obstinação. O lado bom é a capacidade de enfrentar o que assusta os outros. O difícil é a teimosia e o confronto desnecessário. Respire antes de reagir, pratique atividade física intensa e escolha batalhas que valham a energia.
 
-O lado bom é iniciativa natural e entusiasmo contagiante. A armadilha é confiar que tudo flui e começar sem terminar. Use essa facilidade para assumir um projeto por vez, levando-o até o fim antes de abrir outro.
-
-### Vênus, Plutão e Netuno: afetos profundos e idealizados
-
-Vênus, a forma como você ama e valoriza, tem dois aspectos de fluidez: sextil com Plutão (bem próximo do exato) e trígono com Netuno (próximo do exato). Plutão dá aos seus vínculos intensidade e vontade de ir fundo, e Vênus suaviza Plutão com delicadeza. Netuno traz romantismo e empatia, e Vênus ajuda Netuno a ganhar forma em gestos de carinho concretos.
-
-O lado bom é uma capacidade rara de entrega e de sentir o outro. O lado difícil é idealizar quem você ama ou querer fusão total. Aproveite conversando abertamente sobre o que sente e perguntando ao outro o que ele de fato espera, em vez de supor. Evite cobrar que alguém corresponda à imagem que você criou.
-
-### Marte e Plutão: força que pede direção
-
-Quadratura, aspecto de tensão, próxima do exata. Marte é o impulso de agir; Plutão é a intensidade e o desejo de controle. Plutão carrega Marte de potência, e Marte leva Plutão a se manifestar de forma direta. No dia a dia, isso pode aparecer como determinação enorme ou como explosões e teimosia numa discussão.
-
-O lado positivo é uma resistência fora do comum: você não desiste fácil. O lado difícil são os conflitos de poder e a raiva guardada. Sinais para observar: mandíbula tensa, vontade de "ganhar" a conversa. Direcione essa força para o esforço físico, um projeto exigente ou uma pausa antes de responder. Evite agir no calor do primeiro impulso.
-
-Se tudo isso tem um traço comum, é a união de uma base firme com uma sensibilidade funda, e aprender a conduzi-las é o seu trabalho de uma vida. Antes de uma decisão importante, escreva em uma linha o que você quer e o que está disposto a sustentar. Com isso em mãos, a "Síntese" vai juntar todas as peças do seu mapa em uma só imagem.
+Em todos esses aspectos, a mesma ideia se repete: você tem apoio interno firme e grande intensidade, e vive melhor quando os dois trabalham juntos. Ao fim do dia, anote em uma linha o que lhe deu energia e o que a drenou, e deixe esse registro mostrar quais aspectos você mais usa. Com isso em mãos, a "Síntese" reúne todas essas peças em um único retrato.
 
 ## Síntese
 
-### A ideia central do seu mapa
+### O conjunto do seu mapa
 
-Seu mapa fala de alguém que procura sentido e liberdade, mas só se sente seguro quando pode apoiar isso em algo concreto. O Sol em Sagitário pede horizontes amplos, verdade e movimento. A Lua em Virgem acalma-se com rotina, cuidado e utilidade. O Ascendente em Gêmeos faz de você alguém curioso, que puxa conversa, pergunta e conecta pessoas e ideias.
+Seu mapa fala de uma pessoa que busca sentido e liberdade, mas que tem uma base muito sólida por dentro. O Sol em Sagitário mostra alguém que quer viver com propósito, explorar ideias e crescer. O Ascendente em Gêmeos, que é a forma como você chega aos outros, traz curiosidade, conversa e jeito leve de se aproximar. A Lua em Virgem, que fala das suas emoções, pede organização, utilidade e cuidado com os detalhes para você se sentir em paz.
 
-Os planetas de Capricórnio reforçam esse lado prático. Júpiter, Saturno e Plutão, juntos, dão a você persistência e vontade de construir algo que dure. Marte em Áries acrescenta iniciativa. Netuno em Peixes, bem no alto do mapa, empresta sensibilidade e imaginação ao que você deseja fazer no mundo.
+Mercúrio, planeta do pensamento, também está em Sagitário, junto do Sol. Por isso, pensar e ser quem você é caminham juntos: você forma opiniões com convicção e gosta de falar o que acredita. Marte em Áries, no alto do mapa, dá coragem para agir e iniciar projetos. Já Júpiter, Saturno e Plutão, juntos em Capricórnio, sustentam tudo isso com disciplina, ambição e capacidade de recomeçar.
 
-### Duas necessidades legítimas
+### Duas forças legítimas: o impulso de ir longe e a necessidade de firmar o chão
 
-De um lado, você precisa de expansão: aprender, viajar, explorar ideias e se sentir livre para mudar de rumo. Do outro, precisa de chão: ordem, compromisso e a sensação de que seu esforço leva a algum lugar. Essas duas vozes não são inimigas. A primeira dá direção e entusiasmo. A segunda dá forma e continuidade.
+O mapa mostra um puxão entre dois lados. De um lado, o Sol, Mercúrio e o Ascendente querem movimento, ideias novas e horizontes amplos. Do outro, a Lua em Virgem, mais Júpiter, Saturno e Plutão em Capricórnio, pedem estrutura, constância e resultado concreto. Cinco dos seus dez planetas estão em signos de terra (Lua, Júpiter, Saturno, Urano e Plutão), e três estão em fogo (Sol, Mercúrio e Marte).
 
-Quando uma abafa a outra, algo se perde. Só liberdade, e as ideias ficam no ar. Só controle, e a vida perde o gosto. Nenhuma das duas é defeito. Seu mapa pede que as duas trabalhem juntas.
+Nenhum dos lados é defeito. A vontade de explorar impede que você fique preso a rotinas sem sentido. A necessidade de chão garante que seus sonhos virem algo que se possa tocar. A Lua ainda recebe apoio de Saturno e de Júpiter por trígonos, que são aspectos de facilidade, muito precisos. Isso significa que, quando você se organiza e assume compromissos, o corpo e as emoções respondem com segurança e confiança. Saturno traz estrutura; Júpiter traz otimismo e sensação de que há espaço para crescer.
 
 ### Pontos de atenção
 
-**Entre o ideal e a realidade.** O Sol em Sagitário faz uma quadratura muito precisa com Netuno. Quadratura é um aspecto de atrito: o Sol representa sua identidade e Netuno, os sonhos e a imaginação. Netuno borra os contornos do seu Sol, e o Sol pede que Netuno vire algo concreto. Isso dá inspiração e sensibilidade. Em contrapartida, você pode se encantar com uma promessa ou uma ideia e demorar a notar os limites dela. Um exemplo: aceitar um projeto empolgante sem perguntar prazo e condições. Antes de dizer sim, vale escrever o que é real e o que é desejo.
+**Quando o ideal e a realidade não combinam.** O Sol em quadratura com Netuno, muito preciso, é um aspecto de atrito entre o seu eu e a imaginação. O Sol é a identidade e a vontade; Netuno é o sonho, a intuição e também a névoa. Netuno pode embaçar o Sol, deixando você em dúvida sobre o que quer, e o Sol pode cobrar de Netuno clareza que ele não dá. No dia a dia, isso aparece quando você idealiza uma pessoa ou um projeto e se decepciona ao ver o real. O lado bom é a sensibilidade e a imaginação que enriquecem o que você faz. Ajuda checar fatos antes de se comprometer, escrever o que você realmente deseja e reservar momentos de silêncio, sem se cobrar certeza o tempo todo.
 
-**Cobrir-se de seriedade.** Júpiter, Saturno e Plutão estão juntos em Capricórnio, na casa 8, e Saturno também se une a Plutão. Júpiter amplia, Saturno limita e Plutão intensifica. Misturados, dão força e resistência, mas também uma tendência a carregar peso demais e a se exigir demais. Em uma semana difícil, você pode transformar tudo em obrigação, inclusive o descanso. Programar uma pausa fixa, sem culpa, ajuda essa força a durar.
+**Intensidade e controle.** Marte em quadratura com Plutão, num aspecto de atrito, mistura a sua ação direta com um desejo de poder e transformação. Marte é a iniciativa; Plutão é a força profunda que quer mudar tudo. Um empurra o outro: Marte ganha força, mas Plutão pode transformar uma discussão simples em disputa de poder. Você pode sentir isso quando insiste em vencer um debate que já poderia ter terminado. A vantagem é uma energia enorme para superar obstáculos e se reerguer. Vale respirar antes de reagir, canalizar a intensidade em exercício ou em um projeto exigente e perguntar a si mesmo o que realmente está em jogo.
 
-**Impulso contra intensidade.** Marte em Áries faz quadratura com Plutão. Marte é sua ação e Plutão, a vontade profunda. Marte aciona o desejo de Plutão com pressa, e Plutão dá a Marte uma carga de intensidade que pode virar teimosia ou conflito. Numa discussão, por exemplo, você pode apertar mais do que pretendia. Essa mesma energia, bem usada, dá coragem para enfrentar o que importa. Respirar antes de responder e escolher uma única batalha por vez ajuda muito.
+**Pressão por seriedade.** Júpiter, Saturno e Plutão estão juntos em Capricórnio, na casa 8, a casa dos recursos compartilhados, das crises e das transformações. Essa concentração é forte e pode fazer você carregar responsabilidades demais, como se tudo dependesse de você. Pense em quem assume sozinho tarefas do trabalho ou da família por achar que ninguém fará direito. Essa seriedade dá profundidade e resistência. Dividir tarefas, pedir ajuda e permitir pausas evita que a firmeza vire peso.
 
-### Um caminho em três passos
+### Um caminho prático em três passos
 
-Seu mapa tem mais planetas em terra, depois fogo e água, e divide-se entre as modalidades mutável e cardinal. Isso sugere um caminho:
+Seu mapa tem muita terra, boa dose de fogo e três modalidades equilibradas, com destaque para mutável e cardinal (quatro planetas em cada). Isso sugere um caminho em três tempos.
 
-1. **Sentir e imaginar (água e mutável).** Comece escutando o que realmente o move. Anote ideias, sonhos e sensações sem julgar. É aqui que Netuno e sua curiosidade mutável trabalham melhor.
-2. **Testar com a realidade (terra).** Pegue uma ideia e confira com fatos: tempo, custo, energia, pessoas envolvidas. A Lua em Virgem e os planetas de Capricórnio gostam dessa etapa e dão segurança ao que nasce.
-3. **Dar o primeiro passo e sustentá-lo (fogo e cardinal).** Marte e Saturno ajudam você a começar e a manter. Escolha uma ação pequena e repita-a até virar hábito.
+1. **Escute a intuição e o desejo (fogo e água).** Observe o que o entusiasmo do Sol e de Marte, e a sensibilidade de Netuno e de Vênus, apontam. Anote uma ideia ou vontade por semana, sem julgar.
+2. **Teste com a realidade (terra e mutável).** Use a Lua em Virgem e a flexibilidade mutável para pesquisar, conversar com pessoas de confiança e ajustar o plano. Pergunte-se o que é viável agora.
+3. **Assuma um compromisso concreto (terra e cardinal).** Com a força cardinal de Marte, Júpiter, Saturno e Plutão, escolha um passo claro, com prazo, e comece. Depois de concluí-lo, você pode recomeçar o ciclo com mais confiança.
 
-Você não precisa escolher entre sonhar e construir. Seu mapa mostra que, quando os dois caminham juntos, você vai longe e com mais leveza. Que você se lembre disso nos dias em que tudo parecer pesado ou confuso: há em você a curiosidade para abrir portas e a firmeza para atravessá-las. Siga no seu ritmo, com carinho por si.
+Seu mapa não pede que você escolha entre voar e plantar raízes. Ele mostra que a sua liberdade fica mais forte quando tem uma base, e que a sua base fica mais viva quando há curiosidade para renová-la. Confie na sua capacidade de se reerguer, que é grande, e leve este mapa como um convite a se conhecer com carinho, um passo de cada vez.

@@ -213,6 +213,13 @@ describe("prompts", () => {
     expect(s).toContain("Foque em carreira.");
   });
 
+  it("o prompt de sistema proíbe comentar aspecto ou dado que não existe no mapa", () => {
+    const s = buildSystemPrompt("");
+    expect(s).toContain("NUNCA comente a ausência de um dado ou de um aspecto");
+    expect(s).toContain("ignore essa parte em silêncio");
+    expect(s).toContain("sem título, sem bloco e sem frase sobre a ausência");
+  });
+
   it("o prompt de sistema proíbe a IA de contar por conta própria e de incluir o Nodo Norte", () => {
     const s = buildSystemPrompt("");
     expect(s).toContain("NÃO conte nem agrupe por conta própria");
