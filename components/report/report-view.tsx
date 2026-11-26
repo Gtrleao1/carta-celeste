@@ -7,6 +7,7 @@ import {
 import { MiniMarkdown } from "@/components/site/mini-markdown";
 import type { ChartData } from "@/lib/astro";
 import { ELEMENTS, MODALITIES } from "@/lib/astro";
+import { shortName } from "@/lib/birth/short-name";
 import { focusBySection } from "@/lib/reader/focus";
 import { subtopicsOf } from "@/lib/reader/subtopics";
 import { formatDegree } from "@/lib/reports/chart-summary";
@@ -124,9 +125,22 @@ export function ReportView({
         <p className="text-primary hidden text-xs font-medium tracking-widest uppercase print:block">
           {SITE.name}
         </p>
-        {/* Letra pequena e a largura do menu das partes: não disputa com o título. */}
-        <h1 className="font-heading text-primary text-lg leading-tight font-semibold break-words lg:max-w-[12rem] xl:max-w-[13rem]">
-          {personName ?? productName}
+        {/*
+         * Na tela, uma linha só, na largura do menu das partes (nome longo é
+         * encurtado); no impresso, o nome completo.
+         */}
+        <h1
+          title={personName ?? undefined}
+          className="font-heading text-primary truncate text-lg leading-tight font-semibold lg:max-w-[12rem] xl:max-w-[13rem] print:max-w-none print:whitespace-normal"
+        >
+          {personName ? (
+            <>
+              <span className="print:hidden">{shortName(personName)}</span>
+              <span className="hidden print:inline">{personName}</span>
+            </>
+          ) : (
+            productName
+          )}
         </h1>
         {personName && (
           <p className="hidden text-sm print:block">
