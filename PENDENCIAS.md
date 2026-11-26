@@ -117,12 +117,12 @@ ser resolvido antes de vender de verdade**. Ao concluir um item, apague-o daqui.
       Google), mova `reportOnlyCsp` para o cabeçalho imposto em
       `lib/security/headers.ts`. Teste a tela de pagamento antes (cartão, Pix,
       boleto), porque o Payment Brick carrega recursos de vários domínios.
-- [ ] **Caixa de entrada do contato:** o e-mail público é
-      `contato@omniplanner.com.br` (`SITE.contactEmail`; aparece no rodapé, nos
-      Termos, na Política de Privacidade e em `/.well-known/security.txt`).
-      Confirmar que a caixa existe e quem responde dentro do prazo da LGPD. O
-      e-mail do administrador (`ADMIN_EMAIL`, só para o seed do admin) fica fora
-      do site: `guilherme@omniplanner.com.br`.
+- [ ] **Atendimento no contato:** o e-mail público é
+      `contato@minhacartaceleste.com.br` (`SITE.contactEmail`; aparece no rodapé, nos
+      Termos, na Política de Privacidade e em `/.well-known/security.txt`). A
+      caixa recebe pelo Google Workspace (domínio de alias; teste em 26/11/2026).
+      Definir quem responde dentro do prazo da LGPD. O e-mail do administrador
+      (`ADMIN_EMAIL`, só para o seed do admin) fica fora do site.
 - [ ] **Supabase → Authentication:** conferir que MFA (TOTP) está habilitado e,
       no plano Pro, ligar a proteção contra senhas vazadas.
 - [ ] Se o arquivo `Credenciais.txt` já foi enviado a alguém (e-mail, chat,

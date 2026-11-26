@@ -13,7 +13,7 @@ export const SITE = {
   /** CNPJ do responsável. */
   cnpj: null as string | null,
   /** E-mail para contato e para exercer direitos da LGPD. */
-  contactEmail: "contato@omniplanner.com.br" as string | null,
+  contactEmail: "contato@minhacartaceleste.com.br" as string | null,
   legalUpdatedAt: "17 de novembro de 2026",
 };
 
