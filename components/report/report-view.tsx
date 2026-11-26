@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import { ChartWheel } from "@/components/chart/chart-wheel";
 import { PrintButton } from "@/components/report/print-button";
 import {
@@ -84,12 +82,15 @@ const Cell = ({ children }: { children: React.ReactNode }) => (
  */
 export function ReportView({
   productName,
+  personName,
   birthSummary,
   chart,
   sections,
 }: {
   productName: string;
-  /** Linha legível dos dados de nascimento, ou `null` se o perfil foi apagado. */
+  /** De quem é o mapa, ou `null` se o perfil foi apagado. */
+  personName: string | null;
+  /** Linha legível dos dados de nascimento (só no impresso), ou `null`. */
   birthSummary: string | null;
   chart: ChartData;
   sections: ReportSection[];
@@ -115,24 +116,22 @@ export function ReportView({
 
   return (
     <article className="grid grid-cols-[minmax(0,1fr)] gap-5">
-      {/* Faixa única, para o menu e o texto começarem já na primeira tela. */}
+      {/*
+       * Na tela, só o nome de quem é o mapa. Marca, produto e dados de
+       * nascimento aparecem no impresso (PDF), que não leva o menu do site.
+       */}
       <header className="grid gap-1">
-        {/* A marca já está no cabeçalho do site, que não é impresso. */}
         <p className="text-primary hidden text-xs font-medium tracking-widest uppercase print:block">
           {SITE.name}
         </p>
-        <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-          <Link
-            href="/meus-mapas"
-            className="no-print text-muted-foreground hover:text-foreground text-sm underline underline-offset-4"
-          >
-            ← Meus mapas
-          </Link>
-          <h1 className="font-heading text-2xl font-semibold">{productName}</h1>
-          {birthSummary && (
-            <p className="text-muted-foreground text-sm">{birthSummary}</p>
-          )}
-        </div>
+        <h1 className="font-heading text-primary text-3xl font-semibold break-words">
+          {personName ?? productName}
+        </h1>
+        {personName && (
+          <p className="hidden text-sm print:block">
+            {[productName, birthSummary].filter(Boolean).join(" · ")}
+          </p>
+        )}
       </header>
 
       {chart.time_unknown && (

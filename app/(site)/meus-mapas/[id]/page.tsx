@@ -66,20 +66,21 @@ export default async function MapaPage({
   if (!report?.chart_data) redirect(`/pedido/${id}/retorno`);
 
   const birthSummary = birth
-    ? `${birth.name} · ${formatBirthSummary({
+    ? formatBirthSummary({
         birthDate: birth.birth_date,
         birthTime: birth.time_unknown
           ? null
           : (birth.birth_time?.slice(0, 5) ?? null),
         timezone: birth.timezone,
         cityName: birth.city_name,
-      })}`
+      })
     : null;
 
   return (
     <div className="mx-auto grid w-full max-w-7xl grid-cols-[minmax(0,1fr)] gap-3 px-4 py-4">
       <ReportView
         productName={product?.name ?? "Seu mapa astral"}
+        personName={birth?.name ?? null}
         birthSummary={birthSummary}
         chart={report.chart_data as ChartData}
         sections={report.sections as ReportSection[]}
