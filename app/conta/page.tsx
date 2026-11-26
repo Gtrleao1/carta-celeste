@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
-import { signOut } from "@/app/(auth)/actions";
 import { deleteBirthProfile } from "@/app/conta/actions";
 import { DeleteAccountForm } from "@/components/conta/delete-account-form";
 import { ProfileForm } from "@/components/conta/profile-form";
@@ -41,17 +40,12 @@ export default async function ContaPage({ searchParams }: PageProps<"/conta">) {
   ]);
 
   return (
-    <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col gap-6 px-4 py-8">
-      <header className="flex items-center justify-between gap-4">
-        <div>
-          <h1 className="text-2xl font-semibold tracking-tight">Minha conta</h1>
-          <p className="text-muted-foreground text-sm">{user.email}</p>
-        </div>
-        <form action={signOut}>
-          <Button type="submit" variant="outline" size="lg">
-            Sair
-          </Button>
-        </form>
+    <div className="mx-auto flex w-full max-w-2xl flex-col gap-6 px-4 py-10">
+      <header className="grid gap-1">
+        <h1 className="font-heading text-4xl font-semibold">Minha conta</h1>
+        <p className="text-muted-foreground text-sm break-words">
+          {user.email}
+        </p>
       </header>
 
       {params.senha === "alterada" && (
@@ -77,9 +71,9 @@ export default async function ContaPage({ searchParams }: PageProps<"/conta">) {
 
       <Card>
         <CardHeader>
-          <CardTitle className="text-lg">Perfis de nascimento</CardTitle>
+          <CardTitle className="text-lg">Pessoas cadastradas</CardTitle>
           <CardDescription>
-            Dados salvos para reutilizar em novas compras.
+            Dados de nascimento salvos para usar em novos mapas.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -116,61 +110,52 @@ export default async function ContaPage({ searchParams }: PageProps<"/conta">) {
             </ul>
           ) : (
             <p className="text-muted-foreground text-sm">
-              Você ainda não salvou nenhum perfil. Ele é criado quando você faz
+              Você ainda não salvou ninguém. O cadastro é criado quando você faz
               um pedido.
             </p>
           )}
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-lg">Senha</CardTitle>
-          <CardDescription>
-            Você já está conectado, então não precisa de e-mail para trocar a
-            senha.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Link
-            href="/redefinir-senha"
-            className="text-foreground underline underline-offset-4"
-          >
-            Alterar minha senha
-          </Link>
-        </CardContent>
-      </Card>
+      {/* Destino de "Segurança" no menu da conta. */}
+      <div id="seguranca" className="flex scroll-mt-20 flex-col gap-6">
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-lg">Senha</CardTitle>
+            <CardDescription>
+              Você já está conectado, então não precisa de e-mail para trocar a
+              senha.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Link
+              href="/redefinir-senha"
+              className="text-foreground underline underline-offset-4"
+            >
+              Alterar minha senha
+            </Link>
+          </CardContent>
+        </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-lg">Verificação em dois passos</CardTitle>
-          <CardDescription>
-            Proteja a sua conta com um código do celular, além da senha.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Link
-            href="/conta/seguranca"
-            className="text-foreground underline underline-offset-4"
-          >
-            Configurar verificação em dois passos
-          </Link>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-lg">Meus mapas</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <Link
-            href="/meus-mapas"
-            className="text-foreground underline underline-offset-4"
-          >
-            Ver meus mapas
-          </Link>
-        </CardContent>
-      </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-lg">
+              Verificação em dois passos
+            </CardTitle>
+            <CardDescription>
+              Proteja a sua conta com um código do celular, além da senha.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Link
+              href="/conta/seguranca"
+              className="text-foreground underline underline-offset-4"
+            >
+              Configurar verificação em dois passos
+            </Link>
+          </CardContent>
+        </Card>
+      </div>
 
       <Card>
         <CardHeader>
@@ -190,6 +175,6 @@ export default async function ContaPage({ searchParams }: PageProps<"/conta">) {
           </details>
         </CardContent>
       </Card>
-    </main>
+    </div>
   );
 }

@@ -9,7 +9,7 @@ export function SiteHeader() {
       <div className="relative mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-4 px-4">
         <Link
           href="/"
-          className="font-heading text-primary text-2xl font-semibold tracking-tight"
+          className="font-heading text-primary text-xl font-semibold tracking-tight whitespace-nowrap min-[360px]:text-2xl"
         >
           {SITE.name}
         </Link>

@@ -4,7 +4,8 @@
  * (ver "Perguntas em aberto" do PRD: CNPJ, domínio, e-mail de contato).
  */
 export const SITE = {
-  name: "Carta Celeste",
+  /** Nome da marca. "Sua Carta Celeste", nos textos, é o mapa que a pessoa recebe. */
+  name: "Minha Carta Celeste",
   description:
     "Seu mapa astral personalizado, calculado com precisão astronômica para o dia, a hora e a cidade em que você nasceu. Pronto em minutos na sua área do cliente.",
   /** Razão social do responsável pelo site. */

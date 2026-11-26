@@ -1,3 +1,5 @@
+import { SITE } from "@/lib/site-config";
+
 export type EmailMessage = { subject: string; html: string; text: string };
 
 const esc = (s: string) =>
@@ -20,7 +22,7 @@ function layout(
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#edeff6;padding:24px 12px;">
       <tr><td align="center">
         <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background:#ffffff;border-radius:12px;overflow:hidden;">
-          <tr><td style="background:#151938;padding:20px 28px;color:#d4b06a;font-family:Georgia,'Times New Roman',serif;font-size:24px;">Carta Celeste</td></tr>
+          <tr><td style="background:#151938;padding:20px 28px;color:#d4b06a;font-family:Georgia,'Times New Roman',serif;font-size:24px;">${SITE.name}</td></tr>
           <tr><td style="padding:28px;">
             <h1 style="margin:0 0 16px;font-family:Georgia,'Times New Roman',serif;font-size:26px;line-height:1.2;color:#1b1f45;">${esc(title)}</h1>
             ${bodyHtml}
@@ -31,7 +33,7 @@ function layout(
             }
           </td></tr>
           <tr><td style="padding:16px 28px 24px;font-size:12px;color:#585c7e;border-top:1px solid #e0e3f0;">
-            Conteúdo para autoconhecimento e entretenimento.<br />Você recebeu este e-mail por causa de um pedido feito na Carta Celeste.
+            Conteúdo para autoconhecimento e entretenimento.<br />Você recebeu este e-mail por causa de um pedido feito na ${SITE.name}.
           </td></tr>
         </table>
       </td></tr>

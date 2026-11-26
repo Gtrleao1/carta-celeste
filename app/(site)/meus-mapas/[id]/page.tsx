@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { z } from "zod";
 
-import { PrintButton } from "@/components/report/print-button";
 import {
   ReportView,
   type ReportSection,
@@ -80,16 +78,6 @@ export default async function MapaPage({
 
   return (
     <div className="mx-auto grid w-full max-w-7xl grid-cols-[minmax(0,1fr)] gap-3 px-4 py-4">
-      <div className="no-print flex flex-wrap items-center justify-between gap-3">
-        <Link
-          href="/meus-mapas"
-          className="text-muted-foreground hover:text-foreground text-sm underline underline-offset-4"
-        >
-          ← Meus mapas
-        </Link>
-        <PrintButton />
-      </div>
-
       <ReportView
         productName={product?.name ?? "Seu mapa astral"}
         birthSummary={birthSummary}

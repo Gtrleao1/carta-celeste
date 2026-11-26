@@ -3,7 +3,12 @@ import Link from "next/link";
 import { CookiePreferencesButton } from "@/components/tracking/cookie-preferences-button";
 import { DISCLAIMER, SITE } from "@/lib/site-config";
 
-export function SiteFooter() {
+export function SiteFooter({
+  cookieButton = true,
+}: {
+  /** Desligado onde não há o aviso de cookies (área da conta). */
+  cookieButton?: boolean;
+}) {
   return (
     <footer className="no-print border-border/60 mt-auto border-t">
       <div className="mx-auto grid w-full max-w-6xl gap-6 px-4 py-10 text-sm">
@@ -30,7 +35,7 @@ export function SiteFooter() {
             <Link href="/privacidade" className="hover:underline">
               Política de Privacidade
             </Link>
-            <CookiePreferencesButton />
+            {cookieButton && <CookiePreferencesButton />}
           </nav>
         </div>
         {SITE.contactEmail && (

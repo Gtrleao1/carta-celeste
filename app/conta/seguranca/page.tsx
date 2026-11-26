@@ -41,7 +41,7 @@ export default async function SegurancaPage({
   const confirmedNow = aal?.currentLevel === "aal2";
 
   return (
-    <main className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center gap-6 px-4 py-10">
+    <div className="mx-auto flex w-full max-w-md flex-col justify-center gap-6 px-4 py-10">
       <Card>
         <CardHeader>
           <CardTitle className="text-xl">Verificação em dois passos</CardTitle>
@@ -81,6 +81,6 @@ export default async function SegurancaPage({
           Voltar para Minha conta
         </Link>
       </p>
-    </main>
+    </div>
   );
 }

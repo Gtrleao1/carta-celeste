@@ -67,6 +67,18 @@ export const pollLimitMs = (view: OrderView, paymentType?: string | null) => {
   return 2 * 60 * 1000;
 };
 
+/**
+ * Ordem de "Meus mapas": os prontos primeiro, mantendo a ordem recebida (mais
+ * novos antes). Com um único mapa pronto, ele vai em destaque.
+ */
+export function arrangeMaps<T extends { status: string }>(orders: T[]) {
+  const ready = orders.filter((o) => o.status === "ready");
+  const others = orders.filter((o) => o.status !== "ready");
+  return ready.length === 1
+    ? { featured: ready[0], rest: others }
+    : { featured: null, rest: [...ready, ...others] };
+}
+
 /** Progresso do relatório (0–100) a partir das seções prontas; null se ainda não há total. */
 export function progressPercent(done: number, total: number): number | null {
   if (!total) return null;

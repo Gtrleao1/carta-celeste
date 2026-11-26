@@ -6,9 +6,19 @@ import { useEffect, useRef, useState } from "react";
 import { signOut } from "@/app/(auth)/actions";
 import { useLoggedIn } from "@/components/site/use-logged-in";
 import { buttonVariants } from "@/components/ui/button";
+import { SITE } from "@/lib/site-config";
 
 const itemClass =
   "hover:bg-accent focus-visible:bg-accent block w-full rounded-lg px-3 py-2.5 text-left text-sm outline-none";
+
+/** Itens de "Minha conta", iguais no menu suspenso e no painel do celular. */
+const ACCOUNT_LINKS = [
+  { href: "/conta", label: "Meus dados" },
+  { href: "/conta#seguranca", label: "Segurança" },
+  ...(SITE.contactEmail
+    ? [{ href: `mailto:${SITE.contactEmail}`, label: "Ajuda" }]
+    : []),
+];
 
 /** "Sair": envia o formulário para a Server Action que encerra a sessão. */
 function SignOutButton({ className }: { className: string }) {
@@ -23,7 +33,7 @@ function SignOutButton({ className }: { className: string }) {
 
 /**
  * Menu da conta no cabeçalho (telas grandes): botão "Minha conta" que abre
- * Meus mapas, Dados e segurança e Sair. Usa `<details>` (acessível por teclado
+ * Meus dados, Segurança, Ajuda e Sair. Usa `<details>` (acessível por teclado
  * sem biblioteca); fecha com Esc, ao clicar fora e ao navegar.
  */
 function AccountMenu() {
@@ -64,20 +74,16 @@ function AccountMenu() {
         </span>
       </summary>
       <div className="bg-popover text-popover-foreground border-border absolute right-0 z-50 mt-2 grid w-56 gap-0.5 rounded-xl border p-1.5 shadow-lg">
-        <Link
-          href="/meus-mapas"
-          onClick={() => setOpen(false)}
-          className={itemClass}
-        >
-          Meus mapas
-        </Link>
-        <Link
-          href="/conta"
-          onClick={() => setOpen(false)}
-          className={itemClass}
-        >
-          Dados e segurança
-        </Link>
+        {ACCOUNT_LINKS.map((l) => (
+          <Link
+            key={l.href}
+            href={l.href}
+            onClick={() => setOpen(false)}
+            className={itemClass}
+          >
+            {l.label}
+          </Link>
+        ))}
         <SignOutButton
           className={itemClass + " text-destructive cursor-pointer"}
         />
@@ -87,8 +93,8 @@ function AccountMenu() {
 }
 
 /**
- * "Entrar" para visitantes; para quem já está logado, o menu da conta (Meus
- * mapas, Minha conta e Sair). O estado de login é lido no navegador (ver
+ * "Entrar" para visitantes; para quem já está logado, o menu da conta (ver
+ * `ACCOUNT_LINKS`, mais Sair). O estado de login é lido no navegador (ver
  * `useLoggedIn`) só para escolher o que mostrar; sem login confirmado, "Entrar".
  * `stacked` mostra os itens em lista, para o painel do celular.
  */
@@ -122,12 +128,16 @@ export function AuthLink({
   const stackItem = "hover:bg-muted rounded-lg px-3 py-3 text-lg";
   return (
     <>
-      <Link href="/meus-mapas" onClick={onNavigate} className={stackItem}>
-        Meus mapas
-      </Link>
-      <Link href="/conta" onClick={onNavigate} className={stackItem}>
-        Minha conta
-      </Link>
+      {ACCOUNT_LINKS.map((l) => (
+        <Link
+          key={l.href}
+          href={l.href}
+          onClick={onNavigate}
+          className={stackItem}
+        >
+          {l.label}
+        </Link>
+      ))}
       <SignOutButton
         className={`${stackItem} text-destructive w-full text-left`}
       />

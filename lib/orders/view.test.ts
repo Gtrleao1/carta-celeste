@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import {
+  arrangeMaps,
   isFinal,
   isWaiting,
   orderView,
@@ -8,6 +9,30 @@ import {
   progressPercent,
   shouldKeepPolling,
 } from "./view";
+
+describe("arrangeMaps (Meus mapas)", () => {
+  const o = (id: string, status: string) => ({ id, status });
+
+  it("um único mapa pronto vai em destaque", () => {
+    const orders = [o("a", "pending"), o("b", "ready"), o("c", "cancelled")];
+    const { featured, rest } = arrangeMaps(orders);
+    expect(featured?.id).toBe("b");
+    expect(rest.map((r) => r.id)).toEqual(["a", "c"]);
+  });
+
+  it("com vários prontos não há destaque: prontos primeiro, na ordem recebida", () => {
+    const orders = [o("a", "pending"), o("b", "ready"), o("c", "ready")];
+    const { featured, rest } = arrangeMaps(orders);
+    expect(featured).toBeNull();
+    expect(rest.map((r) => r.id)).toEqual(["b", "c", "a"]);
+  });
+
+  it("sem mapa pronto, nada em destaque", () => {
+    const { featured, rest } = arrangeMaps([o("a", "paid")]);
+    expect(featured).toBeNull();
+    expect(rest.map((r) => r.id)).toEqual(["a"]);
+  });
+});
 
 describe("orderView", () => {
   it("pago e em geração são 'aprovado'; pronto é 'ready'", () => {

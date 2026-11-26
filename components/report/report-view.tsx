@@ -1,4 +1,7 @@
+import Link from "next/link";
+
 import { ChartWheel } from "@/components/chart/chart-wheel";
+import { PrintButton } from "@/components/report/print-button";
 import {
   ReportReader,
   type ReaderPart,
@@ -9,6 +12,7 @@ import { ELEMENTS, MODALITIES } from "@/lib/astro";
 import { focusBySection } from "@/lib/reader/focus";
 import { subtopicsOf } from "@/lib/reader/subtopics";
 import { formatDegree } from "@/lib/reports/chart-summary";
+import { SITE } from "@/lib/site-config";
 
 const ELEMENT_LABEL = {
   fogo: "Fogo",
@@ -111,15 +115,24 @@ export function ReportView({
 
   return (
     <article className="grid grid-cols-[minmax(0,1fr)] gap-5">
-      {/* Cabeçalho enxuto, para o menu e o texto começarem já na primeira tela. */}
+      {/* Faixa única, para o menu e o texto começarem já na primeira tela. */}
       <header className="grid gap-1">
-        <p className="text-primary text-xs font-medium tracking-widest uppercase">
-          Carta Celeste
+        {/* A marca já está no cabeçalho do site, que não é impresso. */}
+        <p className="text-primary hidden text-xs font-medium tracking-widest uppercase print:block">
+          {SITE.name}
         </p>
-        <h1 className="font-heading text-3xl font-semibold">{productName}</h1>
-        {birthSummary && (
-          <p className="text-muted-foreground text-sm">{birthSummary}</p>
-        )}
+        <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+          <Link
+            href="/meus-mapas"
+            className="no-print text-muted-foreground hover:text-foreground text-sm underline underline-offset-4"
+          >
+            ← Meus mapas
+          </Link>
+          <h1 className="font-heading text-2xl font-semibold">{productName}</h1>
+          {birthSummary && (
+            <p className="text-muted-foreground text-sm">{birthSummary}</p>
+          )}
+        </div>
       </header>
 
       {chart.time_unknown && (
@@ -140,6 +153,7 @@ export function ReportView({
         <ReportReader
           parts={parts}
           focusByKey={focusByKey}
+          actions={<PrintButton />}
           wheel={
             <ChartWheel
               chart={chart}

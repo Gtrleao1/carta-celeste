@@ -60,11 +60,14 @@ export function ReportReader({
   parts,
   focusByKey,
   wheel,
+  actions,
 }: {
   parts: ReaderPart[];
   focusByKey: Record<string, Focus>;
   /** A roda (SVG) desenhada no servidor, com `interactive`. */
   wheel: ReactNode;
+  /** Ações do mapa (salvar em PDF): abaixo do menu; no celular, no fim do texto. */
+  actions?: ReactNode;
 }) {
   const [active, setActive] = useState(0);
   /** A parte ativa está com os subtópicos abertos no menu? */
@@ -195,88 +198,93 @@ export function ReportReader({
   return (
     // `flex` no celular: só assim o menu fica preso no topo ao rolar o texto.
     <div className="flex flex-col gap-6 lg:grid lg:grid-cols-[12rem_minmax(0,1fr)_18rem] xl:grid-cols-[13rem_minmax(0,1fr)_22rem] xl:gap-8">
-      {/* Partes e subtópicos */}
-      <nav
-        aria-label="Partes do mapa"
-        className="no-print bg-background border-border/60 sticky top-16 z-20 min-w-0 border-b py-2 lg:top-20 lg:max-h-[calc(100dvh-5.5rem)] lg:self-start lg:overflow-y-auto lg:border-0 lg:bg-transparent lg:py-0"
-      >
-        <ol
-          ref={listRef}
-          className="relative flex [scrollbar-width:none] gap-2 overflow-x-auto lg:grid lg:gap-px lg:overflow-visible"
+      {/* Partes e subtópicos; no desktop, as ações ficam logo abaixo. */}
+      <div className="no-print bg-background border-border/60 sticky top-16 z-20 min-w-0 border-b py-2 lg:top-20 lg:flex lg:max-h-[calc(100dvh-5.5rem)] lg:flex-col lg:gap-3 lg:self-start lg:border-0 lg:bg-transparent lg:py-0">
+        <nav
+          aria-label="Partes do mapa"
+          className="min-w-0 lg:min-h-0 lg:overflow-y-auto"
         >
-          {parts.map((p, i) => {
-            const expanded = i === active && open && p.subs.length > 0;
-            return (
-              <li key={p.key} className="shrink-0 lg:shrink">
-                <button
-                  type="button"
-                  onClick={() => toggleFromMenu(i)}
-                  aria-current={i === active ? "true" : undefined}
-                  aria-expanded={
-                    desktop && p.subs.length ? expanded : undefined
-                  }
-                  className={
-                    partItem +
-                    "lg:border-transparent " +
-                    (i === active
-                      ? "border-primary bg-card text-foreground font-medium"
-                      : "border-border text-muted-foreground hover:text-foreground hover:bg-muted/50")
-                  }
-                >
-                  <span
-                    aria-hidden="true"
-                    className="text-primary w-3 shrink-0 text-xs"
+          <ol
+            ref={listRef}
+            className="relative flex [scrollbar-width:none] gap-2 overflow-x-auto lg:grid lg:gap-px lg:overflow-visible"
+          >
+            {parts.map((p, i) => {
+              const expanded = i === active && open && p.subs.length > 0;
+              return (
+                <li key={p.key} className="shrink-0 lg:shrink">
+                  <button
+                    type="button"
+                    onClick={() => toggleFromMenu(i)}
+                    aria-current={i === active ? "true" : undefined}
+                    aria-expanded={
+                      desktop && p.subs.length ? expanded : undefined
+                    }
+                    className={
+                      partItem +
+                      "lg:border-transparent " +
+                      (i === active
+                        ? "border-primary bg-card text-foreground font-medium"
+                        : "border-border text-muted-foreground hover:text-foreground hover:bg-muted/50")
+                    }
                   >
-                    {i === active ? "●" : visited.has(i) ? "✓" : ""}
-                  </span>
-                  <span className="whitespace-nowrap lg:flex-1 lg:whitespace-normal">
-                    {p.title}
-                  </span>
-                  {visited.has(i) && i !== active && (
-                    <span className="sr-only"> (já lida)</span>
-                  )}
-                  {p.subs.length > 0 && (
                     <span
                       aria-hidden="true"
-                      className={
-                        "text-muted-foreground hidden shrink-0 transition-transform lg:inline " +
-                        (expanded ? "rotate-90" : "")
-                      }
+                      className="text-primary w-3 shrink-0 text-xs"
                     >
-                      ›
+                      {i === active ? "●" : visited.has(i) ? "✓" : ""}
                     </span>
+                    <span className="whitespace-nowrap lg:flex-1 lg:whitespace-normal">
+                      {p.title}
+                    </span>
+                    {visited.has(i) && i !== active && (
+                      <span className="sr-only"> (já lida)</span>
+                    )}
+                    {p.subs.length > 0 && (
+                      <span
+                        aria-hidden="true"
+                        className={
+                          "text-muted-foreground hidden shrink-0 transition-transform lg:inline " +
+                          (expanded ? "rotate-90" : "")
+                        }
+                      >
+                        ›
+                      </span>
+                    )}
+                  </button>
+                  {expanded && (
+                    <ul
+                      className="mt-0.5 mb-1 ml-4 hidden gap-px border-l pl-1 lg:grid"
+                      aria-label={`Subtópicos de ${p.title}`}
+                    >
+                      {p.subs.map((s) => (
+                        <li key={s.id}>
+                          <button
+                            type="button"
+                            onClick={() => goSub(i, s.id)}
+                            aria-current={
+                              s.id === activeSub ? "true" : undefined
+                            }
+                            className={
+                              focusRing +
+                              "w-full rounded-md border px-2 py-1 text-left text-xs leading-snug " +
+                              (s.id === activeSub
+                                ? "border-primary/60 bg-card text-foreground"
+                                : "text-muted-foreground hover:text-foreground hover:bg-muted/50 border-transparent")
+                            }
+                          >
+                            {s.label}
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
                   )}
-                </button>
-                {expanded && (
-                  <ul
-                    className="mt-0.5 mb-1 ml-4 hidden gap-px border-l pl-1 lg:grid"
-                    aria-label={`Subtópicos de ${p.title}`}
-                  >
-                    {p.subs.map((s) => (
-                      <li key={s.id}>
-                        <button
-                          type="button"
-                          onClick={() => goSub(i, s.id)}
-                          aria-current={s.id === activeSub ? "true" : undefined}
-                          className={
-                            focusRing +
-                            "w-full rounded-md border px-2 py-1 text-left text-xs leading-snug " +
-                            (s.id === activeSub
-                              ? "border-primary/60 bg-card text-foreground"
-                              : "text-muted-foreground hover:text-foreground hover:bg-muted/50 border-transparent")
-                          }
-                        >
-                          {s.label}
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </li>
-            );
-          })}
-        </ol>
-      </nav>
+                </li>
+              );
+            })}
+          </ol>
+        </nav>
+        {actions && <div className="hidden shrink-0 lg:block">{actions}</div>}
+      </div>
 
       {/* Roda: no desktop, fixa à direita; no celular, inteira antes do texto. */}
       <div className="grid justify-items-center gap-2 lg:sticky lg:top-20 lg:order-3 lg:self-start print:static">
@@ -295,7 +303,7 @@ export function ReportReader({
       {/* Texto: corrido no celular; uma parte por vez no desktop. */}
       <article
         id="leitor-texto"
-        className="grid min-w-0 scroll-mt-24 gap-12 lg:order-2 lg:block"
+        className="grid min-w-0 scroll-mt-20 gap-12 lg:order-2 lg:block"
       >
         {parts.map((p, i) => (
           <section
@@ -345,6 +353,12 @@ export function ReportReader({
             Próxima →
           </button>
         </div>
+
+        {actions && (
+          <div className="no-print border-border border-t pt-6 lg:hidden">
+            {actions}
+          </div>
+        )}
       </article>
     </div>
   );

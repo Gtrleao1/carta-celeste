@@ -20,8 +20,8 @@ export default function TermosPage() {
 
       <h2>1. Quem somos</h2>
       <p>
-        O {SITE.name} é operado por {orPending(SITE.legalName)}, inscrito no
-        CNPJ {orPending(SITE.cnpj)}. Contato: {orPending(SITE.contactEmail)}.
+        O site {SITE.name} é operado por {orPending(SITE.legalName)}, inscrito
+        no CNPJ {orPending(SITE.cnpj)}. Contato: {orPending(SITE.contactEmail)}.
       </p>
 
       <h2>2. O que oferecemos</h2>
@@ -103,8 +103,8 @@ export default function TermosPage() {
 
       <h2>9. Propriedade intelectual</h2>
       <p>
-        O site, a marca, o design, os textos e o software são do {SITE.name} ou
-        licenciados para ele. O mapa astral que você compra é para o seu uso
+        O site, a marca, o design, os textos e o software são da {SITE.name} ou
+        licenciados para ela. O mapa astral que você compra é para o seu uso
         pessoal: você pode guardá-lo, imprimi-lo e compartilhá-lo com quem
         quiser, mas não pode revendê-lo nem republicá-lo como se fosse seu
         serviço.

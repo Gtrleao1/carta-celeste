@@ -12,9 +12,10 @@ export default function PrivacidadePage() {
   return (
     <LegalPage title="Política de Privacidade">
       <p>
-        Esta política explica quais dados pessoais o {SITE.name} coleta, para
-        que servem, com quem são compartilhados e quais são os seus direitos,
-        conforme a Lei Geral de Proteção de Dados (LGPD, Lei 13.709/2018).
+        Esta política explica quais dados pessoais o site {SITE.name} coleta,
+        para que servem, com quem são compartilhados e quais são os seus
+        direitos, conforme a Lei Geral de Proteção de Dados (LGPD, Lei
+        13.709/2018).
       </p>
 
       <h2>1. Quem é o responsável pelos dados</h2>

@@ -3,14 +3,14 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { getPublishedPosts } from "@/lib/blog/queries";
+import { SITE } from "@/lib/site-config";
 
 // Página estática, regenerada a cada 5 minutos; posts novos entram sem deploy.
 export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Blog",
-  description:
-    "Textos sobre astrologia, mapa astral e autoconhecimento, escritos pela equipe da Carta Celeste.",
+  description: `Textos sobre astrologia, mapa astral e autoconhecimento, escritos pela equipe da ${SITE.name}.`,
   alternates: { canonical: "/blog" },
 };
 

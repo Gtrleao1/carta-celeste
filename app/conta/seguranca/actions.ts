@@ -6,6 +6,7 @@ import type { FormState } from "@/lib/auth/form-state";
 import { TOTP_CODE } from "@/lib/auth/mfa";
 import { safeNextPath } from "@/lib/auth/redirect";
 import { withinRateLimit } from "@/lib/rate-limit";
+import { SITE } from "@/lib/site-config";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
 
@@ -51,7 +52,7 @@ export async function startEnrollment(): Promise<EnrollState> {
     factorType: "totp",
     // O nome precisa ser único entre os fatores da pessoa.
     friendlyName: `Aplicativo ${new Date().toISOString().slice(0, 19)}`,
-    issuer: "Carta Celeste",
+    issuer: SITE.name,
   });
   if (error || !data) {
     return {

@@ -2,6 +2,8 @@ import "server-only";
 
 import { Resend } from "resend";
 
+import { SITE } from "@/lib/site-config";
+
 import type { EmailMessage } from "./templates";
 
 export type SendResult =
@@ -25,7 +27,7 @@ export async function sendEmail(
   }
 
   const from =
-    process.env.RESEND_FROM_EMAIL ?? "Carta Celeste <onboarding@resend.dev>";
+    process.env.RESEND_FROM_EMAIL ?? `${SITE.name} <onboarding@resend.dev>`;
   try {
     const { error } = await new Resend(apiKey).emails.send({
       from,
