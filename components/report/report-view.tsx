@@ -124,7 +124,8 @@ export function ReportView({
         <p className="text-primary hidden text-xs font-medium tracking-widest uppercase print:block">
           {SITE.name}
         </p>
-        <h1 className="font-heading text-primary text-3xl font-semibold break-words">
+        {/* Letra pequena e a largura do menu das partes: não disputa com o título. */}
+        <h1 className="font-heading text-primary text-lg leading-tight font-semibold break-words lg:max-w-[12rem] xl:max-w-[13rem]">
           {personName ?? productName}
         </h1>
         {personName && (
